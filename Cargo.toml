@@ -1,0 +1,67 @@
+[package]
+name = "psyx"
+version = "0.0.0"
+edition = "2021"
+authors = ["Jonathan Hohle <jon@ttkb.co>"]
+license = "BSD-3-CLAUSE"
+repository = "https://github.com/ttkb-oss/psyx"
+description = "A PSY-Q object & library parser & utility."
+keywords = ["psy-q", "dumpobj", "psylib", "lib", "obj", "decomp"]
+categories = ["command-line-utilities", "data-structures", "development-tools", "game-development", "parser-implementations"]
+exclude = [
+    ".gitignore",
+    "/.github",
+    "target/.private/",
+    "tests/data/psy-q-saturn.zip.sha1",
+    "tests/data/psy-q-genesis.zip.sha1",
+]
+readme = "README.md"
+rust-version = "1.81.0"
+
+[lib]
+name = "psyx"
+
+[[bin]]
+name = "psyx"
+
+[[bin]]
+name = "psylib"
+
+[[bin]]
+name = "dumpobj"
+
+[dependencies]
+anyhow = "1.0.100"
+binrw = { version = "0.15.0", default-features = false }
+chrono = "0.4"
+clap = { version = "4.5.51", features = ["cargo", "derive"] }
+rabbitizer = "1.14.3"
+
+[dev-dependencies]
+serde_json = "1.0.145"
+# on macOS, cargo-spellcheck requires:
+#    export DYLD_FALLBACK_LIBRARY_PATH= \
+#        "$(xcode-select --print-path)/Toolchains/XcodeDefault.xctoolchain/usr/lib/"
+#cargo-spellcheck = "0.15.5"
+
+[package.metadata.spellcheck]
+config = ".config/spellcheck.toml"
+
+[package.metadata.deb]
+maintainer = "Jonathan Hohle <jon@ttkb.co>"
+copyright = "2025, TTKB, LLC."
+license-file = ["LICENSE.TXT", "2"]
+extended-description = """\
+A crate for reading PS1/PSY-Q LIB & OBJ files.
+"""
+depends = "$auto"
+section = "development"
+priority = "optional"
+assets = [
+    # target/release path is special, and gets replaced by cargo-deb with the actual target dir path.
+    ["target/release/psyk", "usr/bin/", "755"],
+    ["target/release/dumpobj", "usr/bin/", "755"],
+    ["target/release/psylib", "usr/bin/", "755"],
+    # both array and object syntaxes are equivalent:
+    { source = "README.md", dest = "usr/share/doc/psyk/README", mode = "644"},
+]

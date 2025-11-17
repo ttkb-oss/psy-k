@@ -1,0 +1,4 @@
+[Hunspell]
+use_builtin = true
+search_dirs = [".."]
+extra_dictionaries = ["target/.private/dict.dic"]
