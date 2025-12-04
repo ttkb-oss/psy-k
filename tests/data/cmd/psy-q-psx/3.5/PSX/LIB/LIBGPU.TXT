@@ -1,0 +1,36 @@
+
+PsyLib version 2.04
+
+Module     Date     Time   Externals defined
+
+EXT      15-05-96 16:15:22 LoadClut LoadClut2 LoadTPage SetDefDrawEnv 
+                           SetDefDispEnv 
+EXTA     15-05-96 16:15:26 GetTPageA get_addr get_cell LoadTPageA 
+FONT     15-05-96 16:15:32 FntFlush FntPrint Font FntLoad FntOpen SetDumpFnt 
+FONTTEX  15-05-96 16:15:34 
+KPRINTF  15-05-96 16:15:38 KanjiFntClose KanjiFntFlush KanjiFntPrint PutKanji 
+                           txyuv KanjiFont KanjiFntLoad KanjiFntOpen 
+                           kanjiclut 
+KROM2TIM 15-05-96 16:15:42 GetTimSize Krom2Tim 
+OTAG     15-05-96 16:15:44 DumpOTag CheckPrim DrawOTagIO 
+PRIM     15-05-96 16:15:48 SetSprt8 AddPrims SetTile16 SetLineF2 SetLineG2 
+                           SetLineF3 DumpClut SetLineG3 SetLineF4 SetLineG4 
+                           TermPrim NextPrim SetDrawLoad SetSprt16 
+                           SetShadeTex SetPolyF3 SetPolyG3 SetPolyF4 
+                           SetPolyG4 DumpDrawEnv DumpDispEnv SetDrawMove 
+                           DumpTPage IsEndPrim MargePrim SetDrawTPage 
+                           SetPolyFT3 SetPolyGT3 SetPolyFT4 SetBlockFill 
+                           SetPolyGT4 AddPrim CatPrim GetClut SetTile 
+                           SetSemiTrans SetSprt SetTile1 GetTPage SetTile8 
+SYS      15-05-96 16:15:56 SetGraphDebug _qlog SetDrawOffset DrawOTagEnv 
+                           SetGraphQueue DrawPrim _qout DrawSync SetDrawArea 
+                           DrawSyncCallback SetDrawMode SetDispMask ClearOTag 
+                           LoadImage MoveImage SetPriority ClearOTagR _qin 
+                           _que GetGraphType ClearImage SetTexWindow 
+                           GetDrawEnv GetDispEnv GPU_printf SetDrawEnv 
+                           StoreImage PutDrawEnv PutDispEnv ResetGraph GetODE 
+                           GetGraphDebug DrawOTag SetGraphReverse 
+TMD      15-05-96 16:16:02 ReadTMD ReadTIM OpenTMD OpenTIM 
+KTRANS   15-05-96 16:16:06 Krom2RawAdd2 kanjitrans hankanjitrans 
+BREAK    15-05-96 16:16:10 BreakDraw ContinueDraw 
+

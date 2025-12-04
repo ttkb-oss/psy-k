@@ -1,0 +1,54 @@
+
+PsyLib version 2.04
+
+Module     Date     Time   Externals defined
+
+ADDDF3   03-10-96 14:26:50 __adddf3 
+ADDMANT  03-10-96 14:26:50 _add_mant_d 
+ADDSF3   03-10-96 14:26:50 __addsf3 
+DBSHIFT  03-10-96 14:26:50 _dbl_shift 
+DBSHIFTU 03-10-96 14:26:50 _dbl_shift_us 
+DIVDF3   03-10-96 14:26:52 _comp_mant __divdf3 
+DIVSF3   03-10-96 14:26:52 __divsf3 
+EQDF2    03-10-96 14:26:52 __eqdf2 
+EQSF2    03-10-96 14:26:52 __eqsf2 
+EXTSFDF2 03-10-96 14:26:52 __extendsfdf2 
+FIXDFSI  03-10-96 14:26:54 __fixdfsi 
+FIXSFSI  03-10-96 14:26:54 __fixsfsi 
+FIXUDFSI 03-10-96 14:26:54 __fixunsdfsi 
+FIXUSFSI 03-10-96 14:26:54 __fixunssfsi 
+FLTSIDF  03-10-96 14:26:56 __floatsidf 
+FLTSISF  03-10-96 14:26:56 __floatsisf 
+GEDF2    03-10-96 14:26:56 __gedf2 
+GESF2    03-10-96 14:26:56 __gesf2 
+GTDF2    03-10-96 14:26:56 __gtdf2 
+GTSF2    03-10-96 14:26:58 __gtsf2 
+LEDF2    03-10-96 14:26:58 __ledf2 
+LESF2    03-10-96 14:26:58 __lesf2 
+LTDF2    03-10-96 14:26:58 __ltdf2 
+LTSF2    03-10-96 14:26:58 __ltsf2 
+MAINASU  03-10-96 14:27:00 _mainasu 
+MULDF3   03-10-96 14:27:00 __muldf3 _mul_mant_d 
+MULSF3   03-10-96 14:27:00 __mulsf3 
+NEDF2    03-10-96 14:27:00 __nedf2 
+NEGDF2   03-10-96 14:27:02 __negdf2 
+NEGSF2   03-10-96 14:27:02 __negsf2 
+NESF2    03-10-96 14:27:02 __nesf2 
+SUBDF3   03-10-96 14:27:02 __subdf3 
+SUBSF3   03-10-96 14:27:02 __subsf3 
+TRUDFSF2 03-10-96 14:27:04 __truncdfsf2 
+ARC      03-10-96 14:27:04 atan acos asin atan2 
+EXP      03-10-96 14:27:04 exp 
+FLOOR    03-10-96 14:27:04 floor ceil 
+HYPOT    03-10-96 14:27:06 hypot 
+LDEXP    03-10-96 14:27:06 ldexp frexp 
+LOG      03-10-96 14:27:06 log log10 
+MODF     03-10-96 14:27:06 modf fmod 
+POW      03-10-96 14:27:08 pow 
+SIN      03-10-96 14:27:08 tan cos sin 
+SINH     03-10-96 14:27:08 tanh cosh sinh 
+SQRT     03-10-96 14:27:08 sqrt 
+PRINTF2  03-10-96 14:27:10 sprintf2 printf2 
+FERR     03-10-96 14:27:12 math_errno _err_math math_err_point 
+STRTOD   03-10-96 14:27:12 strtod atof 
+

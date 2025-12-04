@@ -1,0 +1,51 @@
+
+PsyLib version 2.04
+
+Module     Date     Time   Externals defined
+
+SNMAIN   13-02-95 21:48:10 __SN_ENTRY_POINT __main __do_global_dtors 
+PUREV    13-02-95 21:48:10 __pure_virtual 
+_ASHLDI3 13-02-95 21:48:12 __ashldi3 
+_ASHRDI3 13-02-95 21:48:14 __ashrdi3 
+_CMPDI2  13-02-95 21:48:14 __cmpdi2 
+_DIVDI3  13-02-95 21:48:14 __divdi3 
+_EH      13-02-95 21:48:16 __throw_type_match __register_exceptions 
+                           __find_first_exception_table_match 
+_EXIT    13-02-95 21:48:16 exit 
+_FFSDI2  13-02-95 21:48:18 __ffsdi2 
+_FXDFDI  13-02-95 21:48:18 __fixdfdi 
+_FXSFDI  13-02-95 21:48:18 __fixsfdi 
+_FXTFDI  13-02-95 21:48:20 
+_FXUSDFD 13-02-95 21:48:20 __fixunsdfdi 
+_FIXUSDF 13-02-95 21:48:20 __fixunsdfsi 
+_FXUSSFD 13-02-95 21:48:22 __fixunssfdi 
+_FXUSSFS 13-02-95 21:48:22 __fixunssfsi 
+_FXUSTFD 13-02-95 21:48:22 
+_FXUSXFD 13-02-95 21:48:24 
+_FXUSXFS 13-02-95 21:48:24 
+_FXXFDI  13-02-95 21:48:24 
+_FLTDIDF 13-02-95 21:48:26 __floatdidf 
+_FLTDISF 13-02-95 21:48:26 __floatdisf 
+_FLTDITF 13-02-95 21:48:26 
+_FLTDIXF 13-02-95 21:48:28 
+_LSHLDI3 13-02-95 21:48:28 __lshldi3 
+_LSHRDI3 13-02-95 21:48:28 __lshrdi3 
+_MODDI3  13-02-95 21:48:30 __moddi3 
+_MULDI3  13-02-95 21:48:30 __muldi3 
+_NEGDI2  13-02-95 21:48:32 __negdi2 
+_NEW_HAN 13-02-95 21:48:32 set_new_handler __new_handler 
+                           __default_new_handler 
+_OP_DELE 13-02-95 21:48:32 __builtin_delete 
+_OP_NEW  13-02-95 21:48:34 __builtin_new 
+_OP_VDEL 13-02-95 21:48:34 __builtin_vec_delete 
+_OP_VNEW 13-02-95 21:48:34 __builtin_vec_new 
+_SHTAB   13-02-95 21:48:36 __shtab 
+_TRAMPOL 13-02-95 21:48:36 __transfer_from_trampoline __trampoline 
+_UCMPDI2 13-02-95 21:48:36 __ucmpdi2 
+_UDIVDI3 13-02-95 21:48:38 __udivdi3 
+_UDIVMOD 13-02-95 21:48:40 __udivmoddi4 
+_UDIV_W_ 13-02-95 21:48:40 __udiv_w_sdiv 
+_UMODDI3 13-02-95 21:48:42 __umoddi3 
+_VARARGS 13-02-95 21:48:42 __builtin_saveregs 
+__GCC_BC 13-02-95 21:48:42 __gcc_bcmp 
+

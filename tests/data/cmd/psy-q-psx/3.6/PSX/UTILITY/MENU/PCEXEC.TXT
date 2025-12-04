@@ -1,0 +1,128 @@
+
+Header : LNK version 2
+46 : Processor type 7
+16 : Section symbol number 1 '.rdata' in group 0 alignment 8
+16 : Section symbol number 2 '.text' in group 0 alignment 8
+16 : Section symbol number 3 '.data' in group 0 alignment 8
+16 : Section symbol number 4 '.sdata' in group 0 alignment 8
+16 : Section symbol number 5 '.sbss' in group 0 alignment 8
+16 : Section symbol number 6 '.bss' in group 0 alignment 8
+16 : Section symbol number 7 '.ctors' in group 0 alignment 8
+16 : Section symbol number 8 '.dtors' in group 0 alignment 8
+28 : Define file number 9 as "C:\NEWEST\UTILITY\MENU\EXEC.C"
+6 : Switch to section 2
+6 : Switch to section 4
+2 : Code 19 bytes
+10 : Patch type 16 at offset 0 with (sectbase(6)+$0)
+6 : Switch to section 1
+2 : Code 147 bytes
+6 : Switch to section 4
+2 : Code 9 bytes
+6 : Switch to section 2
+6 : Switch to section 1
+2 : Code 102 bytes
+6 : Switch to section 2
+6 : Switch to section 2
+2 : Code 936 bytes
+10 : Patch type 82 at offset 1c with (sectbase(4)+$4)
+10 : Patch type 84 at offset 20 with (sectbase(4)+$4)
+10 : Patch type 74 at offset 44 with [b]
+10 : Patch type 74 at offset 68 with [c]
+10 : Patch type 74 at offset 7c with (sectbase(2)+$2b8)
+10 : Patch type 74 at offset a8 with [d]
+10 : Patch type 74 at offset b4 with [e]
+10 : Patch type 82 at offset bc with (sectbase(4)+$c)
+10 : Patch type 84 at offset c0 with (sectbase(4)+$c)
+10 : Patch type 74 at offset c4 with [f]
+10 : Patch type 74 at offset dc with [10]
+10 : Patch type 74 at offset e4 with [11]
+10 : Patch type 74 at offset 100 with [12]
+10 : Patch type 82 at offset 118 with (sectbase(1)+$0)
+10 : Patch type 84 at offset 11c with (sectbase(1)+$0)
+10 : Patch type 74 at offset 120 with [13]
+10 : Patch type 74 at offset 128 with (sectbase(2)+$298)
+10 : Patch type 74 at offset 134 with [14]
+10 : Patch type 74 at offset 148 with [14]
+10 : Patch type 30 at offset 154 with (sectstart(4)-(sectbase(4)+$0))
+10 : Patch type 74 at offset 158 with [15]
+10 : Patch type 82 at offset 16c with (sectbase(1)+$20)
+10 : Patch type 84 at offset 170 with (sectbase(1)+$20)
+10 : Patch type 74 at offset 174 with [13]
+10 : Patch type 74 at offset 17c with (sectbase(2)+$28c)
+10 : Patch type 30 at offset 184 with (sectstart(4)-(sectbase(4)+$0))
+10 : Patch type 74 at offset 190 with [15]
+10 : Patch type 30 at offset 1a4 with (sectstart(4)-(sectbase(4)+$0))
+10 : Patch type 82 at offset 1ac with (sectbase(1)+$3c)
+10 : Patch type 84 at offset 1b0 with (sectbase(1)+$3c)
+10 : Patch type 74 at offset 1b8 with [13]
+10 : Patch type 74 at offset 1c0 with [16]
+10 : Patch type 30 at offset 1c8 with (sectstart(4)-(sectbase(4)+$0))
+10 : Patch type 82 at offset 1e4 with (sectbase(1)+$58)
+10 : Patch type 84 at offset 1e8 with (sectbase(1)+$58)
+10 : Patch type 74 at offset 1f4 with [13]
+10 : Patch type 82 at offset 1fc with (sectbase(1)+$84)
+10 : Patch type 84 at offset 200 with (sectbase(1)+$84)
+10 : Patch type 74 at offset 204 with [13]
+10 : Patch type 74 at offset 20c with [17]
+10 : Patch type 74 at offset 214 with [18]
+10 : Patch type 74 at offset 21c with [19]
+10 : Patch type 30 at offset 224 with (sectstart(4)-(sectbase(4)+$0))
+10 : Patch type 74 at offset 234 with [1a]
+10 : Patch type 74 at offset 23c with [1b]
+10 : Patch type 74 at offset 244 with [1c]
+10 : Patch type 74 at offset 24c with [1d]
+10 : Patch type 74 at offset 254 with [1e]
+10 : Patch type 74 at offset 25c with [17]
+10 : Patch type 82 at offset 264 with (sectbase(4)+$14)
+10 : Patch type 84 at offset 268 with (sectbase(4)+$14)
+10 : Patch type 74 at offset 26c with [13]
+10 : Patch type 74 at offset 274 with (sectbase(2)+$298)
+10 : Patch type 74 at offset 27c with [1f]
+10 : Patch type 74 at offset 284 with (sectbase(2)+$298)
+10 : Patch type 74 at offset 28c with [16]
+10 : Patch type 74 at offset 2d0 with [d]
+10 : Patch type 74 at offset 2e0 with [12]
+10 : Patch type 82 at offset 2f8 with (sectbase(1)+$94)
+10 : Patch type 84 at offset 2fc with (sectbase(1)+$94)
+10 : Patch type 74 at offset 300 with [13]
+10 : Patch type 74 at offset 308 with (sectbase(2)+$38c)
+10 : Patch type 74 at offset 314 with [14]
+10 : Patch type 74 at offset 328 with [14]
+10 : Patch type 74 at offset 338 with [15]
+10 : Patch type 74 at offset 34c with [16]
+10 : Patch type 82 at offset 354 with (sectbase(1)+$dc)
+10 : Patch type 84 at offset 358 with (sectbase(1)+$dc)
+10 : Patch type 74 at offset 360 with [13]
+10 : Patch type 74 at offset 368 with (sectbase(2)+$38c)
+10 : Patch type 82 at offset 370 with (sectbase(1)+$b8)
+10 : Patch type 84 at offset 374 with (sectbase(1)+$b8)
+10 : Patch type 74 at offset 378 with [13]
+10 : Patch type 74 at offset 380 with [16]
+6 : Switch to section 6
+8 : Uninitialised data, 2048 bytes
+6 : Switch to section 2
+14 : XREF symbol number c 'make_dname'
+14 : XREF symbol number f 'stricmp'
+14 : XREF symbol number 1f 'set_datano'
+14 : XREF symbol number 11 'DrawSync'
+18 : Local symbol 'headbuf.2' at offset 0 in section 6
+14 : XREF symbol number 15 'PCread'
+14 : XREF symbol number 12 'PCopen'
+14 : XREF symbol number d 'PCinit'
+14 : XREF symbol number 17 'SetDispMask'
+14 : XREF symbol number b 'sndEnd'
+14 : XREF symbol number 1a 'Exec'
+14 : XREF symbol number 13 'printf'
+12 : XDEF symbol number a 'exec' at offset 0 in section 2
+14 : XREF symbol number 14 'PClseek'
+14 : XREF symbol number 16 'PCclose'
+14 : XREF symbol number 1d 'PadInit'
+14 : XREF symbol number 19 'StopCallback'
+14 : XREF symbol number 18 'PadStop'
+14 : XREF symbol number 10 'ClearImage'
+18 : Local symbol 'pc_load_data' at offset 2b8 in section 2
+14 : XREF symbol number 1e 'sndInit'
+14 : XREF symbol number e 'make_exename'
+14 : XREF symbol number 1b 'RestartCallback'
+14 : XREF symbol number 1c 'VSync'
+0 : End of file

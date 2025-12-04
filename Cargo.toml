@@ -1,6 +1,6 @@
 [package]
-name = "psyx"
-version = "0.0.0"
+name = "psy-x"
+version = "0.1.0"
 edition = "2021"
 authors = ["Jonathan Hohle <jon@ttkb.co>"]
 license = "BSD-3-CLAUSE"
@@ -16,19 +16,22 @@ exclude = [
     "tests/data/psy-q-genesis.zip.sha1",
 ]
 readme = "README.md"
-rust-version = "1.81.0"
+rust-version = "1.91.0"
 
 [lib]
 name = "psyx"
 
 [[bin]]
 name = "psyx"
+path = "src/main.rs"
 
 [[bin]]
 name = "psylib"
+path = "src/main.rs"
 
 [[bin]]
 name = "dumpobj"
+path = "src/main.rs"
 
 [dependencies]
 anyhow = "1.0.100"
@@ -36,9 +39,11 @@ binrw = { version = "0.15.0", default-features = false }
 chrono = "0.4"
 clap = { version = "4.5.51", features = ["cargo", "derive"] }
 rabbitizer = "1.14.3"
+unicode-segmentation = "1.12.0"
 
 [dev-dependencies]
 serde_json = "1.0.145"
+tempfile = "3.23.0"
 # on macOS, cargo-spellcheck requires:
 #    export DYLD_FALLBACK_LIBRARY_PATH= \
 #        "$(xcode-select --print-path)/Toolchains/XcodeDefault.xctoolchain/usr/lib/"
@@ -59,9 +64,8 @@ section = "development"
 priority = "optional"
 assets = [
     # target/release path is special, and gets replaced by cargo-deb with the actual target dir path.
-    ["target/release/psyk", "usr/bin/", "755"],
+    ["target/release/psyx", "usr/bin/", "755"],
     ["target/release/dumpobj", "usr/bin/", "755"],
     ["target/release/psylib", "usr/bin/", "755"],
-    # both array and object syntaxes are equivalent:
-    { source = "README.md", dest = "usr/share/doc/psyk/README", mode = "644"},
+    { source = "README.md", dest = "usr/share/doc/psyx/README", mode = "644"},
 ]

@@ -1,39 +1,13 @@
 // SPDX-FileCopyrightText: © 2025 TTKB, LLC
 // SPDX-License-Identifier: BSD-3-CLAUSE
 
-use std::path::{Path, PathBuf};
+use std::path::PathBuf;
 
-use binrw::io::Cursor;
-use binrw::BinWrite;
-use psyx::io;
+mod common;
 
-fn round_trip(path: &Path) {
-    eprintln!("roundtripping {}", path.display());
-    let bin = io::read(path);
-    let mut writer = Cursor::new(Vec::new());
+use common::{compare_output, round_trip};
 
-    match bin {
-        Ok(io::Type::OBJ(ref lnk)) => lnk.write(&mut writer).unwrap(),
-        Ok(io::Type::LIB(ref lib)) => lib.write(&mut writer).unwrap(),
-        Err(e) => panic!("{}", e),
-    }
-
-    let bytes = std::fs::read(path).expect("file");
-    let gen = writer.into_inner();
-    if bytes != gen {
-        eprintln!(
-            "{}",
-            match bin {
-                Ok(io::Type::OBJ(ref lnk)) => lnk as &dyn std::fmt::Display,
-                Ok(io::Type::LIB(ref lib)) => lib as &dyn std::fmt::Display,
-                Err(_) => &"error" as &dyn std::fmt::Display,
-            }
-        );
-    }
-    assert_eq!(bytes.len(), gen.len());
-    assert_eq!(bytes, gen);
-}
-
+const CMD_DATA_PREFIX: &str = "tests/data/cmd/psy-q-saturn";
 const PSYQ_PREFIX: &str = "target/.private/tests/data/psy-q-saturn";
 
 #[inline]
@@ -50,4 +24,23 @@ pub fn test_roundtrip() {
     round_trip(&path_sat("dos/GNUSHLIB/LIB/LIBM.LIB"));
     round_trip(&path_sat("dos/GNUSHLIB/LIB/LIBGXX.LIB"));
     round_trip(&path_sat("dos/GNUSHLIB/LIB/LIBGCC.LIB"));
+}
+
+fn compare_lib_output(prefix: &str) {
+    compare_output(
+        &path_sat(&format!("{prefix}.LIB")),
+        &PathBuf::from(format!("{CMD_DATA_PREFIX}/{prefix}.TXT")),
+        3,
+    );
+}
+
+#[test]
+pub fn test_output() {
+    compare_lib_output("dos/GNUSHLIB/LIB/LIBC");
+    compare_lib_output("dos/GNUSHLIB/LIB/LIBG");
+    compare_lib_output("dos/GNUSHLIB/LIB/LIBGCC");
+    compare_lib_output("dos/GNUSHLIB/LIB/LIBGXX");
+    compare_lib_output("dos/GNUSHLIB/LIB/LIBM");
+    compare_lib_output("dos/GNUSHLIB/LIB/LIBSN");
+    compare_lib_output("dos/GNUSHLIB/LIB/LIBSTDCX");
 }

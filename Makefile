@@ -2,16 +2,17 @@ PRIVATE := target/.private
 
 RUSTFLAGS := -C instrument-coverage
 TEST_FLAGS := LLVM_PROFILE_FILE=$(PRIVATE)/profile/cargo-test-%p-%m.profraw
+ENV_FLAGS := $(TEST_FLAGS)
 
-ifeq ($(shell which -q llvm-profdata && echo 1 || echo 0), 1)
-    LLVM_PROFDATA := llvm-profdata
-else
+ifeq ($(shell which -s llvm-profdata-20 && echo 1 || echo 0), 1)
     LLVM_PROFDATA := llvm-profdata-20
+else
+    LLVM_PROFDATA := llvm-profdata
 endif
 
 .PHONY: all
 all:
-	RUSTFLAGS="$(RUSTFLAGS)" cargo build
+	$(ENV_FLAGS) RUSTFLAGS="$(RUSTFLAGS)" cargo build
 
 .PHONY: check
 check: test spellcheck doc clippy fmt
@@ -19,7 +20,7 @@ check: test spellcheck doc clippy fmt
 .PHONY: test
 test: test-data
 	rm -rf $(PRIVATE)/profile
-	RUST_BACKTRACE=1 RUSTFLAGS="$(RUSTFLAGS)" $(TEST_FLAGS) cargo test --verbose
+	$(ENV_FLAGS) RUST_BACKTRACE=1 RUSTFLAGS="$(RUSTFLAGS)" cargo test --verbose
 
 .PHONY: test-docs
 test-docs:

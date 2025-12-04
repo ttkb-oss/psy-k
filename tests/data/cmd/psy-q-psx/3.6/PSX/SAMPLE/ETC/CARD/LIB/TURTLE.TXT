@@ -1,0 +1,25 @@
+
+PsyLib version 2.04
+
+Module     Date     Time   Externals defined
+
+PIXMAP   05-10-95 14:00:30 FindRect GetPixel SetPixel ClearPixMap 
+                           CalcPixMapSize AndPixMap CalcPixMapRowSize 
+                           InvertPixMap InitPixMap CopyPixMap 
+LINE     05-10-95 14:00:44 FillRectBitMap LineBitMap 
+TEXMAP   05-10-95 14:01:02 ResetTexMap UnuseTexMap malloc_texmap FindFreeArea 
+                           UseTexMap printTexMap free_texmap 
+                           InitTexMapManager UnuseClutMap UseClutMap 
+SQUARE   05-10-95 14:01:14 make_square make_button 
+OVAL     05-10-95 14:01:28 add_oval_prim recalc_oval draw_oval make_oval_prim 
+MESH     05-10-95 14:01:42 add_mesh_prim make_mesh_prim 
+BUCKET   05-10-95 14:01:54 Bucket __gTD InitBucket 
+MEDIAN   05-10-95 14:02:08 MedianBitMap 
+FRACTAL  05-10-95 14:02:20 FractalLine 
+MAKECOW  05-10-95 14:02:36 DrawSpectrumGrad MaskCowPattern RandSpectrumColor 
+SPECTRUM 05-10-95 14:02:46 GetSpectrumCTable 
+NSREDUCT 05-10-95 14:02:58 ExpansionPixMap DeflationPixMap 
+MAKEBG   05-10-95 14:03:14 malloc_makebg free_makebg make_sphere 
+                           make_cow_pattern 
+MEMORY   05-10-95 14:03:16 malloc_turtle free_turtle 
+

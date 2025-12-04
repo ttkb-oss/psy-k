@@ -1,0 +1,317 @@
+
+PsyLib version 2.04
+
+Module     Date     Time   Externals defined
+
+SINCOS   03-10-96 14:24:38 rsin_tbl 
+GEO      03-10-96 14:24:38 RotMatrix_C RotMatrixZYX_C RotMatrixYXZ_C 
+                           RotMatrixX_C RotMatrixY_C RotMatrixZ_C 
+GEO_00   03-10-96 14:24:38 rsin sin_1 
+GEO_01   03-10-96 14:24:40 rcos 
+GEO_02   03-10-96 14:24:40 EigenMatrix IsIdMatrix 
+GEO_03   03-10-96 14:24:40 MatrixNormal_0 MatrixNormal_1 MatrixNormal_2 
+FOG_00   03-10-96 14:24:42 SetFogFar 
+FOG_01   03-10-96 14:24:42 SetFogNear 
+FOG_02   03-10-96 14:24:42 SetFogNearFar 
+COR_00   03-10-96 14:24:42 RotMatrixC 
+COR_01   03-10-96 14:24:44 H_cor_tbl csincos 
+COR_02   03-10-96 14:24:44 ccos 
+COR_03   03-10-96 14:24:44 csin_1 csin 
+COR_04   03-10-96 14:24:44 H_ln_tbl cln cln_1 
+COR_05   03-10-96 14:24:46 csqrt csqrt_1 
+COR_06   03-10-96 14:24:46 catan K_cor_tbl 
+SPL      03-10-96 14:24:48 SubPol3 SubPol4 
+SQRTBL   03-10-96 14:24:50 SQRT 
+MSC00    03-10-96 14:24:50 InitGeom 
+MSC01    03-10-96 14:24:50 SquareRoot0 
+MSC02    03-10-96 14:24:50 InvSquareRoot VectorNormal VectorNormalS 
+                           VectorNormalSS MatrixNormal 
+MSC03    03-10-96 14:24:50 InterpolShort 
+MSC04    03-10-96 14:24:50 InterpolByte 
+MSC05    03-10-96 14:24:50 gteMIMefunc 
+MSC06    03-10-96 14:24:50 LoadAverage12 LoadAverage0 LoadAverageShort12 
+                           LoadAverageShort0 LoadAverageByte LoadAverageCol 
+MSC07    03-10-96 14:24:52 p2otz 
+MSC08    03-10-96 14:24:52 otz2p 
+MSC09    03-10-96 14:24:52 SquareRoot12 
+MTX_000  03-10-96 14:24:52 MulMatrix0 
+MTX_001  03-10-96 14:24:52 MulRotMatrix 
+MTX_002  03-10-96 14:24:52 MulRotMatrix0 
+MTX_003  03-10-96 14:24:52 CompMatrix 
+MTX_004  03-10-96 14:24:52 ApplyMatrixLV 
+MTX_005  03-10-96 14:24:52 ApplyRotMatrix 
+MTX_006  03-10-96 14:24:54 PushMatrix PopMatrix 
+MTX_007  03-10-96 14:24:54 ReadLightMatrix 
+MTX_008  03-10-96 14:24:54 ReadColorMatrix 
+MTX_009  03-10-96 14:24:54 ReadRotMatrix 
+MTX_00A  03-10-96 14:24:54 ScaleMatrixL 
+MTX_00B  03-10-96 14:24:54 SetMulMatrix 
+MTX_00C  03-10-96 14:24:54 CompMatrixLV 
+MTX_01   03-10-96 14:24:54 ApplyRotMatrixLV 
+MTX_02   03-10-96 14:24:54 SetMulRotMatrix 
+MTX_03   03-10-96 14:24:54 MulMatrix 
+MTX_04   03-10-96 14:24:56 MulMatrix2 
+MTX_05   03-10-96 14:24:56 ApplyMatrix 
+MTX_06   03-10-96 14:24:56 ApplyMatrixSV 
+MTX_07   03-10-96 14:24:56 TransMatrix 
+MTX_08   03-10-96 14:24:56 ScaleMatrix 
+MTX_09   03-10-96 14:24:56 SetRotMatrix 
+MTX_10   03-10-96 14:24:56 SetLightMatrix 
+MTX_11   03-10-96 14:24:56 SetColorMatrix 
+MTX_12   03-10-96 14:24:56 SetTransMatrix 
+REG00    03-10-96 14:24:56 SetRGBcd 
+REG02    03-10-96 14:24:58 ReadOTZ ReadIR0 ReadIR123 ReadSZ2 ReadMac0 
+                           ReadMAC123 ReadORGB ReadLZC ReadFLAG 
+REG03    03-10-96 14:24:58 SetVertex0 SetVertex1 SetVertex2 SetVertexTri 
+                           SetRGBfifo SetIR123 SetIR0 SetSZfifo3 SetSZfifo4 
+                           SetSXSYfifo SetRii SetMAC123 SetData32 SetDQA 
+                           SetDQB 
+REG04    03-10-96 14:24:58 ReadSZfifo3 
+REG05    03-10-96 14:24:58 ReadSZfifo4 
+REG06    03-10-96 14:24:58 ReadSXSYfifo 
+REG07    03-10-96 14:24:58 ReadRGBfifo 
+REG08    03-10-96 14:24:58 ReadGeomOffset 
+REG09    03-10-96 14:24:58 ReadGeomScreen 
+REG10    03-10-96 14:24:58 SetBackColor 
+REG11    03-10-96 14:24:58 SetFarColor 
+REG12    03-10-96 14:24:58 SetGeomOffset 
+REG13    03-10-96 14:25:00 SetGeomScreen 
+SMP      03-10-96 14:25:00 LocalLight DpqColor NormalColor NormalColor3 
+                           NormalColorDpq NormalColorDpq3 NormalColorCol 
+                           NormalColorCol3 ColorDpq ColorCol AverageSZ3 
+                           AverageSZ4 
+SMP_00   03-10-96 14:25:00 LightColor DpqColorLight DpqColor3 Intpl Square12 
+                           Square0 AverageZ3 AverageZ4 OuterProduct12 
+                           OuterProduct0 Lzc 
+SMP_01   03-10-96 14:25:00 RotTransSV SquareSS12 SquareSS0 SquareSL12 
+                           SquareSL0 
+SMP_02   03-10-96 14:25:00 RotTransPers 
+SMP_03   03-10-96 14:25:00 RotTransPers3 
+SMP_04   03-10-96 14:25:00 RotTrans 
+SMP_05   03-10-96 14:25:00 NormalClip 
+SMP_06   03-10-96 14:25:00 NormalClipS 
+CMB_00   03-10-96 14:25:02 RotTransPers4 
+CMB_01   03-10-96 14:25:02 RotAverage3 
+CMB_02   03-10-96 14:25:02 RotAverage4 
+CMB_03   03-10-96 14:25:02 RotNclip 
+CMB_04   03-10-96 14:25:02 RotNclip3 
+CMB_05   03-10-96 14:25:02 RotNclip4 
+CMB_06   03-10-96 14:25:02 RotAverageNclip3 
+CMB_07   03-10-96 14:25:02 RotAverageNclip4 
+CMB_08   03-10-96 14:25:02 RotAverageNclipColorDpq3 
+CMB_09   03-10-96 14:25:02 RotAverageNclipColorCol3 
+CMB_10   03-10-96 14:25:04 ColorMatDpq 
+CMB_11   03-10-96 14:25:04 ColorMatCol 
+CMB_12   03-10-96 14:25:04 RotColorDpq 
+CMB_13   03-10-96 14:25:04 RotColorDpq3 
+CMB_14   03-10-96 14:25:04 RotColorMatDpq 
+CMB_15   03-10-96 14:25:04 RotAverageNclip3_1 
+CMB_16   03-10-96 14:25:04 RotTransPersN 
+CMB_17   03-10-96 14:25:04 RotTransPers3N 
+CMB_18   03-10-96 14:25:04 RotAverageNclipColorDpq3_1 
+TMD      03-10-96 14:25:04 gte_scope_f3 gte_scope_tf3 gte_scope_g3 
+                           gte_scope_tg3 gte_flat3 gte_texture_flat3 
+                           gte_gouraud3 gte_texture_gouraud3 gte_flat_fog3 
+                           gte_texture_flat_fog3 gte_gouraud_fog3 
+                           gte_texture_gouraud_fog3 gte_scope_tf4 
+                           gte_scope_tf4_B 
+NOM      03-10-96 14:25:06 RotTransPers_nom RotTransPers3_nom RotTrans_nom 
+                           RotTransPers4_nom RotAverage3_nom RotNclip3_nom 
+                           RotAverageNclip3_nom RotAverageNclipColorDpq3_nom 
+                           RotAverageNclipColorCol3_nom RotColorDpq_nom 
+                           RotColorDpq3_nom NormalColor_nom NormalColor3_nom 
+                           NormalColorDpq_nom NormalColorDpq3_nom 
+                           NormalColorCol_nom NormalColorCol3_nom 
+HGT      03-10-96 14:25:06 RotMeshH 
+CSTBL    03-10-96 14:25:06 rcossin_tbl 
+FGO_00   03-10-96 14:25:06 TransposeMatrix 
+FGO_01   03-10-96 14:25:06 RotMatrix 
+FGO_02   03-10-96 14:25:06 RotMatrixYXZ 
+FGO_03   03-10-96 14:25:08 RotMatrixZYX 
+FGO_04   03-10-96 14:25:08 RotMatrixX 
+FGO_05   03-10-96 14:25:08 RotMatrixY 
+FGO_06   03-10-96 14:25:08 RotMatrixZ 
+FGO_07   03-10-96 14:25:08 rcossin 
+PRS_F3   03-10-96 14:25:12 GsPrstNF3 GsPrstF3NL GsPrstF3L GsPrstF3LFG 
+PRS_F4   03-10-96 14:25:12 GsPrstNF4 GsPrstF4NL GsPrstF4L GsPrstF4LFG 
+PRS_F4S  03-10-96 14:25:12 GsPrstNF4D GsPrstF4NLD GsPrstF4LD GsPrstF4LFGD 
+PRS_G3   03-10-96 14:25:12 GsPrstNG3 GsPrstG3NL GsPrstG3L GsPrstG3LFG 
+PRS_G4   03-10-96 14:25:14 GsPrstNG4 GsPrstG4NL GsPrstG4L GsPrstG4LFG 
+PRS_G4S  03-10-96 14:25:14 GsPrstNG4D GsPrstG4NLD GsPrstG4LD GsPrstG4LFGD 
+PRS_FT3  03-10-96 14:25:14 GsPrstTNF3 GsPrstTF3NL GsPrstTF3L GsPrstTF3LFG 
+PRS_FT4  03-10-96 14:25:14 GsPrstTNF4 GsPrstTF4NL GsPrstTF4L GsPrstTF4LFG 
+PRS_FT4S 03-10-96 14:25:14 GsPrstTNF4D GsPrstTF4NLD GsPrstTF4LD GsPrstTF4LFGD 
+PRS_GT3  03-10-96 14:25:14 GsPrstTNG3 GsPrstTG3NL GsPrstTG3L GsPrstTG3LFG 
+PRS_GT4  03-10-96 14:25:14 GsPrstTNG4 GsPrstTG4NL GsPrstTG4L GsPrstTG4LFG 
+PRS_GT4S 03-10-96 14:25:14 GsPrstTNG4D GsPrstTG4NLD GsPrstTG4LD GsPrstTG4LFGD 
+PMD      03-10-96 14:25:16 RotPMD_F3 RotPMD_G3 RotPMD_FT3 RotPMD_GT3 
+                           RotPMD_F4 RotPMD_G4 RotPMD_FT4 RotPMD_GT4 
+                           RotPMD_SV_F3 RotPMD_SV_G3 RotPMD_SV_FT3 
+                           RotPMD_SV_GT3 RotPMD_SV_F4 RotPMD_SV_G4 
+                           RotPMD_SV_FT4 RotPMD_SV_GT4 
+SMD_00   03-10-96 14:25:16 RotSMD_F3 
+SMD_01   03-10-96 14:25:16 RotSMD_G3 
+SMD_02   03-10-96 14:25:16 RotSMD_FT3 
+SMD_03   03-10-96 14:25:16 RotSMD_GT3 
+SMD_04   03-10-96 14:25:16 RotSMD_F4 
+SMD_05   03-10-96 14:25:16 RotSMD_G4 
+SMD_06   03-10-96 14:25:16 RotSMD_FT4 
+SMD_07   03-10-96 14:25:18 RotSMD_GT4 
+SMD_08   03-10-96 14:25:18 RotSMD_SV_F3 
+SMD_09   03-10-96 14:25:18 RotSMD_SV_G3 
+SMD_10   03-10-96 14:25:18 RotSMD_SV_FT3 
+SMD_11   03-10-96 14:25:18 RotSMD_SV_GT3 
+SMD_12   03-10-96 14:25:18 RotSMD_SV_F4 
+SMD_13   03-10-96 14:25:18 RotSMD_SV_G4 
+SMD_14   03-10-96 14:25:18 RotSMD_SV_FT4 
+SMD_15   03-10-96 14:25:18 RotSMD_SV_GT4 
+RMD_00   03-10-96 14:25:20 RotRMD_F3 
+RMD_01   03-10-96 14:25:20 RotRMD_G3 
+RMD_02   03-10-96 14:25:20 RotRMD_FT3 
+RMD_03   03-10-96 14:25:20 RotRMD_GT3 
+RMD_04   03-10-96 14:25:20 RotRMD_F4 
+RMD_05   03-10-96 14:25:20 RotRMD_G4 
+RMD_06   03-10-96 14:25:20 RotRMD_FT4 
+RMD_07   03-10-96 14:25:20 RotRMD_GT4 
+RMD_08   03-10-96 14:25:20 RotRMD_SV_F3 
+RMD_09   03-10-96 14:25:22 RotRMD_SV_G3 
+RMD_10   03-10-96 14:25:22 RotRMD_SV_FT3 
+RMD_11   03-10-96 14:25:22 RotRMD_SV_GT3 
+RMD_12   03-10-96 14:25:22 RotRMD_SV_F4 
+RMD_13   03-10-96 14:25:22 RotRMD_SV_G4 
+RMD_14   03-10-96 14:25:22 RotRMD_SV_FT4 
+RMD_15   03-10-96 14:25:22 RotRMD_SV_GT4 
+NMD      03-10-96 14:25:22 RotNMD_F3 RotNMD_G3 RotNMD_FT3 RotNMD_GT3 
+                           RotNMD_F4 RotNMD_G4 RotNMD_FT4 RotNMD_GT4 
+                           RotNMD_SV_F3 RotNMD_SV_G3 RotNMD_SV_FT3 
+                           RotNMD_SV_GT3 RotNMD_SV_F4 RotNMD_SV_G4 
+                           RotNMD_SV_FT4 RotNMD_SV_GT4 
+CLIP_INI 03-10-96 14:25:28 InitClip CLIPNearz CLIPEvbf _tmp_evbf CLIPHdkx 
+                           CLIPKdhx CLIPHdky CLIPKdhy CLIPFarz 
+CLIPF_00 03-10-96 14:25:28 Clip3FP 
+CLIPF_01 03-10-96 14:25:30 Clip4FP 
+CLIPF_02 03-10-96 14:25:30 Clip3F 
+CLIPF_03 03-10-96 14:25:30 Clip4F 
+CLIPF_04 03-10-96 14:25:32 ClipF 
+CLIPF_05 03-10-96 14:25:32 ZClipF 
+CLIP_G   03-10-96 14:25:34 Clip3G Clip4G ZClipG Clip3GP Clip4GP ClipG 
+CLIP_FT  03-10-96 14:25:36 ClipFT Clip3FT Clip4FT ZClipFT Clip3FTP Clip4FTP 
+CLIP_GT  03-10-96 14:25:38 ClipGT Clip3GT Clip4GT ZClipGT Clip3GTP Clip4GTP 
+DVF3_00  03-10-96 14:25:40 GsTMDdivF3L 
+DVF3_01  03-10-96 14:25:40 GsTMDdivF3LFG 
+DVF3_02  03-10-96 14:25:40 GsTMDdivF3NL 
+DVF3_03  03-10-96 14:25:42 GsTMDdivNF3 
+DVF3_04  03-10-96 14:25:42 DivideF3 
+DVFT3_00 03-10-96 14:25:44 GsTMDdivTF3L 
+DVFT3_01 03-10-96 14:25:46 GsTMDdivTF3LFG 
+DVFT3_02 03-10-96 14:25:46 GsTMDdivTF3NL 
+DVFT3_03 03-10-96 14:25:48 GsTMDdivTNF3 
+DVFT3_04 03-10-96 14:25:48 DivideFT3 
+DVG3_00  03-10-96 14:25:50 GsTMDdivG3L 
+DVG3_01  03-10-96 14:25:50 GsTMDdivG3LFG 
+DVG3_02  03-10-96 14:25:52 GsTMDdivG3NL 
+DVG3_03  03-10-96 14:25:52 GsTMDdivNG3 
+DVG3_04  03-10-96 14:25:54 DivideG3 
+DVGT3_00 03-10-96 14:25:54 GsTMDdivTG3L 
+DVGT3_01 03-10-96 14:25:56 GsTMDdivTG3LFG 
+DVGT3_02 03-10-96 14:25:56 GsTMDdivTG3NL 
+DVGT3_03 03-10-96 14:25:58 GsTMDdivTNG3 
+DVGT3_04 03-10-96 14:25:58 DivideGT3 
+DVF4_00  03-10-96 14:26:00 GsTMDdivF4L 
+DVF4_01  03-10-96 14:26:00 GsTMDdivF4LFG 
+DVF4_02  03-10-96 14:26:00 GsTMDdivF4NL 
+DVF4_03  03-10-96 14:26:02 GsTMDdivNF4 
+DVF4_04  03-10-96 14:26:02 DivideF4 
+DVFT4_00 03-10-96 14:26:04 GsTMDdivTF4L 
+DVFT4_01 03-10-96 14:26:04 GsTMDdivTF4LFG 
+DVFT4_02 03-10-96 14:26:06 GsTMDdivTF4NL 
+DVFT4_03 03-10-96 14:26:06 GsTMDdivTNF4 
+DVFT4_04 03-10-96 14:26:08 DivideFT4 
+DVG4_00  03-10-96 14:26:08 GsTMDdivG4L 
+DVG4_01  03-10-96 14:26:10 GsTMDdivG4LFG 
+DVG4_02  03-10-96 14:26:12 GsTMDdivG4NL 
+DVG4_03  03-10-96 14:26:12 GsTMDdivNG4 
+DVG4_04  03-10-96 14:26:14 DivideG4 
+DVGT4_00 03-10-96 14:26:14 GsTMDdivTG4L 
+DVGT4_01 03-10-96 14:26:16 GsTMDdivTG4LFG 
+DVGT4_02 03-10-96 14:26:16 GsTMDdivTG4NL 
+DVGT4_03 03-10-96 14:26:18 GsTMDdivTNG4 
+DVGT4_04 03-10-96 14:26:18 DivideGT4 
+DIVF3A   03-10-96 14:26:18 RCpolyF3 RCpolyF3A 
+DIVFT3A  03-10-96 14:26:18 RCpolyFT3 RCpolyFT3A 
+DIVG3A   03-10-96 14:26:18 RCpolyG3 RCpolyG3A 
+DIVGT3A  03-10-96 14:26:20 RCpolyGT3 RCpolyGT3A 
+DIVF4A   03-10-96 14:26:20 RCpolyF4 RCpolyF4A 
+DIVFT4A  03-10-96 14:26:20 RCpolyFT4 RCpolyFT4A 
+DIVG4A   03-10-96 14:26:20 RCpolyG4 RCpolyG4A 
+DIVGT4A  03-10-96 14:26:20 RCpolyGT4 RCpolyGT4A 
+DIVP     03-10-96 14:26:20 DivPloyFT4 
+DVFT4M00 03-10-96 14:26:22 GsTMDdivTF4LM 
+DVFT4M01 03-10-96 14:26:22 GsTMDdivTF4LFGM 
+DVFT4M02 03-10-96 14:26:24 GsTMDdivTF4NLM 
+DVFT4M03 03-10-96 14:26:26 GsTMDdivTNF4M 
+DVGT4M00 03-10-96 14:26:26 GsTMDdivTG4LM 
+DVGT4M01 03-10-96 14:26:28 GsTMDdivTG4LFGM 
+DVGT4M02 03-10-96 14:26:28 GsTMDdivTG4NLM 
+DVGT4M03 03-10-96 14:26:30 GsTMDdivTNG4M 
+RMPS_F   03-10-96 14:26:30 RotMeshPrimS_F3 
+RMPS_G   03-10-96 14:26:30 RotMeshPrimS_G3 
+RMPS_FT  03-10-96 14:26:30 RotMeshPrimS_FT3 
+RMPS_GT  03-10-96 14:26:32 RotMeshPrimS_GT3 
+RMPS_FC  03-10-96 14:26:32 RotMeshPrimS_FC3 
+RMPS_GC  03-10-96 14:26:32 RotMeshPrimS_GC3 
+RMPS_FCT 03-10-96 14:26:32 RotMeshPrimS_FCT3 
+RMPS_GCT 03-10-96 14:26:32 RotMeshPrimS_GCT3 
+RMPS_T   03-10-96 14:26:32 RotMeshPrimS_T3 
+RMPR_F   03-10-96 14:26:32 RotMeshPrimR_F3 
+RMPR_G   03-10-96 14:26:32 RotMeshPrimR_G3 
+RMPR_FT  03-10-96 14:26:34 RotMeshPrimR_FT3 
+RMPR_GT  03-10-96 14:26:34 RotMeshPrimR_GT3 
+RMPR_FC  03-10-96 14:26:34 RotMeshPrimR_FC3 
+RMPR_GC  03-10-96 14:26:34 RotMeshPrimR_GC3 
+RMPR_FCT 03-10-96 14:26:34 RotMeshPrimR_FCT3 
+RMPR_GCT 03-10-96 14:26:34 RotMeshPrimR_GCT3 
+RMPR_T   03-10-96 14:26:34 RotMeshPrimR_T3 
+RMPQ_T   03-10-96 14:26:36 RotMeshPrimQ_T 
+RATAN    03-10-96 14:26:36 ratan2 ratan_tbl 
+PPMFT    03-10-96 14:26:40 pers_map 
+PPM      03-10-96 14:26:40 ScanXY0 
+PATCHGTE 03-10-96 14:26:40 _patch_gte 
+TRR      03-10-96 14:26:40 TransRot_32 TransRotPers TransRotPers3 
+                           ApplyTransposeMatrixLV 
+PHN      03-10-96 14:26:42 PhongLine 
+F3       03-10-96 14:25:08 GsTMDfastNF3 GsTMDfastF3NL GsTMDfastF3L 
+                           GsTMDfastF3LFG 
+F4       03-10-96 14:25:08 GsTMDfastNF4 GsTMDfastF4NL GsTMDfastF4L 
+                           GsTMDfastF4LFG 
+F4S      03-10-96 14:25:08 GsTMDfastNF4D GsTMDfastF4NLD GsTMDfastF4LD 
+                           GsTMDfastF4LFGD 
+G3       03-10-96 14:25:08 GsTMDfastNG3 GsTMDfastG3NL GsTMDfastG3L 
+                           GsTMDfastG3LFG 
+G4       03-10-96 14:25:10 GsTMDfastNG4 GsTMDfastG4NL GsTMDfastG4L 
+                           GsTMDfastG4LFG 
+G4S      03-10-96 14:25:10 GsTMDfastNG4D GsTMDfastG4NLD GsTMDfastG4LD 
+                           GsTMDfastG4LFGD 
+FT3      03-10-96 14:25:10 GsTMDfastTNF3 GsTMDfastTF3NL GsTMDfastTF3L 
+                           GsTMDfastTF3LFG 
+FT4      03-10-96 14:25:10 GsTMDfastTNF4 GsTMDfastTF4NL GsTMDfastTF4L 
+                           GsTMDfastTF4LFG 
+FT4S     03-10-96 14:25:10 GsTMDfastTNF4D GsTMDfastTF4NLD GsTMDfastTF4LD 
+                           GsTMDfastTF4LFGD 
+GT3      03-10-96 14:25:10 GsTMDfastTNG3 GsTMDfastTG3NL GsTMDfastTG3L 
+                           GsTMDfastTG3LFG 
+GT4      03-10-96 14:25:10 GsTMDfastTNG4 GsTMDfastTG4NL GsTMDfastTG4L 
+                           GsTMDfastTG4LFG 
+GT4S     03-10-96 14:25:10 GsTMDfastTNG4D GsTMDfastTG4NLD GsTMDfastTG4LD 
+                           GsTMDfastTG4LFGD 
+FT4M_00  03-10-96 14:25:10 GsTMDfastTNF4M 
+FT4M_01  03-10-96 14:25:10 GsTMDfastTF4NLM 
+FT4M_02  03-10-96 14:25:12 GsTMDfastTF4LM 
+FT4M_03  03-10-96 14:25:12 GsTMDfastTF4LFGM 
+GT4M_00  03-10-96 14:25:12 GsTMDfastTNG4M 
+GT4M_01  03-10-96 14:25:12 GsTMDfastTG4NLM 
+GT4M_02  03-10-96 14:25:12 GsTMDfastTG4LM 
+GT4M_03  03-10-96 14:25:12 GsTMDfastTG4LFGM 
+GT3F     03-10-96 14:26:42 GsTMDfastTNG3_FLIP GsTMDfastTG3NL_FLIP 
+                           GsTMDfastTG3L_FLIP GsTMDfastTG3LFG_FLIP 
+

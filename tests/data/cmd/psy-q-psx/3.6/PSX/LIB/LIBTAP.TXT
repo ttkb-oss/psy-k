@@ -1,0 +1,7 @@
+
+PsyLib version 2.04
+
+Module     Date     Time   Externals defined
+
+TAP      03-10-96 14:30:26 InitTAP StartTAP StopTAP 
+

@@ -1,0 +1,67 @@
+
+Header : LNK version 2
+46 : Processor type 7
+16 : Section symbol number 1 '.rdata' in group 0 alignment 8
+16 : Section symbol number 2 '.text' in group 0 alignment 8
+16 : Section symbol number 3 '.data' in group 0 alignment 8
+16 : Section symbol number 4 '.sdata' in group 0 alignment 8
+16 : Section symbol number 5 '.sbss' in group 0 alignment 8
+16 : Section symbol number 6 '.bss' in group 0 alignment 8
+16 : Section symbol number 7 '.ctors' in group 0 alignment 8
+16 : Section symbol number 8 '.dtors' in group 0 alignment 8
+28 : Define file number 9 as "C:\NEWEST\UTILITY\MENU\PRINTERR.C"
+6 : Switch to section 2
+6 : Switch to section 2
+6 : Switch to section 3
+2 : Code 16 bytes
+10 : Patch type 16 at offset 0 with (sectbase(1)+$48)
+10 : Patch type 16 at offset 4 with (sectbase(1)+$1c)
+10 : Patch type 16 at offset 8 with (sectbase(1)+$0)
+10 : Patch type 16 at offset c with (sectbase(1)+$0)
+6 : Switch to section 1
+2 : Code 117 bytes
+6 : Switch to section 3
+2 : Code 16 bytes
+10 : Patch type 16 at offset 0 with (sectbase(1)+$a4)
+10 : Patch type 16 at offset 4 with (sectbase(1)+$a4)
+10 : Patch type 16 at offset 8 with (sectbase(1)+$78)
+10 : Patch type 16 at offset c with (sectbase(1)+$78)
+6 : Switch to section 1
+2 : Code 91 bytes
+6 : Switch to section 2
+6 : Switch to section 2
+2 : Code 476 bytes
+10 : Patch type 30 at offset 0 with (sectstart(4)-(sectbase(5)+$0))
+10 : Patch type 30 at offset c with (sectstart(4)-(sectbase(5)+$4))
+10 : Patch type 82 at offset 2c with (sectbase(3)+$c)
+10 : Patch type 84 at offset 34 with (sectbase(3)+$c)
+10 : Patch type 74 at offset 38 with (sectbase(2)+$50)
+10 : Patch type 82 at offset 44 with (sectbase(3)+$fffffffc)
+10 : Patch type 84 at offset 4c with (sectbase(3)+$fffffffc)
+10 : Patch type 30 at offset 50 with (sectstart(4)-(sectbase(5)+$0))
+10 : Patch type 74 at offset 98 with (sectbase(2)+$fc)
+10 : Patch type 74 at offset b4 with (sectbase(2)+$fc)
+10 : Patch type 74 at offset bc with (sectbase(2)+$110)
+10 : Patch type 74 at offset c4 with (sectbase(2)+$f4)
+10 : Patch type 74 at offset d0 with (sectbase(2)+$110)
+10 : Patch type 74 at offset d8 with (sectbase(2)+$f4)
+10 : Patch type 30 at offset e4 with (sectstart(4)-(sectbase(5)+$4))
+10 : Patch type 74 at offset e8 with (sectbase(2)+$1a0)
+10 : Patch type 74 at offset f4 with [f]
+10 : Patch type 74 at offset 130 with [10]
+10 : Patch type 74 at offset 160 with [11]
+10 : Patch type 74 at offset 1c4 with [10]
+6 : Switch to section 5
+8 : Uninitialised data, 8 bytes
+6 : Switch to section 2
+12 : XDEF symbol number e 'make_dname' at offset 1a0 in section 2
+12 : XDEF symbol number c 'print_errmsg' at offset 18 in section 2
+12 : XDEF symbol number b 'set_datano' at offset c in section 2
+14 : XREF symbol number f 'KanjiFntPrint'
+12 : XDEF symbol number a 'set_execno' at offset 0 in section 2
+18 : Local symbol 'datano' at offset 4 in section 5
+18 : Local symbol 'execno' at offset 0 in section 5
+14 : XREF symbol number 11 'strcat'
+14 : XREF symbol number 10 'strcpy'
+12 : XDEF symbol number d 'make_exename' at offset 110 in section 2
+0 : End of file

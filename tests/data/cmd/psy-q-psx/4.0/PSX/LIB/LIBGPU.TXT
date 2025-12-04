@@ -1,0 +1,35 @@
+
+PsyLib version 2.04
+
+Module     Date     Time   Externals defined
+
+EXT      20-05-97 11:40:20 LoadClut LoadClut2 LoadTPage SetDefDrawEnv 
+                           SetDefDispEnv 
+EXTA     20-05-97 11:40:22 GetTPageA get_addr get_cell LoadTPageA 
+FONT     20-05-97 11:40:24 FntFlush FntPrint Font FntLoad FntOpen SetDumpFnt 
+FONTTEX  20-05-97 11:40:24 
+KPRINTF  20-05-97 11:40:26 KanjiFntClose KanjiFntFlush KanjiFntPrint *txyuv 
+                           *KanjiFont KanjiFntOpen kanjiclut 
+KROM2TIM 20-05-97 11:40:28 GetTimSize Krom2Tim 
+OTAG     20-05-97 11:40:28 DumpOTag CheckPrim DrawOTagIO 
+PRIM     20-05-97 11:40:30 SetSprt8 AddPrims SetTile16 SetLineF2 SetLineG2 
+                           SetLineF3 DumpClut SetLineG3 SetLineF4 SetLineG4 
+                           TermPrim NextPrim SetDrawLoad SetSprt16 
+                           SetShadeTex SetPolyF3 SetPolyG3 SetPolyF4 
+                           SetPolyG4 DumpDrawEnv DumpDispEnv SetDrawMove 
+                           DumpTPage IsEndPrim MargePrim SetDrawTPage 
+                           SetPolyFT3 SetPolyGT3 SetPolyFT4 SetPolyGT4 
+                           AddPrim CatPrim GetClut SetTile SetSemiTrans 
+                           SetSprt SetTile1 GetTPage SetTile8 
+SYS      20-05-97 11:40:34 SetGraphDebug _qlog SetDrawOffset DrawOTagEnv 
+                           SetGraphQueue DrawPrim _qout DrawSync SetDrawArea 
+                           DrawSyncCallback SetDrawMode SetDispMask ClearOTag 
+                           LoadImage MoveImage SetPriority ClearOTagR _qin 
+                           *_que GetGraphType ClearImage SetTexWindow 
+                           GetDrawEnv GetDispEnv GPU_printf SetDrawEnv 
+                           StoreImage PutDrawEnv PutDispEnv ResetGraph GetODE 
+                           GetGraphDebug DrawOTag SetGraphReverse ClearImage2 
+TMD      20-05-97 11:40:38 ReadTMD ReadTIM OpenTMD OpenTIM 
+KTRANS   20-05-97 11:40:40 Krom2RawAdd2 kanjitrans hankanjitrans 
+BREAK    20-05-97 11:40:40 IsIdleGPU *_CntDrEnv BreakDraw ContinueDraw 
+

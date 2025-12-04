@@ -1,0 +1,150 @@
+
+PsyLib version 2.04
+
+Module     Date     Time   Externals defined
+
+SPU      20-05-97 11:57:42 _spu_FsetRXXa _spu_IRQCallback _spu_RXX _spu_Fr_ 
+                           _spu_inTransfer _spu_addrMode _spu_mem_mode 
+                           _spu_tsa _spu_mem_mode_unit _spu_mem_mode_plus 
+                           _spu_transferCallback _spu_t _spu_FsetPCR 
+                           _spu_FiDMA _spu_FsetRXX *_spu_RQ _spu_transMode 
+                           _spu_mem_mode_unitM _spu_init _spu_Fr _spu_Fw 
+                           _spu_Fw1ts _spu_FgetRXXa 
+S_CB     20-05-97 11:57:44 _SpuCallback 
+S_DCB    20-05-97 11:57:44 _SpuDataCallback 
+SPU_GEX  20-05-97 11:57:44 
+S_INI    20-05-97 11:57:44 _spu_zerobuf _spu_keystat _SpuInit _spu_isCalled 
+                           _spu_trans_mode SpuStart _spu_rev_flag _spu_env 
+                           _spu_RQmask _spu_rev_attr _spu_voice_centerNote 
+                           _spu_RQvoice _spu_EVdma _spu_rev_offsetaddr 
+                           _spu_rev_reserve_wa 
+S_I      20-05-97 11:57:46 SpuInit 
+S_IH     20-05-97 11:57:46 SpuInitHot 
+S_Q      20-05-97 11:57:46 SpuQuit 
+S_SM     20-05-97 11:57:48 SpuSetMute 
+S_GM     20-05-97 11:57:48 SpuGetMute 
+S_M      20-05-97 11:57:48 _spu_AllocBlockNum _spu_AllocLastNum _spu_memList 
+S_M_INT  20-05-97 11:57:50 _spu_gcSPU 
+S_M_INIT 20-05-97 11:57:50 SpuInitMalloc 
+S_M_UTIL 20-05-97 11:57:50 _SpuIsInAllocateArea_ _SpuIsInAllocateArea 
+S_M_M    20-05-97 11:57:52 SpuMalloc 
+S_M_WSA  20-05-97 11:57:54 SpuMallocWithStartAddr 
+S_M_F    20-05-97 11:57:54 SpuFree 
+S_M_X    20-05-97 11:57:54 _spu_print 
+S_SE     20-05-97 11:57:54 SpuSetEnv 
+S_F      20-05-97 11:57:56 SpuFlush 
+S_SAV    20-05-97 11:57:56 _SpuSetAnyVoice 
+S_GAV    20-05-97 11:57:58 _SpuGetAnyVoice 
+S_SVA    20-05-97 11:57:58 SpuSetVoiceAttr 
+S_GVA    20-05-97 11:57:58 SpuGetVoiceAttr 
+SN_SVA   20-05-97 11:58:00 SpuNSetVoiceAttr 
+SN_GVA   20-05-97 11:58:00 SpuNGetVoiceAttr 
+S_SNV    20-05-97 11:58:00 SpuSetNoiseVoice 
+S_GNV    20-05-97 11:58:02 SpuGetNoiseVoice 
+S_SNC    20-05-97 11:58:02 SpuSetNoiseClock 
+S_GNC    20-05-97 11:58:02 SpuGetNoiseClock 
+S_SR     20-05-97 11:58:04 SpuSetReverb 
+S_GR     20-05-97 11:58:04 SpuGetReverb 
+S_RMP    20-05-97 11:58:04 _spu_rev_startaddr _spu_rev_param 
+                           _spu_rev_workareasize 
+S_SRMP   20-05-97 11:58:06 SpuSetReverbModeParam 
+S_GRMP   20-05-97 11:58:06 SpuGetReverbModeParam 
+S_SRA    20-05-97 11:58:08 _spu_setReverbAttr 
+S_RRWA   20-05-97 11:58:08 SpuReserveReverbWorkArea 
+S_IRWAR  20-05-97 11:58:08 SpuIsReverbWorkAreaReserved 
+S_SRD    20-05-97 11:58:10 SpuSetReverbDepth 
+S_SRV    20-05-97 11:58:10 SpuSetReverbVoice 
+S_GRV    20-05-97 11:58:10 SpuGetReverbVoice 
+S_CRWA   20-05-97 11:58:12 SpuClearReverbWorkArea 
+S_RDD    20-05-97 11:58:12 SpuReadDecodedData 
+S_SI     20-05-97 11:58:12 SpuSetIRQ 
+S_GI     20-05-97 11:58:14 SpuGetIRQ 
+S_SIA    20-05-97 11:58:14 SpuSetIRQAddr 
+S_GIA    20-05-97 11:58:14 SpuGetIRQAddr 
+S_SIC    20-05-97 11:58:16 SpuSetIRQCallback 
+S_SK     20-05-97 11:58:16 SpuSetKey 
+S_GKS    20-05-97 11:58:16 SpuGetKeyStatus 
+S_SKOWA  20-05-97 11:58:18 SpuSetKeyOnWithAttr 
+S_GVEA   20-05-97 11:58:18 SpuGetVoiceEnvelopeAttr 
+S_R      20-05-97 11:58:18 SpuRead 
+S_W      20-05-97 11:58:20 SpuWrite 
+S_W0     20-05-97 11:58:20 SpuWrite0 
+S_STSA   20-05-97 11:58:20 SpuSetTransferStartAddr 
+S_GTSA   20-05-97 11:58:22 SpuGetTransferStartAddr 
+S_STM    20-05-97 11:58:22 SpuSetTransferMode 
+S_GTM    20-05-97 11:58:22 SpuGetTransferMode 
+S_WP     20-05-97 11:58:22 SpuWritePartly 
+S_ITC    20-05-97 11:58:24 SpuIsTransferCompleted 
+S_STC    20-05-97 11:58:24 SpuSetTransferCallback 
+S_IT     20-05-97 11:58:24 _spu_getInTransfer _spu_setInTransfer 
+S_SPLV   20-05-97 11:58:26 SpuSetPitchLFOVoice 
+S_GPLV   20-05-97 11:58:26 SpuGetPitchLFOVoice 
+S_SCA    20-05-97 11:58:28 SpuSetCommonAttr *SpuCommonError 
+S_GCA    20-05-97 11:58:28 SpuGetCommonAttr 
+S_N2P    20-05-97 11:58:28 _spu_note2pitch _spu_pitch2note _spu_2pitch 
+SR_SV    20-05-97 11:58:30 _SpuRSetVoiceAttr 
+SR_SVA   20-05-97 11:58:30 SpuRSetVoiceAttr 
+SR_GAKS  20-05-97 11:58:32 SpuGetAllKeysStatus SpuRGetAllKeysStatus 
+ST       20-05-97 11:58:34 SpuStTransfer SpuStInit SpuStGetVoiceStatus 
+                           SpuStQuit SpuStGetStatus 
+                           SpuStSetTransferFinishedCallback 
+                           SpuStSetStreamFinishedCallback 
+                           SpuStSetPreparationFinishedCallback 
+T_C      20-05-97 11:58:34 TimerCallback 
+VERSION  20-05-97 11:58:34 
+S_SVV    20-05-97 11:58:36 SpuSetVoiceVolume 
+S_SVVA   20-05-97 11:58:36 SpuSetVoiceVolumeAttr 
+S_SVP    20-05-97 11:58:36 SpuSetVoicePitch 
+S_SVN    20-05-97 11:58:38 SpuSetVoiceNote 
+S_SVSN   20-05-97 11:58:38 SpuSetVoiceSampleNote 
+S_SVSA   20-05-97 11:58:38 SpuSetVoiceStartAddr 
+S_SVLSA  20-05-97 11:58:40 SpuSetVoiceLoopStartAddr 
+S_SVAR   20-05-97 11:58:40 SpuSetVoiceAR 
+S_SVDR   20-05-97 11:58:40 SpuSetVoiceDR 
+S_SVSR   20-05-97 11:58:42 SpuSetVoiceSR 
+S_SVRR   20-05-97 11:58:42 SpuSetVoiceRR 
+S_SVSL   20-05-97 11:58:42 SpuSetVoiceSL 
+S_SVARA  20-05-97 11:58:44 SpuSetVoiceARAttr 
+S_SVSRA  20-05-97 11:58:44 SpuSetVoiceSRAttr 
+S_SVRRA  20-05-97 11:58:44 SpuSetVoiceRRAttr 
+S_SVAD   20-05-97 11:58:46 SpuSetVoiceADSR 
+S_SVADA  20-05-97 11:58:46 SpuSetVoiceADSRAttr 
+S_GVV    20-05-97 11:58:46 SpuGetVoiceVolume 
+S_GVVA   20-05-97 11:58:48 SpuGetVoiceVolumeAttr 
+S_GVVX   20-05-97 11:58:48 SpuGetVoiceVolumeX 
+S_GVP    20-05-97 11:58:48 SpuGetVoicePitch 
+S_GVN    20-05-97 11:58:50 SpuGetVoiceNote 
+S_GVSN   20-05-97 11:58:50 SpuGetVoiceSampleNote 
+S_GVEX   20-05-97 11:58:50 SpuGetVoiceEnvelope 
+S_GVSA   20-05-97 11:58:52 SpuGetVoiceStartAddr 
+S_GVLSA  20-05-97 11:58:52 SpuGetVoiceLoopStartAddr 
+S_GVAR   20-05-97 11:58:52 SpuGetVoiceAR 
+S_GVDR   20-05-97 11:58:54 SpuGetVoiceDR 
+S_GVSR   20-05-97 11:58:54 SpuGetVoiceSR 
+S_GVRR   20-05-97 11:58:54 SpuGetVoiceRR 
+S_GVSL   20-05-97 11:58:56 SpuGetVoiceSL 
+S_GVARA  20-05-97 11:58:56 SpuGetVoiceARAttr 
+S_GVSRA  20-05-97 11:58:56 SpuGetVoiceSRAttr 
+S_GVRRA  20-05-97 11:58:58 SpuGetVoiceRRAttr 
+S_GVAD   20-05-97 11:58:58 SpuGetVoiceADSR 
+S_GVADA  20-05-97 11:58:58 SpuGetVoiceADSRAttr 
+S_SCMV   20-05-97 11:59:00 *SpuCommonError SpuSetCommonMasterVolume 
+S_SCMVA  20-05-97 11:59:00 SpuSetCommonMasterVolumeAttr *SpuCommonError 
+S_SCCV   20-05-97 11:59:00 *SpuCommonError SpuSetCommonCDVolume 
+S_SCCR   20-05-97 11:59:02 *SpuCommonError SpuSetCommonCDReverb 
+S_SCCM   20-05-97 11:59:02 SpuSetCommonCDMix *SpuCommonError 
+S_GCMV   20-05-97 11:59:02 SpuGetCommonMasterVolume 
+S_GCMVX  20-05-97 11:59:04 SpuGetCommonMasterVolumeX 
+S_GCMVA  20-05-97 11:59:04 SpuGetCommonMasterVolumeAttr 
+S_GCCV   20-05-97 11:59:04 SpuGetCommonCDVolume 
+S_GCCR   20-05-97 11:59:06 SpuGetCommonCDReverb 
+S_GCCM   20-05-97 11:59:06 SpuGetCommonCDMix 
+S_SRMT   20-05-97 11:59:06 SpuSetReverbModeType 
+S_SRMD   20-05-97 11:59:08 SpuSetReverbModeDepth 
+S_SRMDT  20-05-97 11:59:08 SpuSetReverbModeDelayTime 
+S_SRMFB  20-05-97 11:59:08 SpuSetReverbModeFeedback 
+S_GRMT   20-05-97 11:59:10 SpuGetReverbModeType 
+S_GRMD   20-05-97 11:59:10 SpuGetReverbModeDepth 
+S_GRMDT  20-05-97 11:59:10 SpuGetReverbModeDelayTime 
+S_GRMFB  20-05-97 11:59:12 SpuGetReverbModeFeedback 
+

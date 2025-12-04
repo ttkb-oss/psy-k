@@ -1,0 +1,20 @@
+
+Header : LNK version 2
+46 : Processor type 7
+16 : Section symbol number 1 '.rdata' in group 0 alignment 8
+16 : Section symbol number 2 '.text' in group 0 alignment 8
+16 : Section symbol number 3 '.data' in group 0 alignment 8
+16 : Section symbol number 4 '.sdata' in group 0 alignment 8
+16 : Section symbol number 5 '.sbss' in group 0 alignment 8
+16 : Section symbol number 6 '.bss' in group 0 alignment 8
+16 : Section symbol number 7 '.ctors' in group 0 alignment 8
+16 : Section symbol number 8 '.dtors' in group 0 alignment 8
+28 : Define file number 9 as "D:\PSX\RELEASE\PSX\SAMPLE\MODULE\EXECMENU\FONTTEX1.C"
+6 : Switch to section 2
+6 : Switch to section 3
+2 : Code 32256 bytes
+2 : Code 1024 bytes
+6 : Switch to section 2
+6 : Switch to section 2
+12 : XDEF symbol number a 'font' at offset 0 in section 3
+0 : End of file

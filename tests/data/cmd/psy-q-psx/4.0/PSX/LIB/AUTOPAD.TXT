@@ -1,0 +1,347 @@
+
+Header : LNK version 2
+46 : Processor type 7
+16 : Section symbol number 1 '.rdata' in group 0 alignment 8
+16 : Section symbol number 2 '.text' in group 0 alignment 8
+16 : Section symbol number 3 '.data' in group 0 alignment 8
+16 : Section symbol number 4 '.sdata' in group 0 alignment 8
+16 : Section symbol number 5 '.sbss' in group 0 alignment 8
+16 : Section symbol number 6 '.bss' in group 0 alignment 8
+16 : Section symbol number 7 '.ctors' in group 0 alignment 8
+16 : Section symbol number 8 '.dtors' in group 0 alignment 8
+28 : Define file number 9 as "C:\psx\sample\autopad\AUTOPAD.C"
+6 : Switch to section 2
+6 : Switch to section 4
+2 : Code 12 bytes
+6 : Switch to section 2
+2 : Code 456 bytes
+10 : Patch type 82 at offset 2c with (sectbase(5)+$4)
+10 : Patch type 84 at offset 30 with (sectbase(5)+$4)
+10 : Patch type 82 at offset 34 with (sectbase(5)+$8)
+10 : Patch type 84 at offset 38 with (sectbase(5)+$8)
+10 : Patch type 82 at offset 40 with (sectbase(5)+$10)
+10 : Patch type 84 at offset 44 with (sectbase(5)+$10)
+10 : Patch type 82 at offset 48 with (sectbase(5)+$c)
+10 : Patch type 84 at offset 4c with (sectbase(5)+$c)
+10 : Patch type 74 at offset 54 with (sectbase(2)+$5c)
+10 : Patch type 82 at offset 80 with (sectbase(5)+$c)
+10 : Patch type 84 at offset 84 with (sectbase(5)+$c)
+10 : Patch type 82 at offset 94 with (sectbase(5)+$8)
+10 : Patch type 84 at offset 98 with (sectbase(5)+$8)
+10 : Patch type 82 at offset a4 with (sectbase(5)+$8)
+10 : Patch type 84 at offset a8 with (sectbase(5)+$8)
+10 : Patch type 74 at offset c0 with (sectbase(2)+$18c)
+10 : Patch type 82 at offset c8 with (sectbase(5)+$8)
+10 : Patch type 84 at offset cc with (sectbase(5)+$8)
+10 : Patch type 82 at offset ec with (sectbase(5)+$8)
+10 : Patch type 84 at offset f0 with (sectbase(5)+$8)
+10 : Patch type 82 at offset 110 with (sectbase(5)+$8)
+10 : Patch type 84 at offset 114 with (sectbase(5)+$8)
+10 : Patch type 82 at offset 118 with (sectbase(5)+$8)
+10 : Patch type 84 at offset 11c with (sectbase(5)+$8)
+10 : Patch type 82 at offset 120 with (sectbase(5)+$8)
+10 : Patch type 84 at offset 124 with (sectbase(5)+$8)
+10 : Patch type 74 at offset 140 with (sectbase(2)+$18c)
+10 : Patch type 82 at offset 148 with (sectbase(5)+$8)
+10 : Patch type 84 at offset 14c with (sectbase(5)+$8)
+10 : Patch type 82 at offset 158 with (sectbase(5)+$8)
+10 : Patch type 84 at offset 15c with (sectbase(5)+$8)
+10 : Patch type 82 at offset 160 with (sectbase(5)+$8)
+10 : Patch type 84 at offset 164 with (sectbase(5)+$8)
+10 : Patch type 82 at offset 170 with (sectbase(5)+$8)
+10 : Patch type 84 at offset 174 with (sectbase(5)+$8)
+10 : Patch type 82 at offset 18c with (sectbase(5)+$c)
+10 : Patch type 84 at offset 190 with (sectbase(5)+$c)
+10 : Patch type 82 at offset 1a0 with (sectbase(5)+$c)
+10 : Patch type 84 at offset 1a4 with (sectbase(5)+$c)
+10 : Patch type 74 at offset 1ac with (sectbase(2)+$1b4)
+6 : Switch to section 4
+2 : Code 5 bytes
+6 : Switch to section 1
+2 : Code 39 bytes
+6 : Switch to section 4
+2 : Code 7 bytes
+6 : Switch to section 1
+2 : Code 66 bytes
+6 : Switch to section 2
+2 : Code 480 bytes
+10 : Patch type 82 at offset 14 with (sectbase(5)+$10)
+10 : Patch type 84 at offset 18 with (sectbase(5)+$10)
+10 : Patch type 82 at offset 1c with (sectbase(4)+$c)
+10 : Patch type 84 at offset 20 with (sectbase(4)+$c)
+10 : Patch type 74 at offset 28 with (sectbase(2)+$b00)
+10 : Patch type 74 at offset 30 with [11]
+10 : Patch type 82 at offset 40 with (sectbase(1)+$0)
+10 : Patch type 84 at offset 44 with (sectbase(1)+$0)
+10 : Patch type 74 at offset 48 with [12]
+10 : Patch type 74 at offset 54 with (sectbase(2)+$390)
+10 : Patch type 74 at offset 68 with [13]
+10 : Patch type 82 at offset 88 with (sectbase(1)+$14)
+10 : Patch type 84 at offset 8c with (sectbase(1)+$14)
+10 : Patch type 74 at offset 94 with [12]
+10 : Patch type 74 at offset a0 with (sectbase(2)+$390)
+10 : Patch type 82 at offset b0 with (sectbase(4)+$14)
+10 : Patch type 84 at offset b4 with (sectbase(4)+$14)
+10 : Patch type 74 at offset b8 with [14]
+10 : Patch type 82 at offset cc with (sectbase(5)+$8)
+10 : Patch type 84 at offset d0 with (sectbase(5)+$8)
+10 : Patch type 82 at offset d4 with (sectbase(5)+$4)
+10 : Patch type 84 at offset d8 with (sectbase(5)+$4)
+10 : Patch type 82 at offset 10c with (sectbase(5)+$c)
+10 : Patch type 84 at offset 110 with (sectbase(5)+$c)
+10 : Patch type 74 at offset 12c with [15]
+10 : Patch type 82 at offset 140 with (sectbase(1)+$28)
+10 : Patch type 84 at offset 144 with (sectbase(1)+$28)
+10 : Patch type 74 at offset 148 with [12]
+10 : Patch type 74 at offset 154 with (sectbase(2)+$390)
+10 : Patch type 82 at offset 160 with (sectbase(5)+$4)
+10 : Patch type 84 at offset 164 with (sectbase(5)+$4)
+10 : Patch type 74 at offset 16c with [15]
+10 : Patch type 82 at offset 184 with (sectbase(1)+$44)
+10 : Patch type 84 at offset 188 with (sectbase(1)+$44)
+10 : Patch type 74 at offset 18c with [12]
+10 : Patch type 74 at offset 198 with (sectbase(2)+$390)
+10 : Patch type 74 at offset 1a4 with [16]
+10 : Patch type 82 at offset 1ac with (sectbase(1)+$5c)
+10 : Patch type 84 at offset 1b0 with (sectbase(1)+$5c)
+10 : Patch type 74 at offset 1b4 with [12]
+10 : Patch type 74 at offset 1c0 with (sectbase(2)+$390)
+6 : Switch to section 1
+2 : Code 150 bytes
+6 : Switch to section 2
+2 : Code 888 bytes
+10 : Patch type 74 at offset 18 with [11]
+10 : Patch type 82 at offset 28 with (sectbase(1)+$0)
+10 : Patch type 84 at offset 2c with (sectbase(1)+$0)
+10 : Patch type 74 at offset 30 with [12]
+10 : Patch type 74 at offset 3c with (sectbase(2)+$708)
+10 : Patch type 82 at offset 44 with (sectbase(1)+$6c)
+10 : Patch type 84 at offset 48 with (sectbase(1)+$6c)
+10 : Patch type 74 at offset 54 with [17]
+10 : Patch type 82 at offset 70 with (sectbase(1)+$90)
+10 : Patch type 84 at offset 74 with (sectbase(1)+$90)
+10 : Patch type 82 at offset 78 with (sectbase(1)+$6c)
+10 : Patch type 84 at offset 7c with (sectbase(1)+$6c)
+10 : Patch type 74 at offset 80 with [12]
+10 : Patch type 74 at offset 8c with (sectbase(2)+$708)
+10 : Patch type 82 at offset 98 with (sectbase(6)+$0)
+10 : Patch type 84 at offset 9c with (sectbase(6)+$0)
+10 : Patch type 74 at offset a4 with [18]
+10 : Patch type 74 at offset c4 with (sectbase(2)+$4cc)
+10 : Patch type 82 at offset d0 with (sectbase(6)+$0)
+10 : Patch type 84 at offset d4 with (sectbase(6)+$0)
+10 : Patch type 82 at offset e0 with ($1+[19])
+10 : Patch type 84 at offset e8 with ($1+[19])
+10 : Patch type 74 at offset 100 with (sectbase(2)+$4cc)
+10 : Patch type 74 at offset 11c with (sectbase(2)+$458)
+10 : Patch type 82 at offset 128 with (sectbase(6)+$0)
+10 : Patch type 84 at offset 12c with (sectbase(6)+$0)
+10 : Patch type 82 at offset 138 with (sectbase(1)+$a4)
+10 : Patch type 84 at offset 13c with (sectbase(1)+$a4)
+10 : Patch type 74 at offset 148 with [12]
+10 : Patch type 82 at offset 154 with (sectbase(6)+$0)
+10 : Patch type 84 at offset 158 with (sectbase(6)+$0)
+10 : Patch type 74 at offset 168 with [16]
+10 : Patch type 82 at offset 188 with (sectbase(5)+$4)
+10 : Patch type 84 at offset 18c with (sectbase(5)+$4)
+10 : Patch type 82 at offset 194 with (sectbase(5)+$10)
+10 : Patch type 84 at offset 198 with (sectbase(5)+$10)
+10 : Patch type 82 at offset 1a4 with (sectbase(4)+$c)
+10 : Patch type 84 at offset 1a8 with (sectbase(4)+$c)
+10 : Patch type 74 at offset 1b0 with (sectbase(2)+$b00)
+10 : Patch type 82 at offset 1bc with (sectbase(1)+$b8)
+10 : Patch type 84 at offset 1c0 with (sectbase(1)+$b8)
+10 : Patch type 74 at offset 1c8 with [12]
+10 : Patch type 74 at offset 1d0 with [11]
+10 : Patch type 82 at offset 1e0 with (sectbase(1)+$0)
+10 : Patch type 84 at offset 1e4 with (sectbase(1)+$0)
+10 : Patch type 74 at offset 1e8 with [12]
+10 : Patch type 74 at offset 1f4 with (sectbase(2)+$708)
+10 : Patch type 74 at offset 20c with [17]
+10 : Patch type 82 at offset 22c with (sectbase(1)+$90)
+10 : Patch type 84 at offset 230 with (sectbase(1)+$90)
+10 : Patch type 74 at offset 238 with [12]
+10 : Patch type 74 at offset 244 with (sectbase(2)+$708)
+10 : Patch type 74 at offset 25c with [18]
+10 : Patch type 82 at offset 270 with (sectbase(1)+$c4)
+10 : Patch type 84 at offset 274 with (sectbase(1)+$c4)
+10 : Patch type 74 at offset 278 with [12]
+10 : Patch type 74 at offset 284 with (sectbase(2)+$708)
+10 : Patch type 82 at offset 294 with (sectbase(4)+$14)
+10 : Patch type 84 at offset 298 with (sectbase(4)+$14)
+10 : Patch type 74 at offset 29c with [1a]
+10 : Patch type 82 at offset 2b0 with (sectbase(1)+$d8)
+10 : Patch type 84 at offset 2b4 with (sectbase(1)+$d8)
+10 : Patch type 74 at offset 2bc with [12]
+10 : Patch type 74 at offset 2c8 with (sectbase(2)+$708)
+10 : Patch type 82 at offset 2e4 with (sectbase(1)+$d8)
+10 : Patch type 84 at offset 2e8 with (sectbase(1)+$d8)
+10 : Patch type 74 at offset 2f0 with [12]
+10 : Patch type 74 at offset 2fc with (sectbase(2)+$708)
+10 : Patch type 82 at offset 308 with (sectbase(5)+$4)
+10 : Patch type 84 at offset 30c with (sectbase(5)+$4)
+10 : Patch type 74 at offset 314 with [18]
+10 : Patch type 82 at offset 32c with (sectbase(1)+$f0)
+10 : Patch type 84 at offset 330 with (sectbase(1)+$f0)
+10 : Patch type 74 at offset 334 with [12]
+10 : Patch type 74 at offset 340 with (sectbase(2)+$708)
+10 : Patch type 74 at offset 34c with [16]
+10 : Patch type 74 at offset 358 with (sectbase(2)+$708)
+6 : Switch to section 4
+2 : Code 4 bytes
+6 : Switch to section 2
+2 : Code 152 bytes
+10 : Patch type 30 at offset c with (sectstart(4)-(sectbase(4)+$18))
+10 : Patch type 82 at offset 1c with (sectbase(5)+$4)
+10 : Patch type 84 at offset 20 with (sectbase(5)+$4)
+10 : Patch type 82 at offset 2c with (sectbase(5)+$4)
+10 : Patch type 84 at offset 30 with (sectbase(5)+$4)
+10 : Patch type 30 at offset 3c with (sectstart(4)-(sectbase(4)+$18))
+10 : Patch type 82 at offset 40 with (sectbase(5)+$4)
+10 : Patch type 84 at offset 44 with (sectbase(5)+$4)
+10 : Patch type 82 at offset 50 with (sectbase(5)+$4)
+10 : Patch type 84 at offset 54 with (sectbase(5)+$4)
+10 : Patch type 30 at offset 60 with (sectstart(4)-(sectbase(5)+$0))
+10 : Patch type 30 at offset 64 with (sectstart(4)-(sectbase(4)+$18))
+10 : Patch type 30 at offset 74 with (sectstart(4)-(sectbase(4)+$18))
+10 : Patch type 30 at offset 78 with (sectstart(4)-(sectbase(5)+$0))
+10 : Patch type 74 at offset 7c with (sectbase(2)+$7a4)
+6 : Switch to section 1
+2 : Code 172 bytes
+6 : Switch to section 4
+2 : Code 3 bytes
+6 : Switch to section 1
+2 : Code 74 bytes
+6 : Switch to section 2
+2 : Code 1220 bytes
+10 : Patch type 74 at offset 20 with [11]
+10 : Patch type 82 at offset 30 with (sectbase(1)+$0)
+10 : Patch type 84 at offset 34 with (sectbase(1)+$0)
+10 : Patch type 74 at offset 38 with [12]
+10 : Patch type 74 at offset 44 with (sectbase(2)+$adc)
+10 : Patch type 82 at offset 4c with (sectbase(6)+$0)
+10 : Patch type 84 at offset 50 with (sectbase(6)+$0)
+10 : Patch type 74 at offset 5c with [17]
+10 : Patch type 82 at offset 78 with (sectbase(6)+$0)
+10 : Patch type 84 at offset 7c with (sectbase(6)+$0)
+10 : Patch type 74 at offset 84 with [13]
+10 : Patch type 82 at offset a0 with (sectbase(1)+$14)
+10 : Patch type 84 at offset a4 with (sectbase(1)+$14)
+10 : Patch type 82 at offset a8 with (sectbase(6)+$0)
+10 : Patch type 84 at offset ac with (sectbase(6)+$0)
+10 : Patch type 74 at offset b0 with [12]
+10 : Patch type 74 at offset bc with (sectbase(2)+$adc)
+10 : Patch type 82 at offset cc with (sectbase(1)+$100)
+10 : Patch type 84 at offset d0 with (sectbase(1)+$100)
+10 : Patch type 74 at offset d4 with [14]
+10 : Patch type 82 at offset e4 with (sectbase(1)+$130)
+10 : Patch type 84 at offset e8 with (sectbase(1)+$130)
+10 : Patch type 74 at offset ec with [1b]
+10 : Patch type 82 at offset fc with (sectbase(1)+$148)
+10 : Patch type 84 at offset 100 with (sectbase(1)+$148)
+10 : Patch type 74 at offset 104 with [1b]
+10 : Patch type 74 at offset 114 with [1c]
+10 : Patch type 74 at offset 12c with [15]
+10 : Patch type 82 at offset 134 with (sectbase(1)+$17c)
+10 : Patch type 84 at offset 138 with (sectbase(1)+$17c)
+10 : Patch type 74 at offset 13c with [12]
+10 : Patch type 74 at offset 144 with (sectbase(2)+$928)
+10 : Patch type 74 at offset 158 with [1d]
+10 : Patch type 82 at offset 160 with (sectbase(1)+$188)
+10 : Patch type 84 at offset 164 with (sectbase(1)+$188)
+10 : Patch type 74 at offset 168 with [12]
+10 : Patch type 30 at offset 174 with (sectstart(4)-(sectbase(4)+$8))
+10 : Patch type 30 at offset 18c with (sectstart(4)-(sectbase(4)+$0))
+10 : Patch type 74 at offset 190 with [1e]
+10 : Patch type 74 at offset 1a4 with [1e]
+10 : Patch type 74 at offset 1bc with [1f]
+10 : Patch type 82 at offset 1cc with (sectbase(5)+$10)
+10 : Patch type 84 at offset 1d0 with (sectbase(5)+$10)
+10 : Patch type 82 at offset 1e0 with (sectbase(1)+$194)
+10 : Patch type 84 at offset 1e4 with (sectbase(1)+$194)
+10 : Patch type 30 at offset 1e8 with (sectstart(4)-(sectbase(4)+$0))
+10 : Patch type 30 at offset 1ec with (sectstart(4)-(sectbase(4)+$4))
+10 : Patch type 74 at offset 1f0 with [20]
+10 : Patch type 82 at offset 1fc with (sectbase(4)+$1c)
+10 : Patch type 84 at offset 200 with (sectbase(4)+$1c)
+10 : Patch type 74 at offset 208 with [12]
+10 : Patch type 74 at offset 218 with [1c]
+10 : Patch type 74 at offset 230 with [15]
+10 : Patch type 74 at offset 23c with [16]
+10 : Patch type 74 at offset 244 with [11]
+10 : Patch type 82 at offset 254 with (sectbase(1)+$0)
+10 : Patch type 84 at offset 258 with (sectbase(1)+$0)
+10 : Patch type 74 at offset 25c with [12]
+10 : Patch type 74 at offset 268 with (sectbase(2)+$adc)
+10 : Patch type 82 at offset 270 with (sectbase(1)+$1ac)
+10 : Patch type 84 at offset 274 with (sectbase(1)+$1ac)
+10 : Patch type 74 at offset 27c with [13]
+10 : Patch type 82 at offset 298 with (sectbase(1)+$14)
+10 : Patch type 84 at offset 29c with (sectbase(1)+$14)
+10 : Patch type 82 at offset 2a0 with (sectbase(1)+$1ac)
+10 : Patch type 84 at offset 2a4 with (sectbase(1)+$1ac)
+10 : Patch type 74 at offset 2a8 with [12]
+10 : Patch type 74 at offset 2b4 with (sectbase(2)+$adc)
+10 : Patch type 82 at offset 2c4 with (sectbase(1)+$1c0)
+10 : Patch type 84 at offset 2c8 with (sectbase(1)+$1c0)
+10 : Patch type 74 at offset 2cc with [14]
+10 : Patch type 74 at offset 2dc with [1c]
+10 : Patch type 74 at offset 2f4 with [15]
+10 : Patch type 74 at offset 300 with [16]
+10 : Patch type 82 at offset 308 with (sectbase(1)+$1e8)
+10 : Patch type 84 at offset 30c with (sectbase(1)+$1e8)
+10 : Patch type 74 at offset 310 with [12]
+10 : Patch type 74 at offset 31c with (sectbase(2)+$adc)
+10 : Patch type 74 at offset 36c with [21]
+10 : Patch type 74 at offset 384 with [21]
+10 : Patch type 74 at offset 39c with [21]
+10 : Patch type 74 at offset 3b4 with [21]
+10 : Patch type 74 at offset 3cc with [14]
+10 : Patch type 74 at offset 3dc with [22]
+10 : Patch type 74 at offset 40c with [1b]
+10 : Patch type 74 at offset 418 with (sectbase(2)+$bd8)
+10 : Patch type 30 at offset 44c with (sectstart(4)-(sectbase(4)+$4))
+10 : Patch type 30 at offset 468 with (sectstart(4)-(sectbase(4)+$4))
+10 : Patch type 30 at offset 470 with (sectstart(4)-(sectbase(4)+$8))
+10 : Patch type 30 at offset 48c with (sectstart(4)-(sectbase(4)+$8))
+10 : Patch type 30 at offset 490 with (sectstart(4)-(sectbase(4)+$0))
+10 : Patch type 30 at offset 4a0 with (sectstart(4)-(sectbase(4)+$0))
+10 : Patch type 74 at offset 4a8 with (sectbase(2)+$c68)
+6 : Switch to section 5
+8 : Uninitialised data, 20 bytes
+6 : Switch to section 6
+8 : Uninitialised data, 260 bytes
+6 : Switch to section 2
+14 : XREF symbol number 21 'strrchr'
+12 : XDEF symbol number c 'APDSaveStop' at offset 1c8 in section 2
+12 : XDEF symbol number 10 'APDSetCnt' at offset bf0 in section 2
+14 : XREF symbol number 18 'PCread'
+14 : XREF symbol number 20 'sprintf2'
+18 : Local symbol 'make_filename' at offset b00 in section 2
+14 : XREF symbol number 17 'PCopen'
+14 : XREF symbol number 11 'PCinit'
+12 : XDEF symbol number e 'APDLoad' at offset 720 in section 2
+12 : XDEF symbol number b 'APDSave' at offset 70 in section 2
+14 : XREF symbol number 1e '__floatsidf'
+14 : XREF symbol number 1b 'strcat'
+14 : XREF symbol number 12 'printf'
+14 : XREF symbol number 22 'strchr'
+14 : XREF symbol number 1c 'strlen'
+14 : XREF symbol number 1a 'strcmp'
+14 : XREF symbol number 13 'PCcreat'
+14 : XREF symbol number 14 'strcpy'
+14 : XREF symbol number 1d 'PClseek'
+14 : XREF symbol number 16 'PCclose'
+18 : Local symbol 'pad_count' at offset c in section 5
+14 : XREF symbol number 15 'PCwrite'
+18 : Local symbol 'pad.10' at offset 0 in section 5
+18 : Local symbol 'addr_apdsave' at offset 4 in section 5
+18 : Local symbol 'logfile' at offset 0 in section 6
+14 : XREF symbol number 19 '_ctype_'
+12 : XDEF symbol number d 'APDLoadInit' at offset 3a8 in section 2
+12 : XDEF symbol number a 'APDSaveInit' at offset 0 in section 2
+18 : Local symbol 'program_name' at offset 10 in section 5
+12 : XDEF symbol number f 'APDLoadStop' at offset 7b8 in section 2
+18 : Local symbol 'addr_current' at offset 8 in section 5
+14 : XREF symbol number 1f '__divdf3'
+0 : End of file

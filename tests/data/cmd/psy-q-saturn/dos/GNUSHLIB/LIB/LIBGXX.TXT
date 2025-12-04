@@ -1,0 +1,756 @@
+
+PsyLib version 2.04
+
+Module     Date     Time   Externals defined
+
+ALLOCRIN 19-12-96 11:54:52 __9AllocRingi find__9AllocRingPv clear__9AllocRing 
+                           free__9AllocRingPv _$_9AllocRing 
+                           contains__9AllocRingPv alloc__9AllocRingi 
+OBSTACK  19-12-96 11:54:52 _$_7Obstack base__7Obstack next_free__7Obstack 
+                           alignment_mask__7Obstack chunk_size__7Obstack 
+                           size__7Obstack room__7Obstack grow__7ObstackPCvi 
+                           grow__7ObstackPCvic grow__7ObstackPCc 
+                           grow__7Obstackc blank__7Obstacki finish__7Obstackc 
+                           copy__7ObstackPCvi copy__7ObstackPCvic 
+                           copy__7ObstackPCc copy__7Obstackc alloc__7Obstacki 
+                           free__7ObstackPv grow_fast__7Obstackc 
+                           blank_fast__7Obstacki shrink__7Obstacki 
+                           __7Obstackii _free__7ObstackPv newchunk__7Obstacki 
+                           finish__7Obstack contains__7ObstackPv OK__7Obstack 
+BUILTIN  19-12-96 11:54:52 abs__Fs sign__Fl sign__Fd sqr__Fl sqr__Fd even__Fl 
+                           odd__Fl lcm__Fll setbit__FRll clearbit__FRll 
+                           testbit__Fll 
+REGEX    19-12-96 11:54:52 __5RegexRC5Regex __as__5RegexRC5Regex _$_5Regex 
+                           __5RegexPCciiT1 match_info__C5RegexRiT1i 
+                           search__C5RegexPCciRii match__C5RegexPCcii 
+                           OK__C5Regex _GLOBAL_$D$__5RegexRC5Regex 
+                           _GLOBAL_$I$__5RegexRC5Regex RXwhite RXint RXdouble 
+                           RXalpha RXlowercase RXuppercase RXalphanum 
+                           RXidentifier 
+STRING   19-12-96 11:54:52 length__C6String empty__C6String chars__C6String 
+                           allocation__C6String length__C9SubString 
+                           empty__C9SubString chars__C9SubString __6String 
+                           __6StringRC6String __6StringPCc __6StringPCci 
+                           __6StringRC9SubString __6Stringc _$_6String 
+                           __9SubStringRC9SubString __9SubStringR6Stringii 
+                           _$_9SubString __as__6StringRC6String 
+                           __as__6StringPCc __as__6StringRC9SubString 
+                           __as__6Stringc __as__9SubStringPCc 
+                           __as__9SubStringc __as__9SubStringRC6String 
+                           __as__9SubStringRC9SubString 
+                           cat__FRC6StringT0R6String 
+                           cat__FRC6StringRC9SubStringR6String 
+                           cat__FRC6StringPCcR6String 
+                           cat__FRC6StringcR6String 
+                           cat__FRC9SubStringRC6StringR6String 
+                           cat__FRC9SubStringT0R6String 
+                           cat__FRC9SubStringPCcR6String 
+                           cat__FRC9SubStringcR6String 
+                           cat__FPCcRC6StringR6String 
+                           cat__FPCcRC9SubStringR6String cat__FPCcT0R6String 
+                           cat__FPCccR6String cat__FRC6StringN20R6String 
+                           cat__FRC6StringT0RC9SubStringR6String 
+                           cat__FRC6StringT0PCcR6String 
+                           cat__FRC6StringT0cR6String 
+                           cat__FRC6StringRC9SubStringT0R6String 
+                           cat__FRC6StringRC9SubStringT1R6String 
+                           cat__FRC6StringRC9SubStringPCcR6String 
+                           cat__FRC6StringRC9SubStringcR6String 
+                           cat__FRC6StringPCcT0R6String 
+                           cat__FRC6StringPCcRC9SubStringR6String 
+                           cat__FRC6StringPCcT1R6String 
+                           cat__FRC6StringPCccR6String 
+                           cat__FPCcRC6StringT1R6String 
+                           cat__FPCcRC6StringRC9SubStringR6String 
+                           cat__FPCcRC6StringT0R6String 
+                           cat__FPCcRC6StringcR6String 
+                           cat__FPCcRC9SubStringRC6StringR6String 
+                           cat__FPCcRC9SubStringT1R6String 
+                           cat__FPCcRC9SubStringT0R6String 
+                           cat__FPCcRC9SubStringcR6String 
+                           cat__FPCcT0RC6StringR6String 
+                           cat__FPCcT0RC9SubStringR6String 
+                           cat__FPCcN20R6String cat__FPCcT0cR6String 
+                           __apl__6StringRC6String __apl__6StringRC9SubString 
+                           __apl__6StringPCc __apl__6Stringc 
+                           __pl__FRC6StringT0 __pl__FRC6StringRC9SubString 
+                           __pl__FRC6StringPCc __pl__FRC6Stringc 
+                           __pl__FRC9SubStringRC6String __pl__FRC9SubStringT0 
+                           __pl__FRC9SubStringPCc __pl__FRC9SubStringc 
+                           __pl__FPCcRC6String __pl__FPCcRC9SubString 
+                           reverse__FRC6String upcase__FRC6String 
+                           downcase__FRC6String capitalize__FRC6String 
+                           prepend__6StringRC6String prepend__6StringPCc 
+                           prepend__6Stringc prepend__6StringRC9SubString 
+                           reverse__6String upcase__6String downcase__6String 
+                           capitalize__6String __vc__6Stringi __vc__C6Stringi 
+                           elem__C6Stringi firstchar__C6String 
+                           lastchar__C6String index__C6Stringci 
+                           index__C6StringPCci index__C6StringRC6Stringi 
+                           index__C6StringRC9SubStringi 
+                           index__C6StringRC5Regexi contains__C6Stringc 
+                           contains__C6StringPCc contains__C6StringRC6String 
+                           contains__C6StringRC9SubString 
+                           contains__C6Stringci contains__C6StringPCci 
+                           contains__C6StringRC6Stringi 
+                           contains__C6StringRC9SubStringi 
+                           contains__C6StringRC5Regex 
+                           contains__C6StringRC5Regexi 
+                           matches__C6StringRC9SubStringi 
+                           matches__C6StringRC6Stringi matches__C6StringPCci 
+                           matches__C6Stringci matches__C6StringRC5Regexi 
+                           contains__C9SubStringPCc 
+                           contains__C9SubStringRC6String 
+                           contains__C9SubStringRC9SubString 
+                           contains__C9SubStringc 
+                           contains__C9SubStringRC5Regex 
+                           matches__C9SubStringRC5Regex 
+                           gsub__6StringRC6StringT1 
+                           gsub__6StringRC9SubStringRC6String 
+                           gsub__6StringRC5RegexRC6String 
+                           gsub__6StringPCcRC6String gsub__6StringPCcT1 
+                           __ls__FR7ostreamRC6String __eq__FRC6StringT0 
+                           __ne__FRC6StringT0 __gt__FRC6StringT0 
+                           __ge__FRC6StringT0 __lt__FRC6StringT0 
+                           __le__FRC6StringT0 __eq__FRC6StringRC9SubString 
+                           __ne__FRC6StringRC9SubString 
+                           __gt__FRC6StringRC9SubString 
+                           __ge__FRC6StringRC9SubString 
+                           __lt__FRC6StringRC9SubString 
+                           __le__FRC6StringRC9SubString __eq__FRC6StringPCc 
+                           __ne__FRC6StringPCc __gt__FRC6StringPCc 
+                           __ge__FRC6StringPCc __lt__FRC6StringPCc 
+                           __le__FRC6StringPCc __eq__FRC9SubStringRC6String 
+                           __ne__FRC9SubStringRC6String 
+                           __gt__FRC9SubStringRC6String 
+                           __ge__FRC9SubStringRC6String 
+                           __lt__FRC9SubStringRC6String 
+                           __le__FRC9SubStringRC6String __eq__FRC9SubStringT0 
+                           __ne__FRC9SubStringT0 __gt__FRC9SubStringT0 
+                           __ge__FRC9SubStringT0 __lt__FRC9SubStringT0 
+                           __le__FRC9SubStringT0 __eq__FRC9SubStringPCc 
+                           __ne__FRC9SubStringPCc __gt__FRC9SubStringPCc 
+                           __ge__FRC9SubStringPCc __lt__FRC9SubStringPCc 
+                           __le__FRC9SubStringPCc _substr__6Stringii 
+                           error__C6StringPCc __opPCc__C6String 
+                           Salloc__FP6StrRepPCcii alloc__6Stringi 
+                           Scopy__FP6StrRepPC6StrRep Scat__FP6StrRepPCciT1i 
+                           Scat__FP6StrRepPCciT1iT1i Sprepend__FP6StrRepPCci 
+                           fcompare__FRC6StringT0 compare__FRC6StringPCc 
+                           compare__FRC6StringT0 
+                           compare__FRC6StringRC9SubString 
+                           compare__FRC9SubStringRC6String 
+                           compare__FRC9SubStringT0 compare__FRC9SubStringPCc 
+                           search__C6Stringiic search__C6StringiiPCci 
+                           match__C6StringiiiPCci 
+                           assign__9SubStringPC6StrRepPCci 
+                           _gsub__6StringPCciT1i _gsub__6StringRC5RegexPCci 
+                           del__6Stringii del__6StringRC5Regexi 
+                           del__6StringPCci del__6StringRC6Stringi 
+                           del__6StringRC9SubStringi del__6Stringci 
+                           at__6Stringii __cl__6Stringii before__6Stringi 
+                           through__6Stringi after__6Stringi from__6Stringi 
+                           at__6StringRC6Stringi at__6StringRC9SubStringi 
+                           at__6StringRC5Regexi at__6StringPCci at__6Stringci 
+                           before__6StringRC6Stringi 
+                           before__6StringRC9SubStringi 
+                           before__6StringRC5Regexi before__6Stringci 
+                           before__6StringPCci through__6StringRC6Stringi 
+                           through__6StringRC9SubStringi 
+                           through__6StringRC5Regexi through__6Stringci 
+                           through__6StringPCci after__6StringRC6Stringi 
+                           after__6StringRC9SubStringi after__6Stringci 
+                           after__6StringRC5Regexi after__6StringPCci 
+                           from__6StringRC6Stringi from__6StringRC9SubStringi 
+                           from__6StringRC5Regexi from__6Stringci 
+                           from__6StringPCci split__FRC6StringP6StringiT0 
+                           split__FRC6StringP6StringiRC5Regex 
+                           join__FP6StringiRC6String 
+                           Sreverse__FPC6StrRepP6StrRep 
+                           Supcase__FPC6StrRepP6StrRep 
+                           Sdowncase__FPC6StrRepP6StrRep 
+                           Scapitalize__FPC6StrRepP6StrRep replicate__Fci 
+                           replicate__FRC6Stringi 
+                           common_prefix__FRC6StringT0i 
+                           common_suffix__FRC6StringT0i 
+                           __rs__FR7istreamR6String 
+                           readline__FR7istreamR6Stringci 
+                           __ls__FR7ostreamRC9SubString 
+                           freq__C6StringRC9SubString freq__C6StringRC6String 
+                           freq__C6StringPCc freq__C6Stringc OK__C6String 
+                           OK__C9SubString _GLOBAL_$D$length__C6String 
+                           _GLOBAL_$I$length__C6String _nilStrRep _nilString 
+INTDOUBL 19-12-96 11:54:52 Itodouble__FPC6IntRep Iisdouble__FPC6IntRep 
+                           ratio__FRC7IntegerT0 as_double__C7Integer 
+                           fits_in_double__C7Integer 
+INTEGER  19-12-96 11:54:52 fits_in_long__C7Integer as_long__C7Integer 
+                           __7Integer __7IntegerP6IntRep __7Integeri 
+                           __7Integerl __7IntegerUl __7IntegerRC7Integer 
+                           _$_7Integer __as__7IntegerRC7Integer 
+                           __as__7Integerl initialized__C7Integer 
+                           compare__FRC7IntegerT0 ucompare__FRC7IntegerT0 
+                           compare__FRC7Integerl ucompare__FRC7Integerl 
+                           compare__FlRC7Integer ucompare__FlRC7Integer 
+                           add__FRC7IntegerT0R7Integer 
+                           sub__FRC7IntegerT0R7Integer 
+                           mul__FRC7IntegerT0R7Integer 
+                           div__FRC7IntegerT0R7Integer 
+                           mod__FRC7IntegerT0R7Integer 
+                           and__FRC7IntegerT0R7Integer 
+                           or__FRC7IntegerT0R7Integer 
+                           xor__FRC7IntegerT0R7Integer 
+                           lshift__FRC7IntegerT0R7Integer 
+                           rshift__FRC7IntegerT0R7Integer 
+                           pow__FRC7IntegerT0R7Integer 
+                           add__FRC7IntegerlR7Integer 
+                           sub__FRC7IntegerlR7Integer 
+                           mul__FRC7IntegerlR7Integer 
+                           div__FRC7IntegerlR7Integer 
+                           mod__FRC7IntegerlR7Integer 
+                           and__FRC7IntegerlR7Integer 
+                           or__FRC7IntegerlR7Integer 
+                           xor__FRC7IntegerlR7Integer 
+                           lshift__FRC7IntegerlR7Integer 
+                           rshift__FRC7IntegerlR7Integer 
+                           pow__FRC7IntegerlR7Integer 
+                           abs__FRC7IntegerR7Integer 
+                           negate__FRC7IntegerR7Integer 
+                           complement__FRC7IntegerR7Integer 
+                           add__FlRC7IntegerR7Integer 
+                           sub__FlRC7IntegerR7Integer 
+                           mul__FlRC7IntegerR7Integer 
+                           and__FlRC7IntegerR7Integer 
+                           or__FlRC7IntegerR7Integer 
+                           xor__FlRC7IntegerR7Integer __eq__FRC7IntegerT0 
+                           __eq__FRC7Integerl __ne__FRC7IntegerT0 
+                           __ne__FRC7Integerl __lt__FRC7IntegerT0 
+                           __lt__FRC7Integerl __le__FRC7IntegerT0 
+                           __le__FRC7Integerl __gt__FRC7IntegerT0 
+                           __gt__FRC7Integerl __ge__FRC7IntegerT0 
+                           __ge__FRC7Integerl __apl__7IntegerRC7Integer 
+                           __apl__7Integerl __pp__7Integer 
+                           __ami__7IntegerRC7Integer __ami__7Integerl 
+                           __mm__7Integer __aml__7IntegerRC7Integer 
+                           __aml__7Integerl __aad__7IntegerRC7Integer 
+                           __aad__7Integerl __aor__7IntegerRC7Integer 
+                           __aor__7Integerl __aer__7IntegerRC7Integer 
+                           __aer__7Integerl __adv__7IntegerRC7Integer 
+                           __adv__7Integerl __als__7IntegerRC7Integer 
+                           __als__7Integerl __ars__7IntegerRC7Integer 
+                           __ars__7Integerl __mn__FRC7IntegerT0 
+                           __mx__FRC7IntegerT0 abs__7Integer negate__7Integer 
+                           complement__7Integer sign__FRC7Integer 
+                           even__FRC7Integer odd__FRC7Integer 
+                           Itoa__FRC7Integerii lg__FRC7Integer 
+                           __pl__FRC7IntegerT0 __pl__FRC7Integerl 
+                           __pl__FlRC7Integer __mi__FRC7IntegerT0 
+                           __mi__FRC7Integerl __mi__FlRC7Integer 
+                           __ml__FRC7IntegerT0 __ml__FRC7Integerl 
+                           __ml__FlRC7Integer sqr__FRC7Integer 
+                           __ad__FRC7IntegerT0 __ad__FRC7Integerl 
+                           __ad__FlRC7Integer __or__FRC7IntegerT0 
+                           __or__FRC7Integerl __or__FlRC7Integer 
+                           __er__FRC7IntegerT0 __er__FRC7Integerl 
+                           __er__FlRC7Integer __dv__FRC7IntegerT0 
+                           __dv__FRC7Integerl __md__FRC7IntegerT0 
+                           __md__FRC7Integerl __ls__FRC7IntegerT0 
+                           __ls__FRC7Integerl __rs__FRC7IntegerT0 
+                           __rs__FRC7Integerl pow__FRC7Integerl Ipow__Fll 
+                           pow__FRC7IntegerT0 abs__FRC7Integer 
+                           __mi__FRC7Integer __co__FRC7Integer atoI__FPCci 
+                           gcd__FRC7IntegerT0 __amd__7IntegerRC7Integer 
+                           __amd__7Integerl Ialloc__FP6IntRepPCUsiii 
+                           Icalloc__FP6IntRepi Iresize__FP6IntRepi 
+                           Icopy__FP6IntRepPC6IntRep Icopy_long__FP6IntRepl 
+                           Icopy_ulong__FP6IntRepUl Icopy_zero__FP6IntRep 
+                           Icopy_one__FP6IntRepi Itolong__FPC6IntRep 
+                           Iislong__FPC6IntRep compare__FPC6IntRepT0 
+                           ucompare__FPC6IntRepT0 compare__FPC6IntRepl 
+                           ucompare__FPC6IntRepl add__FPC6IntRepiT0iP6IntRep 
+                           add__FPC6IntRepilP6IntRep 
+                           multiply__FPC6IntRepT0P6IntRep 
+                           multiply__FPC6IntReplP6IntRep 
+                           div__FPC6IntRepT0P6IntRep div__FPC6IntReplP6IntRep 
+                           divide__FRC7IntegerlR7IntegerRl 
+                           divide__FRC7IntegerT0R7IntegerT2 
+                           mod__FPC6IntRepT0P6IntRep mod__FPC6IntReplP6IntRep 
+                           lshift__FPC6IntReplP6IntRep 
+                           lshift__FPC6IntRepT0iP6IntRep 
+                           bitop__FPC6IntRepT0P6IntRepc 
+                           bitop__FPC6IntReplP6IntRepc 
+                           compl__FPC6IntRepP6IntRep setbit__FR7Integerl 
+                           clearbit__FR7Integerl testbit__FRC7Integerl 
+                           gcd__FPC6IntRepT0 lg__FPC6IntRep 
+                           power__FPC6IntReplP6IntRep abs__FPC6IntRepP6IntRep 
+                           negate__FPC6IntRepP6IntRep sqrt__FRC7Integer 
+                           lcm__FRC7IntegerT0 atoIntRep__FPCci 
+                           Itoa__FPC6IntRepii __ls__FR7ostreamRC7Integer 
+                           printon__C7IntegerR7ostreamii 
+                           cvtItoa__FPC6IntRepPcRiiiiicci dec__FRC7Integeri 
+                           oct__FRC7Integeri hex__FRC7Integeri 
+                           __rs__FR7istreamR7Integer OK__C7Integer 
+                           error__C7IntegerPCc _ZeroRep _OneRep _MinusOneRep 
+RATIONAL 19-12-96 11:54:52 __8Rational _$_8Rational __8RationalRC8Rational 
+                           __8RationalRC7Integer __8RationalRC7IntegerT1 
+                           __8Rationall __8Rationali __8Rationalll 
+                           __8Rationalii __8RationallUl __8RationalUll 
+                           __8RationalUlUl __as__8RationalRC8Rational 
+                           __eq__FRC8RationalT0 __ne__FRC8RationalT0 
+                           __lt__FRC8RationalT0 __le__FRC8RationalT0 
+                           __gt__FRC8RationalT0 __ge__FRC8RationalT0 
+                           sign__FRC8Rational negate__8Rational 
+                           __apl__8RationalRC8Rational 
+                           __ami__8RationalRC8Rational 
+                           __aml__8RationalRC8Rational 
+                           __adv__8RationalRC8Rational numerator__C8Rational 
+                           denominator__C8Rational __opd__C8Rational 
+                           __mn__FRC8RationalT0 __mx__FRC8RationalT0 
+                           __pl__FRC8RationalT0 __mi__FRC8RationalT0 
+                           __ml__FRC8RationalT0 __dv__FRC8RationalT0 
+                           error__C8RationalPCc normalize__8Rational 
+                           add__FRC8RationalT0R8Rational 
+                           sub__FRC8RationalT0R8Rational 
+                           mul__FRC8RationalT0R8Rational 
+                           div__FRC8RationalT0R8Rational invert__8Rational 
+                           compare__FRC8RationalT0 __8Rationald 
+                           trunc__FRC8Rational pow__FRC8RationalRC7Integer 
+                           __mi__FRC8Rational abs__FRC8Rational 
+                           sqr__FRC8Rational floor__FRC8Rational 
+                           ceil__FRC8Rational round__FRC8Rational 
+                           pow__FRC8Rationall __ls__FR7ostreamRC8Rational 
+                           __rs__FR7istreamR8Rational OK__C8Rational 
+                           fits_in_float__C8Rational 
+                           fits_in_double__C8Rational _GLOBAL_$D$__8Rational 
+                           _GLOBAL_$I$__8Rational 
+RANDOM   19-12-96 11:54:52 __6RandomP3RNG generator__6Random 
+                           generator__6RandomP3RNG _vt$6Random 
+BITSET   19-12-96 11:54:52 previous__C6BitSetii BitSet_index__Fi 
+                           BitSet_pos__Fi __6BitSet __6BitSetRC6BitSet 
+                           _$_6BitSet __as__6BitSetRC6BitSet 
+                           __ne__FRC6BitSetT0 __gt__FRC6BitSetT0 
+                           __ge__FRC6BitSetT0 and__FRC6BitSetT0R6BitSet 
+                           or__FRC6BitSetT0R6BitSet xor__FRC6BitSetT0R6BitSet 
+                           diff__FRC6BitSetT0R6BitSet 
+                           complement__FRC6BitSetR6BitSet __ad__FRC6BitSetT0 
+                           __or__FRC6BitSetT0 __er__FRC6BitSetT0 
+                           __mi__FRC6BitSetT0 __co__FRC6BitSet 
+                           __aad__6BitSetRC6BitSet __aor__6BitSetRC6BitSet 
+                           __aer__6BitSetRC6BitSet __ami__6BitSetRC6BitSet 
+                           complement__6BitSet virtual_bit__C6BitSet 
+                           first__C6BitSeti test__C6BitSeti set__6BitSet 
+                           __9BitSetBitRC9BitSetBit __9BitSetBitP6BitSeti 
+                           _$_9BitSetBit __opi__C9BitSetBit __as__9BitSetBiti 
+                           __as__9BitSetBitRC9BitSetBit __vc__6BitSeti 
+                           error__C6BitSetPCc 
+                           BitSetalloc__FP9BitSetRepPCUliii 
+                           BitSetresize__FP9BitSetRepi 
+                           BitSetcopy__FP9BitSetRepPC9BitSetRep 
+                           __eq__FRC6BitSetT0 __le__FRC6BitSetT0 
+                           __lt__FRC6BitSetT0 lcompare__FRC6BitSetT0 
+                           empty__C6BitSet count__C6BitSeti 
+                           BitSetcmpl__FPC9BitSetRepP9BitSetRep 
+                           BitSetop__FPC9BitSetRepT0P9BitSetRepc 
+                           set__6BitSeti clear__6BitSet clear__6BitSeti 
+                           invert__6BitSeti set__6BitSetii clear__6BitSetii 
+                           invert__6BitSetii test__C6BitSetii 
+                           next__C6BitSetii prev__C6BitSetii last__C6BitSeti 
+                           BitSettoa__FRC6BitSetccc shorttoBitSet__FUs 
+                           longtoBitSet__FUl atoBitSet__FPCcccc 
+                           __ls__FR7ostreamRC6BitSet 
+                           printon__C6BitSetR7ostreamccc OK__C6BitSet 
+                           _nilBitSetRep 
+BITSTRIN 19-12-96 11:54:52 previous__C9BitStringiUi BitStr_index__Fi 
+                           BitStr_pos__Fi __9BitString 
+                           __9BitStringRC9BitString 
+                           __9BitStringRC12BitSubString _$_9BitString 
+                           shorttoBitString__FUs longtoBitString__FUl 
+                           __as__9BitStringRC9BitString __as__9BitStringUi 
+                           __as__9BitStringRC12BitSubString 
+                           __12BitSubStringRC12BitSubString 
+                           __12BitSubStringR9BitStringii _$_12BitSubString 
+                           __10BitPatternRC9BitStringT1 
+                           __10BitPatternRC10BitPattern __10BitPattern 
+                           _$_10BitPattern and__FRC9BitStringT0R9BitString 
+                           or__FRC9BitStringT0R9BitString 
+                           xor__FRC9BitStringT0R9BitString 
+                           diff__FRC9BitStringT0R9BitString 
+                           cat__FRC9BitStringT0R9BitString 
+                           cat__FRC9BitStringUiR9BitString 
+                           rshift__FRC9BitStringiR9BitString 
+                           lshift__FRC9BitStringiR9BitString 
+                           complement__FRC9BitStringR9BitString 
+                           __aad__9BitStringRC9BitString 
+                           __aor__9BitStringRC9BitString 
+                           __aer__9BitStringRC9BitString __als__9BitStringi 
+                           __ars__9BitStringi __ami__9BitStringRC9BitString 
+                           __apl__9BitStringRC9BitString __apl__9BitStringUi 
+                           complement__9BitString __ad__FRC9BitStringT0 
+                           __or__FRC9BitStringT0 __er__FRC9BitStringT0 
+                           __ls__FRC9BitStringi __rs__FRC9BitStringi 
+                           __mi__FRC9BitStringT0 __pl__FRC9BitStringT0 
+                           __pl__FRC9BitStringUi __co__FRC9BitString 
+                           length__C9BitString empty__C9BitString 
+                           index__C9BitStringRC9BitStringi 
+                           index__C9BitStringRC12BitSubStringi 
+                           contains__C9BitStringRC9BitString 
+                           contains__C9BitStringRC12BitSubString 
+                           contains__C9BitStringRC9BitStringi 
+                           matches__C9BitStringRC9BitStringi 
+                           contains__C9BitStringRC12BitSubStringi 
+                           matches__C9BitStringRC12BitSubStringi 
+                           contains__C9BitStringRC10BitPattern 
+                           contains__C9BitStringRC10BitPatterni 
+                           matches__C9BitStringRC10BitPatterni 
+                           index__C9BitStringRC10BitPatterni 
+                           length__C12BitSubString empty__C12BitSubString 
+                           __ne__FRC9BitStringT0 __gt__FRC9BitStringT0 
+                           __ge__FRC9BitStringT0 first__C9BitStringUi 
+                           last__C9BitStringUi index__C9BitStringUii 
+                           right_trim__9BitStringUi left_trim__9BitStringUi 
+                           test__C9BitStringi __9BitStrBitRC9BitStrBit 
+                           __9BitStrBitR9BitStringi _$_9BitStrBit 
+                           __opUi__C9BitStrBit __as__9BitStrBitUi 
+                           __vc__9BitStringi _substr__9BitStringii 
+                           error__C9BitStringPCc 
+                           BStr_alloc__FP9BitStrRepPCUliii 
+                           BStr_resize__FP9BitStrRepi 
+                           BStr_copy__FP9BitStrRepPC9BitStrRep 
+                           __eq__FRC9BitStringT0 __le__FRC9BitStringT0 
+                           __lt__FRC9BitStringT0 lcompare__FRC9BitStringT0 
+                           count__C9BitStringUi 
+                           cmpl__FPC9BitStrRepP9BitStrRep 
+                           and__FPC9BitStrRepT0P9BitStrRep 
+                           or__FPC9BitStrRepT0P9BitStrRep 
+                           xor__FPC9BitStrRepT0P9BitStrRep 
+                           diff__FPC9BitStrRepT0P9BitStrRep 
+                           cat__FPC9BitStrRepT0P9BitStrRep 
+                           cat__FPC9BitStrRepUiP9BitStrRep 
+                           lshift__FPC9BitStrRepiP9BitStrRep set__9BitStringi 
+                           assign__9BitStringiUi clear__9BitStringi 
+                           clear__9BitString set__9BitString 
+                           invert__9BitStringi set__9BitStringii 
+                           clear__9BitStringii invert__9BitStringii 
+                           test__C9BitStringii next__C9BitStringiUi 
+                           prev__C9BitStringiUi search__C9BitStringiiPCUlii 
+                           search__C10BitPatternPCUlii 
+                           match__C9BitStringiiiPCUlii 
+                           match__C10BitPatternPCUliii 
+                           __as__12BitSubStringRC9BitString 
+                           __as__12BitSubStringRC12BitSubString 
+                           at__9BitStringii before__9BitStringi 
+                           after__9BitStringi at__9BitStringRC9BitStringi 
+                           before__9BitStringRC9BitStringi 
+                           after__9BitStringRC9BitStringi 
+                           at__9BitStringRC12BitSubStringi 
+                           before__9BitStringRC12BitSubStringi 
+                           after__9BitStringRC12BitSubStringi 
+                           at__9BitStringRC10BitPatterni 
+                           before__9BitStringRC10BitPatterni 
+                           after__9BitStringRC10BitPatterni 
+                           common_prefix__FRC9BitStringT0i 
+                           common_suffix__FRC9BitStringT0i 
+                           reverse__FRC9BitString atoBitString__FPCccc 
+                           atoBitPattern__FPCcccc 
+                           printon__C9BitStringR7ostreamcc 
+                           BitStringtoa__FRC9BitStringcc 
+                           __ls__FR7ostreamRC9BitString 
+                           BitPatterntoa__FRC10BitPatternccc 
+                           printon__C10BitPatternR7ostreamccc 
+                           __ls__FR7ostreamRC10BitPattern OK__C9BitString 
+                           OK__C12BitSubString OK__C10BitPattern 
+                           _GLOBAL_$D$previous__C9BitStringiUi 
+                           _GLOBAL_$I$previous__C9BitStringiUi _nilBitStrRep 
+                           _nil_BitString 
+LOGNORM  19-12-96 11:54:52 setState__9LogNormal __9LogNormalddP3RNG 
+                           mean__9LogNormal mean__9LogNormald 
+                           variance__9LogNormal variance__9LogNormald 
+                           __cl__9LogNormal _vt$9LogNormal 
+SMPLHIST 19-12-96 11:54:52 buckets__15SampleHistogram 
+                           bucketThreshold__15SampleHistogrami 
+                           inBucket__15SampleHistogrami 
+                           __15SampleHistogramddd _$_15SampleHistogram 
+                           __apl__15SampleHistogramd 
+                           similarSamples__15SampleHistogramd 
+                           printBuckets__15SampleHistogramR7ostream 
+                           reset__15SampleHistogram SampleHistogramMinimum 
+                           SampleHistogramMaximum _vt$15SampleHistogram 
+SMPLSTAT 19-12-96 11:54:52 __15SampleStatistic samples__15SampleStatistic 
+                           min__15SampleStatistic max__15SampleStatistic 
+                           _$_15SampleStatistic 
+                           default_SampleStatistic_error_handler__FPCc 
+                           set_SampleStatistic_error_handler__FPFPCc_v 
+                           error__15SampleStatisticPCc tval__Fdi 
+                           reset__15SampleStatistic __apl__15SampleStatisticd 
+                           mean__15SampleStatistic var__15SampleStatistic 
+                           stdDev__15SampleStatistic 
+                           confidence__15SampleStatistici 
+                           confidence__15SampleStatisticd 
+                           _vt$15SampleStatistic 
+                           SampleStatistic_error_handler 
+NORMAL   19-12-96 11:54:52 __6NormalddP3RNG mean__6Normal mean__6Normald 
+                           variance__6Normal variance__6Normald __cl__6Normal 
+                           _vt$6Normal 
+NEGEXP   19-12-96 11:54:52 __14NegativeExpntldP3RNG mean__14NegativeExpntl 
+                           mean__14NegativeExpntld __cl__14NegativeExpntl 
+                           _vt$14NegativeExpntl 
+WEIBULL  19-12-96 11:54:52 setState__7Weibull __7WeibullddP3RNG 
+                           alpha__7Weibull alpha__7Weibulld beta__7Weibull 
+                           beta__7Weibulld __cl__7Weibull _vt$7Weibull 
+ERLANG   19-12-96 11:54:52 setState__6Erlang __6ErlangddP3RNG mean__6Erlang 
+                           mean__6Erlangd variance__6Erlang 
+                           variance__6Erlangd __cl__6Erlang _vt$6Erlang 
+DISCUNIF 19-12-96 11:54:52 __15DiscreteUniformllP3RNG low__15DiscreteUniform 
+                           low__15DiscreteUniforml high__15DiscreteUniform 
+                           high__15DiscreteUniforml __cl__15DiscreteUniform 
+                           _vt$15DiscreteUniform 
+UNIFORM  19-12-96 11:54:52 __7UniformddP3RNG low__7Uniform low__7Uniformd 
+                           high__7Uniform high__7Uniformd __cl__7Uniform 
+                           _vt$7Uniform 
+POISSON  19-12-96 11:54:52 __7PoissondP3RNG mean__7Poisson mean__7Poissond 
+                           __cl__7Poisson _vt$7Poisson 
+HYPGEOM  19-12-96 11:54:52 setState__14HyperGeometric 
+                           __14HyperGeometricddP3RNG mean__14HyperGeometric 
+                           mean__14HyperGeometricd variance__14HyperGeometric 
+                           variance__14HyperGeometricd __cl__14HyperGeometric 
+                           _vt$14HyperGeometric 
+GEOM     19-12-96 11:54:52 __9GeometricdP3RNG mean__9Geometric 
+                           mean__9Geometricd __cl__9Geometric _vt$9Geometric 
+BINOMIAL 19-12-96 11:54:52 __8BinomialidP3RNG n__8Binomial n__8Binomiali 
+                           u__8Binomial u__8Binomiali __cl__8Binomial 
+                           _vt$8Binomial 
+RNG      19-12-96 11:54:52 __3RNG asFloat__3RNG asDouble__3RNG _vt$3RNG 
+                           _3RNG$doubleMantissa _3RNG$singleMantissa 
+ACG      19-12-96 11:54:52 __3ACGUii reset__3ACG _$_3ACG asLong__3ACG 
+                           randomPermutations _vt$3ACG 
+MLCG     19-12-96 11:54:52 seed1__4MLCG seed1__4MLCGi seed2__4MLCG 
+                           seed2__4MLCGi reseed__4MLCGii __4MLCGii 
+                           reset__4MLCG asLong__4MLCG _vt$4MLCG 
+RNDINT   19-12-96 11:54:52 __13RandomIntegerllP3RNG __13RandomIntegerlP3RNG 
+                           __13RandomIntegerP3RNG generator__C13RandomInteger 
+                           low__C13RandomInteger high__C13RandomInteger 
+                           generator__13RandomIntegerP3RNG 
+                           low__13RandomIntegerl high__13RandomIntegerl 
+                           _asLong__13RandomIntegerll asLong__13RandomInteger 
+                           asLong__13RandomIntegerl asLong__13RandomIntegerll 
+                           __cl__13RandomInteger __cl__13RandomIntegerl 
+                           __cl__13RandomIntegerll asInt__13RandomInteger 
+FIX      19-12-96 11:54:52 unique__3Fix mask__3FixPQ23Fix3Rep 
+                           copy__3FixPCQ23Fix3RepPQ23Fix3Rep 
+                           __3FixPQ23Fix3Rep __3Fix __3Fixi __3FixUs __3Fixd 
+                           __3FixRC3Fix __3FixiRC3Fix __3FixiPCQ23Fix3Rep 
+                           __3Fixid _$_3Fix __as__3FixRC3Fix __as__3Fixd 
+                           __eq__FRC3FixT0 __ne__FRC3FixT0 __lt__FRC3FixT0 
+                           __le__FRC3FixT0 __gt__FRC3FixT0 __ge__FRC3FixT0 
+                           __pl__3Fix __mi__3Fix __pl__FRC3FixT0 
+                           __mi__FRC3FixT0 __ml__FRC3FixT0 __ml__FRC3Fixi 
+                           __ml__FiRC3Fix __dv__FRC3FixT0 __apl__3FixRC3Fix 
+                           __ami__3FixRC3Fix __aml__3FixRC3Fix __aml__3Fixi 
+                           __adv__3FixRC3Fix __md__FRC3Fixi __ls__FRC3Fixi 
+                           __rs__FRC3Fixi __als__3Fixi __ars__3Fixi 
+                           __mn__FRC3FixT0 __mx__FRC3FixT0 abs__FG3Fix 
+                           sgn__FRC3Fix length__FRC3Fix 
+                           __ls__FR7ostreamRC3Fix negate__FRC3FixR3Fix 
+                           add__FRC3FixT0R3Fix subtract__FRC3FixT0R3Fix 
+                           multiply__FRC3FixT0R3Fix divide__FRC3FixT0R3FixT2 
+                           shift__FRC3FixiR3Fix 
+                           default_error_handler__3FixPCc 
+                           default_range_error_handler__3FixPCc 
+                           set_error_handler__3FixPFPCc_v 
+                           set_range_error_handler__3FixPFPCc_v 
+                           error__3FixPCc range_error__3FixPCc 
+                           new_Fix__3FixUs new_Fix__3FixUsPCQ23Fix3Rep 
+                           new_Fix__3FixUsd value__FRC3Fix mantissa__FRC3Fix 
+                           compare__3FixPCQ23Fix3RepT1 
+                           add__3FixPCQ23Fix3RepT1PQ23Fix3Rep 
+                           subtract__3FixPCQ23Fix3RepT1PQ23Fix3Rep 
+                           multiply__3FixPCQ23Fix3RepT1PQ23Fix3Rep 
+                           multiply__3FixPCQ23Fix3RepiPQ23Fix3Rep 
+                           divide__3FixPCQ23Fix3RepT1PQ23Fix3RepT3 
+                           shift__3FixPCQ23Fix3RepiPQ23Fix3Rep 
+                           negate__3FixPCQ23Fix3RepPQ23Fix3Rep atoF__FPCci 
+                           printon__C3FixR7ostreami Ftoa__FR3Fixi 
+                           __amd__3Fixi __rs__FR7istreamR3Fix show__FRC3Fix 
+                           set_overflow_handler__3FixPFPQ23Fix3Rep_v 
+                           set_default_length__3Fixi 
+                           overflow_saturate__3FixPQ23Fix3Rep 
+                           overflow_wrap__3FixPQ23Fix3Rep 
+                           overflow_warning_saturate__3FixPQ23Fix3Rep 
+                           overflow_warning__3FixPQ23Fix3Rep 
+                           overflow_error__3FixPQ23Fix3Rep 
+                           _3Fix$default_length _3Fix$Rep_0 
+                           _3Fix$default_print_width _3Fix$min_length 
+                           _3Fix$max_length _3Fix$min_value _3Fix$max_value 
+                           _3Fix$overflow_handler _3Fix$Rep_m1 
+                           _3Fix$Rep_quotient_bump _3Fix$error_handler 
+                           _3Fix$range_error_handler 
+FIX16    19-12-96 11:54:52 _$_5Fix16 _$_5Fix32 round__5Fix16d __5Fix16s 
+                           __5Fix16i __opd__C5Fix16 __5Fix16 __5Fix16RC5Fix16 
+                           __5Fix16d __as__5Fix16RC5Fix16 __as__5Fix16d 
+                           __5Fix32 __5Fix32i __opd__C5Fix32 __5Fix32RC5Fix32 
+                           __5Fix32RC5Fix16 __5Fix32d __5Fix16RC5Fix32 
+                           __as__5Fix16RC5Fix32 __as__5Fix32RC5Fix32 
+                           __as__5Fix32RC5Fix16 __as__5Fix32d 
+                           mantissa__FR5Fix16 mantissa__FRC5Fix16 
+                           value__FRC5Fix16 __pl__C5Fix16 __mi__C5Fix16 
+                           __pl__FRC5Fix16T0 __mi__FRC5Fix16T0 
+                           __ml__FRC5Fix16T0 __ls__FRC5Fix16i 
+                           __rs__FRC5Fix16i __apl__5Fix16RC5Fix16 
+                           __ami__5Fix16RC5Fix16 __aml__5Fix16RC5Fix16 
+                           __adv__5Fix16RC5Fix16 __als__5Fix16i 
+                           __ars__5Fix16i __eq__FRC5Fix16T0 __ne__FRC5Fix16T0 
+                           __ge__FRC5Fix16T0 __le__FRC5Fix16T0 
+                           __gt__FRC5Fix16T0 __lt__FRC5Fix16T0 
+                           __rs__FR7istreamR5Fix16 __ls__FR7ostreamRC5Fix16 
+                           __ml__FRC5Fix16i __ml__FiRC5Fix16 __aml__5Fix16i 
+                           round__5Fix32d mantissa__FR5Fix32 
+                           mantissa__FRC5Fix32 value__FRC5Fix32 __pl__C5Fix32 
+                           __mi__C5Fix32 __pl__FRC5Fix32T0 __mi__FRC5Fix32T0 
+                           __ls__FRC5Fix32i __rs__FRC5Fix32i 
+                           __apl__5Fix32RC5Fix32 __ami__5Fix32RC5Fix32 
+                           __aml__5Fix32RC5Fix32 __adv__5Fix32RC5Fix32 
+                           __als__5Fix32i __ars__5Fix32i __eq__FRC5Fix32T0 
+                           __ne__FRC5Fix32T0 __ge__FRC5Fix32T0 
+                           __le__FRC5Fix32T0 __gt__FRC5Fix32T0 
+                           __lt__FRC5Fix32T0 __rs__FR7istreamR5Fix32 
+                           __ls__FR7ostreamRC5Fix32 __ml__FRC5Fix32i 
+                           __ml__FiRC5Fix32 __aml__5Fix32i assign__5Fix16d 
+                           assign__5Fix32d __ml__FRC5Fix32T0 
+                           __dv__FRC5Fix16T0 __dv__FRC5Fix32T0 
+                           overflow__C5Fix16Rs overflow__C5Fix32Ri 
+                           range_error__C5Fix16Rs range_error__C5Fix32Ri 
+                           set_Fix16_overflow_handler__FPFRs_v 
+                           set_Fix32_overflow_handler__FPFRi_v 
+                           set_overflow_handler__FPFRs_vPFRi_v 
+                           set_Fix16_range_error_handler__FPFRs_v 
+                           set_Fix32_range_error_handler__FPFRi_v 
+                           set_range_error_handler__FPFRs_vPFRi_v 
+                           Fix16_overflow_saturate__FRs Fix16_ignore__FRs 
+                           Fix16_warning__FRs 
+                           Fix16_overflow_warning_saturate__FRs 
+                           Fix16_abort__FRs Fix32_ignore__FRi 
+                           Fix32_overflow_saturate__FRi Fix32_warning__FRi 
+                           Fix32_overflow_warning_saturate__FRi 
+                           Fix32_abort__FRi Fix16_overflow_handler 
+                           Fix32_overflow_handler Fix16_range_error_handler 
+                           Fix32_range_error_handler 
+FIX24    19-12-96 11:54:52 _$_5Fix24 _$_5Fix48 __5Fix24l __5Fix24i 
+                           __opd__C5Fix24 __5Fix24 __5Fix24RC5Fix24 __5Fix24d 
+                           __5Fix24RC5Fix48 __as__5Fix24RC5Fix24 
+                           __as__5Fix24d __as__5Fix24RC5Fix48 
+                           mantissa__FR5Fix24 mantissa__FRC5Fix24 
+                           value__FRC5Fix24 __pl__C5Fix24 __mi__C5Fix24 
+                           __pl__FRC5Fix24T0 __mi__FRC5Fix24T0 
+                           __ml__FRC5Fix24i __ml__FiRC5Fix24 __ls__FRC5Fix24i 
+                           __rs__FRC5Fix24i __apl__5Fix24RC5Fix24 
+                           __ami__5Fix24RC5Fix24 __aml__5Fix24RC5Fix24 
+                           __adv__5Fix24RC5Fix24 __als__5Fix24i 
+                           __ars__5Fix24i __aml__5Fix24i __eq__FRC5Fix24T0 
+                           __ne__FRC5Fix24T0 __ge__FRC5Fix24T0 
+                           __le__FRC5Fix24T0 __gt__FRC5Fix24T0 
+                           __lt__FRC5Fix24T0 __rs__FR7istreamR5Fix24 
+                           __ls__FR7ostreamRC5Fix24 __5Fix48G8twolongs 
+                           __opd__C5Fix48 __5Fix48 __5Fix48RC5Fix48 
+                           __5Fix48RC5Fix24 __5Fix48d __as__5Fix48RC5Fix48 
+                           __as__5Fix48RC5Fix24 __as__5Fix48d 
+                           mantissa__FR5Fix48 mantissa__FRC5Fix48 
+                           value__FRC5Fix48 __pl__C5Fix48 __mi__C5Fix48 
+                           __ml__FiRC5Fix48 __apl__5Fix48RC5Fix48 
+                           __ami__5Fix48RC5Fix48 __aml__5Fix48i 
+                           __als__5Fix48i __ars__5Fix48i __eq__FRC5Fix48T0 
+                           __ne__FRC5Fix48T0 __ge__FRC5Fix48T0 
+                           __le__FRC5Fix48T0 __gt__FRC5Fix48T0 
+                           __lt__FRC5Fix48T0 __rs__FR7istreamR5Fix48 
+                           __ls__FR7ostreamRC5Fix48 assign__5Fix24d 
+                           assign__5Fix48d __ml__FRC5Fix24T0 
+                           __dv__FRC5Fix24T0 __pl__FRC5Fix48T0 
+                           __mi__FRC5Fix48T0 __ml__FRC5Fix48i 
+                           __ls__FRC5Fix48i __rs__FRC5Fix48i 
+                           overflow__C5Fix24Ri overflow__C5Fix48R8twolongs 
+                           range_error__C5Fix24Ri 
+                           range_error__C5Fix48R8twolongs 
+                           set_Fix24_overflow_handler__FPFRi_v 
+                           set_Fix48_overflow_handler__FPFR8twolongs_v 
+                           set_overflow_handler__FPFRi_vPFR8twolongs_v 
+                           set_Fix24_range_error_handler__FPFRi_v 
+                           set_Fix48_range_error_handler__FPFR8twolongs_v 
+                           set_range_error_handler__FPFRi_vPFR8twolongs_v 
+                           Fix24_overflow_saturate__FRi Fix24_ignore__FRi 
+                           Fix24_warning__FRi 
+                           Fix24_overflow_warning_saturate__FRi 
+                           Fix24_abort__FRi Fix48_ignore__FR8twolongs 
+                           Fix48_overflow_saturate__FR8twolongs 
+                           Fix48_warning__FR8twolongs 
+                           Fix48_overflow_warning_saturate__FR8twolongs 
+                           Fix48_abort__FR8twolongs Fix48_m_max Fix48_m_min 
+                           Fix24_overflow_handler Fix48_overflow_handler 
+                           Fix24_range_error_handler 
+                           Fix48_range_error_handler Fix24_shift Fix24_fs 
+                           Fix24_mult Fix24_div Fix24_max Fix24_min Fix24_msb 
+                           Fix24_lsb Fix24_m_max Fix24_m_min Fix48_fs 
+                           Fix48_max Fix48_min Fix48_div_u Fix48_div_l 
+                           Fix48_msb Fix48_lsb 
+GETOPT   19-12-96 11:54:52 __6GetOptiPPcPCc exchange__6GetOptPPc 
+                           __cl__6GetOpt _6GetOpt$nextchar 
+                           _6GetOpt$first_nonopt _6GetOpt$last_nonopt 
+ERROR    19-12-96 11:54:52 default_one_arg_error_handler__FPCc 
+                           default_two_arg_error_handler__FPCcT0 
+                           set_lib_error_handler__FPFPCcPCc_v 
+                           lib_error_handler 
+GCD      19-12-96 11:54:52 gcd__Fll 
+HASH     19-12-96 11:54:52 hashpjw__FPCc multiplicativehash__Fi foldhash__Fd 
+LG       19-12-96 11:54:54 lg__FUl 
+FMTQ     19-12-96 11:54:54 _GLOBAL_$D$_libgxx_fmtq _GLOBAL_$I$_libgxx_fmtq 
+                           _libgxx_fmtq 
+IOOB     19-12-96 11:54:54 _GLOBAL_$D$_libgxx_io_ob _GLOBAL_$I$_libgxx_io_ob 
+                           _libgxx_io_ob 
+POW      19-12-96 11:54:54 pow__Fdl pow__Fll 
+SQRT     19-12-96 11:54:54 sqrt__Fl 
+TIMER    19-12-96 11:54:54 start_timer return_elapsed_time 
+COMPARE  19-12-96 11:54:54 compare__Fii compare__Fss compare__FScSc 
+                           compare__FUlUl compare__FUiUi compare__FUsUs 
+                           compare__FUcUc compare__Fff compare__Fdd 
+                           compare__FPCcT0 
+BITAND   19-12-96 11:54:54 _BS_and 
+BITANY   19-12-96 11:54:54 _BS_any 
+BITBLT   19-12-96 11:54:54 _BS_blt 
+BITCLEAR 19-12-96 11:54:54 _BS_clear 
+BITCOPY  19-12-96 11:54:54 _BS_copy 
+BITCOUNT 19-12-96 11:54:54 _BS_count 
+BITINVER 19-12-96 11:54:54 _BS_invert 
+BITLCOMP 19-12-96 11:54:54 _BS_lcompare_0 
+BITSET1  19-12-96 11:54:54 _BS_set 
+BITXOR   19-12-96 11:54:54 _BS_xor 
+SLLIST   19-12-96 11:54:54 error__C10BaseSLListPCc length__C10BaseSLList 
+                           clear__10BaseSLList 
+                           copy__10BaseSLListRC10BaseSLList 
+                           __as__10BaseSLListRC10BaseSLList 
+                           prepend__10BaseSLListPCv 
+                           prepend__10BaseSLListP10BaseSLNode 
+                           append__10BaseSLListPCv 
+                           append__10BaseSLListP10BaseSLNode 
+                           join__10BaseSLListR10BaseSLList 
+                           ins_after__10BaseSLListPvPCv 
+                           del_after__10BaseSLListPv owns__C10BaseSLListPv 
+                           remove_front__10BaseSLListPvi 
+                           del_front__10BaseSLList OK__C10BaseSLList 
+DLLIST   19-12-96 11:54:54 error__C10BaseDLListPCc length__C10BaseDLList 
+                           copy__10BaseDLListRC10BaseDLList 
+                           clear__10BaseDLList 
+                           __as__10BaseDLListRC10BaseDLList 
+                           prepend__10BaseDLListPCv append__10BaseDLListPCv 
+                           ins_after__10BaseDLListPvPCv 
+                           ins_before__10BaseDLListPvPCv 
+                           join__10BaseDLListR10BaseDLList 
+                           owns__C10BaseDLListPv del__10BaseDLListRPvi 
+                           del_after__10BaseDLListRPv 
+                           remove_front__10BaseDLListPv 
+                           del_front__10BaseDLList 
+                           remove_rear__10BaseDLListPv del_rear__10BaseDLList 
+                           OK__C10BaseDLList 
+RX       19-12-96 11:54:54 rx_version_string rx_slowmap rx_id_translation 
+                           rx_id_instruction_table rx_cache_bound 
+                           re_error_msg rx_error_msg re_search_2 re_rx_search 
+                           re_search re_match_2 re_match re_syntax_options 
+                           re_set_syntax re_set_registers re_compile_pattern 
+                           re_compile_fastmap 
+

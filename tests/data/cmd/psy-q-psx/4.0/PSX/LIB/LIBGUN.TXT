@@ -1,0 +1,10 @@
+
+PsyLib version 2.04
+
+Module     Date     Time   Externals defined
+
+GUN      20-05-97 11:54:24 RemoveGUN StopGun StartGun SelectGUN StartGUN 
+                           StopGUN InitGUN SendGUN EnableGUN DesableGUN 
+NEWGUN   20-05-97 11:54:26 _InitGun _ExitGun _check_gun_flag _clear_gun_flag 
+                           read_gun_v read_gun_h 
+

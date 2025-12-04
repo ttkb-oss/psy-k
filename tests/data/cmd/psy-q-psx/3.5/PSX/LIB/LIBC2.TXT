@@ -1,0 +1,52 @@
+
+PsyLib version 2.04
+
+Module     Date     Time   Externals defined
+
+ABS      15-05-96 16:10:04 abs labs 
+ATOI     15-05-96 16:10:08 atoi atol 
+BCMP     15-05-96 16:10:10 bcmp 
+BCOPY    15-05-96 16:10:12 bcopy 
+BZERO    15-05-96 16:10:14 bzero 
+CTYPE    15-05-96 16:10:16 tolower toupper _ctype_ 
+GETC     15-05-96 16:10:20 getc 
+GETCHAR  15-05-96 16:10:22 getchar 
+GETS     15-05-96 16:10:24 gets 
+MEMCHR   15-05-96 16:10:28 memchr 
+MEMCMP   15-05-96 16:10:30 memcmp 
+MEMCPY   15-05-96 16:10:32 memcpy 
+MEMMOVE  15-05-96 16:10:36 memmove 
+MEMSET   15-05-96 16:10:38 memset 
+PUTC     15-05-96 16:10:40 putc 
+PUTCHAR  15-05-96 16:10:44 putchar 
+QSORT    15-05-96 16:10:46 qsort 
+RAND     15-05-96 16:10:48 srand rand 
+STRCAT   15-05-96 16:10:50 strcat 
+STRCHR   15-05-96 16:10:54 strchr 
+STRCMP   15-05-96 16:10:56 strcmp 
+STRCPY   15-05-96 16:10:58 strcpy 
+STRCSPN  15-05-96 16:11:02 strcspn 
+STRINGS  15-05-96 16:11:04 index rindex 
+STRLEN   15-05-96 16:11:06 strlen 
+STRNCAT  15-05-96 16:11:08 strncat 
+STRNCMP  15-05-96 16:11:12 strncmp 
+STRNCPY  15-05-96 16:11:16 strncpy 
+STRPBRK  15-05-96 16:11:18 strpbrk 
+STRRCHR  15-05-96 16:11:20 strrchr 
+STRSPN   15-05-96 16:11:24 strspn 
+STRSTR   15-05-96 16:11:26 strstr 
+STRTOK   15-05-96 16:11:28 strtok 
+STRTOL   15-05-96 16:11:32 atob strtol 
+STRTOUL  15-05-96 16:11:34 strtoul 
+TODIGIT  15-05-96 16:11:36 todigit 
+PRINTF   15-05-96 16:11:38 printf 
+PRNT     15-05-96 16:11:42 prnt 
+SPRINTF  15-05-96 16:11:46 sprintf 
+ITOA     15-05-96 16:11:48 itoa 
+PUTS     15-05-96 16:11:50 puts 
+BSEARCH  15-05-96 16:11:54 bsearch 
+LSEARCH  15-05-96 16:11:56 lsearch 
+SETJMP   15-05-96 16:11:56 setjmp longjmp 
+EXIT     15-05-96 16:11:56 exit 
+MALLOC   15-05-96 16:11:56 malloc free calloc realloc 
+

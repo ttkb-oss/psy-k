@@ -1,0 +1,62 @@
+
+PsyLib version 2.04
+
+Module     Date     Time   Externals defined
+
+OPEN     26-07-96 19:42:20 PCopen 
+CLOSE    26-07-96 19:42:22 PCclose 
+LSEEK    26-07-96 19:42:22 PClseek 
+CREAT    26-07-96 19:42:24 PCcreat 
+SNREAD   26-07-96 19:42:24 _SN_read 
+SNMAIN   26-07-96 19:42:24 __data __heapbase __main __datalen __heapsize 
+                           __textlen __bss __bsslen __SN_ENTRY_POINT __text 
+                           __do_global_dtors 
+FSINIT   26-07-96 19:42:24 PCinit 
+SNWRITE  26-07-96 19:42:24 _SN_write 
+READ     26-07-96 19:42:24 PCread 
+WRITE    26-07-96 19:42:26 PCwrite 
+SNDEF    26-07-96 19:42:26 _stacksize _ramsize 
+PUREV    26-07-96 19:42:26 __pure_virtual 
+_ASHLDI3 26-07-96 19:42:26 __ashldi3 
+_ASHRDI3 26-07-96 19:42:26 __ashrdi3 
+_CMPDI2  26-07-96 19:42:28 __cmpdi2 
+_DIVDI3  26-07-96 19:42:28 __divdi3 
+_EH      26-07-96 19:42:30 __throw_type_match __register_exceptions 
+                           __find_first_exception_table_match 
+_FFSDI2  26-07-96 19:42:30 __ffsdi2 
+_FXDFDI  26-07-96 19:42:30 __fixdfdi 
+_FXSFDI  26-07-96 19:42:30 __fixsfdi 
+_FXTFDI  26-07-96 19:42:32 
+_FXUSDFD 26-07-96 19:42:32 __fixunsdfdi 
+_FIXUSDF 26-07-96 19:42:32 __fixunsdfsi 
+_FXUSSFD 26-07-96 19:42:34 __fixunssfdi 
+_FXUSSFS 26-07-96 19:42:34 __fixunssfsi 
+_FXUSTFD 26-07-96 19:42:34 
+_FXUSXFD 26-07-96 19:42:36 
+_FXUSXFS 26-07-96 19:42:36 
+_FXXFDI  26-07-96 19:42:36 
+_FLTDIDF 26-07-96 19:42:38 __floatdidf 
+_FLTDISF 26-07-96 19:42:38 __floatdisf 
+_FLTDITF 26-07-96 19:42:38 
+_FLTDIXF 26-07-96 19:42:40 
+_LSHLDI3 26-07-96 19:42:40 __lshldi3 
+_LSHRDI3 26-07-96 19:42:40 __lshrdi3 
+_MODDI3  26-07-96 19:42:42 __moddi3 
+_MULDI3  26-07-96 19:42:42 __muldi3 
+_NEGDI2  26-07-96 19:42:42 __negdi2 
+_NEW_HAN 26-07-96 19:42:44 set_new_handler __new_handler 
+                           __default_new_handler 
+_OP_DELE 26-07-96 19:42:44 __builtin_delete 
+_OP_NEW  26-07-96 19:42:44 __builtin_new 
+_OP_VDEL 26-07-96 19:42:46 __builtin_vec_delete 
+_OP_VNEW 26-07-96 19:42:46 __builtin_vec_new 
+_SHTAB   26-07-96 19:42:46 __shtab 
+_TRAMPOL 26-07-96 19:42:46 
+_UCMPDI2 26-07-96 19:42:48 __ucmpdi2 
+_UDIVDI3 26-07-96 19:42:48 __udivdi3 
+_UDIVMOD 26-07-96 19:42:50 __udivmoddi4 
+_UDIV_W_ 26-07-96 19:42:50 __udiv_w_sdiv 
+_UMODDI3 26-07-96 19:42:50 __umoddi3 
+_VARARGS 26-07-96 19:42:52 __builtin_saveregs 
+__GCC_BC 26-07-96 19:42:52 __gcc_bcmp 
+

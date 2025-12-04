@@ -1,0 +1,87 @@
+
+PsyLib version 2.04
+
+Module     Date     Time   Externals defined
+
+__GCC_BC 19-12-96 11:54:44 __gcc_bcmp 
+__MAIN   19-12-96 11:54:44 __do_global_dtors __do_global_ctors __main 
+                           _exit_dummy_ref 
+_ASHIFTL 19-12-96 11:54:44 __ashlsi3 
+_ASHIFTR 19-12-96 11:54:44 __ashiftrt_r4_0 __ashiftrt_r4_1 __ashiftrt_r4_2 
+                           __ashiftrt_r4_3 __ashiftrt_r4_4 __ashiftrt_r4_5 
+                           __ashiftrt_r4_6 __ashiftrt_r4_7 __ashiftrt_r4_8 
+                           __ashiftrt_r4_9 __ashiftrt_r4_10 __ashiftrt_r4_11 
+                           __ashiftrt_r4_12 __ashiftrt_r4_13 __ashiftrt_r4_14 
+                           __ashiftrt_r4_15 __ashiftrt_r4_16 __ashiftrt_r4_17 
+                           __ashiftrt_r4_18 __ashiftrt_r4_19 __ashiftrt_r4_20 
+                           __ashiftrt_r4_21 __ashiftrt_r4_22 __ashiftrt_r4_23 
+                           __ashiftrt_r4_24 __ashiftrt_r4_25 __ashiftrt_r4_26 
+                           __ashiftrt_r4_27 __ashiftrt_r4_28 __ashiftrt_r4_29 
+                           __ashiftrt_r4_30 __ashiftrt_r4_31 __ashiftrt_r4_32 
+_ASHLDI3 19-12-96 11:54:44 __ashldi3 
+_ASHRDI3 19-12-96 11:54:44 __ashrdi3 
+_BB      19-12-96 11:54:44 
+_CLEAR_C 19-12-96 11:54:44 __clear_cache 
+_CMPDI2  19-12-96 11:54:44 __cmpdi2 
+_CTORS   19-12-96 11:54:44 *__CTOR_LIST__ *__DTOR_LIST__ 
+_DIVDI3  19-12-96 11:54:44 __divdi3 
+_EH      19-12-96 11:54:44 __find_first_exception_table_match 
+                           __throw_type_match __register_exceptions __empty 
+                           __unwind_function 
+_EPRINTF 19-12-96 11:54:44 
+_EXIT    19-12-96 11:54:44 _exit_dummy_decl 
+_FFSDI2  19-12-96 11:54:44 __ffsdi2 
+_FIXDFDI 19-12-96 11:54:44 __fixdfdi 
+_FIXSFDI 19-12-96 11:54:44 __fixsfdi 
+_FIXTFDI 19-12-96 11:54:44 
+_FIXUNSD 19-12-96 11:54:44 __fixunsdfdi 
+_FIXUNSS 19-12-96 11:54:44 __fixunssfdi 
+_FIXUNST 19-12-96 11:54:44 
+_FIXUNSX 19-12-96 11:54:44 
+_FIXXFDI 19-12-96 11:54:44 
+_FLOATDI 19-12-96 11:54:44 __floatdidf 
+_LSHIFTR 19-12-96 11:54:44 __lshrsi3 
+_LSHRDI3 19-12-96 11:54:44 __lshrdi3 
+_MODDI3  19-12-96 11:54:44 __moddi3 
+_MOVSTR  19-12-96 11:54:44 __movstrSI64 __movstrSI60 __movstrSI56 
+                           __movstrSI52 __movstrSI48 __movstrSI44 
+                           __movstrSI40 __movstrSI36 __movstrSI32 
+                           __movstrSI28 __movstrSI24 __movstrSI20 
+                           __movstrSI16 __movstrSI12 __movstrSI8 __movstrSI4 
+                           __movstr 
+_MULDI3  19-12-96 11:54:44 __muldi3 
+_MULSI3  19-12-96 11:54:44 __mulsi3 
+_NEGDI2  19-12-96 11:54:44 __negdi2 
+_NEW_HAN 19-12-96 11:54:44 set_new_handler __default_new_handler 
+                           __new_handler 
+_OP_DELE 19-12-96 11:54:44 __builtin_delete 
+_OP_NEW  19-12-96 11:54:46 __builtin_new 
+_OP_VDEL 19-12-96 11:54:46 __builtin_vec_delete 
+_OP_VNEW 19-12-96 11:54:46 __builtin_vec_new 
+_PURE    19-12-96 11:54:46 __pure_virtual 
+_SDIVSI3 19-12-96 11:54:46 __sdivsi3 
+_SHTAB   19-12-96 11:54:46 __shtab 
+_TRAMPOL 19-12-96 11:54:46 
+_UCMPDI2 19-12-96 11:54:46 __ucmpdi2 
+_UDIV_W_ 19-12-96 11:54:46 __udiv_w_sdiv 
+_UDIVDI3 19-12-96 11:54:46 __udivdi3 
+_UDIVMOD 19-12-96 11:54:46 __udivmoddi4 
+_UDIVSI3 19-12-96 11:54:46 __udivsi3 
+_UMODDI3 19-12-96 11:54:46 __umoddi3 
+_VARARGS 19-12-96 11:54:46 __builtin_saveregs 
+DP-BIT   19-12-96 11:54:46 __adddf3 __subdf3 __muldf3 __divdf3 __cmpdf2 
+                           __eqdf2 __nedf2 __gtdf2 __gedf2 __ltdf2 __ledf2 
+                           __floatsidf __fixdfsi __negdf2 __make_dp 
+                           __truncdfsf2 
+FP-BIT   19-12-96 11:54:46 __addsf3 __subsf3 __mulsf3 __divsf3 __cmpsf2 
+                           __eqsf2 __nesf2 __gtsf2 __gesf2 __ltsf2 __lesf2 
+                           __floatsisf __fixsfsi __negsf2 __make_fp 
+                           __extendsfdf2 
+2FLOATDI 19-12-96 11:54:46 
+1FLOATDI 19-12-96 11:54:46 
+0FLOATDI 19-12-96 11:54:46 __floatdisf 
+0FIXUNSX 19-12-96 11:54:46 
+0FIXUNSS 19-12-96 11:54:46 __fixunssfsi 
+0FIXUNSD 19-12-96 11:54:46 __fixunsdfsi 
+0ASHIFTR 19-12-96 11:54:46 __ashrsi3 
+

@@ -1,0 +1,8 @@
+
+PsyLib version 2.04
+
+Module     Date     Time   Externals defined
+
+NONE2    18-09-95 17:24:20 __bss __heapsize __SN_ENTRY_POINT __bsslen __data 
+                           __main __text __datalen __textlen __heapbase 
+

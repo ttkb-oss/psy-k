@@ -1,0 +1,46 @@
+
+Header : LNK version 2
+46 : Processor type 7
+16 : Section symbol number 2808 '.rdata' in group 0 alignment 8
+16 : Section symbol number 2809 '.text' in group 0 alignment 8
+16 : Section symbol number 280a '.data' in group 0 alignment 8
+16 : Section symbol number 280b '.sdata' in group 0 alignment 8
+16 : Section symbol number 280c '.sbss' in group 0 alignment 8
+16 : Section symbol number 280d '.bss' in group 0 alignment 8
+6 : Switch to section 2808
+6 : Switch to section 2809
+6 : Switch to section 280a
+6 : Switch to section 280b
+6 : Switch to section 280c
+6 : Switch to section 280d
+6 : Switch to section 2809
+2 : Code 196 bytes
+10 : Patch type 82 at offset 8 with sectstart(280c)
+10 : Patch type 84 at offset c with sectstart(280c)
+10 : Patch type 82 at offset 10 with sectend(280d)
+10 : Patch type 84 at offset 14 with sectend(280d)
+10 : Patch type 82 at offset 40 with (sectbase(2809)+$b4)
+10 : Patch type 84 at offset 44 with (sectbase(2809)+$b4)
+10 : Patch type 82 at offset 58 with sectend(280d)
+10 : Patch type 84 at offset 5c with sectend(280d)
+10 : Patch type 82 at offset 68 with [2817]
+10 : Patch type 84 at offset 6c with [2817]
+10 : Patch type 82 at offset 80 with (sectbase(280c)+$0)
+10 : Patch type 84 at offset 84 with (sectbase(280c)+$0)
+10 : Patch type 82 at offset 88 with sectstart(280b)
+10 : Patch type 84 at offset 8c with sectstart(280b)
+10 : Patch type 74 at offset 94 with [2814]
+10 : Patch type 82 at offset 9c with (sectbase(280c)+$0)
+10 : Patch type 84 at offset a0 with (sectbase(280c)+$0)
+10 : Patch type 74 at offset a8 with [2816]
+6 : Switch to section 280c
+8 : Uninitialised data, 4 bytes
+14 : XREF symbol number 2814 'InitHeap'
+14 : XREF symbol number 2817 '_stacksize'
+12 : XDEF symbol number 280f '__SN_ENTRY_POINT' at offset 8 in section 2809
+12 : XDEF symbol number 280e '__main' at offset 0 in section 2809
+14 : XREF symbol number 2816 'main'
+12 : XDEF symbol number 2811 'stup0' at offset a8 in section 2809
+12 : XDEF symbol number 2812 'stup1' at offset 2c in section 2809
+12 : XDEF symbol number 2813 'stup2' at offset 8 in section 2809
+0 : End of file

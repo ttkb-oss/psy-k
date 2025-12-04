@@ -1,0 +1,53 @@
+
+PsyLib version 2.04
+
+Module     Date     Time   Externals defined
+
+INTR     17-01-95 12:15:02 VSyncCallback ResetCallback StopCallback 
+                           InterruptCallback DMACallback CheckCallback 
+A37      22-05-95 17:00:24 ExitCriticalSection 
+PAD      23-05-95 11:32:30 PadIdentifier PadRead PadInit PadStop 
+STRNCMP  23-05-95 12:07:50 strncmp 
+A21      23-05-95 11:37:34 PAD_init 
+A22      23-05-95 11:37:32 PAD_dr 
+C67      23-05-95 11:37:36 Exec 
+C63      23-05-95 14:27:44 printf 
+A36      22-05-95 17:00:02 EnterCriticalSection 
+C19      22-05-95 17:01:02 setjmp 
+A23      22-05-95 17:01:22 ReturnFromException 
+A25      22-05-95 17:01:30 HookEntryInt 
+STRCMP   23-05-95 12:07:52 strcmp 
+INTR_DMA 22-05-95 17:02:32 DMAInit 
+INTR_VB  22-05-95 17:02:46 VBLNKInit Vcount 
+A91      22-05-95 17:38:20 ChangeClearPAD 
+C57      22-05-95 17:04:28 InitHeap 
+L10      22-05-95 17:04:50 ChangeClearRCnt 
+C114     22-05-95 17:05:10 _96_remove 
+A61      22-05-95 17:32:50 putchar 
+STRCPY   23-05-95 12:08:40 strcpy 
+EVENT    22-05-95 17:07:52 CdInit CdInitFileSystem 
+VSYNC    22-05-95 17:08:12 VSync 
+CDSYS    01-06-95 16:25:42 timeout CurrentPos CdRead callback CdReadCallback 
+                           CD_vol CD_cbread CdSyncCallback CD_cbsync _96_vec 
+                           pollintr CD_read CdControl CD_status setloc rescpy 
+                           CD_sync CdReadyCallback CdReset cd_setloc 
+                           CdReadSync CD_cw cb_read CD_cbready CdIntToPos 
+                           CdPosToInt CdControlB CD_debug CD_readm CD_ready 
+                           getintr 
+EXT      06-06-95 20:28:52 SetDefDrawEnv SetDefDispEnv 
+GPUSYS   06-06-95 20:24:54 gp0 gp1 d_pcr GraphCBSync rcsid GraphRev d2_bcr 
+                           d6_bcr jtb get_mode SetDispMask qin que LoadImage 
+                           get_ce c_draw c_disp get_cs get_dx ctlbuf target 
+                           get_tw memcpy memset GraphType d2_chcr d2_madr 
+                           d6_chcr d6_madr GPU_clearque get_alarm jtbp 
+                           GetGraphType set_alarm gpu_param qout ClearImage 
+                           GraphDebug GPU_printf SetDrawEnv get_ofs set_jtb 
+                           PutDrawEnv PutDispEnv ResetGraph 
+A07      22-05-95 17:10:44 DeliverEvent 
+CALLBACK 22-05-95 17:34:18 CdDataCallback PioCallback SpuCallback 
+                           DecDCToutCallback PioDataCallback CdCallback 
+                           SpuDataCallback DecDCTinCallback 
+A20      23-05-95 12:15:58 StopPAD 
+C160     07-06-95 10:55:52 _boot 
+C73      22-05-95 17:43:30 GPU_cw 
+

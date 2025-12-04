@@ -1,0 +1,89 @@
+
+PsyLib version 2.04
+
+Module     Date     Time   Externals defined
+
+SPU      10-06-96 18:38:22 _spu_FsetRXXa _spu_IRQCallback _spu_RXX 
+                           _spu_inTransfer _spu_addrMode _spu_reset 
+                           _spu_write _spu_mem_mode _spu_tsa 
+                           _spu_mem_mode_unit _spu_mem_mode_plus 
+                           _spu_transferCallback _spu_t _spu_FiDMA 
+                           _spu_FsetRXX _spu_read _spu_transMode 
+                           _spu_mem_mode_unitM _spu_init _spu_r_ 
+                           _spu_FgetRXXa 
+SPU_IO   10-06-96 18:38:26 _spu_ioctl 
+S_CB     10-06-96 18:38:28 _SpuCallback 
+S_DCB    10-06-96 18:38:30 _SpuDataCallback 
+S_INI    10-06-96 18:38:34 _spu_zerobuf _spu_keystat _SpuInit _spu_isCalled 
+                           _spu_trans_mode SpuStart _spu_rev_flag 
+                           _spu_rev_attr _spu_voice_centerNote _spu_fd 
+                           _spu_EVdma _spu_rev_offsetaddr _spu_rev_reserve_wa 
+S_I      10-06-96 18:38:36 SpuInit 
+S_IH     10-06-96 18:38:38 SpuInitHot 
+S_Q      10-06-96 18:38:42 SpuQuit 
+S_SM     10-06-96 18:38:44 SpuSetMute 
+S_GM     10-06-96 18:38:46 SpuGetMute 
+S_M      10-06-96 18:38:48 _spu_AllocBlockNum _spu_AllocLastNum _spu_memList 
+S_M_INT  10-06-96 18:38:52 _spu_gcSPU 
+S_M_UTIL 10-06-96 18:38:56 _SpuIsInAllocateArea_ _SpuIsInAllocateArea 
+S_M_INIT 10-06-96 18:38:58 SpuInitMalloc 
+S_M_M    10-06-96 18:39:00 SpuMalloc 
+S_M_WSA  10-06-96 18:39:04 SpuMallocWithStartAddr 
+S_M_F    10-06-96 18:39:08 SpuFree 
+S_M_X    10-06-96 18:39:10 _spu_print 
+S_GAV    10-06-96 18:39:14 _SpuGetAnyVoice 
+S_SAV    10-06-96 18:39:16 _SpuSetAnyVoice 
+S_SNV    10-06-96 18:39:18 SpuSetNoiseVoice 
+S_GNV    10-06-96 18:39:22 SpuGetNoiseVoice 
+S_SNC    10-06-96 18:39:24 SpuSetNoiseClock 
+S_GNC    10-06-96 18:39:28 SpuGetNoiseClock 
+S_SR     10-06-96 18:39:30 SpuSetReverb 
+S_GR     10-06-96 18:39:32 SpuGetReverb 
+S_RMP    10-06-96 18:39:36 _spu_rev_startaddr _spu_rev_param 
+                           _spu_rev_workareasize 
+S_SRMP   10-06-96 18:42:44 SpuSetReverbModeParam 
+S_GRMP   10-06-96 18:42:46 SpuGetReverbModeParam 
+S_RRWA   10-06-96 18:42:50 SpuReserveReverbWorkArea 
+S_IRWAR  10-06-96 18:42:52 SpuIsReverbWorkAreaReserved 
+S_SRD    10-06-96 18:42:54 SpuSetReverbDepth 
+S_SRV    10-06-96 18:42:58 SpuSetReverbVoice 
+S_GRV    10-06-96 18:43:00 SpuGetReverbVoice 
+S_CRWA   10-06-96 18:43:04 SpuClearReverbWorkArea 
+S_RDD    10-06-96 18:43:06 SpuReadDecodedData 
+S_SI     10-06-96 18:43:08 SpuSetIRQ 
+S_GI     10-06-96 18:43:12 SpuGetIRQ 
+S_SIA    10-06-96 18:43:14 SpuSetIRQAddr 
+S_GIA    10-06-96 18:43:18 SpuGetIRQAddr 
+S_SIC    10-06-96 18:43:20 SpuSetIRQCallback 
+S_SK     10-06-96 18:43:22 SpuSetKey 
+S_SKOWA  10-06-96 18:43:26 SpuSetKeyOnWithAttr 
+S_SVA    10-06-96 18:43:30 _SpuSetVoiceAttr SpuSetVoiceAttr 
+S_GVA    10-06-96 18:43:32 SpuGetVoiceAttr 
+S_GKS    10-06-96 18:43:36 SpuGetKeyStatus 
+S_GCE    10-06-96 18:43:38 SpuGetCurrentEnvelope 
+S_R      10-06-96 18:46:22 SpuRead 
+S_W      10-06-96 18:46:24 SpuWrite 
+S_W0     10-06-96 18:46:28 SpuWrite0 
+S_STSA   10-06-96 18:46:30 SpuSetTransferStartAddr 
+S_GTSA   10-06-96 18:46:32 SpuGetTransferStartAddr 
+S_STM    10-06-96 18:46:36 SpuSetTransferMode 
+S_GTM    10-06-96 18:46:38 SpuGetTransferMode 
+S_WP     10-06-96 18:46:42 SpuWritePartly 
+S_ITC    10-06-96 18:46:44 SpuIsTransferCompleted 
+S_STC    10-06-96 18:46:48 SpuSetTransferCallback 
+S_IT     10-06-96 18:46:50 _spu_getInTransfer _spu_setInTransfer 
+S_SPLV   10-06-96 18:46:52 SpuSetPitchLFOVoice 
+S_GPLV   10-06-96 18:46:56 SpuGetPitchLFOVoice 
+S_SCA    10-06-96 18:47:00 SpuSetCommonAttr SpuCommonError 
+S_GCA    10-06-96 18:47:02 SpuGetCommonAttr 
+S_N2P    10-06-96 18:47:06 _spu_note2pitch _spu_pitch2note 
+SR_GAKS  10-06-96 18:47:08 SpuGetAllKeysStatus SpuRGetAllKeysStatus 
+SR_SVA   10-06-96 19:14:54 SpuRSetVoiceAttr 
+ST       10-06-96 19:14:58 SpuStTransfer SpuStInit SpuStGetVoiceStatus 
+                           SpuStQuit SpuStGetStatus 
+                           SpuStSetTransferFinishedCallback 
+                           SpuStSetStreamFinishedCallback 
+                           SpuStSetPreparationFinishedCallback 
+T_C      10-06-96 19:15:02 TimerCallback 
+VERSION  10-06-96 19:15:04 
+

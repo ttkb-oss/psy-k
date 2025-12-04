@@ -1,0 +1,50 @@
+
+PsyLib version 2.04
+
+Module     Date     Time   Externals defined
+
+ABS      12-10-95 17:41:08 abs labs 
+ATOI     12-10-95 17:41:08 atoi atol 
+BCOPY    12-10-95 17:41:10 bcopy bzero bcmp 
+CTYPE    12-10-95 17:41:12 tolower toupper _ctype_ 
+GETC     12-10-95 17:41:12 getc 
+GETCHAR  12-10-95 17:41:14 getchar 
+GETS     12-10-95 17:41:16 gets 
+MEMCHR   12-10-95 17:41:16 memchr 
+MEMCMP   12-10-95 17:41:18 memcmp 
+MEMCPY   12-10-95 17:41:20 memcpy 
+MEMMOVE  12-10-95 17:41:22 memmove 
+MEMSET   12-10-95 17:41:22 memset 
+PUTC     12-10-95 17:41:24 putc 
+PUTCHAR  12-10-95 17:41:24 putchar 
+QSORT    12-10-95 17:41:26 qsort 
+RAND     12-10-95 17:41:28 srand rand 
+SEARCH   12-10-95 17:41:30 bsearch lsearch 
+STRCAT   12-10-95 17:41:32 strcat 
+STRCHR   12-10-95 17:41:32 strchr 
+STRCMP   12-10-95 17:41:34 strcmp 
+STRCPY   12-10-95 17:41:36 strcpy 
+STRCSPN  12-10-95 17:41:36 strcspn 
+STRINGS  12-10-95 17:41:38 index rindex 
+STRLEN   12-10-95 17:41:40 strlen 
+STRNCAT  12-10-95 17:41:40 strncat 
+STRNCMP  12-10-95 17:41:42 strncmp 
+STRNCPY  12-10-95 17:41:44 strncpy 
+STRPBRK  12-10-95 17:41:44 strpbrk 
+STRRCHR  12-10-95 17:41:46 strrchr 
+STRSPN   12-10-95 17:41:48 strspn 
+STRSTR   12-10-95 17:41:50 strstr 
+STRTOD   12-10-95 17:42:02 strtod atof 
+STRTOK   12-10-95 17:42:02 strtok 
+STRTOL   12-10-95 17:42:04 atob strtol 
+STRTOUL  12-10-95 17:42:06 strtoul 
+TODIGIT  12-10-95 17:42:08 todigit 
+PRINTF   12-10-95 17:42:08 printf 
+PRNT     12-10-95 17:42:12 prnt 
+SPRINTF  12-10-95 17:42:14 sprintf 
+ITOA     12-10-95 17:42:16 itoa 
+PUTS     12-10-95 17:42:18 puts 
+SETJMP   12-10-95 17:42:18 setjmp longjmp 
+EXIT     12-10-95 17:42:18 exit 
+MALLOC   12-10-95 17:42:18 malloc free calloc realloc 
+

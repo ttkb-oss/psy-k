@@ -1,0 +1,30 @@
+
+PsyLib version 2.04
+
+Module     Date     Time   Externals defined
+
+DSSYS_1  20-05-97 14:47:34 DS_ready DS_close DS_shell_open DS_sync_callback 
+                           DS_lastread DS_lastmode DS_lastseek 
+                           DS_reset_members DS_system_active tipDsSystem 
+                           parcpy rescpy DS_ready_callback DS_status 
+                           DS_system_status DS_init DS_sync DS_vsync_callback 
+                           DS_stop DS_cw DS_lastcom DS_restart DS_lastpos 
+DSSYS_2  20-05-97 14:47:36 DsPacket DsStatus DsShellOpen DsInit DsSync 
+                           DsLastCom DsCommand DsReady DsClose DsFlush 
+                           DsReset DsSystemStatus DsQueueLen 
+DSSYS_3  20-05-97 14:47:38 DsGetSector DsGetSector2 DsLastPos DsSetDebug 
+                           DsDataSync DsIntToPos DsPosToInt DsMix 
+DSSYS_4  20-05-97 14:47:38 DsControl DsControlB DsControlF 
+DSSYS_5  20-05-97 14:47:38 DsComstr DsIntstr DS_comstr DS_intstr 
+DSTOC    20-05-97 14:47:40 DsGetToc 
+DSREAD   20-05-97 14:47:40 DsReadBreak DsRead DsReadCallback DsReadMode 
+                           DsReadSync 
+DSREAD2  20-05-97 14:47:40 DsRead2 
+DSREADE  20-05-97 14:47:42 DsReadFile DsReadExec 
+DSFILE   20-05-97 14:47:42 DsSearchFile 
+DSPLAY   20-05-97 14:47:44 DsPlay 
+DSREADY  20-05-97 14:47:44 DsStartReadySystem DsEndReadySystem 
+DSTYPE   20-05-97 14:47:46 DsGetDiskType *GD_disk_kind 
+DSCB     20-05-97 14:47:46 DsDataCallback *GlobalCallback DsSyncCallback 
+                           DsReadyCallback 
+

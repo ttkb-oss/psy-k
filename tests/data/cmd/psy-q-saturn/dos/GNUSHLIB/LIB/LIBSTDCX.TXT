@@ -1,0 +1,700 @@
+
+PsyLib version 2.04
+
+Module     Date     Time   Externals defined
+
+CMATHI   19-12-96 11:55:22 abs__Ff abs__Fd abs__Fr 
+CSTDLIBI 19-12-96 11:55:22 abs__Fl 
+CSTRINGI 19-12-96 11:55:22 
+CSTRIO   19-12-96 11:55:22 
+                           __rs__FR7istreamRt12basic_string2ZcZt18string_char_traits1Zc 
+                           __ls__FR7ostreamRCt12basic_string2ZcZt18string_char_traits1Zc 
+                           getline__FR7istreamRt12basic_string2ZcZt18string_char_traits1Zcc 
+CSTRMAIN 19-12-96 11:55:22 assign__t18string_char_traits1ZcRcRCc 
+                           eq__t18string_char_traits1ZcRCcT1 
+                           ne__t18string_char_traits1ZcRCcT1 
+                           lt__t18string_char_traits1ZcRCcT1 
+                           eos__t18string_char_traits1Zc 
+                           is_del__t18string_char_traits1Zcc 
+                           compare__t18string_char_traits1ZcPCcT1Ui 
+                           length__t18string_char_traits1ZcPCc 
+                           copy__t18string_char_traits1ZcPcPCcUi 
+                           move__t18string_char_traits1ZcPcPCcUi 
+                           set__t18string_char_traits1ZcPcRCcUi 
+                           rep__Ct12basic_string2ZcZt18string_char_traits1Zc 
+                           release__Q2t12basic_string2ZcZt18string_char_traits1Zc3Rep 
+                           data__Q2t12basic_string2ZcZt18string_char_traits1Zc3Rep 
+                           repup__t12basic_string2ZcZt18string_char_traits1ZcPQ2t12basic_string2ZcZt18string_char_traits1Zc3Rep 
+                           data__Ct12basic_string2ZcZt18string_char_traits1Zc 
+                           length__Ct12basic_string2ZcZt18string_char_traits1Zc 
+                           size__Ct12basic_string2ZcZt18string_char_traits1Zc 
+                           capacity__Ct12basic_string2ZcZt18string_char_traits1Zc 
+                           max_size__Ct12basic_string2ZcZt18string_char_traits1Zc 
+                           empty__Ct12basic_string2ZcZt18string_char_traits1Zc 
+                           frob_size__Q2t12basic_string2ZcZt18string_char_traits1Zc3RepUi 
+                           __nw__Q2t12basic_string2ZcZt18string_char_traits1Zc3RepUiUi 
+                           create__Q2t12basic_string2ZcZt18string_char_traits1Zc3RepUi 
+                           copy__Q2t12basic_string2ZcZt18string_char_traits1Zc3RepUiPCcUi 
+                           clone__Q2t12basic_string2ZcZt18string_char_traits1Zc3Rep 
+                           grab__Q2t12basic_string2ZcZt18string_char_traits1Zc3Rep 
+                           __as__t12basic_string2ZcZt18string_char_traits1ZcRCt12basic_string2ZcZt18string_char_traits1Zc 
+                           __t12basic_string2ZcZt18string_char_traits1Zc 
+                           __t12basic_string2ZcZt18string_char_traits1ZcRCt12basic_string2ZcZt18string_char_traits1Zc 
+                           excess_slop__Q2t12basic_string2ZcZt18string_char_traits1Zc3RepUiUi 
+                           check_realloc__Ct12basic_string2ZcZt18string_char_traits1ZcUi 
+                           move__Q2t12basic_string2ZcZt18string_char_traits1Zc3RepUiPCcUi 
+                           replace__t12basic_string2ZcZt18string_char_traits1ZcUiUiPCcUi 
+                           replace__t12basic_string2ZcZt18string_char_traits1ZcUiUiRCt12basic_string2ZcZt18string_char_traits1ZcUiUi 
+                           assign__t12basic_string2ZcZt18string_char_traits1ZcRCt12basic_string2ZcZt18string_char_traits1ZcUiUi 
+                           __t12basic_string2ZcZt18string_char_traits1ZcRCt12basic_string2ZcZt18string_char_traits1ZcUiUi 
+                           assign__t12basic_string2ZcZt18string_char_traits1ZcPCcUi 
+                           __t12basic_string2ZcZt18string_char_traits1ZcPCcUi 
+                           assign__t12basic_string2ZcZt18string_char_traits1ZcPCc 
+                           __t12basic_string2ZcZt18string_char_traits1ZcPCc 
+                           set__Q2t12basic_string2ZcZt18string_char_traits1Zc3RepUicUi 
+                           replace__t12basic_string2ZcZt18string_char_traits1ZcUiUiUic 
+                           assign__t12basic_string2ZcZt18string_char_traits1ZcUic 
+                           __t12basic_string2ZcZt18string_char_traits1ZcUic 
+                           _$_t12basic_string2ZcZt18string_char_traits1Zc 
+                           swap__t12basic_string2ZcZt18string_char_traits1ZcRt12basic_string2ZcZt18string_char_traits1Zc 
+                           append__t12basic_string2ZcZt18string_char_traits1ZcRCt12basic_string2ZcZt18string_char_traits1ZcUiUi 
+                           append__t12basic_string2ZcZt18string_char_traits1ZcPCcUi 
+                           append__t12basic_string2ZcZt18string_char_traits1ZcPCc 
+                           append__t12basic_string2ZcZt18string_char_traits1ZcUic 
+                           __as__t12basic_string2ZcZt18string_char_traits1ZcPCc 
+                           __as__t12basic_string2ZcZt18string_char_traits1Zcc 
+                           __apl__t12basic_string2ZcZt18string_char_traits1ZcRCt12basic_string2ZcZt18string_char_traits1Zc 
+                           __apl__t12basic_string2ZcZt18string_char_traits1ZcPCc 
+                           __apl__t12basic_string2ZcZt18string_char_traits1Zcc 
+                           insert__t12basic_string2ZcZt18string_char_traits1ZcUiRCt12basic_string2ZcZt18string_char_traits1ZcUiUi 
+                           insert__t12basic_string2ZcZt18string_char_traits1ZcUiPCcUi 
+                           insert__t12basic_string2ZcZt18string_char_traits1ZcUiPCc 
+                           insert__t12basic_string2ZcZt18string_char_traits1ZcUiUic 
+                           alloc__t12basic_string2ZcZt18string_char_traits1ZcUib 
+                           unique__t12basic_string2ZcZt18string_char_traits1Zc 
+                           selfish__t12basic_string2ZcZt18string_char_traits1Zc 
+                           __vc__Q2t12basic_string2ZcZt18string_char_traits1Zc3RepUi 
+                           __vc__t12basic_string2ZcZt18string_char_traits1ZcUi 
+                           begin__t12basic_string2ZcZt18string_char_traits1Zc 
+                           insert__t12basic_string2ZcZt18string_char_traits1ZcPcc 
+                           insert__t12basic_string2ZcZt18string_char_traits1ZcPcUic 
+                           remove__t12basic_string2ZcZt18string_char_traits1ZcUiUi 
+                           remove__t12basic_string2ZcZt18string_char_traits1ZcPc 
+                           remove__t12basic_string2ZcZt18string_char_traits1ZcPcT1 
+                           replace__t12basic_string2ZcZt18string_char_traits1ZcUiUiPCc 
+                           replace__t12basic_string2ZcZt18string_char_traits1ZcUiUic 
+                           replace__t12basic_string2ZcZt18string_char_traits1ZcPcT1RCt12basic_string2ZcZt18string_char_traits1Zc 
+                           replace__t12basic_string2ZcZt18string_char_traits1ZcPcT1PCcUi 
+                           replace__t12basic_string2ZcZt18string_char_traits1ZcPcT1PCc 
+                           replace__t12basic_string2ZcZt18string_char_traits1ZcPcT1Uic 
+                           eos__t12basic_string2ZcZt18string_char_traits1Zc 
+                           __vc__Ct12basic_string2ZcZt18string_char_traits1ZcUi 
+                           at__t12basic_string2ZcZt18string_char_traits1ZcUi 
+                           at__Ct12basic_string2ZcZt18string_char_traits1ZcUi 
+                           terminate__Ct12basic_string2ZcZt18string_char_traits1Zc 
+                           c_str__Ct12basic_string2ZcZt18string_char_traits1Zc 
+                           resize__t12basic_string2ZcZt18string_char_traits1ZcUic 
+                           resize__t12basic_string2ZcZt18string_char_traits1ZcUi 
+                           reserve__t12basic_string2ZcZt18string_char_traits1ZcUi 
+                           copy__t12basic_string2ZcZt18string_char_traits1ZcPcUiUi 
+                           find__Ct12basic_string2ZcZt18string_char_traits1ZcPCcUiUi 
+                           find__Ct12basic_string2ZcZt18string_char_traits1ZcRCt12basic_string2ZcZt18string_char_traits1ZcUi 
+                           find__Ct12basic_string2ZcZt18string_char_traits1ZcPCcUi 
+                           _find__t12basic_string2ZcZt18string_char_traits1ZcPCccUiUi 
+                           find__Ct12basic_string2ZcZt18string_char_traits1ZccUi 
+                           rfind__Ct12basic_string2ZcZt18string_char_traits1ZcPCcUiUi 
+                           rfind__Ct12basic_string2ZcZt18string_char_traits1ZcRCt12basic_string2ZcZt18string_char_traits1ZcUi 
+                           rfind__Ct12basic_string2ZcZt18string_char_traits1ZcPCcUi 
+                           rfind__Ct12basic_string2ZcZt18string_char_traits1ZccUi 
+                           find_first_of__Ct12basic_string2ZcZt18string_char_traits1ZcPCcUiUi 
+                           find_first_of__Ct12basic_string2ZcZt18string_char_traits1ZcRCt12basic_string2ZcZt18string_char_traits1ZcUi 
+                           find_first_of__Ct12basic_string2ZcZt18string_char_traits1ZcPCcUi 
+                           find_first_of__Ct12basic_string2ZcZt18string_char_traits1ZccUi 
+                           find_last_of__Ct12basic_string2ZcZt18string_char_traits1ZcPCcUiUi 
+                           find_last_of__Ct12basic_string2ZcZt18string_char_traits1ZcRCt12basic_string2ZcZt18string_char_traits1ZcUi 
+                           find_last_of__Ct12basic_string2ZcZt18string_char_traits1ZcPCcUi 
+                           find_last_of__Ct12basic_string2ZcZt18string_char_traits1ZccUi 
+                           find_first_not_of__Ct12basic_string2ZcZt18string_char_traits1ZcPCcUiUi 
+                           find_first_not_of__Ct12basic_string2ZcZt18string_char_traits1ZcRCt12basic_string2ZcZt18string_char_traits1ZcUi 
+                           find_first_not_of__Ct12basic_string2ZcZt18string_char_traits1ZcPCcUi 
+                           find_first_not_of__Ct12basic_string2ZcZt18string_char_traits1ZccUi 
+                           find_last_not_of__Ct12basic_string2ZcZt18string_char_traits1ZcPCcUiUi 
+                           find_last_not_of__Ct12basic_string2ZcZt18string_char_traits1ZcRCt12basic_string2ZcZt18string_char_traits1ZcUi 
+                           find_last_not_of__Ct12basic_string2ZcZt18string_char_traits1ZcPCcUi 
+                           find_last_not_of__Ct12basic_string2ZcZt18string_char_traits1ZccUi 
+                           substr__Ct12basic_string2ZcZt18string_char_traits1ZcUiUi 
+                           compare__Ct12basic_string2ZcZt18string_char_traits1ZcRCt12basic_string2ZcZt18string_char_traits1ZcUiUi 
+                           compare__Ct12basic_string2ZcZt18string_char_traits1ZcPCcUiUi 
+                           compare__Ct12basic_string2ZcZt18string_char_traits1ZcPCcUi 
+                           end__t12basic_string2ZcZt18string_char_traits1Zc 
+                           begin__Ct12basic_string2ZcZt18string_char_traits1Zc 
+                           end__Ct12basic_string2ZcZt18string_char_traits1Zc 
+                           __pl__FRCt12basic_string2ZcZt18string_char_traits1ZcT0 
+                           __pl__FPCcRCt12basic_string2ZcZt18string_char_traits1Zc 
+                           __pl__FcRCt12basic_string2ZcZt18string_char_traits1Zc 
+                           __pl__FRCt12basic_string2ZcZt18string_char_traits1ZcPCc 
+                           __pl__FRCt12basic_string2ZcZt18string_char_traits1Zcc 
+                           __eq__FRCt12basic_string2ZcZt18string_char_traits1ZcT0 
+                           __eq__FPCcRCt12basic_string2ZcZt18string_char_traits1Zc 
+                           __eq__FRCt12basic_string2ZcZt18string_char_traits1ZcPCc 
+                           __ne__FRCt12basic_string2ZcZt18string_char_traits1ZcT0 
+                           __ne__FPCcRCt12basic_string2ZcZt18string_char_traits1Zc 
+                           __ne__FRCt12basic_string2ZcZt18string_char_traits1ZcPCc 
+                           __lt__FRCt12basic_string2ZcZt18string_char_traits1ZcT0 
+                           __lt__FPCcRCt12basic_string2ZcZt18string_char_traits1Zc 
+                           __lt__FRCt12basic_string2ZcZt18string_char_traits1ZcPCc 
+                           __gt__FRCt12basic_string2ZcZt18string_char_traits1ZcT0 
+                           __gt__FPCcRCt12basic_string2ZcZt18string_char_traits1Zc 
+                           __gt__FRCt12basic_string2ZcZt18string_char_traits1ZcPCc 
+                           __le__FRCt12basic_string2ZcZt18string_char_traits1ZcT0 
+                           __le__FPCcRCt12basic_string2ZcZt18string_char_traits1Zc 
+                           __le__FRCt12basic_string2ZcZt18string_char_traits1ZcPCc 
+                           __ge__FRCt12basic_string2ZcZt18string_char_traits1ZcT0 
+                           __ge__FPCcRCt12basic_string2ZcZt18string_char_traits1Zc 
+                           __ge__FRCt12basic_string2ZcZt18string_char_traits1ZcPCc 
+                           _t12basic_string2ZcZt18string_char_traits1Zc$nilRep 
+                           _t12basic_string2ZcZt18string_char_traits1Zc$npos 
+DCOMIO   19-12-96 11:55:22 __rs__FR7istreamRt7complex1Zd 
+                           __ls__FR7ostreamRCt7complex1Zd 
+DCOMPLEX 19-12-96 11:55:22 __t7complex1Zddd __t7complex1ZdRCt7complex1Zf 
+                           __apl__t7complex1ZdRCt7complex1Zd 
+                           __ami__t7complex1ZdRCt7complex1Zd 
+                           __aml__t7complex1ZdRCt7complex1Zd 
+                           __adv__t7complex1ZdRCt7complex1Zd 
+                           real__Ct7complex1Zd imag__Ct7complex1Zd 
+                           real__FRCt7complex1Zd imag__FRCt7complex1Zd 
+                           __t7complex1ZfRCt7complex1Zd 
+                           __doadv__FPt7complex1ZdRCt7complex1Zd 
+                           __pl__FRCt7complex1ZdT0 __pl__FRCt7complex1Zdd 
+                           __pl__FdRCt7complex1Zd __mi__FRCt7complex1ZdT0 
+                           __mi__FRCt7complex1Zdd __mi__FdRCt7complex1Zd 
+                           __ml__FRCt7complex1ZdT0 __ml__FRCt7complex1Zdd 
+                           __ml__FdRCt7complex1Zd __dv__FRCt7complex1ZdT0 
+                           __dv__FRCt7complex1Zdd __dv__FdRCt7complex1Zd 
+                           __pl__FRCt7complex1Zd __mi__FRCt7complex1Zd 
+                           __eq__FRCt7complex1ZdT0 __eq__FRCt7complex1Zdd 
+                           __eq__FdRCt7complex1Zd __ne__FRCt7complex1ZdT0 
+                           __ne__FRCt7complex1Zdd __ne__FdRCt7complex1Zd 
+                           abs__FRCt7complex1Zd arg__FRCt7complex1Zd 
+                           polar__Fdd conj__FRCt7complex1Zd 
+                           norm__FRCt7complex1Zd cos__FRCt7complex1Zd 
+                           cosh__FRCt7complex1Zd exp__FRCt7complex1Zd 
+                           log__FRCt7complex1Zd pow__FRCt7complex1ZdT0 
+                           pow__FRCt7complex1Zdd pow__FRCt7complex1Zdi 
+                           pow__FdRCt7complex1Zd sin__FRCt7complex1Zd 
+                           sinh__FRCt7complex1Zd sqrt__FRCt7complex1Zd 
+                           __doaml__FPt7complex1ZdRCt7complex1Zd 
+                           __doami__FPt7complex1ZdRCt7complex1Zd 
+                           __doapl__FPt7complex1ZdRCt7complex1Zd 
+EXCEPTIO 19-12-96 11:55:22 __default_terminate__Fv __default_unexpected__Fv 
+                           set_terminate__FPFv_v set_unexpected__FPFv_v 
+                           terminate__Fv unexpected__Fv 
+                           _GLOBAL_$I$__default_terminate__Fv *__eh_pc 
+                           *__eh_type *__eh_value *__eh_cleanup 
+FCOMIO   19-12-96 11:55:22 __rs__FR7istreamRt7complex1Zf 
+                           __ls__FR7ostreamRCt7complex1Zf 
+FCOMPLEX 19-12-96 11:55:22 __t7complex1Zfff __apl__t7complex1ZfRCt7complex1Zf 
+                           __ami__t7complex1ZfRCt7complex1Zf 
+                           __aml__t7complex1ZfRCt7complex1Zf 
+                           __adv__t7complex1ZfRCt7complex1Zf 
+                           real__Ct7complex1Zf imag__Ct7complex1Zf 
+                           real__FRCt7complex1Zf imag__FRCt7complex1Zf 
+                           __doadv__FPt7complex1ZfRCt7complex1Zf 
+                           __pl__FRCt7complex1ZfT0 __pl__FRCt7complex1Zff 
+                           __pl__FfRCt7complex1Zf __mi__FRCt7complex1ZfT0 
+                           __mi__FRCt7complex1Zff __mi__FfRCt7complex1Zf 
+                           __ml__FRCt7complex1ZfT0 __ml__FRCt7complex1Zff 
+                           __ml__FfRCt7complex1Zf __dv__FRCt7complex1ZfT0 
+                           __dv__FRCt7complex1Zff __dv__FfRCt7complex1Zf 
+                           __pl__FRCt7complex1Zf __mi__FRCt7complex1Zf 
+                           __eq__FRCt7complex1ZfT0 __eq__FRCt7complex1Zff 
+                           __eq__FfRCt7complex1Zf __ne__FRCt7complex1ZfT0 
+                           __ne__FRCt7complex1Zff __ne__FfRCt7complex1Zf 
+                           abs__FRCt7complex1Zf arg__FRCt7complex1Zf 
+                           polar__Fff conj__FRCt7complex1Zf 
+                           norm__FRCt7complex1Zf cos__FRCt7complex1Zf 
+                           cosh__FRCt7complex1Zf exp__FRCt7complex1Zf 
+                           log__FRCt7complex1Zf pow__FRCt7complex1ZfT0 
+                           pow__FRCt7complex1Zff pow__FRCt7complex1Zfi 
+                           pow__FfRCt7complex1Zf sin__FRCt7complex1Zf 
+                           sinh__FRCt7complex1Zf sqrt__FRCt7complex1Zf 
+                           __doaml__FPt7complex1ZfRCt7complex1Zf 
+                           __doami__FPt7complex1ZfRCt7complex1Zf 
+                           __doapl__FPt7complex1ZfRCt7complex1Zf 
+LDCOMIO  19-12-96 11:55:22 __rs__FR7istreamRt7complex1Zr 
+                           __ls__FR7ostreamRCt7complex1Zr 
+LDCOMPLE 19-12-96 11:55:22 __t7complex1Zrrr __t7complex1ZrRCt7complex1Zf 
+                           __t7complex1ZrRCt7complex1Zd 
+                           __apl__t7complex1ZrRCt7complex1Zr 
+                           __ami__t7complex1ZrRCt7complex1Zr 
+                           __aml__t7complex1ZrRCt7complex1Zr 
+                           __adv__t7complex1ZrRCt7complex1Zr 
+                           real__Ct7complex1Zr imag__Ct7complex1Zr 
+                           real__FRCt7complex1Zr imag__FRCt7complex1Zr 
+                           __t7complex1ZfRCt7complex1Zr 
+                           __t7complex1ZdRCt7complex1Zr 
+                           __doadv__FPt7complex1ZrRCt7complex1Zr 
+                           __pl__FRCt7complex1ZrT0 __pl__FRCt7complex1Zrr 
+                           __pl__FrRCt7complex1Zr __mi__FRCt7complex1ZrT0 
+                           __mi__FRCt7complex1Zrr __mi__FrRCt7complex1Zr 
+                           __ml__FRCt7complex1ZrT0 __ml__FRCt7complex1Zrr 
+                           __ml__FrRCt7complex1Zr __dv__FRCt7complex1ZrT0 
+                           __dv__FRCt7complex1Zrr __dv__FrRCt7complex1Zr 
+                           __pl__FRCt7complex1Zr __mi__FRCt7complex1Zr 
+                           __eq__FRCt7complex1ZrT0 __eq__FRCt7complex1Zrr 
+                           __eq__FrRCt7complex1Zr __ne__FRCt7complex1ZrT0 
+                           __ne__FRCt7complex1Zrr __ne__FrRCt7complex1Zr 
+                           abs__FRCt7complex1Zr arg__FRCt7complex1Zr 
+                           polar__Frr conj__FRCt7complex1Zr 
+                           norm__FRCt7complex1Zr cos__FRCt7complex1Zr 
+                           cosh__FRCt7complex1Zr exp__FRCt7complex1Zr 
+                           log__FRCt7complex1Zr pow__FRCt7complex1ZrT0 
+                           pow__FRCt7complex1Zrr pow__FRCt7complex1Zri 
+                           pow__FrRCt7complex1Zr sin__FRCt7complex1Zr 
+                           sinh__FRCt7complex1Zr sqrt__FRCt7complex1Zr 
+                           __doaml__FPt7complex1ZrRCt7complex1Zr 
+                           __doami__FPt7complex1ZrRCt7complex1Zr 
+                           __doapl__FPt7complex1ZrRCt7complex1Zr 
+NEWI     19-12-96 11:55:22 __nw__FUiPv __vn__FUiPv 
+STDDEFI  19-12-96 11:55:22 NPOS 
+STDEXCEP 19-12-96 11:55:22 __9exceptionRCPCc _$_9exception what__C9exception 
+                           __9exception do_raise__9exception 
+                           __11logic_errorRCPCc _$_11logic_error 
+                           __12domain_errorRCPCc _$_12domain_error 
+                           __16invalid_argumentRCPCc _$_16invalid_argument 
+                           __12length_errorRCPCc _$_12length_error 
+                           __12out_of_rangeRCPCc _$_12out_of_range 
+                           __13runtime_errorRCPCc _$_13runtime_error 
+                           __13runtime_error __11range_errorRCPCc 
+                           _$_11range_error __14overflow_errorRCPCc 
+                           _$_14overflow_error __8bad_castRCPCc _$_8bad_cast 
+                           __10bad_typeid _$_10bad_typeid 
+                           _GLOBAL_$D$__9exceptionRCPCc 
+                           _GLOBAL_$I$__9exceptionRCPCc _vt$9exception 
+                           _vt$11logic_error _vt$12domain_error 
+                           _vt$16invalid_argument _vt$12length_error 
+                           _vt$12out_of_range _vt$13runtime_error 
+                           _vt$11range_error _vt$14overflow_error 
+                           _vt$8bad_cast _vt$10bad_typeid TD$9exception 
+                           TD$11logic_error TD$10bad_typeid TD$8bad_cast 
+                           TD$13runtime_error TD$14overflow_error 
+                           TD$11range_error TD$12out_of_range 
+                           TD$12length_error TD$16invalid_argument 
+                           TD$12domain_error 
+TYPEINFO 19-12-96 11:55:22 __rtti_get_node_type__C9type_info 
+                           __rtti_get_name__C9type_info 
+                           __rtti_compare__C9type_infoRC9type_info 
+                           __rtti_match__C9type_infoRC9type_infoiPv 
+                           _$_9type_info __9type_info name__C9type_info 
+                           __eq__C9type_infoRC9type_info 
+                           __ne__C9type_infoRC9type_info 
+                           __19__builtin_type_infoQ219__builtin_type_info16builtin_type_val 
+                           __rtti_get_node_type__C19__builtin_type_info 
+                           __rtti_get_name__C19__builtin_type_info 
+                           __rtti_compare__C19__builtin_type_infoRC9type_info 
+                           __fast_compare__FPCcT0 __16__user_type_infoPCc 
+                           __rtti_get_node_type__C16__user_type_info 
+                           __rtti_get_name__C16__user_type_info 
+                           __rtti_compare__C16__user_type_infoRC9type_info 
+                           __17__class_type_infoPCcPP9type_infoPiT3PQ217__class_type_info11access_modei 
+                           __rtti_get_node_type__C17__class_type_info 
+                           __19__pointer_type_infoR9type_info 
+                           __rtti_get_node_type__C19__pointer_type_info 
+                           __rtti_get_name__C19__pointer_type_info 
+                           __rtti_compare__C19__pointer_type_infoRC9type_info 
+                           __16__attr_type_infoQ216__attr_type_info8attr_valR9type_info 
+                           __rtti_get_node_type__C16__attr_type_info 
+                           __rtti_get_name__C16__attr_type_info 
+                           __rtti_compare__C16__attr_type_infoRC9type_info 
+                           __16__func_type_infoPCc 
+                           __rtti_get_node_type__C16__func_type_info 
+                           __16__ptmf_type_infoPCc 
+                           __rtti_get_node_type__C16__ptmf_type_info 
+                           __16__ptmd_type_infoR9type_infoT1 
+                           __rtti_get_node_type__C16__ptmd_type_info 
+                           __rtti_compare__C16__ptmd_type_infoRC9type_info 
+                           __rtti_match__C17__class_type_infoRC9type_infoiPv 
+                           __rtti_match__C19__pointer_type_infoRC9type_infoiPv 
+                           __throw_type_match_rtti 
+                           _GLOBAL_$D$__rtti_get_node_type__C9type_info 
+                           _GLOBAL_$I$__rtti_get_node_type__C9type_info 
+                           _vt$9type_info _vt$19__builtin_type_info 
+                           _vt$16__user_type_info _vt$17__class_type_info 
+                           _vt$19__pointer_type_info _vt$16__attr_type_info 
+                           _vt$16__func_type_info _vt$16__ptmf_type_info 
+                           TD$9type_info TD$16__user_type_info 
+                           TD$16__ptmf_type_info TD$16__func_type_info 
+                           TD$16__attr_type_info TD$19__pointer_type_info 
+                           TD$17__class_type_info TD$19__builtin_type_info 
+                           _vt$16__ptmd_type_info __bad_cast_object 
+                           TD$16__ptmd_type_info 
+FILEDOAL 19-12-96 11:55:22 _IO_file_doallocate 
+FLOATCON 19-12-96 11:55:22 _IO_strtod _IO_dtoa 
+GENOPS   19-12-96 11:55:22 _IO_un_link _IO_link_in _IO_least_marker 
+                           _IO_switch_to_main_get_area 
+                           _IO_switch_to_backup_area _IO_switch_to_get_mode 
+                           _IO_free_backup_area __overflow __underflow 
+                           __uflow _IO_setb _IO_doallocbuf 
+                           _IO_default_underflow _IO_default_uflow 
+                           _IO_default_xsputn _IO_sgetn _IO_default_xsgetn 
+                           _IO_sync _IO_default_setbuf _IO_default_seekpos 
+                           _IO_default_doallocate _IO_init _IO_default_sync 
+                           _IO_default_finish _IO_default_seekoff 
+                           _IO_sputbackc _IO_sungetc _IO_set_column 
+                           _IO_adjust_column _IO_get_column _IO_flush_all 
+                           _IO_flush_all_linebuffered _IO_unbuffer_all 
+                           _IO_cleanup _IO_init_marker _IO_remove_marker 
+                           _IO_marker_difference _IO_marker_delta 
+                           _IO_seekmark _IO_unsave_markers 
+                           _IO_nobackup_pbackfail _IO_default_pbackfail 
+                           _IO_default_seek _IO_default_stat _IO_default_read 
+                           _IO_default_write 
+FILEOPS  19-12-96 11:55:22 _IO_file_init _IO_file_close_it _IO_file_sync 
+                           _IO_file_finish _IO_do_write _IO_file_fopen 
+                           _IO_file_attach _IO_file_setbuf _IO_file_underflow 
+                           _IO_file_overflow _IO_file_seekoff _IO_file_read 
+                           _IO_file_seek _IO_file_stat _IO_file_close 
+                           _IO_file_write _IO_file_xsputn _IO_file_jumps 
+IOVFPRIN 19-12-96 11:55:22 _IO_vfprintf 
+IOVFSCAN 19-12-96 11:55:22 _IO_vfscanf 
+IOIGNORE 19-12-96 11:55:22 _IO_ignore 
+IOPADN   19-12-96 11:55:22 _IO_padn 
+IOFGETPO 19-12-96 11:55:22 _IO_fgetpos 
+IOFREAD  19-12-96 11:55:22 _IO_fread 
+IOFSCANF 19-12-96 11:55:22 _IO_fscanf 
+IOFSETPO 19-12-96 11:55:24 _IO_fsetpos 
+IOGETDEL 19-12-96 11:55:24 _IO_getdelim 
+IOGETLIN 19-12-96 11:55:24 _IO_getline 
+IOPRINTF 19-12-96 11:55:24 _IO_printf 
+IOSEEKOF 19-12-96 11:55:24 _IO_seekoff 
+IOSEEKPO 19-12-96 11:55:24 _IO_seekpos 
+OUTFLOAT 19-12-96 11:55:24 _IO_outfloat 
+STROPS   19-12-96 11:55:24 _IO_str_init_static _IO_str_init_readonly 
+                           _IO_str_overflow _IO_str_underflow _IO_str_count 
+                           _IO_str_seekoff _IO_str_pbackfail _IO_str_finish 
+                           _IO_str_jumps 
+IOFCLOSE 19-12-96 11:55:24 _IO_fclose 
+IOPOPEN  19-12-96 11:55:24 _IO_proc_open _IO_popen _IO_proc_jumps 
+                           _IO_proc_close 
+IOUNGETC 19-12-96 11:55:24 _IO_ungetc 
+BUILTINB 19-12-96 11:55:24 
+FILEBUF  19-12-96 11:55:24 init__7filebuf __7filebuf __7filebufi 
+                           __7filebufiPci _$_7filebuf open__7filebufPCcii 
+                           open__7filebufPCcT1 attach__7filebufi 
+                           setbuf__7filebufPci doallocate__7filebuf 
+                           overflow__7filebufi underflow__7filebuf 
+                           sync__7filebuf seekoff__7filebuflQ23ios8seek_diri 
+                           close__7filebuf sys_read__7filebufPci 
+                           sys_seek__7filebuflQ23ios8seek_dir 
+                           sys_write__7filebufPCci sys_stat__7filebufPv 
+                           sys_close__7filebuf xsputn__7filebufPCci 
+                           xsgetn__7filebufPci _7filebuf$openprot 
+FSTREAM  19-12-96 11:55:24 rdbuf__C11fstreambase is_open__C11fstreambase 
+                           setbuf__11fstreambasePci filedesc__11fstreambase 
+                           raw__11fstreambase __8ifstreami __8ifstreamii 
+                           __8ifstreamiiPci __8ifstreamiPCcii 
+                           open__8ifstreamPCcii __8ofstreami __8ofstreamii 
+                           __8ofstreamiiPci __8ofstreamiPCcii 
+                           open__8ofstreamPCcii __7fstreami __7fstreamii 
+                           __7fstreamiPCcii __7fstreamiiPci 
+                           open__7fstreamPCcii __11fstreambasei 
+                           __11fstreambaseii __11fstreambaseiPCcii 
+                           __11fstreambaseiiPci open__11fstreambasePCcii 
+                           close__11fstreambase attach__11fstreambasei 
+                           __fb_init__11fstreambase _vt$8ifstream$3ios 
+                           _vt$8ofstream$3ios _vt$7fstream$3ios 
+                           _vt$11fstreambase$3ios 
+INDSTREA 19-12-96 11:55:24 get_stream__11indirectbuf 
+                           put_stream__11indirectbuf 
+                           lookup_stream__11indirectbufi 
+                           __11indirectbufP9streambufT1i _$_11indirectbuf 
+                           xsputn__11indirectbufPCci xsgetn__11indirectbufPci 
+                           overflow__11indirectbufi underflow__11indirectbuf 
+                           uflow__11indirectbuf 
+                           seekoff__11indirectbuflQ23ios8seek_diri 
+                           seekpos__11indirectbufli sync__11indirectbuf 
+                           pbackfail__11indirectbufi _vt$11indirectbuf 
+IOASSIGN 19-12-96 11:55:24 __as__22_IO_istream_withassignR7istream 
+                           __as__22_IO_ostream_withassignR7ostream 
+IOEXTEND 19-12-96 11:55:24 xalloc__3ios bitalloc__3ios iword__3iosi 
+                           pword__3iosi iword__C3iosi pword__C3iosi 
+IOMANIP  19-12-96 11:55:24 setbase__Fi setfill__Fi setprecision__Fi setw__Fi 
+                           resetiosflags__FUl setiosflags__FUl 
+                           __iomanip_setbase__FR3iosi 
+                           __iomanip_setfill__FR3iosi 
+                           __iomanip_setprecision__FR3iosi 
+                           __iomanip_setw__FR3iosi 
+                           __iomanip_setiosflags__FR3iosUl 
+                           __iomanip_resetiosflags__FR3iosUl 
+                           __rs__FR7istreamRCt6smanip1Zi 
+                           __rs__FR7istreamRCt6smanip1ZUl 
+                           __ls__FR7ostreamRCt6smanip1Zi 
+                           __ls__FR7ostreamRCt6smanip1ZUl 
+                           __t6smanip1ZUlPFR3iosUl_R3iosUl 
+                           __t6smanip1ZiPFR3iosi_R3iosi 
+IOSTREAM 19-12-96 11:55:24 __7ostreami opfx__7ostream osfx__7ostream 
+                           put__7ostreamc put__7ostreamUc put__7ostreamSc 
+                           write__7ostreamPCUci write__7ostreamPCSci 
+                           write__7ostreamPCvi __ls__7ostreamUc 
+                           __ls__7ostreamSc __ls__7ostreamPCUc 
+                           __ls__7ostreamPCSc __ls__7ostreams 
+                           __ls__7ostreamUs __ls__7ostreamb __ls__7ostreamf 
+                           __ls__7ostreamr 
+                           __ls__7ostreamPFR7ostream_R7ostream 
+                           __ls__7ostreamPFR3ios_R3ios ostreambuf__C7ostream 
+                           __7istreami get__7istreamPUcic get__7istreamRUc 
+                           getline__7istreamPUcic get__7istreamRSc 
+                           get__7istreamPScic getline__7istreamPScic 
+                           read__7istreamPUci read__7istreamPSci 
+                           read__7istreamPvi ipfx__7istreami ipfx0__7istream 
+                           ipfx1__7istream isfx__7istream get__7istream 
+                           gcount__7istream putback__7istreamc 
+                           unget__7istream unget__7istreamc 
+                           istreambuf__C7istream __rs__7istreamPUc 
+                           __rs__7istreamPSc __rs__7istreamRUc 
+                           __rs__7istreamRSc __rs__7istreamPFR3ios_R3ios 
+                           __rs__7istreamPFR7istream_R7istream __8iostreami 
+                           dec__FR3ios hex__FR3ios oct__FR3ios 
+                           __7istreamiP9streambufP7ostream 
+                           skip_ws__FP9streambuf get__7istreamRc 
+                           peek__7istream ignore__7istreamii 
+                           read__7istreamPci sync__7istream seekg__7istreaml 
+                           seekg__7istreamlQ23ios8seek_dir tellg__7istream 
+                           __rs__7istreamRc __rs__7istreamPc __rs__7istreamRs 
+                           __rs__7istreamRUs __rs__7istreamRi 
+                           __rs__7istreamRUi __rs__7istreamRl 
+                           __rs__7istreamRUl __rs__7istreamRx 
+                           __rs__7istreamRUx __rs__7istreamRb 
+                           __rs__7istreamRr __rs__7istreamRd __rs__7istreamRf 
+                           __rs__7istreamP9streambuf __ls__7ostreamc 
+                           __ls__7ostreami __ls__7ostreamUi __ls__7ostreaml 
+                           __ls__7ostreamUl __ls__7ostreamx __ls__7ostreamUx 
+                           __ls__7ostreamd __ls__7ostreamPCc 
+                           __ls__7ostreamP9streambuf 
+                           __7ostreamiP9streambufP7ostream seekp__7ostreaml 
+                           seekp__7ostreamlQ23ios8seek_dir tellp__7ostream 
+                           flush__7ostream flush__FR7ostream ws__FR7istream 
+                           _skip_ws__7istream ends__FR7ostream 
+                           endl__FR7ostream write__7ostreamPCci 
+                           do_osfx__7ostream __8iostreamiP9streambufP7ostream 
+                           close__3ios skip__7istreami _vt$7ostream$3ios 
+                           _vt$7istream$3ios _vt$8iostream$3ios 
+                           _vt$22_IO_ostream_withassign$3ios 
+                           _vt$22_IO_istream_withassign$3ios 
+ISGETLIN 19-12-96 11:55:24 getline__7istreamPcic get__7istreamPcic 
+                           _sb_readline__FP9streambufRlc gets__7istreamPPcc 
+ISGETSB  19-12-96 11:55:24 get__7istreamR9streambufc 
+ISSCAN   19-12-96 11:55:24 scan__7istreamPCce vscan__7istreamPCcPv 
+OSFORM   19-12-96 11:55:24 form__7ostreamPCce vform__7ostreamPCcPv 
+                           __ls__7ostreamPCv 
+PROCBUF  19-12-96 11:55:24 __7procbuf close__7procbuf __7procbufPCci 
+                           open__7procbufPCci sys_close__7procbuf _$_7procbuf 
+                           _vt$7procbuf 
+SBFORM   19-12-96 11:55:24 vform__9streambufPCcPv form__9streambufPCce 
+SBGETLIN 19-12-96 11:55:24 sgetline__9streambufPcUici 
+SBSCAN   19-12-96 11:55:24 vscan__9streambufPCcPvP3ios scan__9streambufPCce 
+STDIOSTR 19-12-96 11:55:24 stdiofile__C8stdiobuf buffered__C8stdiobuf 
+                           __12istdiostreamiP7__sFILE rdbuf__12istdiostream 
+                           buffered__C12istdiostream 
+                           buffered__12istdiostreami 
+                           __12ostdiostreamiP7__sFILE rdbuf__12ostdiostream 
+                           buffered__C12ostdiostream 
+                           buffered__12ostdiostreami __8stdiobufP7__sFILE 
+                           _$_8stdiobuf sys_read__8stdiobufPci 
+                           sys_write__8stdiobufPCci 
+                           sys_seek__8stdiobuflQ23ios8seek_dir 
+                           sys_close__8stdiobuf sync__8stdiobuf 
+                           overflow__8stdiobufi xsputn__8stdiobufPCci 
+                           buffered__8stdiobufi _vt$12istdiostream$3ios 
+                           _vt$12ostdiostream$3ios _vt$8stdiobuf 
+STDSTRBU 19-12-96 11:55:24 _GLOBAL_$I$_IO_stdin_ _IO_stdin_ _IO_stdout_ 
+                           _IO_stderr_ _IO_stdin_buf _IO_stdout_buf 
+                           _IO_stderr_buf _IO_list_all 
+STDSTREA 19-12-96 11:55:24 sync_with_stdio__3iosi cout cerr cin clog 
+STREAM   19-12-96 11:55:24 form__FPCce dec__Fli dec__Fii dec__FUli dec__FUii 
+                           hex__Fli hex__Fii hex__FUli hex__FUii oct__Fli 
+                           oct__Fii oct__FUli oct__FUii str__FPCci chr__Fci 
+STREAMBU 19-12-96 11:55:24 tie__C3ios tie__3iosP7ostream fill__C3ios 
+                           fill__3ioss flags__C3ios flags__3iosUl 
+                           precision__C3ios precision__3iosi setf__3iosUl 
+                           setf__3iosUlUl unsetf__3iosUl width__C3ios 
+                           width__3iosi _throw_failure__C3ios clear__3iosi 
+                           set__3iosi setstate__3iosi good__C3ios eof__C3ios 
+                           fail__C3ios bad__C3ios rdstate__C3ios 
+                           __opPv__C3ios __nt__C3ios exceptions__C3ios 
+                           exceptions__3iosi rdbuf__C3ios 
+                           rdbuf__3iosP9streambuf sync_with_stdio__3ios 
+                           unset__3ios11state_value __Q23ios4Init 
+                           set_offset__12streammarkeri saving__12streammarker 
+                           _vtable__9streambuf xchain__9streambuf 
+                           gptr__C9streambuf pptr__C9streambuf 
+                           egptr__C9streambuf epptr__C9streambuf 
+                           pbase__C9streambuf eback__C9streambuf 
+                           base__C9streambuf ebuf__C9streambuf 
+                           blen__C9streambuf xput_char__9streambufc 
+                           xflags__9streambuf xflags__9streambufi 
+                           xsetflags__9streambufi xsetflags__9streambufii 
+                           gbump__9streambufi pbump__9streambufi 
+                           setp__9streambufPcT1 setg__9streambufPcN21 
+                           shortbuf__9streambuf in_backup__9streambuf 
+                           Gbase__9streambuf eGptr__9streambuf 
+                           Bbase__9streambuf Bptr__9streambuf 
+                           eBptr__9streambuf Nbase__9streambuf 
+                           eNptr__9streambuf have_backup__9streambuf 
+                           have_markers__9streambuf put_mode__9streambuf 
+                           pubseekoff__9streambuflQ23ios8seek_diri 
+                           pubseekpos__9streambufli unbuffered__9streambuf 
+                           linebuffered__9streambuf unbuffered__9streambufi 
+                           linebuffered__9streambufi allocate__9streambuf 
+                           allocbuf__9streambuf in_avail__9streambuf 
+                           out_waiting__9streambuf sputn__9streambufPCci 
+                           padn__9streambufci sgetn__9streambufPci 
+                           sputc__9streambufi sbumpc__9streambuf 
+                           sgetc__9streambuf snextc__9streambuf 
+                           stossc__9streambuf is_open__C7filebuf 
+                           fd__C7filebuf is_reading__7filebuf 
+                           cur_ptr__7filebuf file_ptr__7filebuf 
+                           init__3iosP9streambufP7ostream 
+                           __3iosP9streambufP7ostream _$_3ios 
+                           _un_link__9streambuf _link_in__9streambuf 
+                           switch_to_get_mode__9streambuf 
+                           free_backup_area__9streambuf 
+                           __overflow__FP9streambufi underflow__9streambuf 
+                           uflow__9streambuf overflow__9streambufi 
+                           xsputn__9streambufPCci xsgetn__9streambufPci 
+                           ignore__9streambufi sync__9streambuf 
+                           pbackfail__9streambufi setbuf__9streambufPci 
+                           seekpos__9streambufli sseekpos__9streambufli 
+                           setb__9streambufPcT1i doallocate__9streambuf 
+                           doallocbuf__9streambuf __9streambufi _$_9streambuf 
+                           seekoff__9streambuflQ23ios8seek_diri 
+                           sseekoff__9streambuflQ23ios8seek_diri 
+                           sputbackc__9streambufc sungetc__9streambuf 
+                           get_column__9streambuf set_column__9streambufi 
+                           flush_all__9streambuf 
+                           flush_all_linebuffered__9streambuf 
+                           sys_stat__9streambufPv sys_read__9streambufPci 
+                           sys_write__9streambufPCci 
+                           sys_seek__9streambuflQ23ios8seek_dir 
+                           sys_close__9streambuf __12streammarkerP9streambuf 
+                           _$_12streammarker 
+                           delta__12streammarkerR12streammarker 
+                           delta__12streammarker 
+                           seekmark__9streambufR12streammarkeri 
+                           unsave_markers__9streambuf readable__3ios 
+                           writable__3ios is_open__3ios _GLOBAL_$D$tie__C3ios 
+                           _GLOBAL_$I$tie__C3ios _vt$3ios _vt$9streambuf 
+                           _vt$7filebuf io_defs__ 
+STRSTREA 19-12-96 11:55:24 is_static__C12strstreambuf __12strstreambuf 
+                           __12strstreambufi __12strstreambufPFUi_PvPFPv_v 
+                           __12strstreambufPciT1 __12strstreambufPUciT1 
+                           __12strstreambufPCci __12strstreambufPCUci 
+                           __12strstreambufPSciT1 __12strstreambufPCSci 
+                           frozen__12strstreambuf freeze__12strstreambufi 
+                           rdbuf__13strstreambase __13strstreambasei 
+                           __10ostrstreamiPcii pcount__10ostrstream 
+                           str__10ostrstream freeze__10ostrstreami 
+                           frozen__10ostrstream __9strstreamiPcii 
+                           pcount__9strstream str__9strstream 
+                           freeze__9strstreami frozen__9strstream 
+                           __10istrstreamiPCci __10ostrstreami __9strstreami 
+                           __13strstreambaseiPcii str__12strstreambuf 
+                           pcount__12strstreambuf overflow__12strstreambufi 
+                           underflow__12strstreambuf 
+                           init_dynamic__12strstreambufPFUi_PvPFPv_vi 
+                           init_static__12strstreambufPciT1 
+                           init_readonly__12strstreambufPCci 
+                           _$_12strstreambuf 
+                           seekoff__12strstreambuflQ23ios8seek_diri 
+                           pbackfail__12strstreambufi _vt$12strstreambuf 
+                           _vt$13strstreambase$3ios _vt$10ostrstream$3ios 
+                           _vt$9strstream$3ios _vt$10istrstream$3ios 
+PLOTFILE 19-12-96 11:55:24 __8PlotFilei __8PlotFileii __8PlotFileiPCcii 
+                           cmd__8PlotFilec __ls__8PlotFilei 
+                           __ls__8PlotFilePCc arc__8PlotFileiiiiii 
+                           box__8PlotFileiiii circle__8PlotFileiii 
+                           cont__8PlotFileii dot__8PlotFileiiiiPCi 
+                           erase__8PlotFile label__8PlotFilePCc 
+                           line__8PlotFileiiii linemod__8PlotFilePCc 
+                           move__8PlotFileii point__8PlotFileii 
+                           space__8PlotFileiiii _vt$8PlotFile$3ios 
+SFILE    19-12-96 11:55:24 __5SFilei size__5SFile setsize__5SFilei 
+                           __5SFileiPCciii __5SFileiii open__5SFilePCciii 
+                           get__5SFilePv put__5SFilePv __vc__5SFilel 
+                           _vt$5SFile$3ios 
+PARSESTR 19-12-96 11:55:24 line_number__8parsebuf line_length__8parsebuf 
+                           __8parsebuf left__C15string_parsebuf 
+                           right__C15string_parsebuf setbuf__8parsebufPci 
+                           tell_in_line__8parsebuf pbackfail__8parsebufi 
+                           current_line__8parsebuf 
+                           seekoff__8parsebuflQ23ios8seek_diri 
+                           __15string_parsebufPcii 
+                           underflow__15string_parsebuf 
+                           current_line__15string_parsebuf 
+                           tell_in_line__15string_parsebuf 
+                           seek_in_line__15string_parsebufi 
+                           __16general_parsebufP9streambufi 
+                           _$_16general_parsebuf 
+                           underflow__16general_parsebuf 
+                           current_line__16general_parsebuf 
+                           tell_in_line__16general_parsebuf 
+                           seek_in_line__16general_parsebufi 
+                           __13func_parsebufPFPv_PcPv 
+                           tell_in_line__13func_parsebuf 
+                           current_line__13func_parsebuf 
+                           seek_in_line__13func_parsebufi 
+                           underflow__13func_parsebuf 
+                           seek_in_line__8parsebufi _vt$8parsebuf 
+                           _vt$15string_parsebuf _vt$16general_parsebuf 
+                           _vt$13func_parsebuf 
+PFSTREAM 19-12-96 11:55:24 __9ipfstreamiPCcii __9opfstreamiPCcii 
+                           _vt$9ipfstream$3ios _vt$9opfstream$3ios 
+EDITBUF  19-12-96 11:55:26 __11edit_stringP11edit_bufferP9edit_markT2 
+                           inserting__14edit_streambuf 
+                           inserting__14edit_streambufi 
+                           is_reading__14edit_streambuf 
+                           current__14edit_streambuf 
+                           insert_before__9edit_mark 
+                           index_in_buffer__9edit_markP11edit_buffer 
+                           __9edit_mark gap_start__11edit_buffer 
+                           gap_end_pos__11edit_buffer 
+                           start_marker__11edit_buffer 
+                           end_marker__11edit_buffer gap_end__11edit_buffer 
+                           gap_size__11edit_buffer size1__11edit_buffer 
+                           size2__11edit_buffer mark_list__11edit_buffer 
+                           move_gap__11edit_bufferPc 
+                           ptr__9edit_markP11edit_buffer 
+                           flush_to_buffer__14edit_streambuf 
+                           truncate__14edit_streambuf 
+                           flush_to_buffer__14edit_streambufP11edit_buffer 
+                           disconnect_gap_from_file__14edit_streambufP11edit_buffer 
+                           tell__11edit_bufferPc 
+                           tell__11edit_bufferP9edit_mark 
+                           move_gap__11edit_bufferl gap_left__11edit_bufferi 
+                           gap_right__11edit_bufferi make_gap__11edit_bufferl 
+                           adjust_markers__11edit_bufferUlUliPc 
+                           underflow__14edit_streambuf 
+                           overflow__14edit_streambufi 
+                           set_current__14edit_streambufPci 
+                           seekoff__14edit_streambuflQ23ios8seek_diri 
+                           delete_range__11edit_bufferll 
+                           delete_range__11edit_bufferP9edit_markT1 
+                           buf_delete_chars__FP11edit_bufferP9edit_markUi 
+                           __14edit_streambufP11edit_stringi 
+                           _$_14edit_streambuf __11edit_buffer 
+                           __9edit_markP11edit_stringl buffer__9edit_mark 
+                           _$_9edit_mark length__C11edit_string 
+                           copy_bytes__C11edit_stringPi 
+                           assign__11edit_stringP11edit_string 
+                           _vt$14edit_streambuf 
+IOPRIMS  19-12-96 11:55:26 _IO_read _IO_write _IO_lseek _IO_close _IO_fstat 
+IOSTRERR 19-12-96 11:55:26 _IO_strerror 
+CLEANUP  19-12-96 11:55:26 _IO_cleanup_registration_needed 
+INSQUE   19-12-96 11:55:26 insque remque 
+STRDUP   19-12-96 11:55:26 strdup 
+ALLOCA   19-12-96 11:55:26 alloca 
+STRERROR 19-12-96 11:55:26 errno_max strerrno strtoerrno 
+TEMPBUF  19-12-96 11:55:26 __stl_temp_buffer 
+RANDOM   19-12-96 11:55:26 seed__18__random_generatorUl __long_random__FUl 
+                           _GLOBAL_$I$seed__18__random_generatorUl 
+

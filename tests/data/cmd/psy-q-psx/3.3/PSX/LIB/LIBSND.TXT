@@ -1,0 +1,102 @@
+
+PsyLib version 2.04
+
+Module     Date     Time   Externals defined
+
+ADSR     17-10-95 14:12:52 _SsUtBuildADSR _SsUtResolveADSR 
+CRES     17-10-95 14:12:54 Snd_crescendo 
+DECRE    17-10-95 14:12:58 Snd_decrescendo 
+NEXT     17-10-95 14:13:00 Snd_nextsep 
+PAUSE    17-10-95 14:13:00 Snd_nextpause Snd_pause 
+PLAY     17-10-95 14:13:02 Snd_play 
+REPLAY   17-10-95 14:13:04 Snd_replay 
+SCGMVOL  17-10-95 14:13:04 SsGetMVol 
+SCGNCK   17-10-95 14:13:06 SsGetNck 
+SCGRVOL  17-10-95 14:13:08 SsGetRVol 
+SCGSATTR 17-10-95 14:13:10 SsGetSerialAttr 
+SCGSVOL  17-10-95 14:13:10 SsGetSerialVol 
+SCNOFF   17-10-95 14:13:12 SsSetNoiseOff 
+SCNON    17-10-95 14:13:14 SsSetNoiseOn 
+SCSMUTE  17-10-95 14:13:14 SsSetMute 
+SCSMVOL  17-10-95 14:13:16 SsSetMVol 
+SCSNCK   17-10-95 14:13:20 SsSetNck 
+SCSRVOL  17-10-95 14:13:20 SsSetRVol 
+SCSSATTR 17-10-95 14:13:22 SsSetSerialAttr 
+SCSSVOL  17-10-95 14:13:24 SsSetSerialVol 
+SEPINIT  17-10-95 14:13:26 SsSepOpen InitSoundSep 
+SEQINIT  17-10-95 14:13:30 SsSeqOpen InitSoundSeq 
+SEQREAD  17-10-95 14:13:36 ContDataEntry ContPortaTime SetProgramChange 
+                           SetControlChange NoteOn ReadDeltaValue ContNrpn1 
+                           ContNrpn2 Snd_setVabAttr SetPitchBend GetMetaEvent 
+                           ContResetAll ContModulation ContPortamento SeqPlay 
+                           GetSeqData ContRpn1 ContRpn2 
+SESKOFF  17-10-95 14:13:38 SsVoKeyOff 
+SESKON   17-10-95 14:13:40 SsVoKeyOn 
+SSACCELE 17-10-95 14:13:40 SsSepSetAccelerando SsSeqSetAccelerando 
+                           Snd_SetAccele 
+SSADD    17-10-95 14:13:42 SsSetMarkCallback SsSetLoop SsIsEos SsSetTempo 
+SSCALL   17-10-95 14:13:44 SsSeqCalledTbyT 
+SSCLOSE  17-10-95 14:13:46 seq_close SsSepClose SsSeqClose 
+SSINIT   17-10-95 14:13:50 SsSetTickMode SsStart2 _ss_MarkCallback 
+                           _snd_openflag SsInit _snd_seq_tick_mode SsQuit 
+                           SsSetTableSize SsInitHot _snd_seq_no_tick 
+                           VBLANK_MINUS _ss_score _snd_seq_s_max 
+                           _snd_seq_t_max SsStart _snd_ev_flag SsEnd 
+SSNEXT   17-10-95 14:13:50 SsSetNext SsSeqSetNext 
+SSPAUSE  17-10-95 14:13:54 Snd_SetPauseMode SsSepPause SsSeqPause 
+SSPLAY   17-10-95 14:13:56 SsSepPlay SsSeqPlay Snd_SetPlayMode SsPlayBack 
+SSREPLAY 17-10-95 14:13:58 SsSepReplay SsSeqReplay Snd_SetReplayMode 
+SSRIT    17-10-95 14:14:00 SsSepSetRitardando SsSeqSetRitardando Snd_SetRit 
+SSVOL    17-10-95 14:14:00 SsSepSetVol SsSeqSetVol Snd_SetVol 
+STOP     17-10-95 14:14:02 Snd_stop SsSepStop SsSeqStop 
+TEMPO    17-10-95 14:14:04 Snd_tempo 
+VOL      17-10-95 14:14:06 Snd_SetDecres Snd_setvol_data Snd_SetCres 
+                           SsSepSetDecrescendo SsSeqSetDecrescendo 
+                           SsSepSetCrescendo SsSeqSetCrescendo 
+VS_AUTO  12-10-95 20:01:56 SsSetAutoKeyOffMode 
+VS_MONO  12-10-95 20:01:58 SsSetStereo SsSetMono 
+VS_SRV   12-10-95 20:02:00 SsSetReservedVoice 
+VS_VAB   12-10-95 20:02:04 SsVabOpen SsVabClose 
+VS_VFB   12-10-95 20:02:06 SsVabFakeBody 
+VS_VH    12-10-95 20:02:10 SsVabOpenHeadSticky SsVabFakeHead SsVabOpenHead 
+VS_VTB   12-10-95 20:02:12 SsVabTransBody 
+VS_VTBP  12-10-95 20:02:14 SsVabTransBodyPartly 
+VS_VTC   12-10-95 20:02:18 SsVabTransCompleted 
+VM_DOFF  12-10-95 20:02:20 SpuVmDamperOff 
+VM_DON   12-10-95 20:02:22 SpuVmDamperOn 
+VM_G     12-10-95 20:02:22 spuVmMaxVoice _svm_rattr _svm_vcf _svm_vab_used 
+                           _svm_cur _svm_auto_kof_mode _svm_vab_pg 
+                           _svm_vab_vh _svm_damper _svm_vab_tn 
+                           _svm_stereo_mono _svm_vab_total _svm_vab_count 
+                           _svm_vab_start kMaxPrograms _svm_brr_start_addr 
+                           _svm_pg _svm_vg _svm_vh _svm_tn 
+VM_VSU   12-10-95 20:02:24 SpuVmVSetUp 
+VM_DEBUG 12-10-95 20:02:26 SpuVmCheck 
+UT_F     12-10-95 20:02:28 SsUtFlush 
+UT_GPA   12-10-95 20:02:34 SsUtGetProgAtr 
+UT_GVA   12-10-95 20:02:38 SsUtGetVagAtr 
+UT_GVAD  12-10-95 20:02:40 SsUtGetVagAddr 
+UT_GVAFT 12-10-95 20:02:42 SsUtGetVagAddrFromTone 
+UT_GVBA  12-10-95 20:02:44 SsUtGetVBaddrInSB 
+UT_GVH   12-10-95 20:02:46 SsUtGetVabHdr 
+UT_REV   12-10-95 20:02:48 SsUtReverbOff SsUtSetReverbDelay 
+                           SsUtSetReverbDepth SsUtSetReverbFeedback 
+                           SsUtReverbOn SsUtGetReverbType SsUtSetReverbType 
+UT_SPA   12-10-95 20:02:52 SsUtSetProgAtr 
+UT_SVA   12-10-95 20:02:54 SsUtSetVagAtr 
+UT_SVH   12-10-95 20:02:56 SsUtSetVabHdr 
+VMANAGER 12-10-95 20:03:12 SsUtPitchBend _svm_orev1 _svm_orev2 SpuVmNoiseOff 
+                           SsUtVibrateOn SsUtKeyOffV SsUtGetVVol SpuVmKeyOff 
+                           SsUtSetVVol SsUtAutoPan SsUtGetDetVVol SpuVmSetVol 
+                           SsUtAutoVol SsUtSetDetVVol SpuVmSeqKeyOff 
+                           SpuVmPitchBend SpuVmGetSeqVol SsUtKeyOn 
+                           SsUtVibrateOff SpuVmSetSeqVol SpuVmPBVoice 
+                           SpuVmInit SpuVmSeKeyOn SpuVmNoiseOn 
+                           SpuVmGetSeqLVol KeyOnCheck SpuVmGetSeqRVol 
+                           SsUtKeyOnV SsUtChangePitch SpuVmGetProgPan 
+                           SsUtKeyOff SpuVmNoiseOnWithAdsr SpuVmSetProgPan 
+                           SpuVmKeyOn SpuVmGetProgVol SsUtAllKeyOff 
+                           SpuVmSetProgVol _svm_okof1 _svm_okof2 
+                           SpuVmSeKeyOff _svm_okon1 _svm_okon2 SpuVmFlush 
+                           SsUtChangeADSR 
+

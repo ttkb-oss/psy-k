@@ -6,7 +6,7 @@ use std::fs::File;
 use std::io::Write;
 use std::path::Path;
 
-use crate::{LIB, OBJ};
+use crate::{display, LIB, OBJ};
 use anyhow::{anyhow, bail, Result};
 use binrw::io::Cursor;
 use binrw::{meta::ReadMagic, BinRead, BinWrite};
@@ -24,6 +24,16 @@ impl Display for Type {
             Self::LIB(lib) => lib as &dyn Display,
         }
         .fmt(f)
+    }
+}
+
+impl display::DisplayWithOptions for Type {
+    fn fmt_with_options(&self, f: &mut Formatter, options: &display::Options) -> std::fmt::Result {
+        match self {
+            Self::OBJ(obj) => obj as &dyn display::DisplayWithOptions,
+            Self::LIB(lib) => lib as &dyn display::DisplayWithOptions,
+        }
+        .fmt_with_options(f, options)
     }
 }
 
@@ -76,6 +86,16 @@ pub fn read_lib(lib_path: &Path) -> Result<LIB> {
 pub fn write_obj(obj: &OBJ, file: &mut File) -> Result<()> {
     let mut writer = Cursor::new(Vec::new());
     obj.write(&mut writer).map_err(|e| anyhow!(e))?;
+    let gen = writer.into_inner();
+    file.write_all(&gen)?;
+    Ok(())
+}
+
+/// Writes a Psy-Q [LIB]. If the file cannot be written an error will
+/// be returned.
+pub fn write_lib(lib: &LIB, file: &mut File) -> Result<()> {
+    let mut writer = Cursor::new(Vec::new());
+    lib.write(&mut writer).map_err(|e| anyhow!(e))?;
     let gen = writer.into_inner();
     file.write_all(&gen)?;
     Ok(())

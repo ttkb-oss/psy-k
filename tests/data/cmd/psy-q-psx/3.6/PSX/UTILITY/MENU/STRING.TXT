@@ -1,0 +1,27 @@
+
+Header : LNK version 2
+46 : Processor type 7
+16 : Section symbol number 1 '.rdata' in group 0 alignment 8
+16 : Section symbol number 2 '.text' in group 0 alignment 8
+16 : Section symbol number 3 '.data' in group 0 alignment 8
+16 : Section symbol number 4 '.sdata' in group 0 alignment 8
+16 : Section symbol number 5 '.sbss' in group 0 alignment 8
+16 : Section symbol number 6 '.bss' in group 0 alignment 8
+16 : Section symbol number 7 '.ctors' in group 0 alignment 8
+16 : Section symbol number 8 '.dtors' in group 0 alignment 8
+28 : Define file number 9 as "C:\NEWEST\UTILITY\MENU\STRING.C"
+6 : Switch to section 2
+6 : Switch to section 2
+6 : Switch to section 2
+2 : Code 268 bytes
+10 : Patch type 74 at offset 1c with (sectbase(2)+$48)
+10 : Patch type 74 at offset 28 with [c]
+10 : Patch type 74 at offset 98 with (sectbase(2)+$f0)
+10 : Patch type 74 at offset a8 with (sectbase(2)+$f0)
+10 : Patch type 74 at offset b4 with [c]
+10 : Patch type 74 at offset c4 with [c]
+6 : Switch to section 2
+12 : XDEF symbol number b 'stricmp' at offset 60 in section 2
+14 : XREF symbol number c 'toupper'
+12 : XDEF symbol number a 'strupper' at offset 0 in section 2
+0 : End of file

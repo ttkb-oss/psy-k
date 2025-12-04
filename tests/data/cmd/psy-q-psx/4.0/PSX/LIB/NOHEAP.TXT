@@ -1,0 +1,82 @@
+
+Header : LNK version 2
+46 : Processor type 7
+16 : Section symbol number 126d '.rdata' in group 0 alignment 8
+16 : Section symbol number 62f9 '.text' in group 0 alignment 8
+16 : Section symbol number 62fa '.ctors' in group 0 alignment 8
+16 : Section symbol number 62fb '.dtors' in group 0 alignment 8
+16 : Section symbol number 62fc '.data' in group 0 alignment 8
+16 : Section symbol number 62fd '.sdata' in group 0 alignment 8
+16 : Section symbol number 62fe '.sbss' in group 0 alignment 8
+16 : Section symbol number 62ff '.bss' in group 0 alignment 8
+6 : Switch to section 126d
+6 : Switch to section 62f9
+6 : Switch to section 62fa
+6 : Switch to section 62fb
+6 : Switch to section 62fc
+6 : Switch to section 62fd
+6 : Switch to section 62fe
+6 : Switch to section 62ff
+6 : Switch to section 62f9
+2 : Code 376 bytes
+10 : Patch type 82 at offset 0 with sectstart(62fe)
+10 : Patch type 84 at offset 4 with sectstart(62fe)
+10 : Patch type 82 at offset 8 with sectend(62ff)
+10 : Patch type 84 at offset c with sectend(62ff)
+10 : Patch type 82 at offset 24 with [6317]
+10 : Patch type 84 at offset 28 with [6317]
+10 : Patch type 82 at offset 3c with sectend(62ff)
+10 : Patch type 84 at offset 40 with sectend(62ff)
+10 : Patch type 82 at offset 4c with [6315]
+10 : Patch type 84 at offset 50 with [6315]
+10 : Patch type 82 at offset 60 with (sectbase(62fc)+$8)
+10 : Patch type 84 at offset 64 with (sectbase(62fc)+$8)
+10 : Patch type 82 at offset 6c with (sectbase(62fc)+$4)
+10 : Patch type 84 at offset 70 with (sectbase(62fc)+$4)
+10 : Patch type 82 at offset 74 with (sectbase(62fe)+$0)
+10 : Patch type 84 at offset 78 with (sectbase(62fe)+$0)
+10 : Patch type 82 at offset 7c with sectstart(62fd)
+10 : Patch type 84 at offset 80 with sectstart(62fd)
+10 : Patch type 82 at offset 88 with (sectbase(62fe)+$0)
+10 : Patch type 84 at offset 8c with (sectbase(62fe)+$0)
+10 : Patch type 74 at offset 94 with [6314]
+10 : Patch type 82 at offset a0 with (sectbase(62fc)+$0)
+10 : Patch type 84 at offset a4 with (sectbase(62fc)+$0)
+10 : Patch type 82 at offset c0 with (sectbase(62fc)+$0)
+10 : Patch type 84 at offset c4 with (sectbase(62fc)+$0)
+10 : Patch type 82 at offset c8 with sectstart(62fa)
+10 : Patch type 84 at offset cc with sectstart(62fa)
+10 : Patch type 82 at offset d0 with ($4/(sectstart(62fa)-sectend(62fa)))
+10 : Patch type 84 at offset d4 with ($4/(sectstart(62fa)-sectend(62fa)))
+10 : Patch type 82 at offset 110 with (sectbase(62fc)+$0)
+10 : Patch type 84 at offset 114 with (sectbase(62fc)+$0)
+10 : Patch type 82 at offset 130 with sectstart(62fb)
+10 : Patch type 84 at offset 134 with sectstart(62fb)
+10 : Patch type 82 at offset 138 with ($4/(sectstart(62fb)-sectend(62fb)))
+10 : Patch type 84 at offset 13c with ($4/(sectstart(62fb)-sectend(62fb)))
+6 : Switch to section 62fc
+2 : Code 36 bytes
+10 : Patch type 16 at offset c with sectstart(62f9)
+10 : Patch type 16 at offset 10 with (sectstart(62f9)-sectend(62f9))
+10 : Patch type 16 at offset 14 with sectstart(62fc)
+10 : Patch type 16 at offset 18 with (sectstart(62fc)-sectend(62fc))
+10 : Patch type 16 at offset 1c with sectstart(62ff)
+10 : Patch type 16 at offset 20 with (sectstart(62ff)-sectend(62ff))
+6 : Switch to section 62fe
+8 : Uninitialised data, 4 bytes
+12 : XDEF symbol number 630f '__bss' at offset 1c in section 62fc
+14 : XREF symbol number 6312 'InitHeap'
+12 : XDEF symbol number 6307 '__heapsize' at offset 8 in section 62fc
+14 : XREF symbol number 6315 '_stacksize'
+12 : XDEF symbol number 6300 '__SN_ENTRY_POINT' at offset 0 in section 62f9
+12 : XDEF symbol number 6310 '__bsslen' at offset 20 in section 62fc
+12 : XDEF symbol number 630c '__data' at offset 14 in section 62fc
+14 : XREF symbol number 6317 '_ramsize'
+12 : XDEF symbol number 6302 '__main' at offset a0 in section 62f9
+12 : XDEF symbol number 6309 '__text' at offset c in section 62fc
+12 : XDEF symbol number 630d '__datalen' at offset 18 in section 62fc
+14 : XREF symbol number 6314 'main'
+12 : XDEF symbol number 630a '__textlen' at offset 10 in section 62fc
+12 : XDEF symbol number 6303 '__do_global_dtors' at offset 110 in section 62f9
+12 : XDEF symbol number 6305 '__heapbase' at offset 4 in section 62fc
+0 : End of file

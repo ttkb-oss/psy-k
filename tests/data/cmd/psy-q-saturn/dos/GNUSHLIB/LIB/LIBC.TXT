@@ -1,0 +1,227 @@
+
+PsyLib version 2.04
+
+Module     Date     Time   Externals defined
+
+__ADJUST 19-12-96 11:53:44 __adjust 
+__EXP10  19-12-96 11:53:44 __exp10 
+__TEN_MU 19-12-96 11:53:44 __ten_mul 
+_TOLOWER 19-12-96 11:53:44 _tolower 
+_TOUPPER 19-12-96 11:53:44 _toupper 
+ABORT    19-12-96 11:53:44 abort 
+ABS      19-12-96 11:53:46 abs 
+ASCTIME  19-12-96 11:53:46 asctime 
+ASCTIME_ 19-12-96 11:53:46 asctime_r 
+ASSERT   19-12-96 11:53:46 __assert 
+ATEXIT   19-12-96 11:53:46 atexit 
+ATOF     19-12-96 11:53:46 atof 
+ATOFF    19-12-96 11:53:46 atoff 
+ATOI     19-12-96 11:53:46 atoi 
+ATOL     19-12-96 11:53:46 atol 
+BCMP     19-12-96 11:53:46 bcmp 
+BCOPY    19-12-96 11:53:46 bcopy 
+BSEARCH  19-12-96 11:53:46 bsearch 
+BZERO    19-12-96 11:53:46 bzero 
+CALLOC   19-12-96 11:53:46 calloc 
+CALLOCR  19-12-96 11:53:46 _calloc_r 
+CLEARERR 19-12-96 11:53:46 clearerr 
+CLOCK    19-12-96 11:53:46 clock 
+CREAT    19-12-96 11:53:46 creat 
+CTIME    19-12-96 11:53:46 ctime 
+CTIME_R  19-12-96 11:53:46 ctime_r 
+CTYPE_   19-12-96 11:53:46 _ctype_ 
+DIFFTIME 19-12-96 11:53:46 difftime 
+DIV      19-12-96 11:53:46 div 
+DPRINTF  19-12-96 11:53:46 __dprintf 
+DTOA     19-12-96 11:53:46 _dtoa_r 
+DTOASTUB 19-12-96 11:53:46 __dtoa 
+ECVTBUF  19-12-96 11:53:46 fcvtbuf ecvtbuf _gcvt _dcvt 
+EFGCVT   19-12-96 11:53:46 fcvt fcvtf gcvtf gcvt ecvt ecvtf 
+ENVIRON  19-12-96 11:53:46 environ 
+EPRINTF  19-12-96 11:53:46 __eprintf 
+ERRNO    19-12-96 11:53:46 __errno 
+EXECR    19-12-96 11:53:46 _fork_r *errno _wait_r 
+EXIT     19-12-96 11:53:46 exit 
+FCLOSE   19-12-96 11:53:46 fclose 
+FDOPEN   19-12-96 11:53:46 _fdopen_r fdopen 
+FEOF     19-12-96 11:53:46 feof 
+FERROR   19-12-96 11:53:48 ferror 
+FFLUSH   19-12-96 11:53:48 fflush 
+FGETC    19-12-96 11:53:48 fgetc 
+FGETPOS  19-12-96 11:53:48 fgetpos 
+FGETS    19-12-96 11:53:48 fgets 
+FILENO   19-12-96 11:53:48 fileno 
+FILER    19-12-96 11:53:48 _open_r *errno _close_r _lseek_r _read_r _write_r 
+FINDFP   19-12-96 11:53:48 __sfmoreglue __sfp __sinit _cleanup_r _cleanup 
+FIPRINTF 19-12-96 11:53:48 fiprintf 
+FLAGS    19-12-96 11:53:48 __sflags 
+FOPEN    19-12-96 11:53:48 _fopen_r fopen 
+FPRINTF  19-12-96 11:53:48 fprintf 
+FPUTC    19-12-96 11:53:48 fputc 
+FPUTS    19-12-96 11:53:48 fputs 
+FREAD    19-12-96 11:53:48 fread 
+FREOPEN  19-12-96 11:53:48 freopen 
+FSCANF   19-12-96 11:53:48 fscanf 
+FSEEK    19-12-96 11:53:48 fseek 
+FSETPOS  19-12-96 11:53:48 fsetpos 
+FSTATR   19-12-96 11:53:48 _fstat_r *errno 
+FTELL    19-12-96 11:53:48 ftell 
+FVWRITE  19-12-96 11:53:48 __sfvwrite 
+FWALK    19-12-96 11:53:48 _fwalk 
+FWRITE   19-12-96 11:53:48 fwrite 
+GETC     19-12-96 11:53:48 getc 
+GETCHAR  19-12-96 11:53:48 _getchar_r getchar 
+GETENV   19-12-96 11:53:48 _findenv getenv 
+GETOPT   19-12-96 11:53:48 opterr optind getopt *optreset *optopt *optarg 
+GETS     19-12-96 11:53:48 _gets_r gets 
+GMTIME   19-12-96 11:53:48 gmtime 
+GMTIME_R 19-12-96 11:53:48 gmtime_r 
+IMPURE   19-12-96 11:53:48 _impure_ptr 
+INDEX    19-12-96 11:53:48 index 
+IPRINTF  19-12-96 11:53:48 iprintf _iprintf_r 
+ISALNUM  19-12-96 11:53:48 isalnum 
+ISALPHA  19-12-96 11:53:50 isalpha 
+ISASCII  19-12-96 11:53:50 isascii 
+ISCNTRL  19-12-96 11:53:50 iscntrl 
+ISDIGIT  19-12-96 11:53:50 isdigit 
+ISLOWER  19-12-96 11:53:50 islower 
+ISPRINT  19-12-96 11:53:50 isgraph isprint 
+ISPUNCT  19-12-96 11:53:50 ispunct 
+ISSPACE  19-12-96 11:53:50 isspace 
+ISUPPER  19-12-96 11:53:50 isupper 
+ISXDIGIT 19-12-96 11:53:50 isxdigit 
+LABS     19-12-96 11:53:50 labs 
+LCLTIME  19-12-96 11:53:50 localtime 
+LCLTIME_ 19-12-96 11:53:50 localtime_r 
+LDIV     19-12-96 11:53:50 ldiv 
+LINKR    19-12-96 11:53:50 _link_r *errno _unlink_r 
+LOCALE   19-12-96 11:53:50 _setlocale_r _localeconv_r setlocale localeconv 
+MAKEBUF  19-12-96 11:53:50 __smakebuf 
+MALLOC   19-12-96 11:53:50 malloc free realloc 
+MALLOCR  19-12-96 11:53:50 _malloc_r _free_r _realloc_r 
+MBLEN    19-12-96 11:53:50 mblen 
+MBSTOWCS 19-12-96 11:53:50 mbstowcs 
+MBTOWC   19-12-96 11:53:50 mbtowc 
+MEMCHR   19-12-96 11:53:50 memchr 
+MEMCMP   19-12-96 11:53:50 memcmp 
+MEMCPY   19-12-96 11:53:50 memcpy 
+MEMMOVE  19-12-96 11:53:50 memmove 
+MEMSET   19-12-96 11:53:50 memset 
+MKTEMP   19-12-96 11:53:50 _mkstemp_r _mktemp_r mkstemp mktemp 
+MKTIME   19-12-96 11:53:50 mktime 
+MPREC    19-12-96 11:53:50 _Balloc _Bfree _multadd _s2b _hi0bits _lo0bits 
+                           _i2b _mult _pow5mult _lshift __mcmp __mdiff _ulp 
+                           _b2d _d2b _ratio __mprec_tens __mprec_bigtens 
+                           __mprec_tinytens _mprec_log10 
+MSTATS   19-12-96 11:53:50 _mstats_r mstats 
+PERROR   19-12-96 11:53:50 _perror_r perror 
+PRINTF   19-12-96 11:53:50 _printf_r printf 
+PUTC     19-12-96 11:53:50 putc 
+PUTCHAR  19-12-96 11:53:50 _putchar_r putchar 
+PUTENV   19-12-96 11:53:50 putenv 
+PUTS     19-12-96 11:53:52 _puts_r puts 
+QSORT    19-12-96 11:53:52 qsort 
+RAISE    19-12-96 11:53:52 raise _raise_r 
+RAND     19-12-96 11:53:52 _rand_r _srand_r rand srand 
+REENT    19-12-96 11:53:52 cleanup_glue _reclaim_reent 
+REFILL   19-12-96 11:53:52 __srefill 
+REMOVE   19-12-96 11:53:52 _remove_r remove 
+RENAME   19-12-96 11:53:52 _rename_r rename 
+REWIND   19-12-96 11:53:52 rewind 
+RGET     19-12-96 11:53:52 __srget 
+RINDEX   19-12-96 11:53:52 rindex 
+S_COPYSI 19-12-96 11:53:52 copysign 
+S_FINITE 19-12-96 11:53:52 finite 
+S_FREXP  19-12-96 11:53:52 frexp 
+S_INFCON 19-12-96 11:53:52 __infinity 
+S_ISINF  19-12-96 11:53:52 isinf 
+S_ISNAN  19-12-96 11:53:52 isnan 
+S_LDEXP  19-12-96 11:53:52 ldexp 
+S_MODF   19-12-96 11:53:52 modf 
+S_SCALBN 19-12-96 11:53:52 scalbn 
+SBRKR    19-12-96 11:53:52 _sbrk_r *errno 
+SCANF    19-12-96 11:53:52 scanf _scanf_r 
+SETBUF   19-12-96 11:53:52 setbuf 
+SETENV   19-12-96 11:53:52 setenv unsetenv 
+SETJMP   19-12-96 11:53:52 setjmp longjmp 
+SETVBUF  19-12-96 11:53:52 setvbuf 
+SF_COPYS 19-12-96 11:53:52 copysignf 
+SF_FINIT 19-12-96 11:53:52 finitef 
+SF_FREXP 19-12-96 11:53:52 frexpf 
+SF_ISINF 19-12-96 11:53:52 isinff 
+SF_ISNAN 19-12-96 11:53:52 isnanf 
+SF_LDEXP 19-12-96 11:53:52 ldexpf 
+SF_MODF  19-12-96 11:53:52 modff 
+SF_SCALB 19-12-96 11:53:52 scalbnf 
+SIGNALR  19-12-96 11:53:54 _kill_r *errno _getpid_r 
+SIPRINTF 19-12-96 11:53:54 siprintf 
+SPRINTF  19-12-96 11:53:54 _sprintf_r sprintf 
+SSCANF   19-12-96 11:53:54 sscanf 
+STATR    19-12-96 11:53:54 _stat_r *errno 
+STDIO    19-12-96 11:53:54 __sread __swrite __sseek __sclose 
+STRCASEC 19-12-96 11:53:54 strcasecmp 
+STRCAT   19-12-96 11:53:54 strcat 
+STRCHR   19-12-96 11:53:54 strchr 
+STRCMP   19-12-96 11:53:54 strcmp 
+STRCOLL  19-12-96 11:53:54 strcoll 
+STRCPY   19-12-96 11:53:54 strcpy 
+STRCSPN  19-12-96 11:53:54 strcspn 
+STRDUP   19-12-96 11:53:54 strdup 
+STRERROR 19-12-96 11:53:54 strerror 
+STRFTIME 19-12-96 11:53:54 strftime 
+STRLEN   19-12-96 11:53:54 strlen 
+STRNCASE 19-12-96 11:53:54 strncasecmp 
+STRNCAT  19-12-96 11:53:54 strncat 
+STRNCMP  19-12-96 11:53:54 strncmp 
+STRNCPY  19-12-96 11:53:54 strncpy 
+STRPBRK  19-12-96 11:53:54 strpbrk 
+STRRCHR  19-12-96 11:53:54 strrchr 
+STRSPN   19-12-96 11:53:54 strspn 
+STRSTR   19-12-96 11:53:54 strstr 
+STRTOD   19-12-96 11:53:54 _strtod_r strtod strtodf 
+STRTOK   19-12-96 11:53:54 strtok 
+STRTOK_R 19-12-96 11:53:54 strtok_r 
+STRTOL   19-12-96 11:53:54 _strtol_r strtol 
+STRTOUL  19-12-96 11:53:54 _strtoul_r strtoul 
+STRXFRM  19-12-96 11:53:54 strxfrm 
+SYSCALLS 19-12-96 11:53:54 _read _lseek _write _close _sbrk _fstat _open 
+                           _creat _unlink isatty _exit _kill _getpid _raise 
+                           _stat _chmod _chown _utime _fork _wait _execve 
+                           _execv _pipe *errno 
+SYSCLOSE 19-12-96 11:53:54 close 
+SYSFCNTL 19-12-96 11:53:56 fcntl 
+SYSFORK  19-12-96 11:53:56 fork 
+SYSFSTAT 19-12-96 11:53:56 fstat 
+SYSGETPI 19-12-96 11:53:56 getpid 
+SYSKILL  19-12-96 11:53:56 kill 
+SYSLINK  19-12-96 11:53:56 link 
+SYSLSEEK 19-12-96 11:53:56 lseek 
+SYSOPEN  19-12-96 11:53:56 open 
+SYSREAD  19-12-96 11:53:56 read 
+SYSSBRK  19-12-96 11:53:56 sbrk 
+SYSSTAT  19-12-96 11:53:56 stat 
+SYSTEM   19-12-96 11:53:56 _system_r system 
+SYSUNLIN 19-12-96 11:53:56 unlink 
+SYSWAIT  19-12-96 11:53:56 wait 
+SYSWRITE 19-12-96 11:53:56 write 
+TIME     19-12-96 11:53:56 
+TIMER    19-12-96 11:53:56 _times_r _gettimeofday_r *errno 
+TMPFILE  19-12-96 11:53:56 _tmpfile_r tmpfile 
+TMPNAM   19-12-96 11:53:56 _tmpnam_r _tempnam_r tempnam tmpnam 
+TOASCII  19-12-96 11:53:56 toascii 
+TOLOWER  19-12-96 11:53:56 tolower 
+TOUPPER  19-12-96 11:53:56 toupper 
+TRAP     19-12-96 11:53:56 __trap34 
+U_STRERR 19-12-96 11:53:56 _user_strerror 
+UNCTRL   19-12-96 11:53:56 __unctrl __unctrllen 
+UNGETC   19-12-96 11:53:56 __submore ungetc 
+VFIPRINT 19-12-96 11:53:56 vfiprintf _vfiprintf_r 
+VFPRINTF 19-12-96 11:53:56 vfprintf _vfprintf_r 
+VFSCANF  19-12-96 11:53:56 __svfscanf __sccl 
+VPRINTF  19-12-96 11:53:58 vprintf 
+VSPRINTF 19-12-96 11:53:58 vsprintf 
+WBUF     19-12-96 11:53:58 __swbuf 
+WCSTOMBS 19-12-96 11:53:58 wcstombs 
+WCTOMB   19-12-96 11:53:58 wctomb 
+WSETUP   19-12-96 11:53:58 __swsetup 
+

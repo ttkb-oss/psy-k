@@ -1,0 +1,201 @@
+
+PsyLib version 2.04
+
+Module     Date     Time   Externals defined
+
+CCADSR   20-05-97 11:55:18 _SsUtBuildADSR _SsUtResolveADSR 
+CC_0     20-05-97 11:55:18 _SsContBankChange 
+CC_6     20-05-97 11:55:20 _SsContDataEntry 
+CC_7     20-05-97 11:55:20 _SsContMainVol 
+CC_10    20-05-97 11:55:20 _SsContPanpot 
+CC_11    20-05-97 11:55:22 _SsContExpression 
+CC_64    20-05-97 11:55:22 _SsContDamper 
+CC_91    20-05-97 11:55:22 _SsContExternal 
+CC_98    20-05-97 11:55:24 _SsContNrpn1 
+CC_99    20-05-97 11:55:24 _SsContNrpn2 
+CC_100   20-05-97 11:55:24 _SsContRpn1 
+CC_101   20-05-97 11:55:26 _SsContRpn2 
+CC_121   20-05-97 11:55:26 _SsContResetAll 
+DE_0     20-05-97 11:55:26 _SsSetNrpnVabAttr0 
+DE_1     20-05-97 11:55:28 _SsSetNrpnVabAttr1 
+DE_2     20-05-97 11:55:28 _SsSetNrpnVabAttr2 
+DE_3     20-05-97 11:55:28 _SsSetNrpnVabAttr3 
+DE_4     20-05-97 11:55:30 _SsSetNrpnVabAttr4 
+DE_5     20-05-97 11:55:30 _SsSetNrpnVabAttr5 
+DE_6     20-05-97 11:55:32 _SsSetNrpnVabAttr6 
+DE_7     20-05-97 11:55:32 _SsSetNrpnVabAttr7 
+DE_8     20-05-97 11:55:32 _SsSetNrpnVabAttr8 
+DE_9     20-05-97 11:55:34 _SsSetNrpnVabAttr9 
+DE_10    20-05-97 11:55:34 _SsSetNrpnVabAttr10 
+DE_11    20-05-97 11:55:34 _SsSetNrpnVabAttr11 
+DE_12    20-05-97 11:55:36 _SsSetNrpnVabAttr12 
+DE_13    20-05-97 11:55:36 _SsSetNrpnVabAttr13 
+DE_14    20-05-97 11:55:36 _SsSetNrpnVabAttr14 
+DE_15    20-05-97 11:55:38 _SsSetNrpnVabAttr15 
+DE_16    20-05-97 11:55:38 _SsSetNrpnVabAttr16 
+DE_17    20-05-97 11:55:38 _SsSetNrpnVabAttr17 
+DE_18    20-05-97 11:55:40 _SsSetNrpnVabAttr18 
+DE_19    20-05-97 11:55:40 _SsSetNrpnVabAttr19 
+CRES     20-05-97 11:55:40 _SsSndCrescendo 
+DECRES   20-05-97 11:55:42 _SsSndDecrescendo 
+MIDIBEND 20-05-97 11:55:42 _SsSetPitchBend 
+MIDICC   20-05-97 11:55:44 _SsSetControlChange 
+MIDIMETA 20-05-97 11:55:44 _SsGetMetaEvent 
+MIDINOTE 20-05-97 11:55:46 _SsNoteOn 
+MIDIPROG 20-05-97 11:55:46 _SsSetProgramChange 
+MIDIREAD 20-05-97 11:55:48 _SsSeqGetEof _SsSeqPlay _SsGetSeqData 
+MIDITIME 20-05-97 11:55:48 _SsReadDeltaValue 
+NEXT     20-05-97 11:55:48 _SsSndNextSep 
+NPAUSE   20-05-97 11:55:50 _SsSndNextPause 
+PAUSE    20-05-97 11:55:50 _SsSndPause 
+PLAY     20-05-97 11:55:50 _SsSndPlay 
+REPLAY   20-05-97 11:55:52 _SsSndReplay 
+SEPINIT  20-05-97 11:55:52 _SsInitSoundSep 
+SEQINIT  20-05-97 11:55:54 _SsInitSoundSeq 
+SSACCELE 20-05-97 11:55:54 SsSepSetAccelerando SsSeqSetAccelerando 
+                           _SsSndSetAccele 
+SSCALL   20-05-97 11:55:56 SsSeqCalledTbyT 
+SSCLOSE  20-05-97 11:55:56 SsSepClose SsSeqClose 
+SSCMUTE  20-05-97 11:55:56 SsChannelMute SsGetChannelMute 
+SSCRES   20-05-97 11:55:58 _SsSndSetCres SsSepSetCrescendo SsSeqSetCrescendo 
+SSDECRES 20-05-97 11:55:58 SsSepSetDecrescendo SsSeqSetDecrescendo 
+                           _SsSndSetDecres 
+SSEND    20-05-97 11:56:00 SsEnd 
+SSGM     20-05-97 11:56:00 SsGetMute 
+SSGMV    20-05-97 11:56:00 SsGetMVol 
+SSGNC    20-05-97 11:56:02 SsGetNck 
+SSGRV    20-05-97 11:56:02 SsGetRVol 
+SSGSATTR 20-05-97 11:56:04 SsGetSerialAttr 
+SSGSV    20-05-97 11:56:04 SsGetSerialVol 
+SSINIT   20-05-97 11:56:04 *SsFCALL *_snd_openflag *VBLANK_MINUS _SsInit 
+                           *_SsMarkCallback *_ss_score *_snd_seq_s_max 
+                           *_snd_seq_t_max *_snd_ev_flag 
+SSINIT_C 20-05-97 11:56:06 SsInit 
+SSINIT_H 20-05-97 11:56:06 SsInitHot 
+SSLOOP   20-05-97 11:56:08 SsSetLoop SsIsEos 
+SSMARK   20-05-97 11:56:08 SsSetMarkCallback 
+SSNEXT   20-05-97 11:56:08 SsSetNext SsSeqSetNext 
+SSNOFF   20-05-97 11:56:10 SsSetNoiseOff 
+SSNON    20-05-97 11:56:10 SsSetNoiseOn 
+SSOPENP  20-05-97 11:56:10 SsSepOpen 
+SSOPENQ  20-05-97 11:56:12 SsSeqOpen 
+SSOPENPJ 20-05-97 11:56:12 SsSepOpenJ 
+SSOPENQJ 20-05-97 11:56:14 SsSeqOpenJ 
+SSPAUSE  20-05-97 11:56:14 SsSepPause SsSeqPause _SsSndSetPauseMode 
+SSPLAY   20-05-97 11:56:14 SsSepPlay SsSeqPlay 
+SSPLAYB  20-05-97 11:56:16 SsPlayBack 
+SSQUIT   20-05-97 11:56:16 SsQuit 
+SSREPLAY 20-05-97 11:56:16 SsSepReplay SsSeqReplay _SsSndSetReplayMode 
+PLAYMODE 20-05-97 11:56:18 Snd_SetPlayMode 
+SSRIT    20-05-97 11:56:18 SsSepSetRitardando SsSeqSetRitardando _SsSndSetRit 
+SSSATTR  20-05-97 11:56:20 SsSetSerialAttr 
+SSSM     20-05-97 11:56:20 SsSetMute 
+SSSMV    20-05-97 11:56:20 SsSetMVol 
+SSSNC    20-05-97 11:56:22 SsSetNck 
+SSSRV    20-05-97 11:56:22 SsSetRVol 
+SSSTART  20-05-97 11:56:24 SsStart2 SsStart _snd_seq_tick_env 
+SSSTOP   20-05-97 11:56:24 SsSepStop SsSeqStop _SsSndStop 
+SSSV     20-05-97 11:56:26 SsSetSerialVol 
+SSTABLE  20-05-97 11:56:26 SsSetTableSize 
+SSTEMPO  20-05-97 11:56:26 SsSetTempo 
+SSTICK   20-05-97 11:56:28 SsSetTickMode 
+SSTICKCB 20-05-97 11:56:28 SsSetTickCallback 
+SSVKOFF  20-05-97 11:56:28 SsVoKeyOff 
+SSVKON   20-05-97 11:56:30 SsVoKeyOn 
+SSVOL    20-05-97 11:56:30 SsSeqGetVol SsSepSetVol SsSeqSetVol _SsSndSetVol 
+TEMPO    20-05-97 11:56:32 _SsSndTempo 
+VOL      20-05-97 11:56:32 _SsSndSetVolData 
+DMYPRINT 20-05-97 11:56:34 dmy_SsSetPitchBend dmy_SsGetMetaEvent 
+                           dmy_SsSetNrpnVabAttr0 dmy_SsSetNrpnVabAttr1 
+                           dmy_SsContResetAll dmy_SsSetNrpnVabAttr2 
+                           dmy_SsSetNrpnVabAttr3 dmy_SsSetNrpnVabAttr4 
+                           dmy_SsSetNrpnVabAttr5 dmy_SsSetNrpnVabAttr6 
+                           dmy_SsSetNrpnVabAttr7 dmy_SsSetNrpnVabAttr8 
+                           dmy_SsSetNrpnVabAttr9 dmy_SsContExpression 
+                           dmy_SsContExternal dmy_SsSetNrpnVabAttr10 
+                           dmy_SsSetNrpnVabAttr11 dmy_SsSetNrpnVabAttr12 
+                           dmy_SsSetNrpnVabAttr13 dmy_SsSetNrpnVabAttr14 
+                           dmy_SsSetNrpnVabAttr15 dmy_SsSetNrpnVabAttr16 
+                           dmy_SsSetNrpnVabAttr17 dmy_SsSetNrpnVabAttr18 
+                           dmy_SsSetNrpnVabAttr19 dmy_SsContDamper 
+                           dmy_SsContRpn1 dmy_SsContRpn2 dmy_SsContPanpot 
+                           dmy_SsContDataEntry dmy_SsSetProgramChange 
+                           dmy_SsContMainVol dmy_SsNoteOn 
+                           dmy_SsSetControlChange dmy_SsContBankChange 
+                           dmy_nothing1 dmy_SsContNrpn1 dmy_SsContNrpn2 
+SSGCP    20-05-97 11:56:34 SsGetCurrentPoint 
+UT_AKO   20-05-97 11:56:34 SsUtAllKeyOff 
+UT_AUTOP 20-05-97 11:56:36 SsUtAutoPan 
+UT_AUTOV 20-05-97 11:56:36 SsUtAutoVol 
+UT_CADSR 20-05-97 11:56:38 SsUtChangeADSR 
+UT_CP    20-05-97 11:56:38 SsUtChangePitch 
+UT_F     20-05-97 11:56:40 SsUtFlush 
+UT_GPA   20-05-97 11:56:40 SsUtGetProgAtr 
+UT_GVA   20-05-97 11:56:42 SsUtGetVagAtr 
+UT_GVAD  20-05-97 11:56:42 SsUtGetVagAddr 
+UT_GVAFT 20-05-97 11:56:44 SsUtGetVagAddrFromTone 
+UT_GVBA  20-05-97 11:56:44 SsUtGetVBaddrInSB 
+UT_GVH   20-05-97 11:56:44 SsUtGetVabHdr 
+UT_KEY   20-05-97 11:56:46 SsUtKeyOn SsUtKeyOff 
+UT_KEYV  20-05-97 11:56:48 SsUtKeyOffV SsUtKeyOnV 
+UT_PB    20-05-97 11:56:48 SsUtPitchBend 
+UT_RDEL  20-05-97 11:56:50 SsUtSetReverbDelay 
+UT_RDEP  20-05-97 11:56:50 SsUtSetReverbDepth 
+UT_REV   20-05-97 11:56:50 SsUtGetReverbType SsUtSetReverbType 
+UT_RFB   20-05-97 11:56:52 SsUtSetReverbFeedback 
+UT_ROFF  20-05-97 11:56:52 SsUtReverbOff 
+UT_RON   20-05-97 11:56:54 SsUtReverbOn 
+UT_SPA   20-05-97 11:56:54 SsUtSetProgAtr 
+UT_SVA   20-05-97 11:56:56 SsUtSetVagAtr 
+UT_SVH   20-05-97 11:56:56 SsUtSetVabHdr 
+UT_VVOL  20-05-97 11:56:58 SsUtGetVVol SsUtSetVVol SsUtGetDetVVol 
+                           SsUtSetDetVVol 
+VM_ALOC1 20-05-97 11:56:58 _SsVmAlloc 
+VM_ALOC2 20-05-97 11:57:00 _SsVmDoAllocate 
+VM_AUTOP 20-05-97 11:57:00 SeAutoPan SetAutoPan 
+VM_AUTOV 20-05-97 11:57:02 SeAutoVol SetAutoVol 
+VM_DOFF  20-05-97 11:57:04 _SsVmDamperOff 
+VM_DON   20-05-97 11:57:04 _SsVmDamperOn 
+VM_F     20-05-97 11:57:06 *_svm_orev1 *_svm_orev2 *_svm_voice 
+                           *_svm_sreg_dirty *_autopan *_svm_sreg_buf 
+                           *_autovol *_svm_envx_ptr _svm_sreg _SsVmFlush 
+                           *_svm_envx_hist *_svm_okof1 *_svm_okof2 
+                           *_svm_okon1 *_svm_okon2 
+VM_G     20-05-97 11:57:06 *_SsVmMaxVoice *_svm_rattr *_svm_vab_used 
+                           *_svm_cur *_svm_auto_kof_mode *_svm_vab_pg 
+                           *_svm_vab_vh *_svm_damper *_svm_vab_tn 
+                           *_svm_stereo_mono *_svm_vab_total *_svm_vab_count 
+                           *_svm_vab_start *kMaxPrograms *_svm_pg *_svm_vg 
+                           *_svm_vh *_svm_tn 
+VM_INIT  20-05-97 11:57:06 _SsVmInit 
+VM_KEY   20-05-97 11:57:08 _SsVmKeyOff _SsVmSeKeyOn KeyOnCheck _SsVmKeyOn 
+                           _SsVmSeKeyOff 
+VM_N2P   20-05-97 11:57:10 note2pitch note2pitch2 
+VM_NO1   20-05-97 11:57:10 vmNoiseOn 
+VM_NO2   20-05-97 11:57:12 vmNoiseOn2 
+VM_NOFF  20-05-97 11:57:12 vmNoiseOff 
+VM_NOISE 20-05-97 11:57:14 _SsVmNoiseOff _SsVmNoiseOn _SsVmNoiseOnWithAdsr 
+VM_NOWOF 20-05-97 11:57:14 _SsVmKeyOffNow 
+VM_NOWON 20-05-97 11:57:16 _SsVmKeyOnNow 
+VM_PB    20-05-97 11:57:16 _SsVmPitchBend _SsVmPBVoice 
+VM_PORTA 20-05-97 11:57:18 
+VM_PROG  20-05-97 11:57:18 _SsVmGetProgPan _SsVmSetProgPan _SsVmGetProgVol 
+                           _SsVmSetProgVol 
+VM_SEQ   20-05-97 11:57:20 _SsVmSeqKeyOff _SsVmGetSeqVol _SsVmSetSeqVol 
+                           _SsVmGetSeqLVol _SsVmGetSeqRVol 
+VM_SPB   20-05-97 11:57:22 SePitchBend 
+VM_STAV  20-05-97 11:57:22 _SsVmSelectToneAndVag 
+VM_VIB   20-05-97 11:57:24 SsUtVibrateOn SsUtVibrateOff 
+VM_VOL   20-05-97 11:57:24 _SsVmSetVol 
+VM_VSU   20-05-97 11:57:26 _SsVmVSetUp 
+VS_AUTO  20-05-97 11:57:26 SsSetAutoKeyOffMode 
+VS_MONO  20-05-97 11:57:28 SsSetStereo SsSetMono 
+VS_SRV   20-05-97 11:57:28 SsSetReservedVoice 
+VS_VAB   20-05-97 11:57:28 SsVabClose 
+VS_VFB   20-05-97 11:57:30 SsVabFakeBody 
+VS_VH    20-05-97 11:57:32 SsVabOpenHeadSticky SsVabFakeHead SsVabOpenHead 
+VS_VT    20-05-97 11:57:32 SsVabTransfer 
+VS_VTB   20-05-97 11:57:32 SsVabTransBody 
+VS_VTBP  20-05-97 11:57:34 SsVabTransBodyPartly 
+VS_VTC   20-05-97 11:57:34 SsVabTransCompleted 
+

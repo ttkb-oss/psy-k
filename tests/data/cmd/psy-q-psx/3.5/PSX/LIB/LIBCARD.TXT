@@ -1,0 +1,20 @@
+
+PsyLib version 2.04
+
+Module     Date     Time   Externals defined
+
+C112     15-05-96 16:12:04 _bu_init 
+C171     15-05-96 16:12:06 _card_info 
+C172     15-05-96 16:12:06 _card_load 
+C173     15-05-96 16:12:06 _card_auto 
+A74      15-05-96 16:12:06 InitCARD 
+A75      15-05-96 16:12:06 StartCARD 
+A76      15-05-96 16:12:06 StopCARD 
+A78      15-05-96 16:12:06 _card_write 
+A79      15-05-96 16:12:06 _card_read 
+A80      15-05-96 16:12:06 _new_card 
+A88      15-05-96 16:12:06 _card_chan 
+A92      15-05-96 16:12:06 _card_status 
+A93      15-05-96 16:12:06 _card_wait 
+CARD     15-05-96 16:12:08 _card_clear 
+

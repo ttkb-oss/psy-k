@@ -1,0 +1,231 @@
+
+Header : LNK version 2
+46 : Processor type 7
+16 : Section symbol number 557b '.rdata' in group 0 alignment 8
+16 : Section symbol number 557c '.text' in group 0 alignment 8
+16 : Section symbol number 557d '.data' in group 0 alignment 8
+16 : Section symbol number 557e '.sdata' in group 0 alignment 8
+16 : Section symbol number 557f '.sbss' in group 0 alignment 8
+16 : Section symbol number 5580 '.bss' in group 0 alignment 8
+28 : Define file number 59a7 as "C:\PSX.NEW\SRC\C\MALLOC4.C"
+6 : Switch to section 557c
+6 : Switch to section 557c
+2 : Code 1548 bytes
+10 : Patch type 82 at offset 8 with (sectbase(557f)+$8)
+10 : Patch type 84 at offset c with (sectbase(557f)+$8)
+10 : Patch type 74 at offset 20 with (sectbase(557c)+$2c)
+10 : Patch type 82 at offset 2c with (sectbase(557f)+$10)
+10 : Patch type 84 at offset 30 with (sectbase(557f)+$10)
+10 : Patch type 82 at offset 34 with (sectbase(557f)+$0)
+10 : Patch type 84 at offset 38 with (sectbase(557f)+$0)
+10 : Patch type 74 at offset 5c with (sectbase(557c)+$98)
+10 : Patch type 74 at offset 70 with (sectbase(557c)+$ec)
+10 : Patch type 82 at offset 78 with (sectbase(557f)+$0)
+10 : Patch type 84 at offset 7c with (sectbase(557f)+$0)
+10 : Patch type 82 at offset 80 with (sectbase(557f)+$10)
+10 : Patch type 84 at offset 84 with (sectbase(557f)+$10)
+10 : Patch type 82 at offset ac with (sectbase(557f)+$0)
+10 : Patch type 84 at offset b0 with (sectbase(557f)+$0)
+10 : Patch type 82 at offset e0 with (sectbase(557f)+$0)
+10 : Patch type 84 at offset e4 with (sectbase(557f)+$0)
+10 : Patch type 74 at offset 110 with (sectbase(557c)+$294)
+10 : Patch type 74 at offset 164 with (sectbase(557c)+$1c4)
+10 : Patch type 82 at offset 16c with (sectbase(557f)+$10)
+10 : Patch type 84 at offset 170 with (sectbase(557f)+$10)
+10 : Patch type 82 at offset 1a0 with (sectbase(557f)+$0)
+10 : Patch type 84 at offset 1a4 with (sectbase(557f)+$0)
+10 : Patch type 82 at offset 1ac with (sectbase(557f)+$0)
+10 : Patch type 84 at offset 1b0 with (sectbase(557f)+$0)
+10 : Patch type 82 at offset 1bc with (sectbase(557f)+$0)
+10 : Patch type 84 at offset 1c0 with (sectbase(557f)+$0)
+10 : Patch type 74 at offset 270 with (sectbase(557c)+$290)
+10 : Patch type 82 at offset 29c with (sectbase(557f)+$0)
+10 : Patch type 84 at offset 2a0 with (sectbase(557f)+$0)
+10 : Patch type 82 at offset 2b8 with (sectbase(557f)+$10)
+10 : Patch type 84 at offset 2bc with (sectbase(557f)+$10)
+10 : Patch type 82 at offset 2c4 with (sectbase(557f)+$8)
+10 : Patch type 84 at offset 2c8 with (sectbase(557f)+$8)
+10 : Patch type 82 at offset 2cc with (sectbase(557f)+$18)
+10 : Patch type 84 at offset 2d0 with (sectbase(557f)+$18)
+10 : Patch type 82 at offset 2f4 with (sectbase(557f)+$18)
+10 : Patch type 84 at offset 2f8 with (sectbase(557f)+$18)
+10 : Patch type 82 at offset 308 with (sectbase(557f)+$0)
+10 : Patch type 84 at offset 30c with (sectbase(557f)+$0)
+10 : Patch type 82 at offset 310 with (sectbase(557f)+$10)
+10 : Patch type 84 at offset 314 with (sectbase(557f)+$10)
+10 : Patch type 82 at offset 32c with (sectbase(557f)+$0)
+10 : Patch type 84 at offset 330 with (sectbase(557f)+$0)
+10 : Patch type 82 at offset 338 with [59e5]
+10 : Patch type 84 at offset 33c with [59e5]
+10 : Patch type 82 at offset 344 with (sectbase(557f)+$0)
+10 : Patch type 84 at offset 348 with (sectbase(557f)+$0)
+10 : Patch type 74 at offset 34c with (sectbase(557c)+$0)
+10 : Patch type 82 at offset 35c with [59e5]
+10 : Patch type 84 at offset 360 with [59e5]
+10 : Patch type 82 at offset 368 with (sectbase(557f)+$18)
+10 : Patch type 84 at offset 36c with (sectbase(557f)+$18)
+10 : Patch type 82 at offset 370 with [59e8]
+10 : Patch type 84 at offset 374 with [59e8]
+10 : Patch type 82 at offset 378 with [59e8]
+10 : Patch type 84 at offset 37c with [59e8]
+10 : Patch type 82 at offset 384 with [59e5]
+10 : Patch type 84 at offset 388 with [59e5]
+10 : Patch type 74 at offset 38c with (sectbase(557c)+$4c0)
+10 : Patch type 82 at offset 394 with [59e5]
+10 : Patch type 84 at offset 398 with [59e5]
+10 : Patch type 74 at offset 3d8 with (sectbase(557c)+$4ec)
+10 : Patch type 82 at offset 408 with [59e5]
+10 : Patch type 84 at offset 40c with [59e5]
+10 : Patch type 82 at offset 418 with (sectbase(557f)+$0)
+10 : Patch type 84 at offset 41c with (sectbase(557f)+$0)
+10 : Patch type 74 at offset 420 with (sectbase(557c)+$4b8)
+10 : Patch type 74 at offset 43c with (sectbase(557c)+$4b8)
+10 : Patch type 82 at offset 444 with [59e5]
+10 : Patch type 84 at offset 448 with [59e5]
+10 : Patch type 74 at offset 44c with (sectbase(557c)+$4b8)
+10 : Patch type 82 at offset 454 with [59e5]
+10 : Patch type 84 at offset 458 with [59e5]
+10 : Patch type 74 at offset 478 with (sectbase(557c)+$4ac)
+10 : Patch type 74 at offset 48c with (sectbase(557c)+$0)
+10 : Patch type 74 at offset 49c with (sectbase(557c)+$4fc)
+10 : Patch type 82 at offset 4a4 with [59e8]
+10 : Patch type 84 at offset 4a8 with [59e8]
+10 : Patch type 82 at offset 4b0 with [59e5]
+10 : Patch type 84 at offset 4b4 with [59e5]
+10 : Patch type 82 at offset 4b8 with [59e5]
+10 : Patch type 84 at offset 4bc with [59e5]
+10 : Patch type 82 at offset 4ec with [59e5]
+10 : Patch type 84 at offset 4f0 with [59e5]
+10 : Patch type 74 at offset 544 with (sectbase(557c)+$2dc)
+10 : Patch type 74 at offset 54c with (sectbase(557c)+$598)
+10 : Patch type 74 at offset 55c with (sectbase(557c)+$f4)
+10 : Patch type 74 at offset 570 with (sectbase(557c)+$2dc)
+10 : Patch type 74 at offset 588 with [5a04]
+10 : Patch type 74 at offset 590 with (sectbase(557c)+$510)
+10 : Patch type 74 at offset 5d0 with (sectbase(557c)+$2dc)
+10 : Patch type 74 at offset 5e4 with [5a0b]
+10 : Patch type 74 at offset 5ec with (sectbase(557c)+$5f8)
+6 : Switch to section 557f
+8 : Uninitialised data, 32 bytes
+6 : Switch to section 557c
+18 : Local symbol '_AllocRestBlockTop' at offset 0 in section 557f
+12 : XDEF symbol number 59d6 'InitHeap' at offset 29c in section 557c
+14 : XREF symbol number 5a04 'bcopy'
+14 : XREF symbol number 5a0b 'bzero'
+18 : Local symbol 'max_heap' at offset 10 in section 557f
+48 : XBSS symbol number 59e5 'SearchPoint' size 8 in section 5580
+12 : XDEF symbol number 5a05 'calloc' at offset 5b4 in section 557c
+12 : XDEF symbol number 59de 'malloc' at offset 2dc in section 557c
+48 : XBSS symbol number 59e8 'TopAllocArea' size 8 in section 5580
+12 : XDEF symbol number 59f6 'free' at offset 510 in section 557c
+18 : Local symbol 'AllocAreaFlag' at offset 18 in section 557f
+18 : Local symbol '_expand' at offset f4 in section 557c
+12 : XDEF symbol number 59fb 'realloc' at offset 524 in section 557c
+18 : Local symbol '_ExpAllocArea' at offset 0 in section 557c
+18 : Local symbol '_AllocMaxBlockSize' at offset 8 in section 557f
+74 : Function start :
+  section 557c
+  offset $00000000
+  file 59a7
+  start line 0
+  frame reg 29
+  frame size 0
+  return pc reg 31
+  mask $00000000
+  mask offset 0
+  name _ExpAllocArea
+76 : Function end :
+  section 557c
+  offset $000000f4
+  end line 0
+74 : Function start :
+  section 557c
+  offset $000000f4
+  file 59a7
+  start line 0
+  frame reg 29
+  frame size 0
+  return pc reg 31
+  mask $00000000
+  mask offset 0
+  name _expand
+76 : Function end :
+  section 557c
+  offset $0000029c
+  end line 0
+74 : Function start :
+  section 557c
+  offset $0000029c
+  file 59a7
+  start line 0
+  frame reg 29
+  frame size 0
+  return pc reg 31
+  mask $00000000
+  mask offset 0
+  name InitHeap
+76 : Function end :
+  section 557c
+  offset $000002dc
+  end line 0
+74 : Function start :
+  section 557c
+  offset $000002dc
+  file 59a7
+  start line 0
+  frame reg 29
+  frame size 32
+  return pc reg 31
+  mask $80030000
+  mask offset -8
+  name malloc
+76 : Function end :
+  section 557c
+  offset $00000510
+  end line 0
+74 : Function start :
+  section 557c
+  offset $00000510
+  file 59a7
+  start line 0
+  frame reg 29
+  frame size 0
+  return pc reg 31
+  mask $00000000
+  mask offset 0
+  name free
+76 : Function end :
+  section 557c
+  offset $00000524
+  end line 0
+74 : Function start :
+  section 557c
+  offset $00000524
+  file 59a7
+  start line 0
+  frame reg 29
+  frame size 32
+  return pc reg 31
+  mask $80070000
+  mask offset -4
+  name realloc
+76 : Function end :
+  section 557c
+  offset $000005b4
+  end line 0
+74 : Function start :
+  section 557c
+  offset $000005b4
+  file 59a7
+  start line 0
+  frame reg 29
+  frame size 32
+  return pc reg 31
+  mask $80030000
+  mask offset -8
+  name calloc
+76 : Function end :
+  section 557c
+  offset $0000060c
+  end line 0
+0 : End of file

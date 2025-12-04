@@ -1,0 +1,105 @@
+
+PsyLib version 2.04
+
+Module     Date     Time   Externals defined
+
+CDROM    15-05-96 16:12:18 Stframe_no StFinalSector Stsector_offset StRgb24 
+                           StEmu_Idx StSetRing StFunc1 StFunc2 StCdIntrFlag 
+                           StRingIdx1 StRingIdx2 StRingIdx3 StStartFrame 
+                           StCHANNEL StEmu_Addr StEndFrame StSTART_FLAG 
+                           StRingAddr StRingBase StRingSize CChannel 
+TOC      15-05-96 16:12:22 CdGetToc2 CdGetToc 
+EVENT    15-05-96 16:12:24 CdInit 
+SYS      15-05-96 16:12:28 CdComstr CdStatus CdIntstr CdMode CdDataCallback 
+                           CdGetSector CdSync CdSyncCallback CdLastCom 
+                           CdLastPos CdControl CdReady CdFlush 
+                           CdReadyCallback CdReset CdSetDebug CdDataSync 
+                           CdIntToPos CdPosToInt CdControlB CdControlF CdMix 
+BIOS     15-05-96 16:12:32 CD_nopen CD_flush CD_com CD_vol CD_pos CD_datasync 
+                           CD_cbread CD_initintr CD_cbsync CD_comstr 
+                           CD_status CD_intstr CD_mode CD_init CD_sync 
+                           CD_set_test_parmnum CD_getsector CD_status1 
+                           CD_cbready CD_cw CD_initvol CD_debug CD_ready 
+ISO9660  15-05-96 16:12:36 CdSearchFile 
+CDREAD   15-05-96 16:12:38 CdRead CdReadCallback CdReadSync 
+CDREAD2  15-05-96 16:12:40 StMode CdRead2 
+TYPE     15-05-96 16:14:22 CdDiskReady CdGetDiskType 
+CDREADE  15-05-96 16:12:46 CdReadFile CdReadExec 
+CDPLAY   15-05-96 16:12:50 CdPlay 
+C_002    15-05-96 16:12:52 Stframe_no StFinalSector Stsector_offset 
+                           StClearRing StRgb24 StEmu_Idx StFunc1 StCdIntrFlag 
+                           StFunc2 StRingIdx1 StRingIdx2 StRingIdx3 
+                           StStartFrame StCHANNEL StEmu_Addr StEndFrame 
+                           StSTART_FLAG StRingAddr StRingBase StRingSize 
+                           CChannel 
+C_003    15-05-96 16:12:56 Stframe_no StFinalSector Stsector_offset 
+                           StUnSetRing StRgb24 StEmu_Idx StFunc1 StFunc2 
+                           StCdIntrFlag StRingIdx1 StRingIdx2 StRingIdx3 
+                           StStartFrame StCHANNEL StEmu_Addr StEndFrame 
+                           StSTART_FLAG StRingAddr StRingBase StRingSize 
+                           CChannel 
+C_004    15-05-96 16:12:58 Stframe_no StFinalSector Stsector_offset StRgb24 
+                           StEmu_Idx StFunc1 StFunc2 StCdIntrFlag 
+                           StGetBackloc data_ready_callback StRingIdx1 
+                           StRingIdx2 StRingIdx3 StStartFrame StCHANNEL 
+                           StEmu_Addr StEndFrame StSTART_FLAG StRingAddr 
+                           StRingBase StRingSize CChannel 
+C_005    15-05-96 16:13:02 Stframe_no StFinalSector Stsector_offset StRgb24 
+                           StSetStream StEmu_Idx StFunc1 StFunc2 StCdIntrFlag 
+                           StRingIdx1 StRingIdx2 StRingIdx3 StCHANNEL 
+                           StStartFrame StEmu_Addr StEndFrame StSTART_FLAG 
+                           StRingAddr StRingBase StRingSize CChannel 
+C_006    15-05-96 16:13:04 Stframe_no StFinalSector Stsector_offset StRgb24 
+                           StEmu_Idx StFunc1 StFunc2 StCdIntrFlag StRingIdx1 
+                           StRingIdx2 StRingIdx3 StSetEmulate StStartFrame 
+                           StCHANNEL StEmu_Addr StEndFrame StSTART_FLAG 
+                           StRingAddr StRingBase StRingSize CChannel 
+C_007    15-05-96 16:13:06 Stframe_no StFinalSector Stsector_offset StRgb24 
+                           StEmu_Idx StFunc1 StFunc2 StCdIntrFlag StRingIdx1 
+                           StRingIdx2 StRingIdx3 StStartFrame StCHANNEL 
+                           StEmu_Addr StEndFrame StSTART_FLAG StRingAddr 
+                           StRingBase StFreeRing StRingSize CChannel 
+C_008    15-05-96 16:13:10 Stframe_no StFinalSector Stsector_offset StRgb24 
+                           StEmu_Idx StFunc1 StFunc2 StCdIntrFlag StRingIdx1 
+                           StRingIdx2 StRingIdx3 StStartFrame StCHANNEL 
+                           init_ring_status StEmu_Addr StEndFrame 
+                           StSTART_FLAG StRingAddr StRingBase StRingSize 
+                           CChannel 
+C_009    15-05-96 16:13:12 Stframe_no StFinalSector Stsector_offset StRgb24 
+                           StEmu_Idx StFunc1 StFunc2 StCdIntrFlag StGetNext 
+                           StRingIdx1 StRingIdx2 StRingIdx3 StStartFrame 
+                           StCHANNEL StEmu_Addr StEndFrame StSTART_FLAG 
+                           StRingAddr StRingBase StRingSize CChannel 
+C_010    15-05-96 16:13:14 Stframe_no StFinalSector Stsector_offset StRgb24 
+                           StEmu_Idx StSetMask StFunc1 StFunc2 StCdIntrFlag 
+                           StRingIdx1 StRingIdx2 StRingIdx3 StStartFrame 
+                           StCHANNEL StEmu_Addr StEndFrame StSTART_FLAG 
+                           StRingAddr StRingBase StRingSize CChannel 
+C_011    15-05-96 16:13:18 Stframe_no StFinalSector StCdInterrupt 
+                           Stsector_offset StRgb24 StEmu_Idx debug_cause 
+                           StFunc1 StCdIntrFlag StFunc2 StRingIdx1 StRingIdx2 
+                           StRingIdx3 StStartFrame StCHANNEL StEmu_Addr 
+                           StEndFrame StSTART_FLAG StRingAddr StRingBase 
+                           StRingSize CChannel 
+C_012    15-05-96 16:13:22 Stframe_no StFinalSector Stsector_offset StRgb24 
+                           StEmu_Idx StFunc1 StFunc2 StCdIntrFlag 
+                           StSetChannel StRingIdx1 StRingIdx2 StRingIdx3 
+                           StCHANNEL StStartFrame StEmu_Addr StEndFrame 
+                           StSTART_FLAG StRingAddr StRingBase StRingSize 
+                           CChannel 
+C_013    15-05-96 16:13:24 Stframe_no StFinalSector Stsector_offset StRgb24 
+                           StEmu_Idx StFunc1 StFunc2 StCdIntrFlag StRingIdx1 
+                           StRingIdx2 StRingIdx3 StStartFrame StCHANNEL 
+                           StEmu_Addr StEndFrame StSTART_FLAG StRingAddr 
+                           StRingBase StGetNextS StRingSize CChannel 
+C_014    15-05-96 16:13:26 Stframe_no StFinalSector Stsector_offset StRgb24 
+                           StEmu_Idx StFunc1 StFunc2 StCdIntrFlag StRingIdx1 
+                           StRingIdx2 StRingIdx3 StStartFrame StCHANNEL 
+                           StEmu_Addr StEndFrame StSTART_FLAG StRingAddr 
+                           StRingBase StNextStatus StRingSize CChannel 
+C_015    15-05-96 16:13:30 Stframe_no StFinalSector Stsector_offset StRgb24 
+                           StEmu_Idx StFunc1 StFunc2 StCdIntrFlag StRingIdx1 
+                           StRingIdx2 StRingIdx3 StStartFrame StCHANNEL 
+                           StEmu_Addr StEndFrame StSTART_FLAG StRingAddr 
+                           StRingBase StRingStatus StRingSize CChannel 
+

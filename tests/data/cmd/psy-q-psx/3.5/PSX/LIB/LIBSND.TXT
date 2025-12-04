@@ -1,0 +1,118 @@
+
+PsyLib version 2.04
+
+Module     Date     Time   Externals defined
+
+ADSR     15-05-96 16:44:48 _SsUtBuildADSR _SsUtResolveADSR 
+CRES     15-05-96 16:44:52 _SsSndCrescendo 
+DECRE    15-05-96 16:44:56 _SsSndDecrescendo 
+NEXT     15-05-96 16:44:58 _SsSndNextSep 
+PAUSE    15-05-96 16:45:00 _SsSndPause 
+NPAUSE   15-05-96 16:45:04 _SsSndNextPause 
+PLAY     15-05-96 16:45:06 _SsSndPlay 
+REPLAY   15-05-96 16:45:10 _SsSndReplay 
+SCGMUTE  15-05-96 16:45:12 SsGetMute 
+SCGMVOL  15-05-96 16:45:16 SsGetMVol 
+SCGNCK   15-05-96 16:45:20 SsGetNck 
+SCGRVOL  15-05-96 16:45:22 SsGetRVol 
+SCGSATTR 15-05-96 16:45:26 SsGetSerialAttr 
+SCGSVOL  15-05-96 16:45:28 SsGetSerialVol 
+SCNOFF   15-05-96 16:45:30 SsSetNoiseOff 
+SCNON    15-05-96 16:45:34 SsSetNoiseOn 
+SCSMUTE  15-05-96 16:45:36 SsSetMute 
+SCSMVOL  15-05-96 16:45:40 SsSetMVol 
+SCSNCK   15-05-96 16:45:44 SsSetNck 
+SCSRVOL  15-05-96 16:45:46 SsSetRVol 
+SCSSATTR 15-05-96 16:45:50 SsSetSerialAttr 
+SCSSVOL  15-05-96 16:45:52 SsSetSerialVol 
+SEPINIT  15-05-96 16:45:56 SsSepOpen _SsInitSoundSep 
+SEQINIT  15-05-96 16:46:00 SsSeqOpen _SsInitSoundSeq 
+SEQREAD  15-05-96 16:46:06 _SsContRpn1 _SsContRpn2 _SsSndSetVabAttr 
+                           _SsContDataEntry _SsContPortaTime 
+                           _SsSetProgramChange _SsSetControlChange _SsNoteOn 
+                           _SsReadDeltaValue _SsContNrpn1 _SsContNrpn2 
+                           _SsSetPitchBend _SsGetMetaEvent _SsContResetAll 
+                           _SsContModulation _SsContPortamento _SsSeqPlay 
+                           _SsGetSeqData 
+SEQNEXT  15-05-96 16:46:10 SsSeqSetNext 
+SESKOFF  15-05-96 16:46:12 SsVoKeyOff 
+SESKON   15-05-96 16:46:16 SsVoKeyOn 
+SSACCELE 15-05-96 16:46:18 SsSepSetAccelerando SsSeqSetAccelerando 
+                           _SsSndSetAccele 
+SSADD    15-05-96 16:46:22 SsSetMarkCallback SsSetLoop SsIsEos SsSetTempo 
+SSCALL   15-05-96 16:46:24 SsSeqCalledTbyT 
+SSCLOSE  15-05-96 16:46:28 SsSepClose SsSeqClose 
+SSINIT   15-05-96 16:46:30 _snd_openflag VBLANK_MINUS _SsInit _SsMarkCallback 
+                           _ss_score _snd_seq_s_max _snd_seq_t_max 
+                           _snd_ev_flag 
+SSINIT_C 15-05-96 16:46:34 SsInit 
+SSINIT_H 15-05-96 16:46:38 SsInitHot 
+SSQUIT   15-05-96 16:46:40 SsQuit 
+SSSTART  15-05-96 16:46:44 SsStart2 SsStart _snd_seq_tick_env 
+SSTICK   15-05-96 16:46:46 SsSetTickMode 
+SSTICKCB 15-05-96 16:46:50 SsSetTickCallback 
+SSEND    15-05-96 16:46:52 SsEnd 
+SSTABLE  15-05-96 16:46:56 SsSetTableSize 
+SSNEXT   15-05-96 16:47:00 SsSetNext 
+SSPAUSE  15-05-96 16:47:02 SsSepPause SsSeqPause _SsSndSetPauseMode 
+SSPLAY   15-05-96 16:47:06 SsSepPlay SsSeqPlay Snd_SetPlayMode 
+SSPLAYB  15-05-96 16:47:08 SsPlayBack 
+SSREPLAY 15-05-96 16:47:12 SsSepReplay SsSeqReplay _SsSndSetReplayMode 
+SSRIT    15-05-96 16:47:14 SsSepSetRitardando SsSeqSetRitardando _SsSndSetRit 
+SSVOL    15-05-96 16:47:18 SsSeqGetVol SsSepSetVol SsSeqSetVol _SsSndSetVol 
+STOP     15-05-96 16:47:20 SsSepStop SsSeqStop _SsSndStop 
+TEMPO    15-05-96 16:47:28 _SsSndTempo 
+VOL      15-05-96 16:47:30 _SsSndSetCres _SsSndSetVolData SsSepSetDecrescendo 
+                           SsSeqSetDecrescendo SsSepSetCrescendo 
+                           SsSeqSetCrescendo _SsSndSetDecres 
+VS_AUTO  15-05-96 16:47:34 SsSetAutoKeyOffMode 
+VS_MONO  15-05-96 16:47:36 SsSetStereo SsSetMono 
+VS_SRV   15-05-96 16:47:40 SsSetReservedVoice 
+VS_VAB   15-05-96 16:47:44 SsVabOpen SsVabClose 
+VS_VFB   15-05-96 16:47:46 SsVabFakeBody 
+VS_VH    15-05-96 16:47:58 SsVabOpenHeadSticky SsVabFakeHead SsVabOpenHead 
+VS_VTB   15-05-96 16:48:00 SsVabTransBody 
+VS_VTBP  15-05-96 16:48:04 SsVabTransBodyPartly 
+VS_VTC   15-05-96 16:48:08 SsVabTransCompleted 
+VS_VT    15-05-96 16:48:10 SsVabTransfer 
+VM_DOFF  15-05-96 16:48:14 SpuVmDamperOff 
+VM_DON   15-05-96 16:48:20 SpuVmDamperOn 
+VM_G     15-05-96 16:48:22 spuVmMaxVoice _svm_rattr _svm_vcf _svm_vab_used 
+                           _svm_cur _svm_auto_kof_mode _svm_vab_pg 
+                           _svm_vab_vh _svm_damper _svm_vab_tn 
+                           _svm_stereo_mono _svm_vab_total _svm_vab_count 
+                           _svm_vab_start kMaxPrograms _svm_brr_start_addr 
+                           _svm_pg _svm_vg _svm_vh _svm_tn 
+VM_VSU   15-05-96 16:48:26 SpuVmVSetUp 
+VM_DEBUG 15-05-96 16:48:28 SpuVmCheck 
+UT_F     15-05-96 16:48:32 SsUtFlush 
+UT_GPA   15-05-96 16:48:36 SsUtGetProgAtr 
+UT_GVA   15-05-96 16:48:40 SsUtGetVagAtr 
+UT_GVAD  15-05-96 16:48:44 SsUtGetVagAddr 
+UT_GVAFT 15-05-96 16:48:48 SsUtGetVagAddrFromTone 
+UT_GVBA  15-05-96 16:48:50 SsUtGetVBaddrInSB 
+UT_GVH   15-05-96 16:48:54 SsUtGetVabHdr 
+UT_REV   15-05-96 16:48:58 SsUtGetReverbType SsUtSetReverbType 
+UT_RON   15-05-96 16:49:04 SsUtReverbOn 
+UT_ROFF  15-05-96 16:49:06 SsUtReverbOff 
+UT_RFB   15-05-96 16:49:10 SsUtSetReverbFeedback 
+UT_RDEP  15-05-96 16:49:14 SsUtSetReverbDepth 
+UT_RDEL  15-05-96 16:49:16 SsUtSetReverbDelay 
+UT_SPA   15-05-96 16:49:22 SsUtSetProgAtr 
+UT_SVA   15-05-96 16:49:26 SsUtSetVagAtr 
+UT_SVH   15-05-96 16:49:28 SsUtSetVabHdr 
+VMANAGER 15-05-96 16:49:40 SsUtPitchBend _svm_orev1 _svm_orev2 SpuVmNoiseOff 
+                           SsUtVibrateOn SsUtKeyOffV SsUtGetVVol SpuVmKeyOff 
+                           SsUtSetVVol SsUtAutoPan SsUtGetDetVVol SpuVmSetVol 
+                           SsUtAutoVol SsUtSetDetVVol SpuVmSeqKeyOff 
+                           SpuVmPitchBend SpuVmGetSeqVol SsUtKeyOn 
+                           SsUtVibrateOff SpuVmSetSeqVol SpuVmPBVoice 
+                           SpuVmInit SpuVmSeKeyOn SpuVmNoiseOn 
+                           SpuVmGetSeqLVol KeyOnCheck SpuVmGetSeqRVol 
+                           SsUtKeyOnV SsUtChangePitch SpuVmGetProgPan 
+                           SsUtKeyOff SpuVmNoiseOnWithAdsr SpuVmSetProgPan 
+                           SpuVmKeyOn SpuVmGetProgVol SsUtAllKeyOff 
+                           SpuVmSetProgVol _svm_okof1 _svm_okof2 
+                           SpuVmSeKeyOff _svm_okon1 _svm_okon2 SpuVmFlush 
+                           SsUtChangeADSR 
+

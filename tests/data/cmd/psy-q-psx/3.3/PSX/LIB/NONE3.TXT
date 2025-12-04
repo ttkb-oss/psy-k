@@ -1,0 +1,30 @@
+
+Header : LNK version 2
+46 : Processor type 7
+16 : Section symbol number 126c '.rdata' in group 0 alignment 8
+16 : Section symbol number 126d '.text' in group 0 alignment 8
+16 : Section symbol number 66c0 '.ctors' in group 0 alignment 8
+16 : Section symbol number 66c1 '.dtors' in group 0 alignment 8
+16 : Section symbol number 66c2 '.data' in group 0 alignment 8
+16 : Section symbol number 66c3 '.sdata' in group 0 alignment 8
+16 : Section symbol number 66c4 '.sbss' in group 0 alignment 8
+16 : Section symbol number 66c5 '.bss' in group 0 alignment 8
+6 : Switch to section 126c
+6 : Switch to section 126d
+6 : Switch to section 66c0
+6 : Switch to section 66c1
+6 : Switch to section 66c2
+6 : Switch to section 66c3
+6 : Switch to section 66c4
+6 : Switch to section 66c5
+6 : Switch to section 126d
+2 : Code 52 bytes
+10 : Patch type 82 at offset 0 with sectstart(66c4)
+10 : Patch type 84 at offset 4 with sectstart(66c4)
+10 : Patch type 82 at offset 8 with sectend(66c5)
+10 : Patch type 84 at offset c with sectend(66c5)
+10 : Patch type 74 at offset 24 with [66c9]
+12 : XDEF symbol number 66c6 '__SN_ENTRY_POINT' at offset 0 in section 126d
+12 : XDEF symbol number 66c8 '__main' at offset 2c in section 126d
+14 : XREF symbol number 66c9 'main'
+0 : End of file

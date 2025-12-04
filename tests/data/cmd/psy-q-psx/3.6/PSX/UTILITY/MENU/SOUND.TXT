@@ -1,0 +1,86 @@
+
+Header : LNK version 2
+46 : Processor type 7
+16 : Section symbol number 1 '.rdata' in group 0 alignment 8
+16 : Section symbol number 2 '.text' in group 0 alignment 8
+16 : Section symbol number 3 '.data' in group 0 alignment 8
+16 : Section symbol number 4 '.sdata' in group 0 alignment 8
+16 : Section symbol number 5 '.sbss' in group 0 alignment 8
+16 : Section symbol number 6 '.bss' in group 0 alignment 8
+16 : Section symbol number 7 '.ctors' in group 0 alignment 8
+16 : Section symbol number 8 '.dtors' in group 0 alignment 8
+28 : Define file number 9 as "C:\NEWEST\UTILITY\MENU\SOUND.C"
+6 : Switch to section 2
+6 : Switch to section 1
+2 : Code 57 bytes
+6 : Switch to section 2
+6 : Switch to section 2
+2 : Code 340 bytes
+10 : Patch type 74 at offset 8 with [e]
+10 : Patch type 82 at offset 10 with (sectbase(6)+$0)
+10 : Patch type 84 at offset 14 with (sectbase(6)+$0)
+10 : Patch type 74 at offset 1c with [f]
+10 : Patch type 74 at offset 24 with [10]
+10 : Patch type 82 at offset 2c with [11]
+10 : Patch type 84 at offset 30 with [11]
+10 : Patch type 74 at offset 34 with [12]
+10 : Patch type 30 at offset 3c with (sectstart(4)-[c])
+10 : Patch type 82 at offset 54 with (sectbase(1)+$0)
+10 : Patch type 84 at offset 58 with (sectbase(1)+$0)
+10 : Patch type 74 at offset 5c with [13]
+10 : Patch type 74 at offset 64 with (sectbase(2)+$104)
+10 : Patch type 82 at offset 6c with [14]
+10 : Patch type 84 at offset 70 with [14]
+10 : Patch type 30 at offset 74 with (sectstart(4)-[c])
+10 : Patch type 74 at offset 78 with [15]
+10 : Patch type 30 at offset 88 with (sectstart(4)-[c])
+10 : Patch type 82 at offset 98 with (sectbase(1)+$1c)
+10 : Patch type 84 at offset 9c with (sectbase(1)+$1c)
+10 : Patch type 74 at offset a0 with [13]
+10 : Patch type 74 at offset a8 with (sectbase(2)+$104)
+10 : Patch type 74 at offset b0 with [16]
+10 : Patch type 82 at offset b8 with [17]
+10 : Patch type 84 at offset bc with [17]
+10 : Patch type 30 at offset c0 with (sectstart(4)-[c])
+10 : Patch type 74 at offset c4 with [18]
+10 : Patch type 30 at offset cc with (sectstart(4)-[d])
+10 : Patch type 74 at offset d0 with [19]
+10 : Patch type 74 at offset dc with [1a]
+10 : Patch type 30 at offset e4 with (sectstart(4)-[d])
+10 : Patch type 74 at offset ec with [1b]
+10 : Patch type 30 at offset f4 with (sectstart(4)-[d])
+10 : Patch type 74 at offset fc with [1c]
+10 : Patch type 30 at offset 11c with (sectstart(4)-[d])
+10 : Patch type 74 at offset 120 with [1d]
+10 : Patch type 30 at offset 128 with (sectstart(4)-[c])
+10 : Patch type 74 at offset 12c with [1e]
+10 : Patch type 74 at offset 134 with [1f]
+10 : Patch type 74 at offset 13c with [20]
+6 : Switch to section 6
+8 : Uninitialised data, 3440 bytes
+6 : Switch to section 2
+14 : XREF symbol number 10 'SsSetTickMode'
+18 : Local symbol 'stab.2' at offset 0 in section 6
+48 : XBSS symbol number c 'vab' size 2 in section 5
+14 : XREF symbol number 14 'strings_vb'
+14 : XREF symbol number 17 'mozart_seq'
+14 : XREF symbol number 11 'strings_vh'
+48 : XBSS symbol number d 'seq' size 2 in section 5
+14 : XREF symbol number 1b 'SsSeqSetVol'
+14 : XREF symbol number e 'SsInit'
+12 : XDEF symbol number b 'sndEnd' at offset 114 in section 2
+14 : XREF symbol number 20 'SsQuit'
+14 : XREF symbol number 1a 'SsSetMVol'
+14 : XREF symbol number f 'SsSetTableSize'
+14 : XREF symbol number 15 'SsVabTransBody'
+14 : XREF symbol number 18 'SsSeqOpen'
+14 : XREF symbol number 16 'SsVabTransCompleted'
+14 : XREF symbol number 1c 'SsSeqPlay'
+14 : XREF symbol number 13 'printf'
+14 : XREF symbol number 19 'SsStart'
+14 : XREF symbol number 1e 'SsVabClose'
+12 : XDEF symbol number a 'sndInit' at offset 0 in section 2
+14 : XREF symbol number 1f 'SsEnd'
+14 : XREF symbol number 12 'SsVabOpenHead'
+14 : XREF symbol number 1d 'SsSeqClose'
+0 : End of file

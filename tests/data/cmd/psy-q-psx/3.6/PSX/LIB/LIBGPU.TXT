@@ -1,0 +1,36 @@
+
+PsyLib version 2.04
+
+Module     Date     Time   Externals defined
+
+EXT      03-10-96 14:20:38 LoadClut LoadClut2 LoadTPage SetDefDrawEnv 
+                           SetDefDispEnv 
+EXTA     03-10-96 14:20:40 GetTPageA get_addr get_cell LoadTPageA 
+FONT     03-10-96 14:20:42 FntFlush FntPrint Font FntLoad FntOpen SetDumpFnt 
+FONTTEX  03-10-96 14:20:42 
+KPRINTF  03-10-96 14:20:44 KanjiFntClose KanjiFntFlush KanjiFntPrint PutKanji 
+                           Krom2RawAdd2 kanjitrans txyuv hankanjitrans 
+                           KanjiFont KanjiFntLoad KanjiFntOpen kanjiclut 
+KROM2TIM 03-10-96 14:20:46 GetTimSize Krom2Tim 
+OTAG     03-10-96 14:20:46 DumpOTag CheckPrim DrawOTagIO 
+PRIM     03-10-96 14:20:48 SetSprt8 AddPrims SetTile16 SetLineF2 SetLineG2 
+                           SetLineF3 DumpClut SetLineG3 SetLineF4 SetLineG4 
+                           TermPrim NextPrim SetDrawLoad SetSprt16 
+                           SetShadeTex SetPolyF3 SetPolyG3 SetPolyF4 
+                           SetPolyG4 DumpDrawEnv DumpDispEnv SetDrawMove 
+                           DumpTPage IsEndPrim MargePrim SetDrawTPage 
+                           SetPolyFT3 SetPolyGT3 SetPolyFT4 SetBlockFill 
+                           SetPolyGT4 AddPrim CatPrim GetClut SetTile 
+                           SetSemiTrans SetSprt SetTile1 GetTPage SetTile8 
+SYS      03-10-96 14:20:52 SetGraphDebug _qlog SetDrawOffset DrawOTagEnv 
+                           SetGraphQueue DrawPrim _qout DrawSync SetDrawArea 
+                           DrawSyncCallback SetDrawMode SetDispMask ClearOTag 
+                           LoadImage MoveImage SetPriority ClearOTagR _qin 
+                           _que GetGraphType ClearImage SetTexWindow 
+                           GetDrawEnv GetDispEnv GPU_printf SetDrawEnv 
+                           StoreImage PutDrawEnv PutDispEnv ResetGraph GetODE 
+                           GetGraphDebug DrawOTag SetGraphReverse ClearImage2 
+TMD      03-10-96 14:20:56 ReadTMD ReadTIM OpenTMD OpenTIM 
+KTRANS   03-10-96 14:20:56 Krom2RawAdd2 kanjitrans hankanjitrans 
+BREAK    03-10-96 14:20:58 IsIdleGPU _CntDrEnv BreakDraw ContinueDraw 
+

@@ -60,7 +60,12 @@ XDEF
 XREF
 bss
 disassembly
+file_prefix
+filenames
+globals
+interoperability
 metadata
+recurse
 relocations
 sozud's
 t0aster

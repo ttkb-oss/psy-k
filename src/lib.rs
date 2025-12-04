@@ -80,15 +80,27 @@
 //! - MIPS R3000 (PlayStation 1)
 //! - Hitachi SH-2 (Sega Saturn)
 
+use core::cmp;
 use std::fmt;
+use std::fs;
+use std::path::Path;
 use std::time::{Duration, SystemTime, UNIX_EPOCH};
 
+use anyhow::Result;
 use binrw::binrw;
 use binrw::helpers::{until, until_eof};
-use chrono::{NaiveDate, NaiveDateTime, NaiveTime, TimeZone, Utc};
+use chrono::{
+    DateTime, Datelike, Local, NaiveDate, NaiveDateTime, NaiveTime, TimeZone, Timelike, Utc,
+};
 use rabbitizer::{InstrCategory, Instruction};
+use unicode_segmentation::UnicodeSegmentation;
 
+use crate::display::DisplayWithOptions;
+
+pub mod display;
 pub mod io;
+
+pub mod cli;
 
 /// A [LIB] is an archive of several [OBJ] files. It consists
 /// of a magic number followed by one or more [Modules](Module).
@@ -114,7 +126,7 @@ pub mod io;
 #[binrw]
 #[brw(little, magic = b"LIB", assert(!objs.is_empty()))]
 #[repr(C)]
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub struct LIB {
     version: u8,
 
@@ -123,6 +135,11 @@ pub struct LIB {
 }
 
 impl LIB {
+    /// Creates a new [LIB] with the provided modules.
+    pub fn new(objs: Vec<Module>) -> Self {
+        Self { version: 1, objs }
+    }
+
     /// The modules contained in this library.
     ///
     /// Each module wraps an OBJ file along with metadata about its name,
@@ -134,9 +151,17 @@ impl LIB {
 
 impl fmt::Display for LIB {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        self.fmt_with_options(f, &display::Options::default())
+    }
+}
+
+impl display::DisplayWithOptions for LIB {
+    fn fmt_with_options(&self, f: &mut fmt::Formatter, options: &display::Options) -> fmt::Result {
         writeln!(f, "Module     Date     Time   Externals defined")?;
+        writeln!(f)?;
         for obj in &self.objs {
-            writeln!(f, "{obj}")?;
+            obj.fmt_with_options(f, options)?;
+            writeln!(f)?;
         }
         Ok(())
     }
@@ -149,6 +174,7 @@ impl fmt::Display for LIB {
 #[binrw]
 #[brw(little)]
 #[repr(C)]
+#[derive(Clone, PartialEq)]
 pub struct Export {
     name_size: u8,
     #[br(count = name_size)]
@@ -159,21 +185,34 @@ pub struct Export {
 ///
 /// The export table is terminated by an export with a zero-length name.
 impl Export {
+    pub fn new(name: String) -> Self {
+        // TODO: should this restrict to ascii?
+        let mut utf8 = name.as_bytes().to_vec();
+        utf8.truncate(u8::MAX.into());
+        Self {
+            name_size: name.len() as u8,
+            name: utf8,
+        }
+    }
+
+    pub fn empty() -> Self {
+        Self {
+            name_size: 0,
+            name: Vec::new(),
+        }
+    }
+
     /// Returns the name of this exported symbol.
     ///
     /// Non-UTF-8 characters are replaced with the Unicode replacement character (�)
     pub fn name(&self) -> String {
-        String::from_utf8_lossy(&self.name).into_owned()
+        // TODO: what are * prefixed symbols for?
+        if !self.name.is_empty() && self.name[0] == 0 {
+            format!("*{}", String::from_utf8_lossy(&self.name[1..]).into_owned())
+        } else {
+            String::from_utf8_lossy(&self.name).into_owned()
+        }
     }
-}
-
-#[binrw]
-#[brw(little)]
-#[repr(C)]
-pub enum ExportEntry {
-    // #[br(magic = 0u8)]
-    // End,
-    Export(Export),
 }
 
 /// Trait for converting PSY-Q timestamps to standard Rust date/time types.
@@ -205,22 +244,33 @@ pub enum ExportEntry {
 ///
 /// These timestamps don't include timezone information and are treated
 /// as local time in the original PSY-Q toolchain.
-trait FromPSYQTimestamp {
+pub trait FromPSYQTimestamp {
     /// Converts a PSY-Q timestamp to this type.
     ///
     /// Returns `None` if the timestamp contains invalid date/time values.
     fn from_psyq_timestamp(t: u32) -> Option<Self>
     where
         Self: Sized;
+
+    /// Converts `Self` into a 32-bit PSY-Q timestamp
+    fn to_psyq_timestamp(&self) -> u32;
 }
 
 impl FromPSYQTimestamp for NaiveDate {
     fn from_psyq_timestamp(t: u32) -> Option<Self> {
         let date = t & 0xFFFF;
-        let day = date & 0x1F;
-        let month = (date >> 5) & 0xF;
         let year = ((date >> 9) & 0x7F) + 1980;
+        let month = (date >> 5) & 0xF;
+        let day = date & 0x1F;
         NaiveDate::from_ymd_opt(year as i32, month, day)
+    }
+
+    fn to_psyq_timestamp(&self) -> u32 {
+        let year = (self.year() as u32 - 1980) & 0x7F;
+        let month = (self.month()) & 0xF;
+        let day = (self.day()) & 0x1F;
+
+        (year << 9) | (month << 5) | day
     }
 }
 
@@ -231,6 +281,14 @@ impl FromPSYQTimestamp for NaiveTime {
         let minute = (time >> 5) & 0x3F;
         let second = (time & 0x1F) * 2;
         NaiveTime::from_hms_opt(hour, minute, second)
+    }
+
+    fn to_psyq_timestamp(&self) -> u32 {
+        let hour = self.hour() & 0x1F;
+        let minute = self.minute() & 0x3F;
+        let second = self.second() / 2;
+
+        (hour << 27) | (minute << 21) | (second << 16)
     }
 }
 
@@ -243,6 +301,10 @@ impl FromPSYQTimestamp for NaiveDateTime {
             NaiveTime::from_psyq_timestamp(t)?,
         ))
     }
+
+    fn to_psyq_timestamp(&self) -> u32 {
+        self.date().to_psyq_timestamp() | self.time().to_psyq_timestamp()
+    }
 }
 
 impl FromPSYQTimestamp for SystemTime {
@@ -251,6 +313,11 @@ impl FromPSYQTimestamp for SystemTime {
         // Convert to UTC (though original timezone is unknown)
         let datetime_utc = Utc.from_utc_datetime(&dt);
         Some(UNIX_EPOCH + Duration::from_secs(datetime_utc.timestamp() as u64))
+    }
+
+    fn to_psyq_timestamp(&self) -> u32 {
+        let datetime = DateTime::<Local>::from(*self);
+        datetime.naive_utc().to_psyq_timestamp()
     }
 }
 
@@ -261,18 +328,98 @@ impl FromPSYQTimestamp for SystemTime {
 #[binrw]
 #[brw(little)]
 #[repr(C)]
+#[derive(Clone, PartialEq)]
 pub struct ModuleMetadata {
     name: [u8; 8],
     created: u32,
     offset: u32,
     size: u32,
 
-    #[br(parse_with=until(|e: &ExportEntry| {
-        let ExportEntry::Export(e) = e; e.name_size == 0}))]
-    exports: Vec<ExportEntry>,
+    #[br(parse_with=until(|e: &Export| e.name_size == 0))]
+    exports: Vec<Export>,
+}
+
+/// Converts a [Path] into an appropriate module name. The module
+/// name is the first 8 characters of the file name without anything
+/// following the first `.` (period) character (as defined by
+/// [Path::file_prefix]). If that portion of the file name is smaller
+/// than 8-bytes, the remaining bytes will be padded with the `NUL`
+/// character.
+///
+/// Path does not include a file component, this function will
+/// panic.
+///
+/// **Note on Unicode:** it is assumed that paths are encoded
+/// in UTF-8, an invariant not guaranteed by the Rust std library.
+/// Psy-Q was not built to handle Unicode filenames, so including
+/// files with characters outside of the ASCII range will likely
+/// break interoperability with other tools. However, Psy-X supports
+/// Unicode file names and will produce appropriate model names
+/// with only the bytes that represent full code points.
+#[inline]
+fn path_to_module_name(path: &Path) -> [u8; 8] {
+    let Some(prefix) = path.file_prefix() else {
+        panic!("Module paths must contain a file name: {:?}", path);
+    };
+
+    let mut module_name: [u8; 8] = [0x20; 8];
+    let binding = prefix.to_ascii_uppercase();
+
+    if prefix.is_ascii() {
+        // the ascii path is simple, just copy the bytes
+        let bytes = binding.as_encoded_bytes();
+        let len = cmp::min(bytes.len(), module_name.len());
+        module_name[0..len].copy_from_slice(&bytes[0..len]);
+    } else {
+        // the unicode path requires care to avoid breaking
+        // multi-byte codepoints and grapheme clusters.
+        let Some(prefix_str) = binding.to_str() else {
+            panic!("Module path is not valid unicode: {:?}", path);
+        };
+
+        let mut size = 0;
+        for (offset, cluster) in prefix_str.grapheme_indices(false) {
+            if offset > 7 || (offset + cluster.len()) > 8 {
+                break;
+            }
+            size = offset + cluster.len();
+        }
+
+        module_name[..size].copy_from_slice(&prefix_str.as_bytes()[..size]);
+    }
+    module_name
 }
 
 impl ModuleMetadata {
+    fn new_from_path(path: &Path, obj: &OBJ) -> Result<Self> {
+        let name = path_to_module_name(path);
+
+        let file_metadata = fs::metadata(path)?;
+
+        let created = if let Ok(creation_time) = file_metadata.created() {
+            creation_time.to_psyq_timestamp()
+        } else {
+            SystemTime::now().to_psyq_timestamp()
+        };
+        let mut exports = obj
+            .exports()
+            .into_iter()
+            .map(Export::new)
+            .collect::<Vec<Export>>();
+        exports.push(Export::empty());
+
+        let offset: u32 = 20 + exports.iter().map(|e| 1 + e.name_size as u32).sum::<u32>();
+        let size = offset + file_metadata.len() as u32;
+
+        Ok(Self {
+            name,
+            created,
+            offset,
+            size,
+            exports,
+        })
+    }
+
     /// Returns the module name, with trailing whitespace removed.
     ///
     /// Module names are stored as 8-byte fixed-width fields, padded with spaces.
@@ -293,13 +440,11 @@ impl ModuleMetadata {
     pub fn exports(&self) -> Vec<String> {
         self.exports
             .iter()
-            .filter_map(|e| match e {
-                ExportEntry::Export(export) => {
-                    if export.name.is_empty() {
-                        None
-                    } else {
-                        Some(export.name())
-                    }
+            .filter_map(|e| {
+                if e.name.is_empty() {
+                    None
+                } else {
+                    Some(e.name())
                 }
             })
             .collect()
@@ -328,7 +473,7 @@ impl ModuleMetadata {
         // format!("{} {}", self.date(), self.time())
         self.created_datetime()
             .expect("created")
-            .format("%m-%d-%y %H:%M:%S")
+            .format("%d-%m-%y %H:%M:%S")
             .to_string()
     }
 
@@ -357,12 +502,22 @@ impl ModuleMetadata {
 #[binrw]
 #[brw(little)]
 #[repr(C)]
+#[derive(Clone, PartialEq)]
 pub struct Module {
     metadata: ModuleMetadata,
     obj: OBJ,
 }
 
 impl Module {
+    /// Creates a new [Module] from the file at `path`.
+    ///
+    /// `path` must point to a valid [OBJ] file.
+    pub fn new_from_path(path: &Path) -> Result<Self> {
+        let obj = io::read_obj(path)?;
+        let metadata = ModuleMetadata::new_from_path(path, &obj)?;
+        Ok(Self { metadata, obj })
+    }
+
     /// Returns the module name.
     pub fn name(&self) -> String {
         self.metadata.name()
@@ -396,12 +551,22 @@ impl Module {
 
 impl fmt::Display for Module {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        self.fmt_with_options(f, &display::Options::default())
+    }
+}
+
+impl display::DisplayWithOptions for Module {
+    fn fmt_with_options(&self, f: &mut fmt::Formatter, _options: &display::Options) -> fmt::Result {
         write!(
             f,
             "{:<8} {} {}",
             self.name(),
             self.created(),
-            self.exports().join(" ")
+            self.exports()
+                .into_iter()
+                .map(|e| format!("{e} "))
+                .collect::<Vec<_>>()
+                .join("")
         )?;
         Ok(())
     }
@@ -468,7 +633,7 @@ pub struct OpaqueModule {
 #[binrw]
 #[brw(little, magic = b"LNK")]
 #[repr(C)]
-#[derive(Debug)]
+#[derive(Clone, Debug, PartialEq)]
 pub struct OBJ {
     version: u8,
     #[br(parse_with=until(|section: &Section| matches!(section, Section::NOP)))]
@@ -488,6 +653,34 @@ impl OBJ {
     pub fn sections(&self) -> &Vec<Section> {
         &self.sections
     }
+
+    /// Returns symbols exported by this object file.
+    ///
+    /// Exported symbols can be functions or globals.
+    pub fn exports(&self) -> Vec<String> {
+        self.sections()
+            .iter()
+            .filter_map({
+                |s| match s {
+                    Section::XDEF(xdef) => {
+                        if xdef.symbol_name_size > 0 {
+                            Some(xdef.symbol_name())
+                        } else {
+                            None
+                        }
+                    }
+                    Section::XBSS(xbss) => {
+                        if xbss.name_size > 0 {
+                            Some(xbss.name())
+                        } else {
+                            None
+                        }
+                    }
+                    _ => None,
+                }
+            })
+            .collect()
+    }
 }
 
 impl fmt::Display for OBJ {
@@ -500,16 +693,35 @@ impl fmt::Display for OBJ {
     }
 }
 
+impl display::DisplayWithOptions for OBJ {
+    fn fmt_with_options(&self, f: &mut fmt::Formatter, options: &display::Options) -> fmt::Result {
+        writeln!(f, "Header : LNK version {}", self.version)?;
+        for section in &self.sections {
+            section.fmt_with_options(f, options)?;
+            writeln!(f)?;
+        }
+        Ok(())
+    }
+}
+
 /// Machine code section.
 ///
-/// Contains executable instructions for the target CPU.
+/// Contains executable instructions for the target [CPU](Section::CPU).
 #[binrw]
 #[brw(little)]
-#[derive(Debug)]
+#[derive(Clone, Debug, PartialEq)]
 pub struct Code {
     size: u16,
     #[br(count = size)]
     code: Vec<u8>,
+}
+
+impl Code {
+    /// Returns the code for this section as bytes. Their format can be determined by the value
+    /// set in the [CPU](Section::CPU).
+    pub fn code(&self) -> &Vec<u8> {
+        &self.code
+    }
 }
 
 /// Section switch directive.
@@ -517,7 +729,7 @@ pub struct Code {
 /// Tells the linker to switch to a different section for subsequent data.
 #[binrw]
 #[brw(little)]
-#[derive(Debug)]
+#[derive(Clone, Debug, PartialEq)]
 pub struct SectionSwitch {
     id: u16,
 }
@@ -536,7 +748,7 @@ pub struct SectionSwitch {
 /// - `(sectstart(1)+$100)` - Section 1 start plus 0x100
 #[binrw]
 #[brw(little)]
-#[derive(Debug)]
+#[derive(Clone, Debug, PartialEq)]
 pub enum Expression {
     /// A constant value (tag 0x00).
     #[brw(magic(0u8))]
@@ -744,7 +956,7 @@ impl fmt::Display for Expression {
 /// Patches modify code or data at a specific offset using a calculated expression
 #[binrw]
 #[brw(little)]
-#[derive(Debug)]
+#[derive(Clone, Debug, PartialEq)]
 pub struct Patch {
     /// The type of patch (determines how the expression value is applied).
     tag: u8,
@@ -759,6 +971,7 @@ pub struct Patch {
 /// Defines properties of a section such as its group, alignment, and type name.
 #[binrw]
 #[brw(little)]
+#[derive(Clone, PartialEq)]
 pub struct LNKHeader {
     section: u16,
     group: u16,
@@ -794,6 +1007,7 @@ impl fmt::Debug for LNKHeader {
 /// Local symbols are visible only within the current module.
 #[binrw]
 #[brw(little)]
+#[derive(Clone, PartialEq)]
 pub struct LocalSymbol {
     section: u16,
     offset: u32,
@@ -826,6 +1040,7 @@ impl fmt::Debug for LocalSymbol {
 /// Groups are used to organize sections for linking.
 #[binrw]
 #[brw(little)]
+#[derive(Clone, PartialEq)]
 pub struct GroupSymbol {
     number: u16,
     sym_type: u8,
@@ -859,7 +1074,7 @@ impl fmt::Debug for GroupSymbol {
 /// and can be referenced by other modules.
 #[binrw]
 #[brw(little)]
-#[derive(Debug)]
+#[derive(Clone, Debug, PartialEq)]
 pub struct XDEF {
     number: u16,
     section: u16,
@@ -872,6 +1087,7 @@ pub struct XDEF {
 
 impl XDEF {
     pub fn symbol_name(&self) -> String {
+        // TODO: can a starred symbol be here as well?
         String::from_utf8_lossy(&self.symbol_name).into_owned()
     }
 }
@@ -882,7 +1098,7 @@ impl XDEF {
 /// defined in other modules.
 #[binrw]
 #[brw(little)]
-#[derive(Debug)]
+#[derive(Clone, Debug, PartialEq)]
 pub struct XREF {
     number: u16,
     symbol_name_size: u8,
@@ -912,6 +1128,7 @@ pub mod cputype {
 /// A file name reference used in debug information.
 #[binrw]
 #[brw(little)]
+#[derive(Clone, PartialEq)]
 pub struct Filename {
     number: u16,
     size: u8,
@@ -939,7 +1156,7 @@ impl fmt::Debug for Filename {
 /// Set MX info directive.
 #[binrw]
 #[brw(little)]
-#[derive(Debug)]
+#[derive(Clone, Debug, PartialEq)]
 pub struct SetMXInfo {
     offset: u16,
     value: u8,
@@ -948,7 +1165,7 @@ pub struct SetMXInfo {
 /// External BSS (uninitialized data) symbol.
 #[binrw]
 #[brw(little)]
-#[derive(Debug)]
+#[derive(Clone, Debug, PartialEq)]
 pub struct XBSS {
     number: u16,
     section: u16,
@@ -959,10 +1176,16 @@ pub struct XBSS {
     name: Vec<u8>,
 }
 
+impl XBSS {
+    pub fn name(&self) -> String {
+        String::from_utf8_lossy(&self.name).into_owned()
+    }
+}
+
 /// Set source line debugger (SLD) line number.
 #[binrw]
 #[brw(little)]
-#[derive(Debug)]
+#[derive(Clone, Debug, PartialEq)]
 pub struct SetSLDLineNum {
     offset: u16,
     linenum: u32,
@@ -971,7 +1194,7 @@ pub struct SetSLDLineNum {
 /// Set source line debugger (SLD) line number with file reference.
 #[binrw]
 #[brw(little)]
-#[derive(Debug)]
+#[derive(Clone, Debug, PartialEq)]
 pub struct SetSLDLineNumFile {
     offset: u16,
     linenum: u32,
@@ -983,7 +1206,7 @@ pub struct SetSLDLineNumFile {
 /// Provides detailed information about a function for source-level debugging.
 #[binrw]
 #[brw(little)]
-#[derive(Debug)]
+#[derive(Clone, Debug, PartialEq)]
 pub struct FunctionStart {
     section: u16,
     offset: u32,
@@ -1010,7 +1233,7 @@ impl FunctionStart {
 /// Function end debug information.
 #[binrw]
 #[brw(little)]
-#[derive(Debug)]
+#[derive(Clone, Debug, PartialEq)]
 pub struct FunctionEnd {
     section: u16,
     offset: u32,
@@ -1020,7 +1243,7 @@ pub struct FunctionEnd {
 /// Block start debug information.
 #[binrw]
 #[brw(little)]
-#[derive(Debug)]
+#[derive(Clone, Debug, PartialEq)]
 pub struct BlockStart {
     section: u16,
     offset: u32,
@@ -1030,7 +1253,7 @@ pub struct BlockStart {
 /// Block end debug information.
 #[binrw]
 #[brw(little)]
-#[derive(Debug)]
+#[derive(Clone, Debug, PartialEq)]
 pub struct BlockEnd {
     section: u16,
     offset: u32,
@@ -1040,7 +1263,7 @@ pub struct BlockEnd {
 /// Variable or type definition debug information.
 #[binrw]
 #[brw(little)]
-#[derive(Debug)]
+#[derive(Clone, Debug, PartialEq)]
 pub struct Def {
     section: u16,
     value: u32,
@@ -1062,7 +1285,7 @@ impl Def {
 /// Dimension specification for arrays.
 #[binrw]
 #[brw(little)]
-#[derive(Debug)]
+#[derive(Clone, Debug, PartialEq)]
 pub enum Dim {
     /// No dimensions (scalar).
     #[br(magic = 0u16)]
@@ -1085,7 +1308,7 @@ impl fmt::Display for Dim {
 /// Extended variable or type definition with additional metadata.
 #[binrw]
 #[brw(little)]
-#[derive(Debug)]
+#[derive(Clone, Debug, PartialEq)]
 pub struct Def2 {
     section: u16,
     value: u32,
@@ -1125,11 +1348,12 @@ impl Def2 {
 /// - Debug sections: Line numbers, function info, etc.
 #[binrw]
 #[brw(little)]
-#[derive(Debug)]
+#[derive(Clone, Debug, PartialEq)]
 pub enum Section {
     /// End of file marker (tag 0).
     #[brw(magic(0u8))]
     NOP,
+
     /// Machine code (tag 2).
     #[brw(magic(2u8))]
     Code(Code),
@@ -1270,36 +1494,41 @@ fn is_en_gb() -> bool {
 
 impl fmt::Display for Section {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        self.fmt_with_options(f, &display::Options::default())
+    }
+}
+
+impl display::DisplayWithOptions for Section {
+    fn fmt_with_options(&self, f: &mut fmt::Formatter, options: &display::Options) -> fmt::Result {
         match self {
             Self::NOP => write!(f, "0 : End of file"),
             Self::Code(code) => {
-                let r = write!(f, "2 : Code {} bytes", code.code.len());
-                let Ok(d) = std::env::var("DUMP") else {
-                    return r;
-                };
-
-                if d == "DISASSEMBLE" {
-                    writeln!(f, "\n")?;
-                    for instruction in code.code.chunks(4) {
-                        let ins = u32::from_le_bytes(instruction.try_into().unwrap());
-                        let asm = Instruction::new(ins, 0x80000000, InstrCategory::CPU)
-                            .disassemble(None, 0);
-                        writeln!(f, "    /* {ins:08x} */   {asm}")?;
-                    }
-                } else if d == "CODE" {
-                    writeln!(f, "\n")?;
-                    for (i, chunk) in code.code.chunks(16).enumerate() {
-                        write!(f, "{:04x}:", i * 16)?;
-                        for byte in chunk {
-                            write!(f, " {:02x}", byte)?;
+                write!(f, "2 : Code {} bytes", code.code.len())?;
+                match options.code_format {
+                    display::CodeFormat::Disassembly => {
+                        writeln!(f, "\n")?;
+                        for instruction in code.code.chunks(4) {
+                            let ins = u32::from_le_bytes(instruction.try_into().unwrap());
+                            let asm = Instruction::new(ins, 0x80000000, InstrCategory::CPU)
+                                .disassemble(None, 0);
+                            writeln!(f, "    /* {ins:08x} */   {asm}")?;
                         }
-                        writeln!(f)?;
                     }
+                    display::CodeFormat::Hex => {
+                        writeln!(f, "\n")?;
+                        for (i, chunk) in code.code.chunks(16).enumerate() {
+                            write!(f, "{:04x}:", i * 16)?;
+                            for byte in chunk {
+                                write!(f, " {:02x}", byte)?;
+                            }
+                            writeln!(f)?;
+                        }
+                    }
+                    display::CodeFormat::None => (),
                 }
-                r
+                Ok(())
             }
             Self::SectionSwitch(switch) => write!(f, "6 : Switch to section {:x}", switch.id),
-            // TODO: use the british spelling with local = en_GB
             Self::BSS(size) => {
                 let uninit = if is_en_gb() {
                     "Uninitialised"
@@ -1337,7 +1566,7 @@ impl fmt::Display for Section {
             ),
             Self::LocalSymbol(symbol) => write!(
                 f,
-                "18 : Local symbol '{}' at offset {:x} in section {}",
+                "18 : Local symbol '{}' at offset {:x} in section {:x}",
                 symbol.name(),
                 symbol.offset,
                 symbol.section
@@ -1361,6 +1590,14 @@ impl fmt::Display for Section {
                 set_mx_info.offset, set_mx_info.value,
             ),
             Self::CPU(cpu) => write!(f, "46 : Processor type {}", { *cpu }),
+            Self::XBSS(xbss) => write!(
+                f,
+                "48 : XBSS symbol number {:x} '{}' size {:x} in section {:x}",
+                xbss.number,
+                xbss.name(),
+                xbss.size,
+                xbss.section
+            ),
             Self::IncSLDLineNum(offset) => write!(f, "50 : Inc SLD linenum at offset {offset:x}"),
             Self::IncSLDLineNumByte(offset, byte) => write!(
                 f,
@@ -1382,7 +1619,7 @@ impl fmt::Display for Section {
                 "74 : Function start :\n\
                 \x20 section {:04x}\n\
                 \x20 offset ${:08x}\n\
-                \x20 file {:04}\n\
+                \x20 file {:04x}\n\
                 \x20 start line {}\n\
                 \x20 frame reg {}\n\
                 \x20 frame size {}\n\
@@ -1469,10 +1706,12 @@ impl fmt::Display for Section {
 
 #[cfg(test)]
 mod test {
+    use std::ffi::OsStr;
+    use std::time::UNIX_EPOCH;
+
     use super::*;
     use binrw::io::Cursor;
     use binrw::{BinRead, BinWrite};
-    use chrono::{Datelike, Timelike};
 
     #[test]
     fn test_datetime() {
@@ -1484,6 +1723,13 @@ mod test {
         assert_eq!(dt.hour(), 16);
         assert_eq!(dt.minute(), 9);
         assert_eq!(dt.second(), 38);
+        assert_eq!(t, dt.to_psyq_timestamp());
+        let st = SystemTime::from_psyq_timestamp(t).expect("systemtime");
+        assert_eq!(
+            832176578u64,
+            st.duration_since(UNIX_EPOCH).expect("duration").as_secs()
+        );
+        assert_eq!(t, st.to_psyq_timestamp());
 
         let t: u32 = 0x8d061f4c;
         let dt = NaiveDateTime::from_psyq_timestamp(t).expect("datetime");
@@ -1493,6 +1739,61 @@ mod test {
         assert_eq!(dt.hour(), 17);
         assert_eq!(dt.minute(), 40);
         assert_eq!(dt.second(), 12);
+        assert_eq!(t, dt.to_psyq_timestamp());
+        let st = SystemTime::from_psyq_timestamp(t).expect("systemtime");
+        assert_eq!(
+            813519612u64,
+            st.duration_since(UNIX_EPOCH).expect("duration").as_secs()
+        );
+        assert_eq!(t, st.to_psyq_timestamp());
+    }
+
+    #[test]
+    fn test_path_to_module_name() {
+        assert_eq!(
+            *b"OUTPUT  ",
+            path_to_module_name(Path::new("some/output.obj"))
+        );
+        assert_eq!(
+            *b"LONGNAME",
+            path_to_module_name(Path::new("some/longname.obj"))
+        );
+        // name is truncated to 8 characters
+        assert_eq!(
+            *b"LONGERNA",
+            path_to_module_name(Path::new("some/longername.obj"))
+        );
+        // strings with code points that fit into 8-bytes are "fine"
+        let name: [u8; 8] = "👾    ".as_bytes().try_into().unwrap();
+        assert_eq!(name, path_to_module_name(Path::new("some/👾.obj")));
+        // strings with code points that are split are not
+        let name: [u8; 8] = "👾☕ ".as_bytes().try_into().unwrap();
+        assert_eq!(name, path_to_module_name(Path::new("some/👾☕☕.obj")));
+        // all 8-bytes consumed by multi-byte
+        let name: [u8; 8] = "👾👾".as_bytes().try_into().unwrap();
+        assert_eq!(name, path_to_module_name(Path::new("some/👾👾.obj")));
+        // diacritics
+        let name: [u8; 8] = "A͢B    ".as_bytes().try_into().unwrap();
+        assert_eq!(name, path_to_module_name(Path::new("some/a͢b.obj")));
+    }
+
+    #[test]
+    #[should_panic]
+    fn test_path_to_module_name_missing_file_name() {
+        path_to_module_name(Path::new("."));
+    }
+
+    #[test]
+    #[should_panic]
+    fn test_path_to_module_name_invalid_unicode() {
+        // b"\u{C0}invalid.obj"
+        let s: &OsStr;
+        unsafe {
+            s = OsStr::from_encoded_bytes_unchecked(&[
+                0xC0, 0x69, 0x6E, 0x76, 0x61, 0x6C, 0x69, 0x64, 0x2e, 0x6f, 0x62, 0x6a,
+            ]);
+        }
+        path_to_module_name(Path::new(s));
     }
 
     #[test]
@@ -1523,7 +1824,7 @@ mod test {
         assert_eq!(obj.metadata.exports.len(), 2);
         assert_eq!(obj.exports().len(), 1);
 
-        let ExportEntry::Export(export) = obj.metadata.exports.first().expect("obj[0].exports[0]");
+        let export = obj.metadata.exports.first().expect("obj[0].exports[0]");
         assert_eq!(export.name_size, 4);
         assert_eq!(export.name(), "exit");
 
@@ -1789,12 +2090,13 @@ mod test {
 
         assert_eq!(obj.name(), "SPRINTF");
         // assert_eq!(obj.created, 2167611567);
-        assert_eq!(obj.created(), "05-15-96 16:09:38");
+        // TODO: this should be based on locale
+        assert_eq!(obj.created(), "15-05-96 16:09:38");
         assert_eq!(obj.metadata.offset, 29);
         assert_eq!(obj.metadata.size, 3621);
         assert_eq!(obj.metadata.exports.len(), 2);
 
-        let ExportEntry::Export(export) = obj.metadata.exports.first().expect("obj[0].exports[0]");
+        let export = obj.metadata.exports.first().expect("obj[0].exports[0]");
         assert_eq!(export.name_size, 7);
         assert_eq!(export.name(), "sprintf");
 

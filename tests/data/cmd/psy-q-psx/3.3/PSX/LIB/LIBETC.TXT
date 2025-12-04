@@ -1,0 +1,16 @@
+
+PsyLib version 2.04
+
+Module     Date     Time   Externals defined
+
+PAD      18-10-95 13:32:24 PadIdentifier PadRead PadInit PadStop 
+VSYNC    18-10-95 13:32:26 Hcount VSync 
+INTR     18-10-95 13:32:28 VSyncCallback ResetCallback GetIntrMask 
+                           SetIntrMask VSyncCallbacks StopCallback 
+                           InterruptCallback DMACallback CheckCallback 
+                           RestartCallback 
+INTR_VB  18-10-95 13:32:28 Vcount startIntrVSync 
+INTR_DMA 18-10-95 13:32:30 startIntrDMA 
+VMODE    18-10-95 13:32:32 GetVideoMode SetVideoMode 
+HWCONFIG 18-10-95 13:38:36 get_hwconfig 
+

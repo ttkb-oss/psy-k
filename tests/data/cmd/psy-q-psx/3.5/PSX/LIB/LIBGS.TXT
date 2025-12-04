@@ -1,0 +1,265 @@
+
+PsyLib version 2.04
+
+Module     Date     Time   Externals defined
+
+2D_BG0   15-05-96 16:16:44 GsSortBg 
+2D_BG1   15-05-96 16:16:48 GsSortFastBg 
+2D_BG2   15-05-96 16:16:52 GsInitFixBg16 GsSortFixBg16 
+2D_BG3   15-05-96 16:16:56 GsInitFixBg32 GsSortFixBg32 
+2D_COM0  15-05-96 16:17:02 _mk_xpndsp _mk_normsp _mk_spr_packet 
+2D_COM1  15-05-96 16:17:04 _make_packet 
+2D_LIN0  15-05-96 16:17:08 GsSortLine 
+2D_LIN1  15-05-96 16:17:12 GsSortGLine 
+2D_BOX0  15-05-96 16:17:16 GsSortBoxFill 
+2D_PRIM  15-05-96 16:17:20 GsSortPoly 
+2D_SP0   15-05-96 16:17:24 GsSortSprite 
+2D_SP1   15-05-96 16:17:28 GsSortFastSprite 
+2D_SP2   15-05-96 16:17:32 GsSortFlipSprite 
+2D_SP4   15-05-96 16:17:36 GsInitFastSpriteArray GsSortFastSpriteArray 
+                           GsInitFastSprite2 GsSortFastSprite2 
+                           GsSetFastSpriteArray 
+2D_SP0A  15-05-96 16:18:56 GsSortSpriteA 
+2D_SP1A  15-05-96 16:19:00 GsSortFastSpriteA 
+GS_001   15-05-96 16:19:04 PSDOFSX PSDOFSY GsInitGraph GsSortClear PSDBASEX 
+                           CLIP2 PSDBASEY GsInitGraph2 POSITION PSDIDX PSDCNT 
+                           GsDRAWENV GsDISPENV PSDGPU GsORGOFSX GsORGOFSY 
+GS_002   15-05-96 16:19:06 PSDOFSX PSDOFSY CLIP2 PSDBASEX PSDBASEY 
+                           GsSetDrawBuffOffset POSITION GsGetActiveBuff 
+                           PSDIDX PSDCNT GsDRAWENV PSDGPU GsDISPENV GsORGOFSX 
+                           GsORGOFSY 
+GS_003   15-05-96 16:19:10 PSDOFSX PSDOFSY CLIP2 PSDBASEX PSDBASEY POSITION 
+                           GsSetDrawBuffClip PSDIDX PSDCNT GsDRAWENV 
+                           GsDISPENV PSDGPU GsORGOFSX GsORGOFSY 
+GS_004   15-05-96 16:19:14 PSDOFSX PSDOFSY GsSetOffset CLIP2 PSDBASEX 
+                           PSDBASEY POSITION PSDIDX PSDCNT GsDRAWENV PSDGPU 
+                           GsDISPENV GsORGOFSX GsORGOFSY 
+GS_005   15-05-96 16:19:18 PSDOFSX PSDOFSY CLIP2 PSDBASEX PSDBASEY GsSetClip 
+                           POSITION PSDIDX PSDCNT GsDRAWENV GsDISPENV PSDGPU 
+                           GsORGOFSX GsORGOFSY 
+GS_006   15-05-96 16:19:24 PSDOFSX PSDOFSY CLIP2 PSDBASEX PSDBASEY POSITION 
+                           PSDIDX PSDCNT GsDRAWENV GsDISPENV PSDGPU GsORGOFSX 
+                           GsORGOFSY GsSetClip2D 
+GS_007   15-05-96 16:19:28 PSDOFSX PSDOFSY CLIP2 PSDBASEX PSDBASEY POSITION 
+                           PSDIDX PSDCNT GsInitVcount GsDRAWENV GsDISPENV 
+                           PSDGPU GsORGOFSX GsORGOFSY 
+GS_008   15-05-96 16:19:32 PSDOFSX PSDOFSY GsGetVcount CLIP2 PSDBASEX 
+                           PSDBASEY POSITION PSDIDX PSDCNT GsDRAWENV 
+                           GsDISPENV PSDGPU GsORGOFSX GsORGOFSY 
+GS_009   15-05-96 16:19:36 GsClearVcount PSDOFSX PSDOFSY CLIP2 PSDBASEX 
+                           PSDBASEY POSITION PSDIDX PSDCNT GsDRAWENV 
+                           GsDISPENV PSDGPU GsORGOFSX GsORGOFSY 
+GS_010   15-05-96 16:19:38 PSDOFSX PSDOFSY CLIP2 PSDBASEX PSDBASEY 
+                           GsSwapDispBuff POSITION PSDIDX PSDCNT GsDRAWENV 
+                           GsDISPENV PSDGPU GsORGOFSX GsORGOFSY 
+GS_011   15-05-96 16:19:42 PSDOFSX PSDOFSY CLIP2 PSDBASEX PSDBASEY POSITION 
+                           GsClearDispArea PSDIDX PSDCNT GsDRAWENV GsDISPENV 
+                           PSDGPU GsORGOFSX GsORGOFSY 
+GS_012   15-05-96 16:19:46 PSDOFSX PSDOFSY CLIP2 PSDBASEX PSDBASEY POSITION 
+                           GsSetClip2 PSDIDX PSDCNT GsDRAWENV GsDISPENV 
+                           PSDGPU GsORGOFSX GsORGOFSY 
+GS_013   15-05-96 16:19:52 PSDOFSX PSDOFSY CLIP2 PSDBASEX PSDBASEY POSITION 
+                           PSDIDX PSDCNT GsDRAWENV GsDISPENV PSDGPU GsORGOFSX 
+                           GsORGOFSY GsSetOrign 
+MATRIX   15-05-96 16:19:56 GsMulCoord0 GsMulCoord2 GsMulCoord3 GsSetLsMatrix 
+                           print_vector print_matrix GsSetLightMatrix 
+                           GsSetLightMatrix2 GsInitCoordinate2 
+                           GsInitCoord2param DSTACK 
+GS_101   15-05-96 16:19:58 HWD0 GsIDMATRIX VWD0 GsIDMATRIX2 GsCLIP3far 
+                           GsLIGHTWSMATRIX GsLIGHT_MODE GsCLIP3near _LC 
+                           GsSetNearClip 
+GS_102   15-05-96 16:20:02 HWD0 GsIDMATRIX VWD0 GsCLIP3far GsIDMATRIX2 
+                           GsSetFarClip GsLIGHTWSMATRIX GsLIGHT_MODE 
+                           GsCLIP3near _LC 
+GS_103   15-05-96 16:20:06 HWD0 GsIDMATRIX VWD0 GsIDMATRIX2 GsCLIP3far 
+                           GsLIGHTWSMATRIX GsLIGHT_MODE GsCLIP3near 
+                           GsDefDispBuff _LC 
+GS_104   15-05-96 16:20:08 HWD0 GsIDMATRIX VWD0 GsCLIP3far GsIDMATRIX2 
+                           GsLIGHTWSMATRIX GsLIGHT_MODE GsCLIP3near GsInit3D 
+                           _LC 
+GS_105   15-05-96 16:20:12 HWD0 GsIDMATRIX VWD0 GsIDMATRIX2 GsCLIP3far 
+                           GsMapModelingData GsLIGHTWSMATRIX GsLIGHT_MODE 
+                           GsCLIP3near _LC 
+GS_106   15-05-96 16:20:18 GsSetProjection HWD0 GsIDMATRIX VWD0 GsIDMATRIX2 
+                           GsCLIP3far GsLIGHTWSMATRIX GsLIGHT_MODE 
+                           GsCLIP3near _LC 
+GS_107   15-05-96 16:20:22 HWD0 GsIDMATRIX VWD0 GsIDMATRIX2 GsCLIP3far 
+                           GsSetFlatLight GsLIGHTWSMATRIX GsLIGHT_MODE 
+                           GsCLIP3near _LC 
+GS_108   15-05-96 16:20:26 HWD0 GsIDMATRIX VWD0 GsIDMATRIX2 GsCLIP3far 
+                           GsSetLightMode GsLIGHTWSMATRIX GsLIGHT_MODE 
+                           GsCLIP3near _LC 
+GS_109   15-05-96 16:20:28 HWD0 GsIDMATRIX VWD0 GsIDMATRIX2 GsCLIP3far 
+                           GsLIGHTWSMATRIX GsLIGHT_MODE GsCLIP3near _LC 
+                           GsSetFogParam 
+GS_110   15-05-96 16:20:32 HWD0 GsIDMATRIX VWD0 GsIDMATRIX2 GsCLIP3far 
+                           GsSetAmbient GsLIGHTWSMATRIX GsLIGHT_MODE 
+                           GsCLIP3near _LC 
+GS_111   15-05-96 16:20:36 GsDrawOt HWD0 GsIDMATRIX VWD0 GsIDMATRIX2 
+                           GsCLIP3far GsLIGHTWSMATRIX GsLIGHT_MODE 
+                           GsCLIP3near _LC 
+GS_112   15-05-96 16:20:40 HWD0 GsIDMATRIX VWD0 GsIDMATRIX2 GsCLIP3far 
+                           GsDrawOtIO GsLIGHTWSMATRIX GsLIGHT_MODE 
+                           GsCLIP3near _LC 
+GS_113   15-05-96 16:20:46 HWD0 GsIDMATRIX VWD0 GsIDMATRIX2 GsCLIP3far 
+                           GsClearOt GsLIGHTWSMATRIX GsLIGHT_MODE GsCLIP3near 
+                           _LC 
+GS_114   15-05-96 16:20:48 HWD0 GsIDMATRIX VWD0 GsSortOt GsIDMATRIX2 
+                           GsCLIP3far GsLIGHTWSMATRIX GsLIGHT_MODE 
+                           GsCLIP3near _LC 
+GS_115   15-05-96 16:20:52 HWD0 GsIDMATRIX VWD0 gte_apply_matrixl GsIDMATRIX2 
+                           GsCLIP3far gte_apply_matrixll GsLIGHTWSMATRIX 
+                           GsLIGHT_MODE GsCLIP3near _LC 
+GS_116   15-05-96 16:20:56 HWD0 GsIDMATRIX VWD0 gte_copy_matrix GsIDMATRIX2 
+                           GsCLIP3far GsLIGHTWSMATRIX GsLIGHT_MODE 
+                           GsCLIP3near _LC 
+GS_117   15-05-96 16:21:00 HWD0 GsIDMATRIX VWD0 GsIDMATRIX2 GsCLIP3far 
+                           GsLIGHTWSMATRIX GsLIGHT_MODE GsCLIP3near _LC 
+                           gte_rotate_x_matrix 
+GS_118   15-05-96 16:21:04 HWD0 GsIDMATRIX VWD0 GsIDMATRIX2 GsCLIP3far 
+                           GsLIGHTWSMATRIX GsLIGHT_MODE GsCLIP3near _LC 
+                           gte_rotate_y_matrix 
+GS_119   15-05-96 16:21:06 HWD0 GsIDMATRIX VWD0 GsIDMATRIX2 GsCLIP3far 
+                           GsLIGHTWSMATRIX GsLIGHT_MODE GsCLIP3near _LC 
+                           gte_rotate_z_matrix 
+GS_120   15-05-96 16:21:12 HWD0 GsIDMATRIX VWD0 GsIDMATRIX2 GsCLIP3far 
+                           gte_scale_matrix GsLIGHTWSMATRIX GsLIGHT_MODE 
+                           GsCLIP3near _LC 
+GS_121   15-05-96 16:21:16 HWD0 GsIDMATRIX VWD0 GsIDMATRIX2 GsCLIP3far 
+                           gte_init GsLIGHTWSMATRIX GsLIGHT_MODE GsCLIP3near 
+                           _LC 
+GS_122   15-05-96 16:21:20 HWD0 GsIDMATRIX VWD0 GsIDMATRIX2 GsCLIP3far 
+                           GsGetTimInfo GsLIGHTWSMATRIX GsLIGHT_MODE 
+                           GsCLIP3near _LC 
+GS_123   15-05-96 16:21:24 HWD0 GsIDMATRIX VWD0 GsIDMATRIX2 GsCLIP3far 
+                           GsLIGHTWSMATRIX GsLIGHT_MODE GsCLIP3near _LC 
+                           Gssub_make_matrix 
+GS_124   15-05-96 16:21:26 GsSetWorkBase HWD0 GsIDMATRIX VWD0 GsIDMATRIX2 
+                           GsCLIP3far GsLIGHTWSMATRIX GsLIGHT_MODE 
+                           GsCLIP3near _LC 
+GS_125   15-05-96 16:21:30 HWD0 GsIDMATRIX VWD0 GsIDMATRIX2 GsCLIP3far 
+                           GsLIGHTWSMATRIX GsLIGHT_MODE GsCLIP3near _LC 
+                           GsGetWorkBase 
+GS_126   15-05-96 16:21:34 HWD0 GsIDMATRIX VWD0 GsIDMATRIX2 GsCLIP3far 
+                           GsCutOt GsLIGHTWSMATRIX GsLIGHT_MODE GsCLIP3near 
+                           _LC 
+GS_127   15-05-96 16:21:40 GsDefDispBuff2 HWD0 GsIDMATRIX VWD0 GsIDMATRIX2 
+                           GsCLIP3far GsLIGHTWSMATRIX GsLIGHT_MODE 
+                           GsCLIP3near _LC 
+GS_131   15-05-96 16:21:44 GsLSMATRIX GsWSMATRIX GsWSMATRIX_ORG GsSetRefView2 
+GS_132   15-05-96 16:21:48 GsLSMATRIX GsWSMATRIX GsWSMATRIX_ORG GsSetView2 
+GS_133   15-05-96 16:21:52 GsLSMATRIX GsWSMATRIX GsWSMATRIX_ORG GsGetLw 
+GS_134   15-05-96 16:21:54 GsLSMATRIX GsWSMATRIX GsWSMATRIX_ORG GsGetLs 
+GS_135   15-05-96 16:21:58 GsGetLws GsLSMATRIX GsWSMATRIX GsWSMATRIX_ORG 
+GS_136   15-05-96 16:22:02 GsScaleScreen GsLSMATRIX GsWSMATRIX GsWSMATRIX_ORG 
+GS_137   15-05-96 16:22:08 GsSetRefView2L GsLSMATRIX GsWSMATRIX 
+                           GsWSMATRIX_ORG 
+PRESET   15-05-96 16:22:12 GsPresetObject GsLinkObject5 
+PRESET2  15-05-96 16:22:18 GsSortObject5 
+PRESET3  15-05-96 16:22:24 GsSortObject5J GsFCALL5 
+PRESET4  15-05-96 16:22:30 dmyGsPrstG3LFG dmyGsPrstF4LFG dmyGsTMDfastTG4NL 
+                           dmyGsPrstG4LFG dmyGsPrstF3GNL dmyGsPrstG3GNL 
+                           dmyGsPrstTF3NL dmyGsPrstTG3NL dmyGsPrstTF4NL 
+                           dmyGsPrstTG4NL dmyGsTMDfastF3GLFG 
+                           dmyGsTMDfastG3GLFG dmyGsTMDfastTF3LFG 
+                           dmyGsTMDfastTG3LFG dmyGsTMDfastTF4LFG 
+                           dmyGsTMDdivF3NL dmyGsTMDfastTG4LFG dmyGsTMDdivG3NL 
+                           dmyGsTMDdivF4NL dmyGsTMDdivG4NL dmyGsTMDdivTF3L 
+                           dmyGsTMDdivTG3L dmyGsTMDdivTF4L dmyGsPrstF3GLFG 
+                           dmyGsTMDdivTNF3 dmyGsTMDdivTG4L dmyGsPrstG3GLFG 
+                           dmyGsTMDdivTNG3 dmyGsTMDdivTNF4 dmyGsTMDdivTNG4 
+                           dmyGsPrstTF3LFG dmyGsPrstTG3LFG dmyGsPrstTF4LFG 
+                           dmyGsPrstTG4LFG dmyGsTMDfastF3L dmyGsTMDfastG3L 
+                           dmyGsTMDfastF4L dmyGsTMDfastNF3 dmyGsTMDfastG4L 
+                           dmyGsTMDfastNG3 dmyGsTMDfastNF4 dmyGsTMDfastNG4 
+                           dmyGsPrstF3L dmyGsPrstG3L dmyGsPrstF4L 
+                           dmyGsPrstNF3 dmyGsPrstG4L dmyGsPrstNG3 
+                           dmyGsPrstNF4 dmyGsPrstNG4 dmyGsTMDdivF3LFG 
+                           dmyGsTMDdivG3LFG dmyGsTMDdivF4LFG dmyGsTMDdivG4LFG 
+                           dmyGsTMDdivTF3NL dmyGsTMDdivTG3NL dmyGsTMDdivTF4NL 
+                           dmyGsTMDdivTG4NL dmyGsTMDfastF3GL dmyGsTMDfastG3GL 
+                           dmyGsTMDfastF3NL dmyGsTMDfastG3NL dmyGsTMDfastF4NL 
+                           dmyGsTMDfastG4NL dmyGsTMDfastTF3L dmyGsTMDfastTG3L 
+                           dmyGsTMDfastTF4L dmyGsTMDfastTNF3 dmyGsTMDfastTG4L 
+                           dmyGsTMDfastTNG3 dmyGsTMDfastTNF4 dmyGsTMDfastTNG4 
+                           dmyGsPrstF3GL dmyGsPrstG3GL dmyGsPrstF3NL 
+                           dmyGsPrstG3NL dmyGsPrstF4NL dmyGsPrstG4NL 
+                           dmyGsPrstTF3L dmyGsPrstTG3L dmyGsPrstTF4L 
+                           dmyGsPrstTNF3 dmyGsPrstTG4L dmyGsPrstTNG3 
+                           dmyGsPrstTNF4 dmyGsPrstTNG4 dmyGsTMDdivTF3LFG 
+                           dmyGsTMDdivTG3LFG dmyGsTMDdivTF4LFG 
+                           dmyGsTMDdivTG4LFG dmyGsTMDfastF3LFG 
+                           dmyGsTMDfastG3LFG dmyGsTMDfastF4LFG 
+                           dmyGsTMDfastG4LFG dmyGsTMDdivF3L dmyGsTMDfastF3GNL 
+                           dmyGsTMDdivG3L dmyGsTMDdivF4L dmyGsTMDfastG3GNL 
+                           dmyGsTMDdivNF3 dmyGsTMDdivG4L dmyGsTMDdivNG3 
+                           dmyGsTMDdivNF4 dmyGsTMDdivNG4 dmyGsTMDfastTF3NL 
+                           dmyGsPrstF3LFG dmyGsTMDfastTG3NL dmyGsTMDfastTF4NL 
+GLOBAL   15-05-96 16:22:32 GsBACKC GsADIVH GsLIOFF GsLMODE GsADIVW GsLIGNR 
+                           GsADIVZ GsTRATE GsZOVER GsOUT_PACKET_P GsMATE_C 
+                           GsDISPON GsTON GsNDIV 
+PMD      15-05-96 16:22:36 GsLinkObject3 GsSortObject3 
+OBJT     15-05-96 16:22:42 GsLinkObject4 
+OBJT2    15-05-96 16:22:46 GsSortObject4 
+OBJT3    15-05-96 16:22:50 GsSortObject4J GsFCALL4 
+DATG4_00 15-05-96 16:22:56 GsA4divTG4L 
+DATG4_01 15-05-96 16:23:02 GsA4divTG4LFG 
+DATG4_02 15-05-96 16:23:10 GsA4divTG4NL 
+DATG4_03 15-05-96 16:23:14 GsA4divTNG4 
+DAFT4_00 15-05-96 16:23:20 GsA4divTF4L 
+DAFT4_01 15-05-96 16:23:28 GsA4divTF4LFG 
+DAFT4_02 15-05-96 16:23:34 GsA4divTF4NL 
+DAFT4_03 15-05-96 16:23:42 GsA4divTNF4 
+DAG4_00  15-05-96 16:23:48 GsA4divG4L 
+DAG4_01  15-05-96 16:23:52 GsA4divG4LFG 
+DAG4_02  15-05-96 16:23:58 GsA4divG4NL 
+DAG4_03  15-05-96 16:24:06 GsA4divNG4 
+DAF4_00  15-05-96 16:24:20 GsA4divF4L 
+DAF4_01  15-05-96 16:24:16 GsA4divF4LFG 
+DAF4_02  15-05-96 16:24:24 GsA4divF4NL 
+DAF4_03  15-05-96 16:24:30 GsA4divNF4 
+DATG3_00 15-05-96 16:24:38 GsA4divTG3L 
+DATG3_01 15-05-96 16:24:44 GsA4divTG3LFG 
+DATG3_02 15-05-96 16:24:48 GsA4divTG3NL 
+DATG3_03 15-05-96 16:24:54 GsA4divTNG3 
+DAG3_00  15-05-96 16:25:02 GsA4divG3L 
+DAG3_01  15-05-96 16:25:06 GsA4divG3LFG 
+DAG3_02  15-05-96 16:25:12 GsA4divG3NL 
+DAG3_03  15-05-96 16:25:18 GsA4divNG3 
+DAG3GF00 15-05-96 16:25:30 GsTMDfastG3GL 
+DAG3GF01 15-05-96 16:25:28 GsTMDfastG3GLFG 
+DAG3GF02 15-05-96 16:25:34 GsTMDfastG3GNL 
+DAG3GP00 15-05-96 16:25:38 GsPrstG3GL 
+DAG3GP01 15-05-96 16:25:42 GsPrstG3GLFG 
+DAG3GP02 15-05-96 16:25:50 GsPrstG3GNL 
+DAFT3_00 15-05-96 16:25:54 GsA4divTF3L 
+DAFT3_01 15-05-96 16:26:00 GsA4divTF3LFG 
+DAFT3_02 15-05-96 16:26:08 GsA4divTF3NL 
+DAFT3_03 15-05-96 16:26:12 GsA4divTNF3 
+DAF3_00  15-05-96 16:26:16 GsA4divF3L 
+DAF3_01  15-05-96 16:26:24 GsA4divF3LFG 
+DAF3_02  15-05-96 16:26:28 GsA4divF3NL 
+DAF3_03  15-05-96 16:26:32 GsA4divNF3 
+DAF3GF00 15-05-96 16:26:40 GsTMDfastF3GL 
+DAF3GF01 15-05-96 16:26:44 GsTMDfastF3GLFG 
+DAF3GF02 15-05-96 16:26:48 GsTMDfastF3GNL 
+DAF3GP00 15-05-96 16:26:58 GsPrstF3GL 
+DAF3GP01 15-05-96 16:27:10 GsPrstF3GLFG 
+DAF3GP02 15-05-96 16:27:08 GsPrstF3GNL 
+DAG3MF00 15-05-96 16:27:14 GsTMDfastG3M 
+DAG3MF01 15-05-96 16:27:20 GsTMDfastG3MFG 
+DATG3MF0 15-05-96 16:27:26 GsTMDfastTG3M 
+DATG3MF1 15-05-96 16:27:32 GsTMDfastTG3MFG 
+DAG4MF00 15-05-96 16:27:36 GsTMDfastG4M 
+DAG4MF01 15-05-96 16:27:44 GsTMDfastG4MFG 
+DATG4MF0 15-05-96 16:27:48 GsTMDfastTG4M 
+DATG4MF1 15-05-96 16:27:54 GsTMDfastTG4MFG 
+DAF3MF00 15-05-96 16:28:00 GsTMDfastF3M 
+DAF3MF01 15-05-96 16:28:12 GsTMDfastF3MFG 
+DAFT3MF0 15-05-96 16:28:10 GsTMDfastTF3M 
+DAFT3MF1 15-05-96 16:28:18 GsTMDfastTF3MFG 
+DAF4MF00 15-05-96 16:28:22 GsTMDfastF4M 
+DAF4MF01 15-05-96 16:28:28 GsTMDfastF4MFG 
+DAFT4MF0 15-05-96 16:28:34 GsTMDfastTF4M 
+DAFT4MF1 15-05-96 16:28:38 GsTMDfastTF4MFG 
+

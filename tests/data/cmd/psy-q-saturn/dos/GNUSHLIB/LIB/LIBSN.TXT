@@ -1,0 +1,20 @@
+
+PsyLib version 2.04
+
+Module     Date     Time   Externals defined
+
+READ     15-09-95 00:28:04 PCread 
+WRITE    15-09-95 00:28:04 PCwrite 
+CD       15-09-95 00:28:04 PSYQcdinit 
+SNMAIN   15-09-95 00:28:04 __SN_ENTRY_POINT __main __do_global_dtors 
+FSINIT   15-09-95 00:28:04 PCinit 
+OPEN     15-09-95 00:28:04 PCopen 
+CREAT    15-09-95 00:28:04 PCcreat 
+SNREAD   15-09-95 00:28:06 _SN_read 
+SNWRITE  15-09-95 00:28:06 _SN_write 
+LSEEK    15-09-95 00:28:06 PClseek 
+CLOSE    15-09-95 00:28:06 PCclose 
+PUREV    15-09-95 00:28:06 __pure_virtual 
+SNDEF    15-09-95 00:28:06 _stackinit 
+SNEND    15-09-95 00:28:06 end 
+

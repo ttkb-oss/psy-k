@@ -1,0 +1,256 @@
+
+PsyLib version 2.04
+
+Module     Date     Time   Externals defined
+
+2D_BG0   20-05-97 11:40:44 GsSortBg 
+2D_BG1   20-05-97 11:40:46 GsSortFastBg 
+2D_BG2   20-05-97 11:40:48 GsInitFixBg16 GsSortFixBg16 
+2D_BG3   20-05-97 11:40:50 GsInitFixBg32 GsSortFixBg32 
+2D_COM0  20-05-97 11:40:52 _mk_xpndsp _mk_normsp _mk_spr_packet 
+2D_COM1  20-05-97 11:40:52 _make_packet 
+2D_LIN0  20-05-97 11:40:54 GsSortLine 
+2D_LIN1  20-05-97 11:40:56 GsSortGLine 
+2D_BOX0  20-05-97 11:40:56 GsSortBoxFill 
+2D_PRIM  20-05-97 11:40:58 GsSortPoly 
+2D_SP0   20-05-97 11:41:00 GsSortSprite 
+2D_SP1   20-05-97 11:41:02 GsSortFastSprite 
+2D_SP2   20-05-97 11:41:02 GsSortFlipSprite 
+2D_SP4   20-05-97 11:41:04 GsInitFastSpriteArray GsSortFastSpriteArray 
+                           GsInitFastSprite2 GsSortFastSprite2 
+                           GsSetFastSpriteArray 
+2D_SP0A  20-05-97 11:41:06 GsSortSpriteA 
+2D_SP1A  20-05-97 11:41:08 GsSortFastSpriteA 
+2D_SP0B  20-05-97 11:41:08 GsSortSpriteB 
+2D_SP1B  20-05-97 11:41:10 GsSortFastSpriteB 
+GS_001   20-05-97 11:41:12 *PSDOFSX *PSDOFSY GsInitGraph GsSortClear 
+                           *PSDBASEX *CLIP2 *PSDBASEY GsInitGraph2 *POSITION 
+                           *PSDIDX *PSDCNT *GsDRAWENV *GsDISPENV *PSDGPU 
+                           *GsORGOFSX *GsORGOFSY 
+GS_002   20-05-97 11:41:14 GsSetDrawBuffOffset GsGetActiveBuff 
+GS_003   20-05-97 11:41:14 GsSetDrawBuffClip 
+GS_004   20-05-97 11:41:16 GsSetOffset 
+GS_005   20-05-97 11:41:18 GsSetClip 
+GS_006   20-05-97 11:41:18 GsSetClip2D 
+GS_007   20-05-97 11:41:20 GsInitVcount 
+GS_008   20-05-97 11:41:22 GsGetVcount 
+GS_009   20-05-97 11:41:22 GsClearVcount 
+GS_010   20-05-97 11:41:24 GsSwapDispBuff 
+GS_011   20-05-97 11:41:26 GsClearDispArea 
+GS_012   20-05-97 11:41:28 GsSetClip2 
+GS_013   20-05-97 11:41:28 GsSetOrign 
+MATRIX   20-05-97 11:41:30 GsMulCoord0 GsMulCoord2 GsMulCoord3 GsSetLsMatrix 
+                           print_vector print_matrix GsSetLightMatrix 
+                           GsSetLightMatrix2 GsInitCoordinate2 
+                           GsInitCoord2param *DSTACK 
+GS_101   20-05-97 11:41:32 GsSetNearClip 
+GS_102   20-05-97 11:41:32 GsSetFarClip 
+GS_103   20-05-97 11:41:34 GsDefDispBuff 
+GS_104   20-05-97 11:41:36 *HWD0 *VWD0 *GsCLIP3far *GsLIGHT_MODE *GsCLIP3near 
+                           GsInit3D 
+GS_105   20-05-97 11:41:36 GsMapModelingData 
+GS_106   20-05-97 11:41:38 GsSetProjection 
+GS_107   20-05-97 11:41:40 GsSetFlatLight *GsLIGHTWSMATRIX *_LC 
+GS_108   20-05-97 11:41:42 GsSetLightMode 
+GS_109   20-05-97 11:41:42 GsSetFogParam 
+GS_110   20-05-97 11:41:44 GsSetAmbient 
+GS_111   20-05-97 11:41:44 GsDrawOt 
+GS_112   20-05-97 11:41:46 GsDrawOtIO 
+GS_113   20-05-97 11:41:48 GsClearOt 
+GS_114   20-05-97 11:41:48 GsSortOt 
+GS_115   20-05-97 11:41:50 gte_apply_matrixl gte_apply_matrixll 
+GS_116   20-05-97 11:41:52 gte_copy_matrix 
+GS_117   20-05-97 11:41:52 gte_rotate_x_matrix 
+GS_118   20-05-97 11:41:54 gte_rotate_y_matrix 
+GS_119   20-05-97 11:41:56 gte_rotate_z_matrix 
+GS_120   20-05-97 11:41:58 gte_scale_matrix 
+GS_121   20-05-97 11:41:58 gte_init 
+GS_122   20-05-97 11:42:00 GsGetTimInfo 
+GS_123   20-05-97 11:42:02 *GsIDMATRIX *GsWSMATRIX *GsIDMATRIX2 
+                           *GsWSMATRIX_ORG Gssub_make_matrix 
+GS_124   20-05-97 11:42:02 GsSetWorkBase 
+GS_125   20-05-97 11:42:04 GsGetWorkBase 
+GS_126   20-05-97 11:42:06 GsCutOt 
+GS_127   20-05-97 11:42:08 GsDefDispBuff2 
+GS_131   20-05-97 11:42:08 GsSetRefView2 
+GS_132   20-05-97 11:42:10 GsSetView2 
+GS_133   20-05-97 11:42:12 GsGetLw 
+GS_134   20-05-97 11:42:14 GsGetLs 
+GS_135   20-05-97 11:42:14 GsGetLws 
+GS_136   20-05-97 11:42:16 GsScaleScreen 
+GS_137   20-05-97 11:42:18 GsSetRefView2L 
+PRESET   20-05-97 11:42:22 GsPresetObject GsLinkObject5 
+PRESET2  20-05-97 11:42:24 GsSortObject5 
+PRESET3  20-05-97 11:42:28 GsSortObject5J *GsFCALL5 
+PRESET4  20-05-97 11:42:32 dmyGsPrstG3LFG dmyGsPrstF4LFG dmyGsTMDfastTG4NL 
+                           dmyGsPrstG4LFG dmyGsPrstF3GNL dmyGsPrstG3GNL 
+                           dmyGsPrstTF3NL dmyGsPrstTG3NL dmyGsPrstTF4NL 
+                           dmyGsPrstTG4NL dmyGsTMDfastF3GLFG 
+                           dmyGsTMDfastG3GLFG dmyGsTMDfastTF3LFG 
+                           dmyGsTMDfastTG3LFG dmyGsTMDfastTF4LFG 
+                           dmyGsTMDdivF3NL dmyGsTMDfastTG4LFG dmyGsTMDdivG3NL 
+                           dmyGsTMDdivF4NL dmyGsTMDdivG4NL dmyGsTMDdivTF3L 
+                           dmyGsTMDdivTG3L dmyGsTMDdivTF4L dmyGsPrstF3GLFG 
+                           dmyGsTMDdivTNF3 dmyGsTMDdivTG4L dmyGsPrstG3GLFG 
+                           dmyGsTMDdivTNG3 dmyGsTMDdivTNF4 dmyGsTMDdivTNG4 
+                           dmyGsPrstTF3LFG dmyGsPrstTG3LFG dmyGsPrstTF4LFG 
+                           dmyGsPrstTG4LFG dmyGsTMDfastF3L dmyGsTMDfastG3L 
+                           dmyGsTMDfastF4L dmyGsTMDfastNF3 dmyGsTMDfastG4L 
+                           dmyGsTMDfastNG3 dmyGsTMDfastNF4 dmyGsTMDfastNG4 
+                           dmyGsPrstF3L dmyGsPrstG3L dmyGsPrstF4L 
+                           dmyGsPrstNF3 dmyGsPrstG4L dmyGsPrstNG3 
+                           dmyGsPrstNF4 dmyGsPrstNG4 dmyGsTMDdivF3LFG 
+                           dmyGsTMDdivG3LFG dmyGsTMDdivF4LFG dmyGsTMDdivG4LFG 
+                           dmyGsTMDdivTF3NL dmyGsTMDdivTG3NL dmyGsTMDdivTF4NL 
+                           dmyGsTMDdivTG4NL dmyGsTMDfastF3GL dmyGsTMDfastG3GL 
+                           dmyGsTMDfastF3NL dmyGsTMDfastG3NL dmyGsTMDfastF4NL 
+                           dmyGsTMDfastG4NL dmyGsTMDfastTF3L dmyGsTMDfastTG3L 
+                           dmyGsTMDfastTF4L dmyGsTMDfastTNF3 dmyGsTMDfastTG4L 
+                           dmyGsTMDfastTNG3 dmyGsTMDfastTNF4 dmyGsTMDfastTNG4 
+                           dmyGsPrstF3GL dmyGsPrstG3GL dmyGsPrstF3NL 
+                           dmyGsPrstG3NL dmyGsPrstF4NL dmyGsPrstG4NL 
+                           dmyGsPrstTF3L dmyGsPrstTG3L dmyGsPrstTF4L 
+                           dmyGsPrstTNF3 dmyGsPrstTG4L dmyGsPrstTNG3 
+                           dmyGsPrstTNF4 dmyGsPrstTNG4 dmyGsTMDdivTF3LFG 
+                           dmyGsTMDdivTG3LFG dmyGsTMDdivTF4LFG 
+                           dmyGsTMDdivTG4LFG dmyGsTMDfastF3LFG 
+                           dmyGsTMDfastG3LFG dmyGsTMDfastF4LFG 
+                           dmyGsTMDfastG4LFG dmyGsTMDdivF3L dmyGsTMDfastF3GNL 
+                           dmyGsTMDdivG3L dmyGsTMDdivF4L dmyGsTMDfastG3GNL 
+                           dmyGsTMDdivNF3 dmyGsTMDdivG4L dmyGsTMDdivNG3 
+                           dmyGsTMDdivNF4 dmyGsTMDdivNG4 dmyGsTMDfastTF3NL 
+                           dmyGsPrstF3LFG dmyGsTMDfastTG3NL dmyGsTMDfastTF4NL 
+GLOBAL   20-05-97 11:42:34 *GsBACKC GsADIVH *GsLIOFF *GsLMODE GsADIVW 
+                           *GsLIGNR GsADIVZ *GsTRATE *GsZOVER *GsOUT_PACKET_P 
+                           *GsMATE_C *GsDISPON *GsTON *GsNDIV 
+PMD      20-05-97 11:42:36 GsLinkObject3 GsSortObject3 
+OBJT     20-05-97 11:42:36 GsLinkObject4 
+OBJT2    20-05-97 11:42:38 GsSortObject4 
+OBJT3    20-05-97 11:42:40 GsSortObject4J *GsFCALL4 
+DATG4_00 20-05-97 11:42:44 GsA4divTG4L 
+DATG4_01 20-05-97 11:42:46 GsA4divTG4LFG 
+DATG4_02 20-05-97 11:42:48 GsA4divTG4NL 
+DATG4_03 20-05-97 11:42:52 GsA4divTNG4 
+DATG4M00 20-05-97 11:42:54 GsA4divTG4LM 
+DATG4M01 20-05-97 11:42:56 GsA4divTG4LFGM 
+DATG4M02 20-05-97 11:43:00 GsA4divTG4NLM 
+DATG4M03 20-05-97 11:43:04 GsA4divTNG4M 
+DAFT4_00 20-05-97 11:43:08 GsA4divTF4L 
+DAFT4_01 20-05-97 11:43:10 GsA4divTF4LFG 
+DAFT4_02 20-05-97 11:43:12 GsA4divTF4NL 
+DAFT4_03 20-05-97 11:43:14 GsA4divTNF4 
+DAFT4M00 20-05-97 11:43:18 GsA4divTF4LM 
+DAFT4M01 20-05-97 11:43:20 GsA4divTF4LFGM 
+DAFT4M02 20-05-97 11:43:22 GsA4divTF4NLM 
+DAFT4M03 20-05-97 11:43:26 GsA4divTNF4M 
+DAG4_00  20-05-97 11:43:28 GsA4divG4L 
+DAG4_01  20-05-97 11:43:30 GsA4divG4LFG 
+DAG4_02  20-05-97 11:43:32 GsA4divG4NL 
+DAG4_03  20-05-97 11:43:34 GsA4divNG4 
+DAF4_00  20-05-97 11:43:38 GsA4divF4L 
+DAF4_01  20-05-97 11:43:40 GsA4divF4LFG 
+DAF4_02  20-05-97 11:43:42 GsA4divF4NL 
+DAF4_03  20-05-97 11:43:44 GsA4divNF4 
+DATG3_00 20-05-97 11:43:46 GsA4divTG3L 
+DATG3_01 20-05-97 11:43:48 GsA4divTG3LFG 
+DATG3_02 20-05-97 11:43:52 GsA4divTG3NL 
+DATG3_03 20-05-97 11:47:08 GsA4divTNG3 
+DAG3_00  20-05-97 11:47:10 GsA4divG3L 
+DAG3_01  20-05-97 11:47:12 GsA4divG3LFG 
+DAG3_02  20-05-97 11:47:14 GsA4divG3NL 
+DAG3_03  20-05-97 11:47:16 GsA4divNG3 
+DAG3GF00 20-05-97 11:47:18 GsTMDfastG3GL 
+DAG3GF01 20-05-97 11:47:20 GsTMDfastG3GLFG 
+DAG3GF02 20-05-97 11:47:22 GsTMDfastG3GNL 
+DAG3GP00 20-05-97 11:47:24 GsPrstG3GL 
+DAG3GP01 20-05-97 11:47:26 GsPrstG3GLFG 
+DAG3GP02 20-05-97 11:47:26 GsPrstG3GNL 
+DAFT3_00 20-05-97 11:47:30 GsA4divTF3L 
+DAFT3_01 20-05-97 11:47:32 GsA4divTF3LFG 
+DAFT3_02 20-05-97 11:47:34 GsA4divTF3NL 
+DAFT3_03 20-05-97 11:47:36 GsA4divTNF3 
+DAF3_00  20-05-97 11:47:38 GsA4divF3L 
+DAF3_01  20-05-97 11:47:40 GsA4divF3LFG 
+DAF3_02  20-05-97 11:47:42 GsA4divF3NL 
+DAF3_03  20-05-97 11:47:44 GsA4divNF3 
+DAF3GF00 20-05-97 11:47:46 GsTMDfastF3GL 
+DAF3GF01 20-05-97 11:47:48 GsTMDfastF3GLFG 
+DAF3GF02 20-05-97 11:47:48 GsTMDfastF3GNL 
+DAF3GP00 20-05-97 11:47:50 GsPrstF3GL 
+DAF3GP01 20-05-97 11:47:52 GsPrstF3GLFG 
+DAF3GP02 20-05-97 11:47:54 GsPrstF3GNL 
+DAG3MF00 20-05-97 11:47:56 GsTMDfastG3M 
+DAG3MF01 20-05-97 11:47:58 GsTMDfastG3MFG 
+DATG3MF0 20-05-97 11:48:00 GsTMDfastTG3M 
+DATG3MF1 20-05-97 11:48:02 GsTMDfastTG3MFG 
+DAG4MF00 20-05-97 11:48:04 GsTMDfastG4M 
+DAG4MF01 20-05-97 11:48:06 GsTMDfastG4MFG 
+DATG4MF0 20-05-97 11:48:08 GsTMDfastTG4M 
+DATG4MF1 20-05-97 11:48:10 GsTMDfastTG4MFG 
+DAF3MF00 20-05-97 11:48:10 GsTMDfastF3M 
+DAF3MF01 20-05-97 11:48:12 GsTMDfastF3MFG 
+DAFT3MF0 20-05-97 11:48:14 GsTMDfastTF3M 
+DAFT3MF1 20-05-97 11:48:16 GsTMDfastTF3MFG 
+DAF4MF00 20-05-97 11:48:18 GsTMDfastF4M 
+DAF4MF01 20-05-97 11:48:20 GsTMDfastF4MFG 
+DAFT4MF0 20-05-97 11:48:22 GsTMDfastTF4M 
+DAFT4MF1 20-05-97 11:48:24 GsTMDfastTF4MFG 
+DAF4GF00 20-05-97 11:48:24 GsTMDfastF4GL 
+DAF4GF01 20-05-97 11:48:26 GsTMDfastF4GLFG 
+DAF4GF02 20-05-97 11:48:28 GsTMDfastF4GNL 
+DAG4GF00 20-05-97 11:48:30 GsTMDfastG4GL 
+DAG4GF01 20-05-97 11:48:32 GsTMDfastG4GLFG 
+DAG4GF02 20-05-97 11:48:34 GsTMDfastG4GNL 
+SCANUNIT 20-05-97 11:48:34 GsGetHeadpUnit GsScanUnit 
+SORTUNIT 20-05-97 11:48:36 GsSortUnit 
+MAPUNIT  20-05-97 11:48:38 GsMapUnit *USTACK 
+CMAPUNIT 20-05-97 11:48:38 GsMapCoordUnit 
+LWUNIT   20-05-97 11:48:40 GsGetLwUnit 
+LSUNIT   20-05-97 11:48:40 GsGetLsUnit 
+LWSUNIT  20-05-97 11:48:42 GsGetLwsUnit 
+VWUNIT   20-05-97 11:48:44 GsSetViewUnit 
+RVWUNIT  20-05-97 11:48:46 GsSetRefViewUnit 
+RVWLUNIT 20-05-97 11:48:46 GsSetRefViewLUnit 
+00000000 20-05-97 11:48:48 GsU_00000000 
+02000000 20-05-97 11:48:50 GsU_02000000 
+02000001 20-05-97 11:48:50 GsU_02000001 
+01000000 20-05-97 11:48:52 GsU_01000000 
+0100000C 20-05-97 11:48:54 GsU_0100000c 
+0100000D 20-05-97 11:48:56 GsU_0100000d 
+01000014 20-05-97 11:48:58 GsU_01000014 
+01000015 20-05-97 11:49:00 GsU_01000015 
+0102000C 20-05-97 11:49:02 GsU_0102000c 
+0102000D 20-05-97 11:49:04 GsU_0102000d 
+01020014 20-05-97 11:49:06 GsU_01020014 
+01020015 20-05-97 11:49:08 GsU_01020015 
+01040048 20-05-97 11:49:08 GsU_01040048 
+01040049 20-05-97 11:49:10 GsU_01040049 
+0104004C 20-05-97 11:49:12 GsU_0104004c 
+0104004D 20-05-97 11:49:14 GsU_0104004d 
+01040050 20-05-97 11:49:16 GsU_01040050 
+01040051 20-05-97 11:49:18 GsU_01040051 
+01040054 20-05-97 11:49:20 GsU_01040054 
+01040055 20-05-97 11:49:22 GsU_01040055 
+03000000 20-05-97 11:49:24 GsU_03000000 
+03000010 20-05-97 11:49:26 GsU_03000010 
+03000001 20-05-97 11:49:26 GsU_03000001 
+03000011 20-05-97 11:49:28 GsU_03000011 
+03000911 20-05-97 11:49:30 GsU_03000911 
+03000111 20-05-97 11:49:30 GsU_03000111 
+03000019 20-05-97 11:49:32 GsU_03000019 
+03000119 20-05-97 11:49:34 GsU_03000119 
+03000009 20-05-97 11:49:36 GsU_03000009 
+03000909 20-05-97 11:49:36 GsU_03000909 
+03000100 20-05-97 11:49:38 GsU_03000100 
+03000910 20-05-97 11:49:40 GsU_03000910 
+04010010 20-05-97 11:49:42 GsU_04010010 
+04010011 20-05-97 11:49:44 GsU_04010011 
+04010018 20-05-97 11:49:44 GsU_04010018 
+04010019 20-05-97 11:49:46 GsU_04010019 
+04010020 20-05-97 11:49:48 GsU_04010020 
+04010028 20-05-97 11:49:50 GsU_04010028 
+MAPJNT   20-05-97 11:49:50 GsMapJntMIMe GsMapRstJntMIMe 
+MAPVTX   20-05-97 11:49:52 GsMapVtxMIMe GsMapRstVtxMIMe 
+MAPNRM   20-05-97 11:49:54 GsMapNrmMIMe GsMapRstNrmMIMe 
+ANIM     20-05-97 11:49:54 GsScanAnim GsLinkAnim 
+

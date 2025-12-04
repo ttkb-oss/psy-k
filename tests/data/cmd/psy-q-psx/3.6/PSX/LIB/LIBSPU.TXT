@@ -1,0 +1,130 @@
+
+PsyLib version 2.04
+
+Module     Date     Time   Externals defined
+
+SPU      03-10-96 14:29:24 _spu_FsetRXXa _spu_IRQCallback _spu_RXX 
+                           _spu_inTransfer _spu_addrMode _spu_write 
+                           _spu_mem_mode _spu_tsa _spu_mem_mode_unit 
+                           _spu_mem_mode_plus _spu_transferCallback _spu_t 
+                           _spu_FsetPCR _spu_FiDMA _spu_FsetRXX _spu_read 
+                           _spu_RQ _spu_transMode _spu_mem_mode_unitM 
+                           _spu_init _spu_r_ _spu_FgetRXXa 
+S_CB     03-10-96 14:29:24 _SpuCallback 
+S_DCB    03-10-96 14:29:26 _SpuDataCallback 
+SPU_GEX  03-10-96 14:29:26 
+S_INI    03-10-96 14:29:26 _spu_zerobuf _spu_keystat _SpuInit _spu_isCalled 
+                           _spu_trans_mode SpuStart _spu_rev_flag _spu_env 
+                           _spu_RQmask _spu_rev_attr _spu_voice_centerNote 
+                           _spu_RQvoice _spu_EVdma _spu_rev_offsetaddr 
+                           _spu_rev_reserve_wa 
+S_I      03-10-96 14:29:26 SpuInit 
+S_IH     03-10-96 14:29:28 SpuInitHot 
+S_Q      03-10-96 14:29:28 SpuQuit 
+S_SM     03-10-96 14:29:28 SpuSetMute 
+S_GM     03-10-96 14:29:28 SpuGetMute 
+S_M      03-10-96 14:29:28 _spu_AllocBlockNum _spu_AllocLastNum _spu_memList 
+S_M_INT  03-10-96 14:29:30 _spu_gcSPU 
+S_M_UTIL 03-10-96 14:29:30 _SpuIsInAllocateArea_ _SpuIsInAllocateArea 
+S_M_INIT 03-10-96 14:29:30 SpuInitMalloc 
+S_M_M    03-10-96 14:29:32 SpuMalloc 
+S_M_WSA  03-10-96 14:29:32 SpuMallocWithStartAddr 
+S_M_F    03-10-96 14:29:34 SpuFree 
+S_M_X    03-10-96 14:29:34 _spu_print 
+S_GAV    03-10-96 14:29:34 _SpuGetAnyVoice 
+S_SAV    03-10-96 14:29:34 _SpuSetAnyVoice 
+S_SNV    03-10-96 14:29:36 SpuSetNoiseVoice 
+S_GNV    03-10-96 14:29:36 SpuGetNoiseVoice 
+S_SNC    03-10-96 14:29:36 SpuSetNoiseClock 
+S_GNC    03-10-96 14:29:36 SpuGetNoiseClock 
+S_SR     03-10-96 14:29:36 SpuSetReverb 
+S_GR     03-10-96 14:29:38 SpuGetReverb 
+S_RMP    03-10-96 14:29:38 _spu_rev_startaddr _spu_rev_param 
+                           _spu_rev_workareasize 
+S_SRMP   03-10-96 14:29:40 SpuSetReverbModeParam 
+S_GRMP   03-10-96 14:29:40 SpuGetReverbModeParam 
+S_RRWA   03-10-96 14:29:40 SpuReserveReverbWorkArea 
+S_IRWAR  03-10-96 14:29:40 SpuIsReverbWorkAreaReserved 
+S_SRD    03-10-96 14:29:40 SpuSetReverbDepth 
+S_SRV    03-10-96 14:29:42 SpuSetReverbVoice 
+S_GRV    03-10-96 14:29:42 SpuGetReverbVoice 
+S_CRWA   03-10-96 14:29:42 SpuClearReverbWorkArea 
+S_RDD    03-10-96 14:29:42 SpuReadDecodedData 
+S_SI     03-10-96 14:29:44 SpuSetIRQ 
+S_GI     03-10-96 14:29:44 SpuGetIRQ 
+S_SIA    03-10-96 14:29:44 SpuSetIRQAddr 
+S_GIA    03-10-96 14:29:44 SpuGetIRQAddr 
+S_SIC    03-10-96 14:29:46 SpuSetIRQCallback 
+S_SK     03-10-96 14:29:46 SpuSetKey 
+S_SKOWA  03-10-96 14:29:46 SpuSetKeyOnWithAttr 
+S_GKS    03-10-96 14:29:46 SpuGetKeyStatus 
+S_GCE    03-10-96 14:29:48 SpuGetCurrentEnvelope 
+S_GVEA   03-10-96 14:29:48 SpuGetVoiceEnvelopeAttr 
+S_R      03-10-96 14:29:48 SpuRead 
+S_W      03-10-96 14:29:48 SpuWrite 
+S_W0     03-10-96 14:29:50 SpuWrite0 
+S_STSA   03-10-96 14:29:50 SpuSetTransferStartAddr 
+S_GTSA   03-10-96 14:29:50 SpuGetTransferStartAddr 
+S_STM    03-10-96 14:29:50 SpuSetTransferMode 
+S_GTM    03-10-96 14:29:50 SpuGetTransferMode 
+S_WP     03-10-96 14:29:52 SpuWritePartly 
+S_ITC    03-10-96 14:29:52 SpuIsTransferCompleted 
+S_STC    03-10-96 14:29:52 SpuSetTransferCallback 
+S_IT     03-10-96 14:29:52 _spu_getInTransfer _spu_setInTransfer 
+S_SPLV   03-10-96 14:29:54 SpuSetPitchLFOVoice 
+S_GPLV   03-10-96 14:29:54 SpuGetPitchLFOVoice 
+S_SCA    03-10-96 14:29:54 SpuSetCommonAttr SpuCommonError 
+S_GCA    03-10-96 14:29:56 SpuGetCommonAttr 
+S_N2P    03-10-96 14:29:56 _spu_note2pitch _spu_pitch2note 
+SR_GAKS  03-10-96 14:29:56 SpuGetAllKeysStatus SpuRGetAllKeysStatus 
+SR_SVA   03-10-96 14:29:56 SpuRSetVoiceAttr 
+ST       03-10-96 14:29:58 SpuStTransfer SpuStInit SpuStGetVoiceStatus 
+                           SpuStQuit SpuStGetStatus 
+                           SpuStSetTransferFinishedCallback 
+                           SpuStSetStreamFinishedCallback 
+                           SpuStSetPreparationFinishedCallback 
+S_F      03-10-96 14:30:00 SpuFlush 
+S_SE     03-10-96 14:30:00 SpuSetEnv 
+T_C      03-10-96 14:30:00 TimerCallback 
+VERSION  03-10-96 14:30:00 
+S_SVV    03-10-96 14:30:02 SpuSetVoiceVolume 
+S_SVVA   03-10-96 14:30:02 SpuSetVoiceVolumeAttr 
+S_SVP    03-10-96 14:30:02 SpuSetVoicePitch 
+S_SVN    03-10-96 14:30:02 SpuSetVoiceNote 
+S_SVSN   03-10-96 14:30:04 SpuSetVoiceSampleNote 
+S_SVSA   03-10-96 14:30:04 SpuSetVoiceStartAddr 
+S_SVLSA  03-10-96 14:30:04 SpuSetVoiceLoopStartAddr 
+S_SVAR   03-10-96 14:30:04 SpuSetVoiceAR 
+S_SVDR   03-10-96 14:30:06 SpuSetVoiceDR 
+S_SVSR   03-10-96 14:30:06 SpuSetVoiceSR 
+S_SVRR   03-10-96 14:30:06 SpuSetVoiceRR 
+S_SVSL   03-10-96 14:30:06 SpuSetVoiceSL 
+S_SVARA  03-10-96 14:30:08 SpuSetVoiceARAttr 
+S_SVSRA  03-10-96 14:30:08 SpuSetVoiceSRAttr 
+S_SVRRA  03-10-96 14:30:08 SpuSetVoiceRRAttr 
+S_SVAD   03-10-96 14:30:08 SpuSetVoiceADSR 
+S_SVADA  03-10-96 14:30:10 SpuSetVoiceADSRAttr 
+S_GVV    03-10-96 14:30:10 SpuGetVoiceVolume 
+S_GVVA   03-10-96 14:30:10 SpuGetVoiceVolumeAttr 
+S_GVVX   03-10-96 14:30:10 SpuGetVoiceVolumeX 
+S_GVP    03-10-96 14:30:12 SpuGetVoicePitch 
+S_GVN    03-10-96 14:30:12 SpuGetVoiceNote 
+S_GVSN   03-10-96 14:30:12 SpuGetVoiceSampleNote 
+S_GVEX   03-10-96 14:30:12 SpuGetVoiceEnvelope 
+S_GVSA   03-10-96 14:30:14 SpuGetVoiceStartAddr 
+S_GVLSA  03-10-96 14:30:14 SpuGetVoiceLoopStartAddr 
+S_GVAR   03-10-96 14:30:14 SpuGetVoiceAR 
+S_GVDR   03-10-96 14:30:14 SpuGetVoiceDR 
+S_GVSR   03-10-96 14:30:16 SpuGetVoiceSR 
+S_GVRR   03-10-96 14:30:16 SpuGetVoiceRR 
+S_GVSL   03-10-96 14:30:16 SpuGetVoiceSL 
+S_GVARA  03-10-96 14:30:16 SpuGetVoiceARAttr 
+S_GVSRA  03-10-96 14:30:18 SpuGetVoiceSRAttr 
+S_GVRRA  03-10-96 14:30:18 SpuGetVoiceRRAttr 
+S_GVAD   03-10-96 14:30:18 SpuGetVoiceADSR 
+S_GVADA  03-10-96 14:30:18 SpuGetVoiceADSRAttr 
+S_SVA    03-10-96 14:30:20 _SpuSetVoiceAttr SpuSetVoiceAttr 
+SN_SVA   03-10-96 14:30:22 SpuNSetVoiceAttr _SpuNSetVoiceAttr 
+S_GVA    03-10-96 14:30:22 SpuGetVoiceAttr 
+SN_GVA   03-10-96 14:30:24 SpuNGetVoiceAttr 
+

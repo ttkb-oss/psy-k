@@ -1,0 +1,168 @@
+
+PsyLib version 2.04
+
+Module     Date     Time   Externals defined
+
+E_ACOS   19-12-96 11:55:00 __ieee754_acos 
+E_ACOSH  19-12-96 11:55:00 __ieee754_acosh 
+E_ASIN   19-12-96 11:55:00 __ieee754_asin 
+E_ATAN2  19-12-96 11:55:00 __ieee754_atan2 
+E_ATANH  19-12-96 11:55:00 __ieee754_atanh 
+E_COSH   19-12-96 11:55:00 __ieee754_cosh 
+E_EXP    19-12-96 11:55:00 __ieee754_exp 
+E_FMOD   19-12-96 11:55:00 __ieee754_fmod 
+E_HYPOT  19-12-96 11:55:00 __ieee754_hypot 
+E_J0     19-12-96 11:55:00 __ieee754_j0 __ieee754_y0 
+E_J1     19-12-96 11:55:00 __ieee754_j1 __ieee754_y1 
+E_JN     19-12-96 11:55:00 __ieee754_jn __ieee754_yn 
+E_LOG    19-12-96 11:55:00 __ieee754_log 
+E_LOG10  19-12-96 11:55:00 __ieee754_log10 
+E_POW    19-12-96 11:55:00 __ieee754_pow 
+E_REM_PI 19-12-96 11:55:00 __ieee754_rem_pio2 
+E_REMAIN 19-12-96 11:55:02 __ieee754_remainder 
+E_SCALB  19-12-96 11:55:02 __ieee754_scalb 
+E_SINH   19-12-96 11:55:02 __ieee754_sinh 
+E_SQRT   19-12-96 11:55:02 __ieee754_sqrt 
+EF_ACOS  19-12-96 11:55:02 __ieee754_acosf 
+EF_ACOSH 19-12-96 11:55:02 __ieee754_acoshf 
+EF_ASIN  19-12-96 11:55:02 __ieee754_asinf 
+EF_ATAN2 19-12-96 11:55:02 __ieee754_atan2f 
+EF_ATANH 19-12-96 11:55:02 __ieee754_atanhf 
+EF_COSH  19-12-96 11:55:02 __ieee754_coshf 
+EF_EXP   19-12-96 11:55:02 __ieee754_expf 
+EF_FMOD  19-12-96 11:55:02 __ieee754_fmodf 
+EF_HYPOT 19-12-96 11:55:02 __ieee754_hypotf 
+EF_J0    19-12-96 11:55:02 __ieee754_j0f __ieee754_y0f 
+EF_J1    19-12-96 11:55:02 __ieee754_j1f __ieee754_y1f 
+EF_JN    19-12-96 11:55:02 __ieee754_jnf __ieee754_ynf 
+EF_LOG   19-12-96 11:55:02 __ieee754_logf 
+EF_LOG10 19-12-96 11:55:02 __ieee754_log10f 
+EF_POW   19-12-96 11:55:02 __ieee754_powf 
+EF_REM_P 19-12-96 11:55:02 __ieee754_rem_pio2f 
+EF_REMAI 19-12-96 11:55:02 __ieee754_remainderf 
+EF_SCALB 19-12-96 11:55:02 __ieee754_scalbf 
+EF_SINH  19-12-96 11:55:02 __ieee754_sinhf 
+EF_SQRT  19-12-96 11:55:02 __ieee754_sqrtf 
+ER_GAMMA 19-12-96 11:55:02 __ieee754_gamma_r 
+ER_LGAMM 19-12-96 11:55:02 __ieee754_lgamma_r 
+ERF_GAMM 19-12-96 11:55:02 __ieee754_gammaf_r 
+ERF_LGAM 19-12-96 11:55:02 __ieee754_lgammaf_r 
+K_COS    19-12-96 11:55:02 __kernel_cos 
+K_REM_PI 19-12-96 11:55:02 __kernel_rem_pio2 
+K_SIN    19-12-96 11:55:02 __kernel_sin 
+K_STANDA 19-12-96 11:55:02 __kernel_standard 
+K_TAN    19-12-96 11:55:02 __kernel_tan 
+KF_COS   19-12-96 11:55:02 __kernel_cosf 
+KF_REM_P 19-12-96 11:55:02 __kernel_rem_pio2f 
+KF_SIN   19-12-96 11:55:02 __kernel_sinf 
+KF_TAN   19-12-96 11:55:02 __kernel_tanf 
+S_ASINH  19-12-96 11:55:02 asinh 
+S_ATAN   19-12-96 11:55:04 atan 
+S_CBRT   19-12-96 11:55:04 cbrt 
+S_CEIL   19-12-96 11:55:04 ceil 
+S_COPYSI 19-12-96 11:55:04 copysign 
+S_COS    19-12-96 11:55:04 cos 
+S_ERF    19-12-96 11:55:04 erf erfc 
+S_EXPM1  19-12-96 11:55:04 expm1 
+S_FABS   19-12-96 11:55:04 fabs 
+S_FINITE 19-12-96 11:55:04 finite 
+S_FLOOR  19-12-96 11:55:04 floor 
+S_FREXP  19-12-96 11:55:04 frexp 
+S_ILOGB  19-12-96 11:55:04 ilogb 
+S_INFCON 19-12-96 11:55:04 __infinity 
+S_INFINI 19-12-96 11:55:04 infinity 
+S_ISINF  19-12-96 11:55:04 isinf 
+S_ISNAN  19-12-96 11:55:04 isnan 
+S_LDEXP  19-12-96 11:55:04 ldexp 
+S_LIB_VE 19-12-96 11:55:04 __fdlib_version 
+S_LOG1P  19-12-96 11:55:04 log1p 
+S_LOGB   19-12-96 11:55:04 logb 
+S_MATHER 19-12-96 11:55:04 matherr 
+S_MODF   19-12-96 11:55:04 modf 
+S_NAN    19-12-96 11:55:04 nan 
+S_NEXTAF 19-12-96 11:55:04 nextafter 
+S_RINT   19-12-96 11:55:04 rint 
+S_SCALBN 19-12-96 11:55:04 scalbn 
+S_SIGNIF 19-12-96 11:55:04 significand 
+S_SIN    19-12-96 11:55:04 sin 
+S_TAN    19-12-96 11:55:04 tan 
+S_TANH   19-12-96 11:55:04 tanh 
+SF_ASINH 19-12-96 11:55:04 asinhf 
+SF_ATAN  19-12-96 11:55:04 atanf 
+SF_CBRT  19-12-96 11:55:04 cbrtf 
+SF_CEIL  19-12-96 11:55:04 ceilf 
+SF_COPYS 19-12-96 11:55:04 copysignf 
+SF_COS   19-12-96 11:55:04 cosf 
+SF_ERF   19-12-96 11:55:04 erff erfcf 
+SF_EXPM1 19-12-96 11:55:04 expm1f 
+SF_FABS  19-12-96 11:55:06 fabsf 
+SF_FINIT 19-12-96 11:55:06 finitef 
+SF_FLOOR 19-12-96 11:55:06 floorf 
+SF_FREXP 19-12-96 11:55:06 frexpf 
+SF_ILOGB 19-12-96 11:55:06 ilogbf 
+SF_INFIN 19-12-96 11:55:06 infinityf 
+SF_ISINF 19-12-96 11:55:06 isinff 
+SF_ISNAN 19-12-96 11:55:06 isnanf 
+SF_LDEXP 19-12-96 11:55:06 ldexpf 
+SF_LOG1P 19-12-96 11:55:06 log1pf 
+SF_LOGB  19-12-96 11:55:06 logbf 
+SF_MODF  19-12-96 11:55:06 modff 
+SF_NAN   19-12-96 11:55:06 nanf 
+SF_NEXTA 19-12-96 11:55:06 nextafterf 
+SF_RINT  19-12-96 11:55:06 rintf 
+SF_SCALB 19-12-96 11:55:06 scalbnf 
+SF_SIGNI 19-12-96 11:55:06 significandf 
+SF_SIN   19-12-96 11:55:06 sinf 
+SF_TAN   19-12-96 11:55:06 tanf 
+SF_TANH  19-12-96 11:55:06 tanhf 
+W_ACOS   19-12-96 11:55:06 acos 
+W_ACOSH  19-12-96 11:55:06 acosh 
+W_ASIN   19-12-96 11:55:06 asin 
+W_ATAN2  19-12-96 11:55:06 atan2 
+W_ATANH  19-12-96 11:55:06 atanh 
+W_CABS   19-12-96 11:55:06 cabs 
+W_COSH   19-12-96 11:55:06 cosh 
+W_DREM   19-12-96 11:55:06 drem 
+W_EXP    19-12-96 11:55:06 exp 
+W_FMOD   19-12-96 11:55:06 fmod 
+W_GAMMA  19-12-96 11:55:06 gamma 
+W_HYPOT  19-12-96 11:55:06 hypot 
+W_J0     19-12-96 11:55:06 j0 y0 
+W_J1     19-12-96 11:55:06 j1 y1 
+W_JN     19-12-96 11:55:06 jn yn 
+W_LGAMMA 19-12-96 11:55:06 lgamma 
+W_LOG    19-12-96 11:55:06 log 
+W_LOG10  19-12-96 11:55:08 log10 
+W_POW    19-12-96 11:55:08 pow 
+W_REMAIN 19-12-96 11:55:08 remainder 
+W_SCALB  19-12-96 11:55:08 scalb 
+W_SINH   19-12-96 11:55:08 sinh 
+W_SQRT   19-12-96 11:55:08 sqrt 
+WF_ACOS  19-12-96 11:55:08 acosf 
+WF_ACOSH 19-12-96 11:55:08 acoshf 
+WF_ASIN  19-12-96 11:55:08 asinf 
+WF_ATAN2 19-12-96 11:55:08 atan2f 
+WF_ATANH 19-12-96 11:55:08 atanhf 
+WF_CABS  19-12-96 11:55:08 cabsf 
+WF_COSH  19-12-96 11:55:08 coshf 
+WF_DREM  19-12-96 11:55:08 dremf 
+WF_EXP   19-12-96 11:55:08 expf 
+WF_FMOD  19-12-96 11:55:08 fmodf 
+WF_GAMMA 19-12-96 11:55:08 gammaf 
+WF_HYPOT 19-12-96 11:55:08 hypotf 
+WF_J0    19-12-96 11:55:08 j0f y0f 
+WF_J1    19-12-96 11:55:08 j1f y1f 
+WF_JN    19-12-96 11:55:08 jnf ynf 
+WF_LGAMM 19-12-96 11:55:08 lgammaf 
+WF_LOG   19-12-96 11:55:08 logf 
+WF_LOG10 19-12-96 11:55:08 log10f 
+WF_POW   19-12-96 11:55:08 powf 
+WF_REMAI 19-12-96 11:55:08 remainderf 
+WF_SCALB 19-12-96 11:55:08 scalbf 
+WF_SINH  19-12-96 11:55:08 sinhf 
+WF_SQRT  19-12-96 11:55:08 sqrtf 
+WR_GAMMA 19-12-96 11:55:08 gamma_r 
+WR_LGAMM 19-12-96 11:55:08 lgamma_r 
+WRF_GAMM 19-12-96 11:55:08 gammaf_r 
+WRF_LGAM 19-12-96 11:55:08 lgammaf_r 
+

@@ -1,0 +1,24 @@
+
+PsyLib version 2.04
+
+Module     Date     Time   Externals defined
+
+MENUX    05-10-95 13:58:20 GetItemNumFromID GetItemFromID2 CopyTarget 
+                           GetItemFromID3 GetSprtxPtrFromMENUid MENUidol2 
+                           MENUsetItem CopySprite funcokflag MENU bkcpflag 
+                           MENUgetRMENUFromId MENUsetItem2 MENUsetItem3 
+                           cpokflag MENUgetPolyPtr MENUremoveItem 
+                           MENUsetItemEffect MENUpullCurrentItem 
+                           MENUpushCurrentItem xxx MENUend cpflag opflag 
+                           malloc_superx MENUdrawItemAll MENUChangeSprtx 
+                           free_superx MENUgetSprtxPtr GetItemFromID 
+                           MENUsetItemIntence MENUidol MENUsetAnimationItem2 
+                           MENUgetCurrentItem MENUinit MENUsetCurrentItem 
+                           MENUclrQueBuffer MENUgetSPRTFromId 
+SPRITEX  05-10-95 13:58:40 SetSpritePriority SetSpriteSize MakeSpriteData 
+                           SetSpriteRGB AddSprite SetSpriteScale 
+                           MakeSpriteData2 SetSpriteTrans AddSprite2 
+                           SetSpriteShadeTex SetSpritePosition 
+PSXLOAD  05-10-95 13:58:58 PSXloadTexture GsGetTimInfo PSXtimMake 
+                           PSXgetInterlace ClearTexture PSXsetInterlace 
+

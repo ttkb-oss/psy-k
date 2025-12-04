@@ -1,0 +1,14 @@
+
+PsyLib version 2.04
+
+Module     Date     Time   Externals defined
+
+LIBPRESS 12-10-95 19:56:50 DecDCTvlc DecDCTout DecDCToutCallback DecDCTinSync 
+                           mdec_coef DecDCTBufSize DecDCTin DecDCTvlcSize 
+                           DecDCTinCallback mdec_iq DecDCToutSync DecDCTReset 
+VLC      12-10-95 19:56:52 MDEC_vlc_brk MDEC_vlc 
+VLC2     12-10-95 19:56:54 dec_used dec_pt ivlc_dct_dc_size dc_y dc_type 
+                           dc_cb MDEC_vlc2 bs_curt dc_cr 
+DVLC     12-10-95 19:57:06 CF_DVLC CF2_DVLC DCC_DVLC DCL_DVLC 
+ENCSPU   12-10-95 19:57:08 EncSPU 
+

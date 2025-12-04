@@ -5,8 +5,6 @@ use std::collections::HashMap;
 use std::collections::HashSet;
 use std::path::{Path, PathBuf};
 
-use binrw::io::Cursor;
-use binrw::BinWrite;
 use psyx::io;
 use psyx::Module;
 use psyx::Section;
@@ -14,34 +12,9 @@ use serde_json::{self};
 
 use std::sync::LazyLock;
 
-fn round_trip(path: &Path) {
-    eprintln!("roundtripping {}", path.display());
-    let bin = io::read(path);
-    let mut writer = Cursor::new(Vec::new());
+mod common;
 
-    match bin {
-        Ok(io::Type::OBJ(ref lnk)) => lnk.write(&mut writer).unwrap(),
-        Ok(io::Type::LIB(ref lib)) => lib.write(&mut writer).unwrap(),
-        Err(e) => panic!("{}", e),
-    }
-
-    let bytes = std::fs::read(path).expect("file");
-    let gen = writer.into_inner();
-    if bytes != gen {
-        eprintln!(
-            "{}",
-            match bin {
-                Ok(io::Type::OBJ(ref lnk)) => lnk as &dyn std::fmt::Display,
-                Ok(io::Type::LIB(ref lib)) => lib as &dyn std::fmt::Display,
-                Err(_) => &"error" as &dyn std::fmt::Display,
-            }
-        );
-    }
-    assert_eq!(bytes.len(), gen.len());
-    assert_eq!(bytes, gen);
-
-    test(path);
-}
+use common::{compare_output, round_trip};
 
 static LIB_EXPORTS: LazyLock<HashMap<String, HashMap<String, HashSet<String>>>> =
     LazyLock::new(|| {
@@ -472,4 +445,231 @@ fn test_psyq_40() {
     round_trip(&path_40("PSX/SAMPLE/OLD/ETC/CARD/LIB/TURTLE.LIB"));
     round_trip(&path_40("PSX/UTILITY/MENU/CDSFILE.LIB"));
     round_trip(&path_40("PSYQ/PREFSMPL/LIBGS2/LIBGS.LIB"));
+}
+
+const CMD_DATA_PREFIX: &str = "tests/data/cmd/psy-q-psx";
+
+#[inline]
+fn cmd_output_version(version: &str, file: String) -> PathBuf {
+    PathBuf::from(format!("{CMD_DATA_PREFIX}/{version}/{file}"))
+}
+
+#[inline]
+fn cmd_output_33(file: String) -> PathBuf {
+    cmd_output_version("3.3", file)
+}
+
+#[inline]
+fn cmd_output_35(file: String) -> PathBuf {
+    cmd_output_version("3.5", file)
+}
+
+#[inline]
+fn cmd_output_36(file: String) -> PathBuf {
+    cmd_output_version("3.6", file)
+}
+
+#[inline]
+fn cmd_output_40(file: String) -> PathBuf {
+    cmd_output_version("4.0", file)
+}
+
+fn compare_lib_output_33(prefix: &str) {
+    compare_output(
+        &path_33(&format!("{prefix}.LIB")),
+        &cmd_output_33(format!("{prefix}.TXT")),
+        3,
+    );
+}
+
+fn compare_obj_output_33(prefix: &str) {
+    compare_output(
+        &path_33(&format!("{prefix}.OBJ")),
+        &cmd_output_33(format!("{prefix}.TXT")),
+        1,
+    );
+}
+
+fn compare_lib_output_35(prefix: &str) {
+    compare_output(
+        &path_35(&format!("{prefix}.LIB")),
+        &cmd_output_35(format!("{prefix}.TXT")),
+        3,
+    );
+}
+
+fn compare_obj_output_35(prefix: &str) {
+    compare_output(
+        &path_35(&format!("{prefix}.OBJ")),
+        &cmd_output_35(format!("{prefix}.TXT")),
+        1,
+    );
+}
+
+fn compare_lib_output_36(prefix: &str) {
+    compare_output(
+        &path_36(&format!("{prefix}.LIB")),
+        &cmd_output_36(format!("{prefix}.TXT")),
+        3,
+    );
+}
+
+fn compare_obj_output_36(prefix: &str) {
+    compare_output(
+        &path_36(&format!("{prefix}.OBJ")),
+        &cmd_output_36(format!("{prefix}.TXT")),
+        1,
+    );
+}
+
+fn compare_lib_output_40(prefix: &str) {
+    compare_output(
+        &path_40(&format!("{prefix}.LIB")),
+        &cmd_output_40(format!("{prefix}.TXT")),
+        3,
+    );
+}
+
+fn compare_obj_output_40(prefix: &str) {
+    compare_output(
+        &path_40(&format!("{prefix}.OBJ")),
+        &cmd_output_40(format!("{prefix}.TXT")),
+        1,
+    );
+}
+
+#[test]
+fn test_output_33() {
+    compare_lib_output_33("PSX/LIB/LIBAPI");
+    compare_lib_output_33("PSX/LIB/LIBC");
+    compare_lib_output_33("PSX/LIB/LIBC2");
+    compare_lib_output_33("PSX/LIB/LIBCARD");
+    compare_lib_output_33("PSX/LIB/LIBCD");
+    compare_lib_output_33("PSX/LIB/LIBCOMB");
+    compare_lib_output_33("PSX/LIB/LIBETC");
+    compare_lib_output_33("PSX/LIB/LIBGPU");
+    compare_lib_output_33("PSX/LIB/LIBGS");
+    compare_lib_output_33("PSX/LIB/LIBGTE");
+    compare_lib_output_33("PSX/LIB/LIBMATH");
+    compare_lib_output_33("PSX/LIB/LIBPRESS");
+    compare_lib_output_33("PSX/LIB/LIBSN");
+    compare_lib_output_33("PSX/LIB/LIBSND");
+    compare_lib_output_33("PSX/LIB/LIBSPU");
+    compare_lib_output_33("PSX/LIB/LIBTAP");
+    compare_lib_output_33("PSX/SAMPLE/ETC/CARD/LIB/TURTLE");
+    compare_lib_output_33("PSX/SAMPLE/ETC/CARD/LIB/SUPERX");
+
+    compare_obj_output_33("PSX/LIB/2MBYTE");
+    compare_obj_output_33("PSX/LIB/8MBYTE");
+    compare_obj_output_33("PSX/LIB/MALLOC");
+    compare_obj_output_33("PSX/LIB/NONE2");
+    compare_obj_output_33("PSX/LIB/NONE3");
+    compare_obj_output_33("PSX/SAMPLE/MODULE/EXECMENU/FONTTEX1");
+}
+
+#[test]
+fn test_output_35() {
+    compare_lib_output_35("PSX/LIB/LIBAPI");
+    compare_lib_output_35("PSX/LIB/LIBC");
+    compare_lib_output_35("PSX/LIB/LIBC2");
+    compare_lib_output_35("PSX/LIB/LIBCARD");
+    compare_lib_output_35("PSX/LIB/LIBCD");
+    compare_lib_output_35("PSX/LIB/LIBCOMB");
+    compare_lib_output_35("PSX/LIB/LIBETC");
+    compare_lib_output_35("PSX/LIB/LIBGPU");
+    compare_lib_output_35("PSX/LIB/LIBGS");
+    compare_lib_output_35("PSX/LIB/LIBGTE");
+    compare_lib_output_35("PSX/LIB/LIBGUN");
+    compare_lib_output_35("PSX/LIB/LIBMATH");
+    compare_lib_output_35("PSX/LIB/LIBPRESS");
+    compare_lib_output_35("PSX/LIB/LIBSN");
+    compare_lib_output_35("PSX/LIB/LIBSND");
+    compare_lib_output_35("PSX/LIB/LIBSPU");
+    compare_lib_output_35("PSX/LIB/LIBTAP");
+
+    compare_obj_output_35("PSX/LIB/2MBYTE");
+    compare_obj_output_35("PSX/LIB/8MBYTE");
+    compare_obj_output_35("PSX/LIB/MALLOC");
+    compare_obj_output_35("PSX/LIB/NONE2");
+    compare_obj_output_35("PSX/LIB/NONE3");
+}
+
+#[test]
+fn test_output_36() {
+    compare_lib_output_36("PSX/LIB/LIBAPI");
+    compare_lib_output_36("PSX/LIB/LIBC");
+    compare_lib_output_36("PSX/LIB/LIBC2");
+    compare_lib_output_36("PSX/LIB/LIBCARD");
+    compare_lib_output_36("PSX/LIB/LIBCD");
+    compare_lib_output_36("PSX/LIB/LIBCOMB");
+    compare_lib_output_36("PSX/LIB/LIBETC");
+    compare_lib_output_36("PSX/LIB/LIBGPU");
+    compare_lib_output_36("PSX/LIB/LIBGS");
+    compare_lib_output_36("PSX/LIB/LIBGTE");
+    compare_lib_output_36("PSX/LIB/LIBGUN");
+    compare_lib_output_36("PSX/LIB/LIBMATH");
+    compare_lib_output_36("PSX/LIB/LIBPRESS");
+    compare_lib_output_36("PSX/LIB/LIBSIO");
+    compare_lib_output_36("PSX/LIB/LIBSN");
+    compare_lib_output_36("PSX/LIB/LIBSND");
+    compare_lib_output_36("PSX/LIB/LIBSPU");
+    compare_lib_output_36("PSX/LIB/LIBTAP");
+    compare_lib_output_36("PSX/SAMPLE/ETC/CARD/LIB/SUPERX");
+    compare_lib_output_36("PSX/SAMPLE/ETC/CARD/LIB/TURTLE");
+    compare_lib_output_36("PSX/SAMPLE/SCEE/DEMODISC/DEMO/BS/BS");
+    compare_lib_output_36("PSX/SAMPLE/SCEE/DEMODISC/DEMO/NONE2/NONE2");
+    compare_lib_output_36("PSX/SAMPLE/SCEE/ETC/MTAP/LIBTAP");
+    compare_lib_output_36("PSX/UTILITY/MENU/CDSFILE");
+    compare_lib_output_36("PSYQ/BIN/LIBDECI");
+    compare_lib_output_36("PSYQ/SRC/LIBSN/LIBSN");
+
+    compare_obj_output_36("PSX/LIB/2MBYTE");
+    compare_obj_output_36("PSX/LIB/8MBYTE");
+    compare_obj_output_36("PSX/LIB/NONE2");
+    compare_obj_output_36("PSX/LIB/NONE3");
+    compare_obj_output_36("PSX/SAMPLE/SCEE/SUBDIV/MAIN");
+    compare_obj_output_36("PSX/SAMPLE/SCEE/SUBDIV/SUBDIV");
+    compare_obj_output_36("PSX/UTILITY/MENU/MENU");
+    compare_obj_output_36("PSX/UTILITY/MENU/PCEXEC");
+    compare_obj_output_36("PSX/UTILITY/MENU/PCLOAD");
+    compare_obj_output_36("PSX/UTILITY/MENU/PRINTERR");
+    compare_obj_output_36("PSX/UTILITY/MENU/SDATA");
+    compare_obj_output_36("PSX/UTILITY/MENU/SOUND");
+    compare_obj_output_36("PSX/UTILITY/MENU/STRING");
+}
+
+#[test]
+fn test_output_40() {
+    compare_lib_output_40("PSX/LIB/LIBAPI");
+    compare_lib_output_40("PSX/LIB/LIBC");
+    compare_lib_output_40("PSX/LIB/LIBC2");
+    compare_lib_output_40("PSX/LIB/LIBCARD");
+    compare_lib_output_40("PSX/LIB/LIBCD");
+    compare_lib_output_40("PSX/LIB/LIBCOMB");
+    compare_lib_output_40("PSX/LIB/LIBDS");
+    compare_lib_output_40("PSX/LIB/LIBETC");
+    compare_lib_output_40("PSX/LIB/LIBGPU");
+    compare_lib_output_40("PSX/LIB/LIBGS");
+    compare_lib_output_40("PSX/LIB/LIBGTE");
+    compare_lib_output_40("PSX/LIB/LIBGUN");
+    compare_lib_output_40("PSX/LIB/LIBMATH");
+    compare_lib_output_40("PSX/LIB/LIBMCRD");
+    compare_lib_output_40("PSX/LIB/LIBPRESS");
+    compare_lib_output_40("PSX/LIB/LIBSIO");
+    compare_lib_output_40("PSX/LIB/LIBSN");
+    compare_lib_output_40("PSX/LIB/LIBSND");
+    compare_lib_output_40("PSX/LIB/LIBSPU");
+    compare_lib_output_40("PSX/LIB/LIBTAP");
+    compare_lib_output_40("PSX/SAMPLE/GRAPHICS/ZIMEN/LIBZIMEN");
+    compare_lib_output_40("PSX/SAMPLE/OLD/ETC/CARD/LIB/SUPERX");
+    compare_lib_output_40("PSX/SAMPLE/OLD/ETC/CARD/LIB/TURTLE");
+    compare_lib_output_40("PSX/UTILITY/MENU/CDSFILE");
+    compare_lib_output_40("PSYQ/PREFSMPL/LIBGS2/LIBGS");
+
+    compare_obj_output_40("PSX/LIB/2MBYTE");
+    compare_obj_output_40("PSX/LIB/8MBYTE");
+    compare_obj_output_40("PSX/LIB/AUTOPAD");
+    compare_obj_output_40("PSX/LIB/NOHEAP");
+    compare_obj_output_40("PSX/LIB/NONE3");
+    compare_obj_output_40("PSX/LIB/POWERON");
 }

@@ -1,0 +1,19 @@
+
+PsyLib version 2.04
+
+Module     Date     Time   Externals defined
+
+EMUSN    30-08-96 17:58:00 pollhost PCinit PCcreat PCopen PCclose PCread 
+                           PCwrite PClseek 
+D02      08-04-96 21:18:16 pscsub_sopen 
+D03      08-04-96 21:18:18 pscsub_copen 
+D04      08-04-96 21:18:20 pscsub_close 
+D05      08-04-96 21:18:22 pscsub_transaction 
+D06      08-04-96 21:18:24 pscsub_check_done_transaction 
+D07      08-04-96 21:18:26 pscsub_poll 
+D08      08-04-96 21:18:28 pscsub_panicmesg 
+D09      08-04-96 21:18:28 pscsub_lock 
+D10      08-04-96 21:18:30 pscsub_unlock 
+D11      08-04-96 21:18:32 pscsub_getpktsize 
+D12      08-04-96 21:18:34 pscsub_intrmode 
+

@@ -1,0 +1,89 @@
+
+PsyLib version 2.04
+
+Module     Date     Time   Externals defined
+
+C57      03-10-96 14:19:20 InitHeap 
+C58      03-10-96 14:19:20 _exit 
+C65      03-10-96 14:19:20 LoadTest 
+C66      03-10-96 14:19:20 Load 
+C67      03-10-96 14:19:20 Exec 
+C68      03-10-96 14:19:22 FlushCache 
+C73      03-10-96 14:19:22 GPU_cw 
+C81      03-10-96 14:19:22 LoadExec 
+C82      03-10-96 14:19:22 GetSysSp 
+C112     03-10-96 14:19:22 _bu_init 
+C113     03-10-96 14:19:22 _96_init 
+C114     03-10-96 14:19:22 _96_remove 
+C157     03-10-96 14:19:22 GetConf 
+C159     03-10-96 14:19:22 SetMem 
+C160     03-10-96 14:19:22 _boot 
+C161     03-10-96 14:19:22 SystemError 
+C167     03-10-96 14:19:22 bufs_cb_0 
+C168     03-10-96 14:19:22 bufs_cb_1 
+C169     03-10-96 14:19:22 bufs_cb_2 
+C170     03-10-96 14:19:24 bufs_cb_3 
+C174     03-10-96 14:19:24 bufs_cb_4 
+A07      03-10-96 14:19:24 DeliverEvent 
+A08      03-10-96 14:19:24 OpenEvent 
+A09      03-10-96 14:19:24 CloseEvent 
+A10      03-10-96 14:19:24 WaitEvent 
+A11      03-10-96 14:19:24 TestEvent 
+A12      03-10-96 14:19:24 EnableEvent 
+A13      03-10-96 14:19:24 DisableEvent 
+A14      03-10-96 14:19:24 OpenTh 
+A15      03-10-96 14:19:24 CloseTh 
+A16      03-10-96 14:19:24 ChangeTh 
+A18      03-10-96 14:19:24 InitPAD2 
+A19      03-10-96 14:19:26 StartPAD2 
+A20      03-10-96 14:19:26 StopPAD 
+A21      03-10-96 14:19:26 PAD_init2 
+A22      03-10-96 14:19:26 PAD_dr 
+A23      03-10-96 14:19:26 ReturnFromException 
+A24      03-10-96 14:19:26 ResetEntryInt 
+A25      03-10-96 14:19:26 HookEntryInt 
+A32      03-10-96 14:19:26 UnDeliverEvent 
+A36      03-10-96 14:19:26 EnterCriticalSection 
+A37      03-10-96 14:19:26 ExitCriticalSection 
+A38      03-10-96 14:19:26 Exception 
+A39      03-10-96 14:19:26 SetSp 
+A40      03-10-96 14:19:28 SwEnterCriticalSection 
+A41      03-10-96 14:19:28 SwExitCriticalSection 
+A50      03-10-96 14:19:28 open 
+A51      03-10-96 14:19:28 lseek 
+A52      03-10-96 14:19:28 read 
+A53      03-10-96 14:19:28 write 
+A54      03-10-96 14:19:28 close 
+A55      03-10-96 14:19:28 ioctl 
+A64      03-10-96 14:19:28 cd 
+A65      03-10-96 14:19:28 format 
+A66      03-10-96 14:19:28 firstfile 
+A67      03-10-96 14:19:28 nextfile 
+A68      03-10-96 14:19:30 rename 
+A69      03-10-96 14:19:30 erase 
+A70      03-10-96 14:19:30 undelete 
+A71      03-10-96 14:19:30 AddDrv 
+A72      03-10-96 14:19:30 DelDrv 
+A81      03-10-96 14:19:30 Krom2RawAdd 
+A84      03-10-96 14:19:30 _get_errno 
+A85      03-10-96 14:19:30 _get_error 
+A91      03-10-96 14:19:30 ChangeClearPAD 
+A94      03-10-96 14:19:30 GetGp 
+A95      03-10-96 14:19:30 GetSp 
+A96      03-10-96 14:19:30 GetCr 
+A97      03-10-96 14:19:30 GetSr 
+L02      03-10-96 14:19:32 SysEnqIntRP 
+L03      03-10-96 14:19:32 SysDeqIntRP 
+L10      03-10-96 14:19:32 ChangeClearRCnt 
+COUNTER  03-10-96 14:19:32 StopRCnt ResetRCnt StartRCnt GetRCnt SetRCnt 
+SC2B     03-10-96 14:19:34 SetConf 
+__MAIN   03-10-96 14:19:34 
+PATCH    03-10-96 14:19:34 _patch_pad 
+PAD      03-10-96 14:19:34 InitPAD StartPAD PAD_init 
+I_HEAP2  03-10-96 14:19:34 _AllocRestBlockTop InitHeap2 _max_heap _Candidate 
+                           _TopAllocArea 
+MALLOC2  03-10-96 14:19:36 malloc2 
+FREE2    03-10-96 14:19:36 free2 
+REALLOC2 03-10-96 14:19:36 realloc2 
+CALLOC2  03-10-96 14:19:36 calloc2 
+

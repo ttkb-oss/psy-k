@@ -14,31 +14,31 @@ As a library, `psy-x` parses `LIB` and `OBJ` files for programmatic manipulation
 Commands
 --------
 
-*default*/*info* - dump a `LIB` or `OBJ` file
+*default*/*list* - dump a `LIB` or `OBJ` file
 
 ```bash
 $> psyx PSX/LIB/LIBCARD.LIB
 Module     Date     Time   Externals defined
-C112     12-26-95 17:43:08 _bu_init
-C171     12-26-95 17:43:08 _card_info
-C172     12-26-95 17:43:08 _card_load
-C173     12-26-95 17:43:08 _card_auto
-A74      12-26-95 17:43:10 InitCARD
-A75      12-26-95 17:43:10 StartCARD
-A76      12-26-95 17:43:10 StopCARD
-A78      12-26-95 17:43:10 _card_write
-A79      12-26-95 17:43:10 _card_read
-A80      12-26-95 17:43:10 _new_card
-A92      12-26-95 17:43:12 _card_status
-A93      12-26-95 17:43:12 _card_wait
-CARD     12-26-95 17:43:12 _card_clear
+C112     26-12-95 17:43:08 _bu_init
+C171     26-12-95 17:43:08 _card_info
+C172     26-12-95 17:43:08 _card_load
+C173     26-12-95 17:43:08 _card_auto
+A74      26-12-95 17:43:10 InitCARD
+A75      26-12-95 17:43:10 StartCARD
+A76      26-12-95 17:43:10 StopCARD
+A78      26-12-95 17:43:10 _card_write
+A79      26-12-95 17:43:10 _card_read
+A80      26-12-95 17:43:10 _new_card
+A92      26-12-95 17:43:12 _card_status
+A93      26-12-95 17:43:12 _card_wait
+CARD     26-12-95 17:43:12 _card_clear
 ```
 
-*split* - split a `LIB` file into `OBJ`s
+*extract* - extract `OBJ`s from a a `LIB` file
 
 ```bash
-$> psyx split PSX/LIB/LIBCARD.LIB
-psyx version 0.0.0
+$> psyx extract PSX/LIB/LIBCARD.LIB
+psyx version 0.1.0
 
 Extracted object file C112.OBJ
 Extracted object file C171.OBJ
@@ -55,13 +55,36 @@ Extracted object file A93.OBJ
 Extracted object file CARD.OBJ
 ```
 
-*join* - join several `OBJ`s into a `LIB`
-
-`unimplemented`
+*create* - create a new `LIB` from one or more `OBJ`s
 
 *add* - add another `OBJ` to an existing `LIB`
 
-`unimplemented`
+*update* - update an existing `OBJ` in a `LIB`
+
+*delete* - delete an `OBJ` from a `LIB`
+
+Library
+-------
+
+`psy-x` can be used to programatically read and modify `LIB` and `OBJ` structures as well.
+
+```rust
+use std::path::Path;
+use psyx::io;
+use anyhow::Result;
+
+fn main() -> Result<()> {
+    let lib = io::read_lib(Path::new("LIBAPI.LIB"))?;
+
+    for module in lib.modules() {
+        println!("Module: {}", module.name());
+        println!("Created: {}", module.created());
+        println!("Exports: {:?}", module.exports());
+    }
+
+    Ok(())
+}
+```
 
 References
 ----------

@@ -1,0 +1,46 @@
+
+PsyLib version 2.04
+
+Module     Date     Time   Externals defined
+
+CDROM    20-05-97 11:39:36 *Stframe_no *StFinalSector *Stsector_offset 
+                           *StRgb24 *StEmu_Idx StSetRing *StFunc1 
+                           *StCdIntrFlag *StFunc2 *StRingIdx1 *StRingIdx2 
+                           *StRingIdx3 *StStartFrame *StCHANNEL *StEmu_Addr 
+                           *StEndFrame *StSTART_FLAG *StRingAddr *StRingBase 
+                           *StRingSize *CChannel 
+TOC      20-05-97 11:39:36 CdGetToc2 CdGetToc 
+EVENT    20-05-97 11:39:38 CdInit 
+SYS      20-05-97 11:39:38 CdComstr CdStatus CdIntstr CdMode CdDataCallback 
+                           CdGetSector CdSync CdSyncCallback CdLastCom 
+                           CdGetSector2 CdLastPos CdControl CdReady CdFlush 
+                           CdReadyCallback CdReset CdSetDebug CdDataSync 
+                           CdIntToPos CdPosToInt CdControlB CdControlF CdMix 
+BIOS     20-05-97 11:39:40 CD_nopen CD_flush CD_com CD_vol CD_pos CD_datasync 
+                           CD_cbread *StMode CD_initintr CD_cbsync DS_active 
+                           CD_comstr CD_status CD_intstr CD_mode CD_init 
+                           CD_sync CD_set_test_parmnum CD_getsector 
+                           CD_status1 CD_cbready CD_cw CD_getsector2 
+                           CD_initvol CD_debug CD_ready 
+ISO9660  20-05-97 11:39:42 CdSearchFile 
+CDREAD   20-05-97 11:39:42 CdReadBreak CdRead CdReadCallback CdReadMode 
+                           CdReadSync 
+CDREAD2  20-05-97 11:39:44 CdRead2 
+TYPE     20-05-97 11:39:44 CdDiskReady CdGetDiskType 
+CDREADE  20-05-97 11:39:44 CdReadFile CdReadExec 
+CDPLAY   20-05-97 11:39:46 CdPlay 
+C_002    20-05-97 11:39:46 StClearRing *StFunc1 *StFunc2 
+C_003    20-05-97 11:39:48 StUnSetRing *StFunc1 *StFunc2 
+C_004    20-05-97 11:39:48 *StFunc1 *StFunc2 StGetBackloc data_ready_callback 
+C_005    20-05-97 11:39:48 StSetStream *StFunc1 *StFunc2 
+C_006    20-05-97 11:39:50 *StFunc1 *StFunc2 StSetEmulate 
+C_007    20-05-97 11:39:50 *StFunc1 *StFunc2 StFreeRing 
+C_008    20-05-97 11:39:50 *StFunc1 *StFunc2 init_ring_status 
+C_009    20-05-97 11:39:50 *StFunc1 *StFunc2 StGetNext 
+C_010    20-05-97 11:39:52 StSetMask *StFunc1 *StFunc2 
+C_011    20-05-97 11:39:52 StCdInterrupt debug_cause *StFunc1 *StFunc2 
+C_012    20-05-97 11:39:54 *StFunc1 *StFunc2 StSetChannel 
+C_013    20-05-97 11:39:54 *StFunc1 *StFunc2 StGetNextS 
+C_014    20-05-97 11:39:54 *StFunc1 *StFunc2 StNextStatus 
+C_015    20-05-97 11:39:56 *StFunc1 *StFunc2 StRingStatus 
+

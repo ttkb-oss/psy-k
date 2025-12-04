@@ -1,0 +1,15 @@
+
+Header : LNK version 2
+46 : Processor type 7
+16 : Section symbol number f004 '.rdata' in group 0 alignment 8
+16 : Section symbol number f000 '.text' in group 0 alignment 8
+16 : Section symbol number f001 '.data' in group 0 alignment 8
+16 : Section symbol number f003 '.sdata' in group 0 alignment 8
+16 : Section symbol number f005 '.bss' in group 0 alignment 8
+16 : Section symbol number f002 '.sbss' in group 0 alignment 8
+12 : XDEF symbol number 1 'go_poweron' at offset 0 in section f000
+14 : XREF symbol number 2 'EnterCriticalSection'
+6 : Switch to section f000
+2 : Code 48 bytes
+10 : Patch type 74 at offset 8 with [2]
+0 : End of file

@@ -1,0 +1,34 @@
+
+PsyLib version 2.04
+
+Module     Date     Time   Externals defined
+
+EXT      18-10-95 13:37:36 LoadClut LoadTPage SetDefDrawEnv SetDefDispEnv 
+EXTA     18-10-95 13:37:40 GetTPageA get_addr get_cell LoadTPageA 
+FONT     18-10-95 13:37:44 FntFlush FntPrint Font FntLoad FntOpen SetDumpFnt 
+FONTTEX  18-10-95 13:37:44 
+KPRINTF  18-10-95 13:37:50 KanjiFntFlush KanjiFntPrint PutKanji txyuv 
+                           KanjiFont KanjiFntLoad KanjiFntOpen kanjiclut 
+KROM2TIM 18-10-95 13:37:52 GetTimSize Krom2Tim 
+OTAG     18-10-95 13:37:54 DumpOTag CheckPrim DrawOTagIO 
+PRIM     18-10-95 13:37:58 SetSprt8 AddPrims SetTile16 SetLineF2 SetLineG2 
+                           SetLineF3 DumpClut SetLineG3 SetLineF4 SetLineG4 
+                           TermPrim NextPrim SetSprt16 SetShadeTex SetPolyF3 
+                           SetPolyG3 SetPolyF4 SetPolyG4 DumpDrawEnv 
+                           DumpDispEnv SetDrawMove DumpTPage IsEndPrim 
+                           MargePrim SetPolyFT3 SetPolyGT3 SetPolyFT4 
+                           SetBlockFill SetPolyGT4 AddPrim CatPrim GetClut 
+                           SetTile SetSemiTrans SetSprt SetTile1 GetTPage 
+                           SetTile8 
+SYS      18-10-95 13:40:20 SetGraphDebug _qlog SetDrawOffset SetGraphQueue 
+                           DrawPrim _qout DrawSync SetDrawArea 
+                           DrawSyncCallback SetDrawMode SetDispMask ClearOTag 
+                           LoadImage MoveImage SetPriority ClearOTagR _qin 
+                           _que GetGraphType ClearImage SetTexWindow 
+                           GetDrawEnv GetDispEnv GPU_printf SetDrawEnv 
+                           StoreImage PutDrawEnv PutDispEnv ResetGraph GetODE 
+                           GetGraphDebug DrawOTag SetGraphReverse 
+TMD      18-10-95 13:40:26 ReadTMD ReadTIM OpenTMD OpenTIM 
+KTRANS   18-10-95 13:40:30 Krom2RawAdd2 kanjitrans hankanjitrans 
+BREAK    18-10-95 13:40:32 BreakDraw 
+

@@ -1,0 +1,27 @@
+
+Header : LNK version 2
+46 : Processor type 7
+16 : Section symbol number 51d8 '.rdata' in group 0 alignment 8
+16 : Section symbol number 51d9 '.text' in group 0 alignment 8
+16 : Section symbol number 51da '.data' in group 0 alignment 8
+16 : Section symbol number 51db '.sdata' in group 0 alignment 8
+16 : Section symbol number 51dc '.sbss' in group 0 alignment 8
+16 : Section symbol number 51dd '.bss' in group 0 alignment 8
+6 : Switch to section 51d8
+6 : Switch to section 51d9
+6 : Switch to section 51da
+6 : Switch to section 51db
+6 : Switch to section 51dc
+6 : Switch to section 51dd
+6 : Switch to section 51d9
+2 : Code 24 bytes
+10 : Patch type 82 at offset 8 with sectstart(51db)
+10 : Patch type 84 at offset c with sectstart(51db)
+10 : Patch type 74 at offset 10 with [51e4]
+12 : XDEF symbol number 51df '__SN_ENTRY_POINT' at offset 8 in section 51d9
+12 : XDEF symbol number 51de '__main' at offset 0 in section 51d9
+14 : XREF symbol number 51e4 'main'
+12 : XDEF symbol number 51e1 'stup0' at offset 10 in section 51d9
+12 : XDEF symbol number 51e2 'stup1' at offset 8 in section 51d9
+12 : XDEF symbol number 51e3 'stup2' at offset 8 in section 51d9
+0 : End of file

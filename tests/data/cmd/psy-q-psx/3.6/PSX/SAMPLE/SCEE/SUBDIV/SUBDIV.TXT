@@ -1,0 +1,11 @@
+
+Header : LNK version 2
+46 : Processor type 7
+16 : Section symbol number 2 'poly_subdiv_code' in group 0 alignment 8
+6 : Switch to section 2
+2 : Code 4884 bytes
+12 : XDEF symbol number 3 'DEL_subdivide_gt4_asm' at offset 0 in section 2
+12 : XDEF symbol number 5 'DEL_subdivide_ft4_asm' at offset a4c in section 2
+12 : XDEF symbol number 6 'DEL_subdivide_ft3_asm' at offset e74 in section 2
+12 : XDEF symbol number 4 'DEL_subdivide_gt3_asm' at offset 4e0 in section 2
+0 : End of file
