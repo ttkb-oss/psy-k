@@ -97,10 +97,10 @@ use unicode_segmentation::UnicodeSegmentation;
 
 use crate::display::DisplayWithOptions;
 
+pub mod cli;
 pub mod display;
 pub mod io;
-
-pub mod cli;
+pub mod link;
 
 /// A [LIB] is an archive of several [OBJ] files. It consists
 /// of a magic number followed by one or more [Modules](Module).
@@ -851,9 +851,9 @@ pub enum Expression {
     #[brw(magic(52u8))]
     And(Box<Expression>, Box<Expression>),
 
-    /// Bang operator (tag 0x36).
+    /// Bitwise OR operator (tag 0x36).
     #[brw(magic(54u8))]
-    Bang(Box<Expression>, Box<Expression>),
+    Or(Box<Expression>, Box<Expression>),
 
     /// Bitwise XOR (tag 0x38).
     #[brw(magic(56u8))]
@@ -934,7 +934,7 @@ impl fmt::Display for Expression {
             Self::Multiply(lhs, rhs) => write!(f, "({}*{})", lhs, rhs),
             Self::Divide(lhs, rhs) => write!(f, "({}/{})", lhs, rhs),
             Self::And(lhs, rhs) => write!(f, "({}&{})", lhs, rhs),
-            Self::Bang(lhs, rhs) => write!(f, "({}!{})", lhs, rhs),
+            Self::Or(lhs, rhs) => write!(f, "({}!{})", lhs, rhs),
             Self::XOR(lhs, rhs) => write!(f, "({}^{})", lhs, rhs),
             Self::LeftShift(lhs, rhs) => write!(f, "({}<<{})", lhs, rhs),
             Self::RightShift(lhs, rhs) => write!(f, "({}>>{})", lhs, rhs),

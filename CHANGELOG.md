@@ -1,6 +1,11 @@
 Change Log
 ==========
 
+0.2.0 - December 11, 2025
+-------------------------
+
+* Adds the ability to parse `psylink` linker scripts
+
 0.1.0 - December 9, 2025
 ------------------------
 

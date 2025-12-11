@@ -1,6 +1,6 @@
 [package]
 name = "psy-x"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2021"
 authors = ["Jonathan Hohle <jon@ttkb.co>"]
 license = "BSD-3-CLAUSE"
@@ -40,6 +40,7 @@ chrono = "0.4"
 clap = { version = "4.5.51", features = ["cargo", "derive"] }
 rabbitizer = "1.14.3"
 unicode-segmentation = "1.12.0"
+winnow = "0.7.14"
 
 [dev-dependencies]
 serde_json = "1.0.145"

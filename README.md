@@ -66,7 +66,7 @@ Extracted object file CARD.OBJ
 Library
 -------
 
-`psy-x` can be used to programatically read and modify `LIB` and `OBJ` structures as well.
+`psy-x` can be used to programmatically read and modify `LIB` and `OBJ` structures as well.
 
 ```rust
 use std::path::Path;
