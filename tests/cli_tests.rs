@@ -7,8 +7,8 @@ use std::path::{Path, PathBuf};
 use anyhow::Result;
 use tempfile::TempDir;
 
-use psyx::cli;
-use psyx::io;
+use psyk::cli;
+use psyk::io;
 
 const PSYQ_PREFIX: &str = "tests/data/psy-q";
 

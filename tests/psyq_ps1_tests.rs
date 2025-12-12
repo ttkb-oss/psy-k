@@ -5,9 +5,9 @@ use std::collections::HashMap;
 use std::collections::HashSet;
 use std::path::{Path, PathBuf};
 
-use psyx::io;
-use psyx::Module;
-use psyx::Section;
+use psyk::io;
+use psyk::Module;
+use psyk::Section;
 use serde_json::{self};
 
 use std::sync::LazyLock;

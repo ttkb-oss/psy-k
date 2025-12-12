@@ -3,8 +3,8 @@
 
 use std::path::Path;
 
-use psyx::io;
-use psyx::LIB;
+use psyk::io;
+use psyk::LIB;
 
 const PSYQ_PREFIX: &str = "tests/data/psy-q";
 

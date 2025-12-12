@@ -122,7 +122,7 @@
 //! ### Parsing a Complete Script
 //!
 //! ```rust
-//! use psyx::link;
+//! use psyk::link;
 //!
 //! let script = r#"
 //! ; Memory layout
@@ -164,7 +164,7 @@
 //! ### Parsing Individual Commands
 //!
 //! ```rust
-//! use psyx::link;
+//! use psyk::link;
 //!
 //! let mut input = "org $80010000";
 //! let result = link::parse_line(&mut input);
@@ -179,7 +179,7 @@
 //! ### Building a Linker Configuration
 //!
 //! ```no_run
-//! use psyx::link;
+//! use psyk::link;
 //!
 //! # fn main() -> Result<(), std::io::Error> {
 //!     let mut commands = Vec::new();
@@ -267,7 +267,7 @@
 //! The parser uses `winnow`'s error handling with context:
 //!
 //! ```rust
-//! use psyx::link;
+//! use psyk::link;
 //! use winnow::error::ContextError;
 //!
 //! let mut input = "...";

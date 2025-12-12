@@ -1,6 +1,11 @@
 Change Log
 ==========
 
+0.3.0 - December 11, 2025
+-------------------------
+
+* Name change to Psy-K to avoid conflicts with PsyCross
+
 0.2.0 - December 11, 2025
 -------------------------
 

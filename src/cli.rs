@@ -34,7 +34,7 @@ pub fn info(
 
 pub fn split(lib_path: &Path) -> Result<()> {
     let lib = read_lib(lib_path)?;
-    println!("psyx version {}\n", crate_version!());
+    println!("psyk version {}\n", crate_version!());
     for module in lib.modules() {
         let object_filename = format!("{}.OBJ", module.name());
         let time = module.created_at().expect("created timestamp");
@@ -122,19 +122,19 @@ pub fn update(lib_path: &Path, obj_paths: Vec<PathBuf>) -> Result<()> {
     write_lib(&lib, &mut file)
 }
 
-fn stem_or_psyx(path: Option<String>) -> String {
+fn stem_or_psyk(path: Option<String>) -> String {
     path.and_then(|path| {
         Path::new(&path)
             .file_stem()
             .and_then(|s| s.to_str())
             .map(|s| s.to_lowercase())
     })
-    .unwrap_or_else(|| "psyx".to_string())
+    .unwrap_or_else(|| "psyk".to_string())
 }
 
 /// Get the binary name from the executable path
 pub fn get_binary_name() -> String {
-    stem_or_psyx(env::args().next())
+    stem_or_psyk(env::args().next())
 }
 
 #[cfg(test)]
@@ -143,7 +143,7 @@ mod test {
 
     #[test]
     fn test_bin_name() {
-        assert_eq!("psyx", stem_or_psyx(None));
-        assert_eq!("foo", stem_or_psyx(Some("/bin/foo".into())));
+        assert_eq!("psyk", stem_or_psyk(None));
+        assert_eq!("foo", stem_or_psyk(Some("/bin/foo".into())));
     }
 }

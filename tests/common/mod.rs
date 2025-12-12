@@ -6,7 +6,7 @@ use std::path::Path;
 
 use binrw::io::Cursor;
 use binrw::BinWrite;
-use psyx::io;
+use psyk::io;
 
 pub fn round_trip(path: &Path) {
     eprintln!("roundtripping {}", path.display());
@@ -37,11 +37,11 @@ pub fn round_trip(path: &Path) {
 
 pub fn compare_output(lib_path: &Path, txt_path: &Path, skip_lines: usize) {
     let bin = io::read(lib_path).expect("lib");
-    let psyx_output = format!("{bin}");
+    let psyk_output = format!("{bin}");
     let psyq_output = read_to_string(txt_path).unwrap();
 
     // Compare line by line
-    for (line_num, (psyx_line, dump_line)) in psyx_output
+    for (line_num, (psyk_line, dump_line)) in psyk_output
         .lines()
         .zip(
             psyq_output
@@ -53,11 +53,11 @@ pub fn compare_output(lib_path: &Path, txt_path: &Path, skip_lines: usize) {
         .enumerate()
     {
         println!("{line_num}: {dump_line}");
-        println!("{line_num}: {psyx_line}");
+        println!("{line_num}: {psyk_line}");
         println!();
-        if psyx_line != dump_line {
-            // TODO: currently psyx doesn't handle line wrapping
-            if psyx_line.len() > 70 {
+        if psyk_line != dump_line {
+            // TODO: currently psyk doesn't handle line wrapping
+            if psyk_line.len() > 70 {
                 continue;
             }
             // TODO: not specifying locale
@@ -65,10 +65,10 @@ pub fn compare_output(lib_path: &Path, txt_path: &Path, skip_lines: usize) {
                 continue;
             }
             println!(
-                "Diff at line {}: \n  psyx: {}\n  dump: {}",
-                line_num, psyx_line, dump_line
+                "Diff at line {}: \n  psyk: {}\n  dump: {}",
+                line_num, psyk_line, dump_line
             );
-            assert_eq!(dump_line, psyx_line);
+            assert_eq!(dump_line, psyk_line);
         }
     }
 }

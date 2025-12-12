@@ -1,7 +1,7 @@
 // SPDX-FileCopyrightText: © 2025 TTKB, LLC
 // SPDX-License-Identifier: BSD-3-CLAUSE
 
-//! A module for providing a DOS-like interface to `psyx`.
+//! A module for providing a DOS-like interface to `psyk`.
 
 use std::env;
 use std::path::PathBuf;
@@ -10,7 +10,7 @@ use std::process;
 use anyhow::{bail, Result};
 
 use crate::cli;
-use psyx::{display, io};
+use psyk::{display, io};
 
 fn dumpobj_usage() -> ! {
     let args: Vec<String> = env::args().collect();

@@ -1,15 +1,14 @@
-`psy-x`
+`psy-k`
 ========
 
+`psy-k` is a pure-safe library and utility for parsing PSY-Q LIB & OBJ files.
 
-`psy-x` is a pure-safe library and utility for parsing PSY-Q LIB & OBJ files.
-
-As a utility, `psyx` will print the contents of LIB or OBJ files. `psyx` can split `LIB` files into `OBJ`s or combine
+As a utility, `psyk` will print the contents of LIB or OBJ files. `psyk` can split `LIB` files into `OBJ`s or combine
 `OBJ`s into `LIB`s; your choice, really.
 
-As a library, `psy-x` parses `LIB` and `OBJ` files for programmatic manipulation.
+As a library, `psy-k` parses `LIB` and `OBJ` files for programmatic manipulation.
 
-`psy-x` is used by `mipsmatch`.
+`psy-k` is used by `mipsmatch`.
 
 Commands
 --------
@@ -17,7 +16,7 @@ Commands
 *default*/*list* - dump a `LIB` or `OBJ` file
 
 ```bash
-$> psyx PSX/LIB/LIBCARD.LIB
+$> psyk PSX/LIB/LIBCARD.LIB
 Module     Date     Time   Externals defined
 C112     26-12-95 17:43:08 _bu_init
 C171     26-12-95 17:43:08 _card_info
@@ -37,8 +36,8 @@ CARD     26-12-95 17:43:12 _card_clear
 *extract* - extract `OBJ`s from a a `LIB` file
 
 ```bash
-$> psyx extract PSX/LIB/LIBCARD.LIB
-psyx version 0.1.0
+$> psyk extract PSX/LIB/LIBCARD.LIB
+psyk version 0.1.0
 
 Extracted object file C112.OBJ
 Extracted object file C171.OBJ
@@ -66,11 +65,11 @@ Extracted object file CARD.OBJ
 Library
 -------
 
-`psy-x` can be used to programmatically read and modify `LIB` and `OBJ` structures as well.
+`psy-k` can be used to programmatically read and modify `LIB` and `OBJ` structures as well.
 
 ```rust
 use std::path::Path;
-use psyx::io;
+use psyk::io;
 use anyhow::Result;
 
 fn main() -> Result<()> {

@@ -22,7 +22,7 @@
 //!
 //! ```no_run
 //! use std::path::Path;
-//! use psyx::io;
+//! use psyk::io;
 //! use anyhow::Result;
 //!
 //! fn main() -> Result<()> {
@@ -42,7 +42,7 @@
 //!
 //! ```no_run
 //! use std::path::Path;
-//! use psyx::io;
+//! use psyk::io;
 //! use anyhow::Result;
 //!
 //! fn main() -> Result<()> {
@@ -116,7 +116,7 @@ pub mod link;
 ///
 /// ```
 /// use std::path::Path;
-/// use psyx::io;
+/// use psyk::io;
 /// # use anyhow::Result;
 /// # fn main() -> Result<()> {
 /// let lib = io::read_lib(Path::new("SOME.LIB"));
@@ -353,7 +353,7 @@ pub struct ModuleMetadata {
 /// in UTF-8, an invariant not guaranteed by the Rust std library.
 /// Psy-Q was not built to handle Unicode filenames, so including
 /// files with characters outside of the ASCII range will likely
-/// break interoperability with other tools. However, Psy-X supports
+/// break interoperability with other tools. However, Psy-K supports
 /// Unicode file names and will produce appropriate model names
 /// with only the bytes that represent full code points.
 #[inline]
@@ -618,7 +618,7 @@ pub struct OpaqueModule {
 ///
 /// ```no_run
 /// use std::path::Path;
-/// use psyx::io;
+/// use psyk::io;
 /// use anyhow::Result;
 ///
 /// fn main() -> Result<()> {

@@ -3,10 +3,10 @@
 
 use std::path::Path;
 
-use psyx::io;
-use psyx::link;
-use psyx::link::Command;
-use psyx::link::Comment;
+use psyk::io;
+use psyk::link;
+use psyk::link::Command;
+use psyk::link::Comment;
 
 fn get_command_at(lines: &[(Option<Command>, Option<Comment>)], line: usize) -> &Command {
     let Some((Some(command), _)) = lines.get(line - 1) else {

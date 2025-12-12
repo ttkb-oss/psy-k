@@ -1,10 +1,10 @@
 [package]
-name = "psy-x"
-version = "0.2.0"
+name = "psy-k"
+version = "0.3.0"
 edition = "2021"
 authors = ["Jonathan Hohle <jon@ttkb.co>"]
 license = "BSD-3-CLAUSE"
-repository = "https://github.com/ttkb-oss/psyx"
+repository = "https://github.com/ttkb-oss/psyk"
 description = "A PSY-Q object & library parser & utility."
 keywords = ["psy-q", "dumpobj", "psylib", "lib", "obj", "decomp"]
 categories = ["command-line-utilities", "data-structures", "development-tools", "game-development", "parser-implementations"]
@@ -19,10 +19,10 @@ readme = "README.md"
 rust-version = "1.91.0"
 
 [lib]
-name = "psyx"
+name = "psyk"
 
 [[bin]]
-name = "psyx"
+name = "psyk"
 path = "src/main.rs"
 
 [[bin]]
@@ -65,8 +65,8 @@ section = "development"
 priority = "optional"
 assets = [
     # target/release path is special, and gets replaced by cargo-deb with the actual target dir path.
-    ["target/release/psyx", "usr/bin/", "755"],
+    ["target/release/psyk", "usr/bin/", "755"],
     ["target/release/dumpobj", "usr/bin/", "755"],
     ["target/release/psylib", "usr/bin/", "755"],
-    { source = "README.md", dest = "usr/share/doc/psyx/README", mode = "644"},
+    { source = "README.md", dest = "usr/share/doc/psyk/README", mode = "644"},
 ]

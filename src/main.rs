@@ -9,7 +9,7 @@ use clap::{CommandFactory, Parser, Subcommand};
 
 mod dos;
 
-use psyx::cli::{self, get_binary_name};
+use psyk::cli::{self, get_binary_name};
 
 /// Inspect, extract, and create PSY-Q LIB and OBJ files.
 #[derive(Debug, Parser)]
