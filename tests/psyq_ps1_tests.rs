@@ -276,6 +276,7 @@ pub fn test(path: &Path) {
     }
 }
 
+const PRIVATE_TEST_DATA_PREFIX: &str = "target/.private/tests/data";
 const PSYQ_PREFIX: &str = "tests/data/psy-q";
 
 #[inline]
@@ -301,6 +302,16 @@ fn path_36(file: &str) -> PathBuf {
 #[inline]
 fn path_40(file: &str) -> PathBuf {
     path_version("4.0", file)
+}
+
+#[inline]
+fn path_46(file: &str) -> PathBuf {
+    PathBuf::from(format!("{PRIVATE_TEST_DATA_PREFIX}/Psy-Q_46/Psy-Q - 46/{file}"))
+}
+
+#[inline]
+fn path_47(file: &str) -> PathBuf {
+    PathBuf::from(format!("{PRIVATE_TEST_DATA_PREFIX}/Psy-Q_47/{file}"))
 }
 
 #[test]
@@ -445,6 +456,74 @@ fn test_psyq_40() {
     round_trip(&path_40("PSX/SAMPLE/OLD/ETC/CARD/LIB/TURTLE.LIB"));
     round_trip(&path_40("PSX/UTILITY/MENU/CDSFILE.LIB"));
     round_trip(&path_40("PSYQ/PREFSMPL/LIBGS2/LIBGS.LIB"));
+}
+
+#[test]
+fn test_psyq_46() {
+    round_trip(&path_46("LIB/LIBSN.LIB"));
+    round_trip(&path_46("LIB/2MBYTE.OBJ"));
+    round_trip(&path_46("LIB/LIBGTE.LIB"));
+    round_trip(&path_46("LIB/LIBSPU.LIB"));
+    round_trip(&path_46("LIB/8MBYTE.OBJ"));
+    round_trip(&path_46("LIB/LIBDS.LIB"));
+    round_trip(&path_46("LIB/LIBC.LIB"));
+    round_trip(&path_46("LIB/LIBMATH.LIB"));
+    round_trip(&path_46("LIB/LIBETC.LIB"));
+    round_trip(&path_46("LIB/LIBCOMB.LIB"));
+    round_trip(&path_46("LIB/LIBSND.LIB"));
+    round_trip(&path_46("LIB/NONE3.OBJ"));
+    round_trip(&path_46("LIB/LIBPRESS.LIB"));
+    round_trip(&path_46("LIB/LIBAPI.LIB"));
+    round_trip(&path_46("LIB/LIBC2.LIB"));
+    round_trip(&path_46("LIB/LIBCD.LIB"));
+    round_trip(&path_46("LIB/MCGUI_E.OBJ"));
+    round_trip(&path_46("LIB/LIBMCRD.LIB"));
+    round_trip(&path_46("LIB/LIBGPU.LIB"));
+    round_trip(&path_46("LIB/LIBHMD.LIB"));
+    round_trip(&path_46("LIB/LIBCARD.LIB"));
+    round_trip(&path_46("LIB/NOPRINT.OBJ"));
+    round_trip(&path_46("LIB/LIBTAP.LIB"));
+    round_trip(&path_46("LIB/MCGUI.OBJ"));
+    round_trip(&path_46("LIB/LIBMCX.LIB"));
+    round_trip(&path_46("LIB/LIBGS.LIB"));
+    round_trip(&path_46("LIB/LIBPAD.LIB"));
+    round_trip(&path_46("LIB/LIBGUN.LIB"));
+    round_trip(&path_46("LIB/LIBSIO.LIB"));
+    round_trip(&path_46("LIB/NOHEAP.OBJ"));
+}
+
+
+#[test]
+fn test_psyq_47() {
+    round_trip(&path_47("LIB/POWERON.OBJ"));
+    round_trip(&path_47("LIB/2MBYTE.OBJ"));
+    round_trip(&path_47("LIB/LIBGTE.LIB"));
+    round_trip(&path_47("LIB/LIBSPU.LIB"));
+    round_trip(&path_47("LIB/8MBYTE.OBJ"));
+    round_trip(&path_47("LIB/LIBDS.LIB"));
+    round_trip(&path_47("LIB/LIBC.LIB"));
+    round_trip(&path_47("LIB/LIBMATH.LIB"));
+    round_trip(&path_47("LIB/LIBETC.LIB"));
+    round_trip(&path_47("LIB/LIBCOMB.LIB"));
+    round_trip(&path_47("LIB/LIBSND.LIB"));
+    round_trip(&path_47("LIB/NONE3.OBJ"));
+    round_trip(&path_47("LIB/LIBPRESS.LIB"));
+    round_trip(&path_47("LIB/LIBAPI.LIB"));
+    round_trip(&path_47("LIB/LIBC2.LIB"));
+    round_trip(&path_47("LIB/MCGUI_E.OBJ"));
+    round_trip(&path_47("LIB/LIBMCRD.LIB"));
+    round_trip(&path_47("LIB/LIBGPU.LIB"));
+    round_trip(&path_47("LIB/LIBHMD.LIB"));
+    round_trip(&path_47("LIB/LIBCARD.LIB"));
+    round_trip(&path_47("LIB/NOPRINT.OBJ"));
+    round_trip(&path_47("LIB/LIBTAP.LIB"));
+    round_trip(&path_47("LIB/MCGUI.OBJ"));
+    round_trip(&path_47("LIB/LIBMCX.LIB"));
+    round_trip(&path_47("LIB/LIBGS.LIB"));
+    round_trip(&path_47("LIB/LIBPAD.LIB"));
+    round_trip(&path_47("LIB/LIBGUN.LIB"));
+    round_trip(&path_47("LIB/LIBSIO.LIB"));
+    round_trip(&path_47("LIB/NOHEAP.OBJ"));
 }
 
 const CMD_DATA_PREFIX: &str = "tests/data/cmd/psy-q-psx";

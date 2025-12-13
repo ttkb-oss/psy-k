@@ -3,17 +3,16 @@ name = "psy-k"
 version = "0.3.0"
 edition = "2021"
 authors = ["Jonathan Hohle <jon@ttkb.co>"]
-license = "BSD-3-CLAUSE"
-repository = "https://github.com/ttkb-oss/psyk"
+license = "BSD-3-Clause"
+repository = "https://github.com/ttkb-oss/psy-k"
 description = "A PSY-Q object & library parser & utility."
-keywords = ["psy-q", "dumpobj", "psylib", "lib", "obj", "decomp"]
+keywords = ["psy-q", "dumpobj", "psylib", "obj", "psx"]
 categories = ["command-line-utilities", "data-structures", "development-tools", "game-development", "parser-implementations"]
 exclude = [
     ".gitignore",
     "/.github",
     "target/.private/",
-    "tests/data/psy-q-saturn.zip.sha1",
-    "tests/data/psy-q-genesis.zip.sha1",
+    "tests/data/psy-q",
 ]
 readme = "README.md"
 rust-version = "1.91.0"
