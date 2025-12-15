@@ -63,15 +63,15 @@ jobs:
 
     - name: Install grcov
       run: |
-        cargo install grcov || true
+        make coverage-install
 
     - name: Generate coverage report
-      run: make report
+      run: make coverage-html
 
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v4
       with:
-        files: ./target/coverage/html/coverage.json
+        files: ./target/.private/coverage/lcov.info
         fail_ci_if_error: false
         token: ${{ secrets.CODECOV_TOKEN }}
 
@@ -79,7 +79,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: coverage-report
-        path: target/coverage/html/
+        path: target/llvm-cov/html/
         retention-days: 30
 
     - name: Deploy coverage to GitHub Pages
@@ -87,5 +87,5 @@ jobs:
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./target/coverage/html
+        publish_dir: ./target/llvm-cov/html
         destination_dir: docs/coverage
