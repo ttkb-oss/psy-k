@@ -1,6 +1,26 @@
 Change Log
 ==========
 
+0.4.0 - December 18, 2025
+-------------------------
+
+* `SectionSwitch` has been removed and replaced with the `section_id`
+  being stored directly in the `Section` enum.
+* `cputype::MIPS_R300GTE` [sic] was renamed `cputype::MIPS_R3000`.
+* `Expression::SectOf` was renamed to `Expression::SectionOffset`.
+* `Expression::GroupOf` was renamed to `Expression::GroupOffset`.
+* `FunctionEnd`, `BlockStart`, and `BlockEnd` structs have been replaced with
+  common `SectionOffsetLine` struct.
+* `OBJ::sections` is now private. Use `OBJ::sections()` instead.
+* Added remaining section types that don't have previously seen examples.
+  `Section::ProcedureCall` and `Section::ProcedureDefinition` are incorrect.
+* File format documentation for all types `LIB` and `OBJ` types.
+
+0.3.1 - December 15, 2025
+-------------------------
+
+* Code coverage reporting changes.
+
 0.3.0 - December 11, 2025
 -------------------------
 

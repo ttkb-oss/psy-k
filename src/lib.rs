@@ -13,8 +13,8 @@
 //! PSY-Q was the official development kit for PlayStation 1 games. It produced two main
 //! types of binary files:
 //!
-//! - **LIB files**: Archive files containing multiple object modules
-//! - **OBJ files**: Individual object files with machine code and linking information
+//! - **[LIB] files**: Archive files containing multiple object modules
+//! - **[OBJ] files**: Individual object files with machine code and linking information
 //!
 //! # Quick Start
 //!
@@ -51,34 +51,6 @@
 //!     Ok(())
 //! }
 //! ```
-//!
-//! # File Format Details
-//!
-//! ## LIB Format
-//!
-//! A LIB file is structured as:
-//!
-//! | Offset | Type       | Description                   |
-//! |--------|------------|-------------------------------|
-//! | 0      | `[u8; 3]`  | Magic number: "LIB"           |
-//! | 3      | `u8`       | Archive format version (1)    |
-//! | 4      | `[Module]` | One or more module entries    |
-//!
-//! ## OBJ Format
-//!
-//! An OBJ file (also called LNK format internally) contains:
-//!
-//! | Offset | Type        | Description                   |
-//! |--------|-------------|-------------------------------|
-//! | 0      | `[u8; 3]`   | Magic number: "LNK"           |
-//! | 3      | `u8`        | Object format version (2)     |
-//! | 4      | `[Section]` | Sections until NOP terminator |
-//!
-//! # Supported Architectures
-//!
-//! - Motorola 68000 (Sega Genesis/Mega Drive/Sega CD/Mega CD)
-//! - MIPS R3000 (PlayStation 1)
-//! - Hitachi SH-2 (Sega Saturn)
 
 use core::cmp;
 use std::fmt;
@@ -105,12 +77,6 @@ pub mod link;
 /// A [LIB] is an archive of several [OBJ] files. It consists
 /// of a magic number followed by one or more [Modules](Module).
 ///
-/// | Offset | Type          | Description                |
-/// |--------|---------------|----------------------------|
-/// |   0    | `[u8;3]`        | Magic - "LIB"              |
-/// |   3    | `u8`            | Archive format version (1) |
-/// |   4    | `[Module]` | One or more wrapped [OBJ] files       |
-///
 /// A `LIB` file can be constructed from a `u8` slice using
 /// `read`.
 ///
@@ -123,6 +89,14 @@ pub mod link;
 /// # Ok(())
 /// # }
 /// ```
+///
+/// # Structure on Disk
+///
+/// | Offset | Type       | Description                                           |
+/// |--------|------------|-------------------------------------------------------|
+/// |   0    | `[u8;3]`   | Magic: "LIB"                                          |
+/// |   3    | `u8`       | Archive format version (1)                            |
+/// |   4    | `[Module]` | One or more [Modules](Module) which wrap [OBJ] files. |
 #[binrw]
 #[brw(little, magic = b"LIB", assert(!objs.is_empty()))]
 #[repr(C)]
@@ -171,6 +145,13 @@ impl display::DisplayWithOptions for LIB {
 ///
 /// Exports represent functions or data that are made available to the linker
 /// for use by other modules.
+///
+/// # Structure on Disk
+///
+/// | Offset | Type   | Description                                                      |
+/// |--------|--------|------------------------------------------------------------------|
+/// | 0      | `u8`   | Size of the symbol name.                                         |
+/// | 0      | `[u8]` | The ASCII name of of the exported symbol. Not `NULL` terminated. |
 #[binrw]
 #[brw(little)]
 #[repr(C)]
@@ -325,6 +306,22 @@ impl FromPSYQTimestamp for SystemTime {
 ///
 /// This includes the module name (up to 8 characters), creation timestamp,
 /// and a list of exported symbols.
+///
+/// # Structure on Disk
+///
+/// | Offset | Type       | Description                                                                          |
+/// |--------|------------|--------------------------------------------------------------------------------------|
+/// | 0      | `[u8; 8]`  | Module name in ASCII. Padded to 8-bytes with spaces.                                 |
+/// | 8      | `u32`      | A creation timestamp for the module. The format is described in [FromPSYQTimestamp]. |
+/// | 12     | `u32`      | An offset to the end of the module metadata.                                         |
+/// | 16     | `u32`      | The size of the serialized [OBJ] structure.                                          |
+/// | 20     | `[Export]` | An array of [Export] structs which declare any exported symbols.                     |
+///
+/// The list of [Export]s is terminated with a zero-length entry (a single byte with the value zero).
+///
+/// With the exception of the exports and offset, all other fields are derived from file system metadata. Including the
+/// exports at this level allows a linker to bypass the [OBJ] if it doesn't contain any relevant symbols. The exports
+/// can be retrieved by querying the [OBJ] directly using [OBJ::exports].
 #[binrw]
 #[brw(little)]
 #[repr(C)]
@@ -422,7 +419,7 @@ impl ModuleMetadata {
 
     /// Returns the module name, with trailing whitespace removed.
     ///
-    /// Module names are stored as 8-byte fixed-width fields, padded with spaces.
+    /// Names will be at most 8-ASCII characters long (or 8 UTF-8 bytes).
     pub fn name(&self) -> String {
         // trim_end for the name array
         let end = self
@@ -452,11 +449,11 @@ impl ModuleMetadata {
 
     /// Returns the creation timestamp as a formatted string.
     ///
-    /// Format: `MM-DD-YY HH:MM:SS`
+    /// Format: `DD-MM-YY HH:MM:SS`
     ///
     /// # Example
     /// ```text
-    /// 05-15-96 16:09:38
+    /// 15-05-96 16:09:38
     /// ```
     pub fn created(&self) -> String {
         // 15-05-96 16:09:38
@@ -499,6 +496,16 @@ impl ModuleMetadata {
 ///
 /// Each module consists of metadata (name, timestamp, exports) and the
 /// actual OBJ file data.
+///
+/// # Structure on Disk
+///
+/// | Offset          | Type             | Description                                                                |
+/// |-----------------|------------------|----------------------------------------------------------------------------|
+/// | 0               | `ModuleMetadata` | [ModuleMetadata] containing the name, exports, and additional information. |
+/// | sizeof(*metadata*) | `OBJ`         | An [OBJ] as it appears on disk.                                            |
+///
+/// A `Module` contains a parsed and hydrated [OBJ]. If only the metadata is of interest, [OpaqueModule] can be used
+/// instead.
 #[binrw]
 #[brw(little)]
 #[repr(C)]
@@ -591,6 +598,15 @@ impl fmt::Debug for Module {
 ///
 /// This variant stores the raw bytes of the OBJ file without parsing it,
 /// which can be useful for tools that only need to inspect metadata.
+///
+/// # Structure on Disk
+///
+/// | Offset             | Type             | Description                                                                |
+/// |--------------------|------------------|----------------------------------------------------------------------------|
+/// | 0                  | `ModuleMetadata` | [ModuleMetadata] containing the name, exports, and additional information. |
+/// | sizeof(*metadata*) | `[u8]`           | A binary blob containing a serialized [OBJ].                               |
+///
+/// If a parsed and hydrated [OBJ] is needed, use [Module] instead.
 #[binrw]
 #[brw(little)]
 #[repr(C)]
@@ -601,18 +617,50 @@ pub struct OpaqueModule {
     obj: Vec<u8>,
 }
 
+impl OpaqueModule {
+    /// Returns the module name.
+    pub fn name(&self) -> String {
+        self.metadata.name()
+    }
+
+    /// Returns the list of exported symbol names.
+    pub fn exports(&self) -> Vec<String> {
+        self.metadata.exports()
+    }
+
+    /// Returns the creation timestamp as a formatted string.
+    pub fn created(&self) -> String {
+        self.metadata.created()
+    }
+
+    /// Returns the creation timestamp as a `SystemTime`.
+    pub fn created_at(&self) -> Option<SystemTime> {
+        self.metadata.created_at()
+    }
+
+    /// Returns the creation timestamp as a `NaiveDateTime`.
+    pub fn created_datetime(&self) -> Option<NaiveDateTime> {
+        self.metadata.created_datetime()
+    }
+
+    /// Returns a reference to the OBJ binary data.
+    pub fn obj_blob(&self) -> &[u8] {
+        &self.obj
+    }
+}
+
 /// A PSY-Q object file (LNK format).
 ///
 /// OBJ files contain machine code, relocation information, symbol definitions,
 /// and debugging data needed by the linker.
 ///
-/// # Structure
+/// # Structure on Disk
 ///
 /// | Offset | Type        | Description               |
 /// |--------|-------------|---------------------------|
-/// | 0      | `[u8; 3]`   | Magic number: "LNK"      |
+/// | 0      | `[u8; 3]`   | Magic number: "LNK"       |
 /// | 3      | `u8`        | Version (typically 2)     |
-/// | 4      | `[Section]` | Sections until NOP       |
+/// | 4      | `[Section]` | [Section]s until `NOP`    |
 ///
 /// # Examples
 ///
@@ -637,7 +685,7 @@ pub struct OpaqueModule {
 pub struct OBJ {
     version: u8,
     #[br(parse_with=until(|section: &Section| matches!(section, Section::NOP)))]
-    pub sections: Vec<Section>,
+    sections: Vec<Section>,
 }
 
 impl OBJ {
@@ -707,6 +755,13 @@ impl display::DisplayWithOptions for OBJ {
 /// Machine code section.
 ///
 /// Contains executable instructions for the target [CPU](Section::CPU).
+///
+/// # Structure on Disk
+///
+/// | Offset | Type   | Description       |
+/// |--------|--------|-------------------|
+/// | 0      | `u16`  | Size of the code. |
+/// | 1      | `[u8]` | Machine code.     |
 #[binrw]
 #[brw(little)]
 #[derive(Clone, Debug, PartialEq)]
@@ -724,21 +779,18 @@ impl Code {
     }
 }
 
-/// Section switch directive.
-///
-/// Tells the linker to switch to a different section for subsequent data.
-#[binrw]
-#[brw(little)]
-#[derive(Clone, Debug, PartialEq)]
-pub struct SectionSwitch {
-    id: u16,
-}
-
 /// An expression used in relocations.
 ///
 /// PSY-Q uses a sophisticated expression system for calculating relocated
 /// addresses. Expressions can be constants, symbol references, or complex
 /// arithmetic operations.
+///
+/// Each component of an expression has a unique on disk format. There are
+/// no synchronization points, or sizes encoded into the structure, so it
+/// is important that each type is explicitly modeled.
+///
+/// Linker expressions are similar, but not identical to assembler expressions
+/// and some built-in functions are available in both.
 ///
 /// # Example Expressions
 ///
@@ -750,149 +802,552 @@ pub struct SectionSwitch {
 #[brw(little)]
 #[derive(Clone, Debug, PartialEq)]
 pub enum Expression {
-    /// A constant value (tag 0x00).
+    /// A constant value.
+    ///
+    /// ```asm
+    /// $123D
+    /// ```
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset | Type   | Description |
+    /// |--------|--------|-------------|
+    /// | 0      | `u8`   | Magic: 0x0  |
+    /// | 1      | `u32`  | Value.      |
     #[brw(magic(0u8))]
     Constant(u32),
 
-    /// Index of a symbol's address (tag 0x02).
+    /// Index of a symbol's address.
+    ///
+    /// ```asm
+    /// [x]
+    /// ```
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset | Type   | Description |
+    /// |--------|--------|-------------|
+    /// | 0      | `u8`   | Magic: 0x2  |
+    /// | 1      | `u16`  | ???         |
     #[brw(magic(2u8))]
     SymbolAddressIndex(u16),
 
-    /// Base address of a section (tag 0x04).
+    /// Base address of a section.
+    ///
+    /// ```asm
+    /// sectbase(x)
+    /// ```
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset | Type   | Description |
+    /// |--------|--------|-------------|
+    /// | 0      | `u8`   | Magic: 0x4  |
+    /// | 1      | `u16`  | ???         |
     #[brw(magic(4u8))]
     SectionAddressIndex(u16),
 
     /// Untested
-    // 6 -  bank({})
+    ///
+    /// ```asm
+    /// bank(x)
+    /// ```
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset | Type   | Description |
+    /// |--------|--------|-------------|
+    /// | 0      | `u8`   | Magic: 0x6  |
+    /// | 1      | `u16`  | ???         |
     #[brw(magic(6u8))]
     Bank(u16),
 
     /// Untested
-    // 8 - sectof({})
+    ///
+    /// ```asm
+    /// sectof(x)
+    /// ```
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset | Type   | Description |
+    /// |--------|--------|-------------|
+    /// | 0      | `u8`   | Magic: 0x8  |
+    /// | 1      | `u16`  | Section ID. |
     #[brw(magic(8u8))]
-    SectOf(u16),
+    SectionOffset(u16),
 
     /// Untested
+    ///
+    /// ```asm
+    /// offs(x)
+    /// ```
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset | Type   | Description |
+    /// |--------|--------|-------------|
+    /// | 0      | `u8`   | Magic: 0xA  |
+    /// | 1      | `u16`  | ???         |
     // 10 - offs({})
     #[brw(magic(10u8))]
     Offset(u16),
 
-    /// Start address of a section (tag 0x0C).
+    /// Start address of a section.
+    ///
+    /// ```asm
+    /// sectstart(x)
+    /// ```
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset | Type   | Description |
+    /// |--------|--------|-------------|
+    /// | 0      | `u8`   | Magic: 0xC  |
+    /// | 1      | `u16`  | Section ID. |
     #[brw(magic(12u8))]
     SectionStart(u16),
 
     /// Untested
-    // 14 - groupstart({})
+    ///
+    /// ```asm
+    /// groupstart(x)
+    /// ```
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset | Type   | Description |
+    /// |--------|--------|-------------|
+    /// | 0      | `u8`   | Magic: 0xE  |
+    /// | 1      | `u16`  | Group ID.   |
     #[brw(magic(14u8))]
     GroupStart(u16),
 
+    /// The offset of a group.
+    ///
     /// Untested
-    // 16 - groupof({})
+    ///
+    /// ```asm
+    /// groupof(x)
+    /// ```
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset | Type   | Description |
+    /// |--------|--------|-------------|
+    /// | 0      | `u8`   | Magic: 0x10 |
+    /// | 1      | `u16`  | Group ID.   |
     #[brw(magic(16u8))]
-    GroupOf(u16),
+    GroupOffset(u16),
 
     /// Untested
-    // 18 - seg({})
+    ///
+    /// ```asm
+    /// seg(x)
+    /// ```
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset | Type   | Description |
+    /// |--------|--------|-------------|
+    /// | 0      | `u8`   | Magic: 0x12 |
+    /// | 1      | `u16`  | ???         |
     #[brw(magic(18u8))]
     Segment(u16),
 
-    /// Untested
-    // 20 - grouporg({})
+    /// The `ORG` address of a group for a symbol.
+    ///
+    /// ```asm
+    /// grouporg(x)
+    /// ```
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset | Type   | Description |
+    /// |--------|--------|-------------|
+    /// | 0      | `u8`   | Magic: 0x14 |
+    /// | 1      | `u16`  | Symbol ID.  |
     #[brw(magic(20u8))]
     GroupOrg(u16),
 
-    /// End address of a section (tag 0x16).
+    /// End address of a section.
+    ///
+    /// ```asm
+    /// sectend(X)
+    /// ```
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset | Type  | Description  |
+    /// |--------|-------|--------------|
+    /// | 0      | `u8`  | Magic: 0x16  |
+    /// | 1      | `u16` | Section ID.  |
     #[brw(magic(22u8))]
     SectionEnd(u16),
 
+    //
     // Comparison operators
-    /// Equality comparison (tag 0x20).
+    //
+
+    /// Equality comparison.
+    ///
+    /// ```asm
+    /// (a=b)
+    /// ```
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset                        | Type         | Description         |
+    /// |-------------------------------|--------------|---------------------|
+    /// | 0                             | `u8`         | Magic: 0x20         |
+    /// | 1                             | `Expression` | Left [Expression].  |
+    /// | sizeof(*left_expression*) + 1 | `Expression` | Right [Expression]. |
     #[brw(magic(32u8))]
     Equals(Box<Expression>, Box<Expression>),
 
-    /// Inequality comparison (tag 0x22).
+    /// Inequality comparison.
+    ///
+    /// ```asm
+    /// (a<>b)
+    /// ```
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset | Type   | Description |
+    /// |--------|--------|-------------|
+    /// | 0                             | `u8`   | Magic: 0x22  |
+    /// | 1                             | `Expression` | Left [Expression].  |
+    /// | sizeof(*left_expression*) + 1 | `Expression` | Right [Expression]. |
     #[brw(magic(34u8))]
     NotEquals(Box<Expression>, Box<Expression>),
 
-    /// Less than or equal (tag 0x24).
+    /// Less than or equal.
+    ///
+    /// ```asm
+    /// (a<=b)
+    /// ```
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset | Type   | Description |
+    /// |--------|--------|-------------|
+    /// | 0      | `u8`   | Magic: 0x24  |
+    /// | 1                             | `Expression` | Left [Expression].  |
+    /// | sizeof(*left_expression*) + 1 | `Expression` | Right [Expression]. |
     #[brw(magic(36u8))]
     LTE(Box<Expression>, Box<Expression>),
 
-    /// Less than (tag 0x26).
+    /// Less than.
+    ///
+    /// ```asm
+    /// (a<b)
+    /// ```
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset | Type   | Description |
+    /// |--------|--------|-------------|
+    /// | 0      | `u8`   | Magic: 0x26  |
+    /// | 1                             | `Expression` | Left [Expression].  |
+    /// | sizeof(*left_expression*) + 1 | `Expression` | Right [Expression]. |
     #[brw(magic(38u8))]
     LessThan(Box<Expression>, Box<Expression>),
 
-    /// Greater than or equal (tag 0x28).
+    /// Greater than or equal.
+    ///
+    /// ```asm
+    /// (a>=b)
+    /// ```
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset | Type   | Description |
+    /// |--------|--------|-------------|
+    /// | 0      | `u8`   | Magic: 0x28  |
+    /// | 1                             | `Expression` | Left [Expression].  |
+    /// | sizeof(*left_expression*) + 1 | `Expression` | Right [Expression]. |
     #[brw(magic(40u8))]
     GTE(Box<Expression>, Box<Expression>),
 
-    /// Greater than (tag 0x2A).
+    /// Greater than.
+    ///
+    /// ```asm
+    /// (a>b)
+    /// ```
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset | Type   | Description |
+    /// |--------|--------|-------------|
+    /// | 0      | `u8`   | Magic: 0x2A  |
+    /// | 1                             | `Expression` | Left [Expression].  |
+    /// | sizeof(*left_expression*) + 1 | `Expression` | Right [Expression]. |
     #[brw(magic(42u8))]
     GreaterThan(Box<Expression>, Box<Expression>),
 
+    //
     // Arithmetic operators
-    /// Addition (tag 0x2C).
+    //
+
+    /// Addition.
+    ///
+    /// ```asm
+    /// (a+b)
+    /// ```
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset | Type   | Description |
+    /// |--------|--------|-------------|
+    /// | 0      | `u8`   | Magic: 0x2C  |
+    /// | 1                             | `Expression` | Left [Expression].  |
+    /// | sizeof(*left_expression*) + 1 | `Expression` | Right [Expression]. |
     #[brw(magic(44u8))]
     Add(Box<Expression>, Box<Expression>),
 
-    /// Subtraction (tag 0x2E).
+    /// Subtraction.
+    ///
+    /// ```asm
+    /// (a-b)
+    /// ```
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset | Type   | Description |
+    /// |--------|--------|-------------|
+    /// | 0      | `u8`   | Magic: 0x2E |
+    /// | 1                             | `Expression` | Left [Expression].  |
+    /// | sizeof(*left_expression*) + 1 | `Expression` | Right [Expression]. |
     #[brw(magic(46u8))]
     Subtract(Box<Expression>, Box<Expression>),
 
-    /// Multiplication (tag 0x30).
+    /// Multiplication.
+    ///
+    /// ```asm
+    /// (a*b)
+    /// ```
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset | Type   | Description |
+    /// |--------|--------|-------------|
+    /// | 0      | `u8`   | Magic: 0x30  |
+    /// | 1                             | `Expression` | Left [Expression].  |
+    /// | sizeof(*left_expression*) + 1 | `Expression` | Right [Expression]. |
     #[brw(magic(48u8))]
     Multiply(Box<Expression>, Box<Expression>),
 
-    /// Division (tag 0x32).
+    /// Division.
+    ///
+    /// ```asm
+    /// (a/b)
+    /// ```
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset | Type   | Description |
+    /// |--------|--------|-------------|
+    /// | 0      | `u8`   | Magic: 0x32  |
+    /// | 1                             | `Expression` | Left [Expression].  |
+    /// | sizeof(*left_expression*) + 1 | `Expression` | Right [Expression]. |
     #[brw(magic(50u8))]
     Divide(Box<Expression>, Box<Expression>),
 
-    /// Bitwise AND (tag 0x34).
+    /// Bitwise AND.
+    ///
+    /// ```asm
+    /// (a&b)
+    /// ```
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset | Type   | Description |
+    /// |--------|--------|-------------|
+    /// | 0      | `u8`   | Magic: 0x34  |
+    /// | 1                             | `Expression` | Left [Expression].  |
+    /// | sizeof(*left_expression*) + 1 | `Expression` | Right [Expression]. |
     #[brw(magic(52u8))]
     And(Box<Expression>, Box<Expression>),
 
-    /// Bitwise OR operator (tag 0x36).
+    /// Bitwise OR operator.
+    ///
+    /// ```asm
+    /// (a!b)
+    /// ```
+    ///
+    /// Instead of using the typical `|` (pipe) symbol, the default rendering
+    /// of this operator is the `!` (exclamation point/bang) symbol. In the
+    /// assembler, the `|` symbol acts as an alias for `!`.
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset | Type   | Description |
+    /// |--------|--------|-------------|
+    /// | 0      | `u8`   | Magic: 0x36  |
+    /// | 1                             | `Expression` | Left [Expression].  |
+    /// | sizeof(*left_expression*) + 1 | `Expression` | Right [Expression]. |
     #[brw(magic(54u8))]
     Or(Box<Expression>, Box<Expression>),
 
-    /// Bitwise XOR (tag 0x38).
+    /// Bitwise XOR.
+    ///
+    /// ```asm
+    /// (a^b)
+    /// ```
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset | Type   | Description |
+    /// |--------|--------|-------------|
+    /// | 0      | `u8`   | Magic: 0x38  |
+    /// | 1                             | `Expression` | Left [Expression].  |
+    /// | sizeof(*left_expression*) + 1 | `Expression` | Right [Expression]. |
     #[brw(magic(56u8))]
     XOR(Box<Expression>, Box<Expression>),
 
-    /// Left shift (tag 0x3A).
+    /// Left shift.
+    ///
+    /// ```asm
+    /// (a<<b)
+    /// ```
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset | Type   | Description |
+    /// |--------|--------|-------------|
+    /// | 0      | `u8`   | Magic: 0x3A  |
+    /// | 1                             | `Expression` | Left [Expression].  |
+    /// | sizeof(*left_expression*) + 1 | `Expression` | Right [Expression]. |
     #[brw(magic(58u8))]
     LeftShift(Box<Expression>, Box<Expression>),
 
-    /// Right shift (tag 0x3C).
+    /// Right shift.
+    ///
+    /// ```asm
+    /// (a>>b)
+    /// ```
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset | Type   | Description |
+    /// |--------|--------|-------------|
+    /// | 0      | `u8`   | Magic: 0x3C  |
+    /// | 1                             | `Expression` | Left [Expression].  |
+    /// | sizeof(*left_expression*) + 1 | `Expression` | Right [Expression]. |
     #[brw(magic(60u8))]
     RightShift(Box<Expression>, Box<Expression>),
 
-    /// Modulo (tag 0x3E).
+    /// Modulo.
+    ///
+    /// ```asm
+    /// (a%b)
+    /// ```
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset | Type   | Description |
+    /// |--------|--------|-------------|
+    /// | 0      | `u8`   | Magic: 0x3E  |
+    /// | 1                             | `Expression` | Left [Expression].  |
+    /// | sizeof(*left_expression*) + 1 | `Expression` | Right [Expression]. |
     #[brw(magic(62u8))]
     Mod(Box<Expression>, Box<Expression>),
 
-    /// Dashes operator (tag 0x40).
+    /// Dashes operator.
+    ///
+    /// ```asm
+    /// (a---b)
+    /// ```
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset                        | Type         | Description         |
+    /// |-------------------------------|--------------|---------------------|
+    /// | 0                             | `u8`         | Magic: 0x40         |
+    /// | 1                             | `Expression` | Left [Expression].  |
+    /// | sizeof(*left_expression*) + 1 | `Expression` | Right [Expression]. |
     #[brw(magic(64u8))]
     Dashes(Box<Expression>, Box<Expression>),
 
     // Special operators (primarily for Saturn/SH-2)
-    /// Reverse word (tag 0x42).
+
+    /// Reverse word.
+    ///
+    /// ```asm
+    /// (a-revword-b)
+    /// ```
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset | Type   | Description |
+    /// |--------|--------|-------------|
+    /// | 0      | `u8`   | Magic: 0x42  |
+    /// | 1                             | `Expression` | Left [Expression].  |
+    /// | sizeof(*left_expression*) + 1 | `Expression` | Right [Expression]. |
     #[brw(magic(66u8))]
     Revword(Box<Expression>, Box<Expression>),
 
-    /// Check0 (tag 0x44).
+    /// Check0.
+    ///
+    /// ```asm
+    /// (a-check0-b)
+    /// ```
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset | Type   | Description |
+    /// |--------|--------|-------------|
+    /// | 0      | `u8`   | Magic: 0x44  |
+    /// | 1                             | `Expression` | Left [Expression].  |
+    /// | sizeof(*left_expression*) + 1 | `Expression` | Right [Expression]. |
     #[brw(magic(68u8))]
     Check0(Box<Expression>, Box<Expression>),
 
-    /// Check1 (tag 0x46).
+    /// Check1.
+    ///
+    /// ```asm
+    /// (a-check1-b)
+    /// ```
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset                        | Type         | Description         |
+    /// |-------------------------------|--------------|---------------------|
+    /// | 0                             | `u8`         | Magic: 0x46         |
+    /// | 1                             | `Expression` | Left [Expression].  |
+    /// | sizeof(*left_expression*) + 1 | `Expression` | Right [Expression]. |
     #[brw(magic(70u8))]
     Check1(Box<Expression>, Box<Expression>),
 
-    /// Bit range extraction (tag 0x48).
+    /// Bit range extraction.
+    ///
+    /// ```asm
+    /// (a-bitrange-b)
+    /// ```
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset                        | Type         | Description         |
+    /// |-------------------------------|--------------|---------------------|
+    /// | 0                             | `u8`         | Magic: 0x48         |
+    /// | 1                             | `Expression` | Left [Expression].  |
+    /// | sizeof(*left_expression*) + 1 | `Expression` | Right [Expression]. |
     #[brw(magic(72u8))]
     BitRange(Box<Expression>, Box<Expression>),
 
-    /// Arithmetic shift with check (tag 0x4A).
+    /// Arithmetic shift with check.
+    ///
+    /// ```asm
+    /// (a-arshift_chk-b)
+    /// ```
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset                        | Type         | Description         |
+    /// |-------------------------------|--------------|---------------------|
+    /// | 0                             | `u8`         | Magic: 0x4A         |
+    /// | 1                             | `Expression` | Left [Expression].  |
+    /// | sizeof(*left_expression*) + 1 | `Expression` | Right [Expression]. |
     #[brw(magic(74u8))]
     ArshiftChk(Box<Expression>, Box<Expression>),
 }
@@ -906,14 +1361,14 @@ impl fmt::Display for Expression {
             // untested
             Self::Bank(bank) => write!(f, "bank({bank:x})"),
             // untested
-            Self::SectOf(bank) => write!(f, "sectof({bank:x})"),
+            Self::SectionOffset(section) => write!(f, "sectof({section:x})"),
             // untested
             Self::Offset(bank) => write!(f, "offs({bank:x})"),
             Self::SectionStart(offset) => write!(f, "sectstart({offset:x})"),
             // untested
             Self::GroupStart(group) => write!(f, "groupstart({group:x})"),
             // untested
-            Self::GroupOf(group) => write!(f, "groupstart({group:x})"),
+            Self::GroupOffset(group) => write!(f, "groupof({group:x})"),
             // untested
             Self::Segment(segment) => write!(f, "seg({segment:x})"),
             // untested
@@ -954,6 +1409,14 @@ impl fmt::Display for Expression {
 /// A relocation patch to be applied by the linker.
 ///
 /// Patches modify code or data at a specific offset using a calculated expression
+///
+/// # Structure on Disk
+///
+/// | Offset | Type         | Description                                              |
+/// |--------|--------------|----------------------------------------------------------|
+/// | 0      | `u8`         | The type of patch.                                       |
+/// | 1      | `u16`        | Offset in the section where the patch should be applied. |
+/// | 3      | `Expression` | An [Expression] to use calculate the patch value.        |
 #[binrw]
 #[brw(little)]
 #[derive(Clone, Debug, PartialEq)]
@@ -969,6 +1432,16 @@ pub struct Patch {
 /// Section header information.
 ///
 /// Defines properties of a section such as its group, alignment, and type name.
+///
+/// # Structure on Disk
+///
+/// | Offset | Type   | Description                                          |
+/// |--------|--------|------------------------------------------------------|
+/// | 0      | `u16`  | Section ID.                                          |
+/// | 2      | `u16`  | Group ID.                                            |
+/// | 4      | `u8`   | Alignemnt.                                           |
+/// | 5      | `u8`   | Size of the `type_name` string.                      |
+/// | 6      | `[u8]` | The name of the section type. Not `NULL` terminated. |
 #[binrw]
 #[brw(little)]
 #[derive(Clone, PartialEq)]
@@ -1005,6 +1478,15 @@ impl fmt::Debug for LNKHeader {
 /// A local symbol definition.
 ///
 /// Local symbols are visible only within the current module.
+///
+/// # Structure on Disk
+///
+/// | Offset | Type   | Description                             |
+/// |--------|--------|-----------------------------------------|
+/// | 0      | `u16`  | Section ID.                             |
+/// | 2      | `u32`  | Offset (TODO: relative to what?)        |
+/// | 6      | `u8`   | Size of the symbol name string.         |
+/// | 7      | `[u8]` | The symbol name. Not `NULL` terminated. |
 #[binrw]
 #[brw(little)]
 #[derive(Clone, PartialEq)]
@@ -1038,6 +1520,15 @@ impl fmt::Debug for LocalSymbol {
 /// A group symbol definition.
 ///
 /// Groups are used to organize sections for linking.
+///
+/// # Structure on Disk
+///
+/// | Offset | Type   | Description                             |
+/// |--------|--------|-----------------------------------------|
+/// | 0      | `u16`  | Number.                                 |
+/// | 2      | `u8`   | Symbol type.                            |
+/// | 6      | `u8`   | Size of the symbol name string.         |
+/// | 7      | `[u8]` | The symbol name. Not `NULL` terminated. |
 #[binrw]
 #[brw(little)]
 #[derive(Clone, PartialEq)]
@@ -1072,6 +1563,16 @@ impl fmt::Debug for GroupSymbol {
 ///
 /// XDEF entries define symbols that are exported from this module
 /// and can be referenced by other modules.
+///
+/// # Structure on Disk
+///
+/// | Offset | Type   | Description                             |
+/// |--------|--------|-----------------------------------------|
+/// | 0      | `u16`  | Number.                                 |
+/// | 2      | `u16`  | Section ID.                             |
+/// | 4      | `u32`  | Offset (TODO: relative to what?)        |
+/// | 8      | `u8`   | Size of the symbol name string.         |
+/// | 9      | `[u8]` | The symbol name. Not `NULL` terminated. |
 #[binrw]
 #[brw(little)]
 #[derive(Clone, Debug, PartialEq)]
@@ -1096,6 +1597,14 @@ impl XDEF {
 ///
 /// XREF entries declare symbols that this module needs but are
 /// defined in other modules.
+///
+/// # Structure on Disk
+///
+/// | Offset | Type   | Description                             |
+/// |--------|--------|-----------------------------------------|
+/// | 0      | `u16`  | Number.                                 |
+/// | 2      | `u8`   | Size of the symbol name string.         |
+/// | 3      | `[u8]` | The symbol name. Not `NULL` terminated. |
 #[binrw]
 #[brw(little)]
 #[derive(Clone, Debug, PartialEq)]
@@ -1113,19 +1622,15 @@ impl XREF {
     }
 }
 
-/// CPU architecture type identifiers.
-pub mod cputype {
-    /// Motorola 68000 - Sega Genesis, Sega CD, Mega Drive, & Mega CD
-    pub const MOTOROLA_68000: u8 = 0;
-
-    /// MIPS R3000 with GTE (Graphics Transform Engine) - PlayStation 1.
-    pub const MIPS_R300GTE: u8 = 7;
-
-    /// Hitachi SH-2 - Sega Saturn.
-    pub const HITACHI_SH2: u8 = 8;
-}
-
 /// A file name reference used in debug information.
+///
+/// # Structure on Disk
+///
+/// | Offset | Type   | Description                                  |
+/// |--------|--------|----------------------------------------------|
+/// | 0      | `u16`  | The file number.                             |
+/// | 2      | `u8`   | The size of the file name.                   |
+/// | 3      | `[u8]` | The name of the file. Not `NULL` terminated. |
 #[binrw]
 #[brw(little)]
 #[derive(Clone, PartialEq)]
@@ -1137,6 +1642,10 @@ pub struct Filename {
 }
 
 impl Filename {
+    pub fn number(&self) -> u16 {
+        self.number
+    }
+
     pub fn name(&self) -> String {
         String::from_utf8_lossy(&self.name).into_owned()
     }
@@ -1154,6 +1663,13 @@ impl fmt::Debug for Filename {
 }
 
 /// Set MX info directive.
+///
+/// # Structure on Disk
+///
+/// | Offset | Type   | Description                                  |
+/// |--------|--------|----------------------------------------------|
+/// | 0      | `u16`  | Offset (TODO: relative to what?)             |
+/// | 2      | `u8`   | Value.                                       |
 #[binrw]
 #[brw(little)]
 #[derive(Clone, Debug, PartialEq)]
@@ -1163,6 +1679,16 @@ pub struct SetMXInfo {
 }
 
 /// External BSS (uninitialized data) symbol.
+///
+/// # Structure on Disk
+///
+/// | Offset | Type   | Description                                    |
+/// |--------|--------|------------------------------------------------|
+/// | 0      | `u16`  | Number.                                        |
+/// | 2      | `u16`  | The section ID this BSS belongs to.            |
+/// | 4      | `u32`  | The size of the uninitialized data.            |
+/// | 8      | `u8`   | The size of the symbol name.                   |
+/// | 9      | `[u8]` | The name of the symbol. Not `NULL` terminated. |
 #[binrw]
 #[brw(little)]
 #[derive(Clone, Debug, PartialEq)]
@@ -1183,6 +1709,13 @@ impl XBSS {
 }
 
 /// Set source line debugger (SLD) line number.
+///
+/// # Structure on Disk
+///
+/// | Offset | Type   | Description                      |
+/// |--------|--------|----------------------------------|
+/// | 0      | `u16`  | Offset (TODO: relative to what?) |
+/// | 2      | `u32`  | Line number.                     |
 #[binrw]
 #[brw(little)]
 #[derive(Clone, Debug, PartialEq)]
@@ -1192,6 +1725,14 @@ pub struct SetSLDLineNum {
 }
 
 /// Set source line debugger (SLD) line number with file reference.
+///
+/// # Structure on Disk
+///
+/// | Offset | Type   | Description                       |
+/// |--------|--------|-----------------------------------|
+/// | 0      | `u16`  | Offset (TODO: relative to what?). |
+/// | 2      | `u32`  | Line number.                      |
+/// | 6      | `u16`  | File ID.                          |
 #[binrw]
 #[brw(little)]
 #[derive(Clone, Debug, PartialEq)]
@@ -1201,9 +1742,44 @@ pub struct SetSLDLineNumFile {
     file: u16,
 }
 
+/// **n.b.!** this is completely untested and based on
+/// assumptions from the output from `dumpobj`.
+#[binrw]
+#[brw(little)]
+#[derive(Clone, Debug, PartialEq)]
+pub struct ProcedureCall {
+    distance: u8,
+    symbol: u16,
+}
+
+/// **n.b.!** this is completely untested and based on
+/// assumptions from the output from `dumpobj`.
+#[binrw]
+#[brw(little)]
+#[derive(Clone, Debug, PartialEq)]
+pub struct ProcedureDefinition {
+    symbol: u16,
+}
+
 /// Function start debug information.
 ///
 /// Provides detailed information about a function for source-level debugging.
+///
+/// # Structure on Disk
+///
+/// | Offset | Type   | Description                                      |
+/// |--------|--------|--------------------------------------------------|
+/// | 0      | `u16`  | Section ID.                                      |
+/// | 2      | `u32`  | Offset (TODO: relative to what?)                 |
+/// | 6      | `u16`  | File ID.                                         |
+/// | 8      | `u32`  | Line number.                                     |
+/// | 12     | `u16`  | Frame register.                                  |
+/// | 14     | `u32`  | Frame size.                                      |
+/// | 18     | `u16`  | Return PC register.                              |
+/// | 20     | `u32`  | Mask.                                            |
+/// | 24     | `i32`  | Mask offset. (TODO: relative to what?)           |
+/// | 28     | `u8`   | The size of the function name.                   |
+/// | 29     | `[u8]` | The name of the function. Not `NULL` terminated. |
 #[binrw]
 #[brw(little)]
 #[derive(Clone, Debug, PartialEq)]
@@ -1217,8 +1793,8 @@ pub struct FunctionStart {
     return_pc_register: u16,
     mask: u32,
     mask_offset: i32,
-    name_size: u8,
 
+    name_size: u8,
     #[br(count = name_size)]
     name: Vec<u8>,
 }
@@ -1230,37 +1806,37 @@ impl FunctionStart {
     }
 }
 
-/// Function end debug information.
+/// Section, Offset, and Line number information for source-line debugging.
+///
+/// # Structure on Disk
+///
+/// | Offset | Type   | Description                       |
+/// |--------|--------|-----------------------------------|
+/// | 0      | `u16`  | Section ID.                       |
+/// | 2      | `u32`  | Offset (TODO: relative to what?   |
+/// | 6      | `u32`  | Line number.                      |
 #[binrw]
 #[brw(little)]
 #[derive(Clone, Debug, PartialEq)]
-pub struct FunctionEnd {
-    section: u16,
-    offset: u32,
-    linenum: u32,
-}
-
-/// Block start debug information.
-#[binrw]
-#[brw(little)]
-#[derive(Clone, Debug, PartialEq)]
-pub struct BlockStart {
-    section: u16,
-    offset: u32,
-    linenum: u32,
-}
-
-/// Block end debug information.
-#[binrw]
-#[brw(little)]
-#[derive(Clone, Debug, PartialEq)]
-pub struct BlockEnd {
+pub struct SectionOffsetLine {
     section: u16,
     offset: u32,
     linenum: u32,
 }
 
 /// Variable or type definition debug information.
+///
+/// # Structure on Disk
+///
+/// | Offset | Type   | Description                                    |
+/// |--------|--------|------------------------------------------------|
+/// | 0      | `u16`  | Section ID.                                    |
+/// | 2      | `u32`  | Value.                                         |
+/// | 6      | `u16`  | Class ID.                                      |
+/// | 8      | `u16`  | Definition type.                               |
+/// | 10     | `u32`  | Data size.                                     |
+/// | 14     | `u8`   | The size of the symbol name.                   |
+/// | 15     | `[u8]` | The name of the symbol. Not `NULL` terminated. |
 #[binrw]
 #[brw(little)]
 #[derive(Clone, Debug, PartialEq)]
@@ -1288,10 +1864,23 @@ impl Def {
 #[derive(Clone, Debug, PartialEq)]
 pub enum Dim {
     /// No dimensions (scalar).
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset | Type | Description |
+    /// |--------|------|-------------|
+    /// | 0      | `u8` | Magic: 0x0  |
     #[br(magic = 0u16)]
     None,
 
     /// Single dimension with size.
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset | Type  | Description |
+    /// |--------|-------|-------------|
+    /// | 0      | `u16` | Magic: 0x1  |
+    /// | 1      | `u32` | Size        |
     #[br(magic = 1u16)]
     Value(u32),
 }
@@ -1306,6 +1895,21 @@ impl fmt::Display for Dim {
 }
 
 /// Extended variable or type definition with additional metadata.
+///
+/// # Structure on Disk
+///
+/// | Offset                       | Type   | Description                                    |
+/// |------------------------------|--------|------------------------------------------------|
+/// | 0                            | `u16`  | Section ID.                                    |
+/// | 2                            | `u32`  | Value.                                         |
+/// | 6                            | `u16`  | Class.                                         |
+/// | 8                            | `u16`  | Definition type.                               |
+/// | 10                           | `u32`  | Size of the data.                              |
+/// | 14                           | `Dim`  | A [Dim] describing the dimensions              |
+/// | sizeof(*dim*) + 14           | `u8`   | Size of the tag string.                        |
+/// | offsetof(*tag_size*) + 1     | `[u8]` | Tag name string. Not `NULL` terminated.        |
+/// | offsetof(*tag*) + *tag_size* | `u8`   | Size of the name string.                       |
+/// | offsetof(*name_size*) + 1    | `[u8]` | Definition name string. Not `NULL` terminated. |
 #[binrw]
 #[brw(little)]
 #[derive(Clone, Debug, PartialEq)]
@@ -1334,6 +1938,45 @@ impl Def2 {
     }
 }
 
+pub mod cputype {
+    //! CPU architecture type identifiers.
+    //!
+    //! [MOTOROLA_68000], [MIPS_R3000], and [HITACHI_SH2] have been found
+    //! in the wild. Others are speculative based on available information.
+
+    /// Motorola 68000 - Sega Genesis, Sega CD, Mega Drive, & Mega CD.
+    pub const MOTOROLA_68000: u8 = 0;
+
+    /// Motorola 68010.
+    pub const MOTOROLA_68010: u8 = 1;
+
+    /// Motorola 68020.
+    pub const MOTOROLA_68020: u8 = 2;
+
+    /// Motorola 68030.
+    pub const MOTOROLA_68030: u8 = 3;
+
+    /// Motorola 68040.
+    pub const MOTOROLA_68040: u8 = 4;
+
+    /// WDC 65816 - Used for SNES derivative Ricoh 5A22.
+    pub const WDC_65816: u8 = 5;
+
+    /// Zilog Z80 - Sega Genesis Sound CPU.
+    pub const ZILOG_Z80: u8 = 6;
+
+    /// MIPS R3000 with GTE (Graphics Transform Engine) - PlayStation 1.
+    pub const MIPS_R3000: u8 = 7;
+
+    /// Hitachi SH-2 - Sega Saturn.
+    pub const HITACHI_SH2: u8 = 8;
+}
+
+fn unimplemented(s: &str) -> bool {
+    eprintln!("Unimplemented: {s}");
+    false
+}
+
 /// A section within an OBJ file.
 ///
 /// Sections can contain code, data, relocations, symbols, or debug information.
@@ -1341,140 +1984,398 @@ impl Def2 {
 ///
 /// # Section Types
 ///
-/// - Code: Executable machine code
-/// - BSS: Uninitialized data
-/// - XDEF/XREF: Symbol exports and imports
-/// - Patch: Relocation information
-/// - Debug sections: Line numbers, function info, etc.
+/// - [Code](Section::Code): Executable machine code
+/// - [BSS](Section::BSS): Uninitialized data
+/// - [XDEF](Section::XDEF)/[XREF](Section::XREF): Symbol exports and imports
+/// - [Patch](Section::Patch): Relocation information
+/// - Debug information: Line numbers, function info, etc.
+/// - And many more!
 #[binrw]
 #[brw(little)]
 #[derive(Clone, Debug, PartialEq)]
 pub enum Section {
-    /// End of file marker (tag 0).
+    /// End of file marker.
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset | Type | Description               |
+    /// |--------|------|---------------------------|
+    /// | 0      | `u8` | Magic: 0x0                |
     #[brw(magic(0u8))]
     NOP,
 
-    /// Machine code (tag 2).
+    /// Machine code.
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset | Type   | Description        |
+    /// |--------|--------|--------------------|
+    /// | 0      | `u8`   | Magic: 0x2         |
+    /// | 1      | `Code` | A [Code] structure |
     #[brw(magic(2u8))]
     Code(Code),
 
-    /// Run at offset (tag 4)
+    /// Run at offset.
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset | Type  | Description       |
+    /// |--------|-------|-------------------|
+    /// | 0      | `u8`  | Magic: 0x4        |
+    /// | 1      | `u16` |                   |
+    /// | 3      | `u16` |                   |
     #[brw(magic(4u8))]
     RunAtOffset(u16, u16),
 
-    /// Switch to different section (tag 6).
+    /// Switch to different section.
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset | Type  | Description       |
+    /// |--------|-------|-------------------|
+    /// | 0      | `u8`  | Magic: 0x2        |
+    /// | 1      | `u16` | Section ID        |
     #[brw(magic(6u8))]
-    SectionSwitch(SectionSwitch),
+    SectionSwitch(u16),
 
-    /// Uninitialized data (BSS) with size in bytes (tag 8).
+    /// Uninitialized data (BSS) with size in bytes.
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset | Type   | Description       |
+    /// |--------|--------|-------------------|
+    /// | 0      | `u8`   | Magic: 0x8        |
+    /// | 1      | `u32`  | Size in bytes     |
     #[brw(magic(8u8))]
     BSS(u32),
 
-    /// Relocation patch (tag 10).
+    /// Relocation patch.
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset | Type    | Description         |
+    /// |--------|---------|---------------------|
+    /// | 0      | `u8`    | Magic: 0xA          |
+    /// | 1      | `Patch` | A [Patch] structure |
     #[brw(magic(10u8))]
     Patch(Patch),
 
-    /// External symbol definition (tag 12).
+    /// External symbol definition.
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset | Type   | Description          |
+    /// |--------|--------|----------------------|
+    /// | 0      | `u8`   | Magic: 0xC           |
+    /// | 1      | `XDEF` | An [XDEF] structure. |
     #[brw(magic(12u8))]
     XDEF(XDEF),
 
-    /// External symbol reference (tag 14).
+    /// External symbol reference.
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset | Type   | Description          |
+    /// |--------|--------|----------------------|
+    /// | 0      | `u8`   | Magic: 0xE           |
+    /// | 1      | `XREF` | An [XREF] structure. |
     #[brw(magic(14u8))]
     XREF(XREF),
 
-    /// Section header (tag 16).
+    /// Section header.
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset | Type        | Description               |
+    /// |--------|-------------|---------------------------|
+    /// | 0      | `u8`        | Magic: 0x10               |
+    /// | 1      | `LNKHeader` | An [LNKHeader] structure. |
     #[brw(magic(16u8))]
     LNKHeader(LNKHeader),
 
-    /// Local symbol (tag 18).
+    /// Local symbol.
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset | Type          | Description               |
+    /// |--------|---------------|---------------------------|
+    /// | 0      | `u8`          | Magic: 0x12               |
+    /// | 1      | `LocalSymbol` | A [LocalSymbol] structure |
     #[brw(magic(18u8))]
     LocalSymbol(LocalSymbol),
 
-    /// Group symbol (tag 20).
+    /// Group symbol.
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset | Type          | Description                |
+    /// |--------|---------------|----------------------------|
+    /// | 0      | `u8`          | Magic: 0x14                |
+    /// | 1      | `GroupSymbol` | A [GroupSymbol] structure. |
     #[brw(magic(20u8))]
     GroupSymbol(GroupSymbol),
 
-    // TODO:
-    // 22 - set byte register size
-    // 24 - set word register size
-    // 26 - set long register size
-    /// File name reference (tag 28).
+    /// Untested
+    #[brw(magic(22u8))]
+    ByteSizeRegister(u16),
+
+    /// Untested
+    #[brw(magic(24u8))]
+    WordSizeRegister(u16),
+
+    /// Untested
+    #[brw(magic(26u8))]
+    LongSizeRegister(u16),
+
+    /// File name reference.
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset | Type       | Description             |
+    /// |--------|------------|-------------------------|
+    /// | 0      | `u8`       | Magic: 0x1C             |
+    /// | 1      | `Filename` | A [Filename] structure. |
     #[brw(magic(28u8))]
     Filename(Filename),
 
-    // TODO:
-    // 30 - Set to file
-    // 32 - Set to line
-    // 34 - Increment line number
-    // 36 - Increment line number by
-    // 38 - Increment line number by
-    // 40 - Very local symbol
-    // 42 - Set 3-byte size register to
-    /// Set MX info (tag 44).
+    /// Untested
+    #[brw(magic(30u8))]
+    SetToFile(u16, u32),
+
+    /// Untested
+    #[brw(magic(32u8))]
+    SetToLine(u32),
+
+    /// Untested
+    #[brw(magic(34u8))]
+    IncrementLineNumber,
+
+    /// Untested
+    #[brw(magic(36u8))]
+    IncrementLineNumberByte(u8),
+
+    /// Untested
+    #[brw(magic(38u8))]
+    IncrementLineNumberWord(u32),
+
+    /// Untested
+    #[brw(magic(40u8))]
+    VeryLocalSymbol(LocalSymbol),
+
+    /// Untested
+    #[brw(magic(42u8))]
+    Set3ByteRegister(u16),
+
+    /// Set MX info.
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset | Type        | Description              |
+    /// |--------|-------------|--------------------------|
+    /// | 0      | `u8`        | Magic: 0x2C              |
+    /// | 1      | `SetMXInfo` | A [SetMXInfo] structure. |
     #[brw(magic(44u8))]
     SetMXInfo(SetMXInfo),
 
-    /// CPU type specification (tag 46).
+    /// CPU type specification.
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset | Type | Description       |
+    /// |--------|------|-------------------|
+    /// | 0      | `u8` | Magic: 0x2E       |
+    /// | 1      | `u8` | A CPU identifier. |
+    ///
+    /// Constants for CPU identifiers can be found in the [cputype] module.
     #[brw(magic(46u8))]
     CPU(u8),
 
-    /// External BSS symbol (tag 48).
+    /// External BSS symbol.
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset | Type | Description            |
+    /// |--------|------|------------------------|
+    /// | 0      | `u8` | Magic: 0x30            |
+    /// | 1      | `XBSS` | An [XBSS] structure. |
     #[brw(magic(48u8))]
     XBSS(XBSS),
 
     // Source line debugger information
-    /// Increment line number (tag 50).
+
+    /// Increment line number.
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset | Type  | Description                                  |
+    /// |--------|-------|----------------------------------------------|
+    /// | 0      | `u8`  | Magic: 0x32                                  |
+    /// | 1      | `u16` | The offset where the new line number starts. |
+    ///
+    /// See also: [IncSLDLineNumByte](Self::IncSLDLineNumByte), [IncSLDLineNumWord](Self::IncSLDLineNumWord)
     #[brw(magic(50u8))]
     IncSLDLineNum(u16),
 
-    /// Increment line number by byte amount (tag 52).
+    /// Increment line number by an amount.
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset | Type  | Description                                  |
+    /// |--------|-------|----------------------------------------------|
+    /// | 0      | `u8`  | Magic: 0x34                                  |
+    /// | 1      | `u16` | The offset where the new line number starts. |
+    /// | 3      | `u8`  | The amount to increment the line number.     |
+    ///
+    /// See also [IncSLDLineNum](Self::IncSLDLineNum), [IncSLDLineNumWord](Self::IncSLDLineNumWord)
     #[brw(magic(52u8))]
     IncSLDLineNumByte(u16, u8),
 
-    // 54 - Increment SDL line number by word
-    /// Set line number (tag 56).
+    /// Increment line number by an amount.
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset | Type  | Description                                  |
+    /// |--------|-------|----------------------------------------------|
+    /// | 0      | `u8`  | Magic: 0x34                                  |
+    /// | 1      | `u16` | The offset where the new line number starts. |
+    /// | 3      | `u8`  | The amount to increment the line number.     |
+    ///
+    /// See also: [IncSLDLineNum](Self::IncSLDLineNum), [IncSLDLineNumByte](Self::IncSLDLineNumByte)
+    #[brw(magic(54u8))]
+    IncSLDLineNumWord(u16, u32),
+
+    /// Set line number.
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset | Type            | Description                  |
+    /// |--------|-----------------|------------------------------|
+    /// | 0      | `u8`            | Magic: 0x38                  |
+    /// | 1      | `SetSLDLineNum` | A [SetSLDLineNum] structure. |
+    ///
+    /// See also: [SetSLDLineNumFile](Self::SetSLDLineNumFile)
     #[brw(magic(56u8))]
     SetSLDLineNum(SetSLDLineNum),
 
-    /// Set line number with file (tag 58).
+    /// Set line number with file name.
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset | Type                | Description                      |
+    /// |--------|---------------------|----------------------------------|
+    /// | 0      | `u8`                | Magic: 0x3A                      |
+    /// | 1      | `SetSLDLineNumFile` | A [SetSLDLineNumFile] structure. |
+    ///
+    /// See also: [SetSLDLineNum](Self::SetSLDLineNum)
     #[brw(magic(58u8))]
     SetSLDLineNumFile(SetSLDLineNumFile),
 
-    /// End of SLD info (tag 60).
+    /// End of SLD info.
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset | Type            | Description                 |
+    /// |--------|-----------------|-----------------------------|
+    /// | 0      | `u8`            | Magic: 0x3C                 |
+    /// | 1      | `u16`           | Offset where SLD info ends. |
     #[brw(magic(60u8))]
     EndSLDInfo(u16),
 
-    // TODO:
-    // 62 - Repeat byte
-    // 64 - Repeat word
-    // 66 - Repeat long
-    // 68 - Proc call
-    // 70 - Proc call 2 (prints 68)
-    // 72 - repeat 3-byte
+    /// Untested
+    #[brw(magic(62u8))]
+    RepeatByte(u32),
 
+    /// Untested
+    #[brw(magic(64u8))]
+    RepeatWord(u32),
+
+    /// Untested
+    #[brw(magic(66u8), assert(unimplemented("ProcedureCall")))]
+    RepeatLong(u32),
+
+    /// Untested
+    #[brw(magic(68u8), assert(unimplemented("ProcedureCall")))]
+    ProcedureCall(ProcedureCall),
+
+    /// Untested
+    #[brw(magic(70u8), assert(unimplemented("ProcedureDefinition")))]
+    ProcedureDefinition(ProcedureDefinition),
+
+    /// Untested
+    #[brw(magic(72u8))]
+    Repeat3Byte(u32),
+
+    //
     // Function and block debug information
-    /// Function start marker (tag 74).
+    //
+
+    /// Function start marker.
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset | Type            | Description                  |
+    /// |--------|-----------------|------------------------------|
+    /// | 0      | `u8`            | Magic: 0x4A                  |
+    /// | 1      | `FunctionStart` | A [FunctionStart] structure. |
     #[brw(magic(74u8))]
     FunctionStart(FunctionStart),
 
-    /// Function end marker (tag 76).
+    /// Function end marker.
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset | Type                | Description                      |
+    /// |--------|---------------------|----------------------------------|
+    /// | 0      | `u8`                | Magic: 0x4C                      |
+    /// | 1      | `SectionOffsetLine` | A [SectionOffsetLine] structure. |
     #[brw(magic(76u8))]
-    FunctionEnd(FunctionEnd),
+    FunctionEnd(SectionOffsetLine),
 
-    /// Block start marker (tag 78).
+    /// Block start marker.
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset | Type                | Description                      |
+    /// |--------|---------------------|----------------------------------|
+    /// | 0      | `u8`                | Magic: 0x4E                      |
+    /// | 1      | `SectionOffsetLine` | A [SectionOffsetLine] structure. |
     #[brw(magic(78u8))]
-    BlockStart(BlockStart),
+    BlockStart(SectionOffsetLine),
 
-    /// Block end marker (tag 80).
+    /// Block end marker.
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset | Type                | Description                      |
+    /// |--------|---------------------|----------------------------------|
+    /// | 0      | `u8`                | Magic: 0x50                      |
+    /// | 1      | `SectionOffsetLine` | A [SectionOffsetLine] structure. |
     #[brw(magic(80u8))]
-    BlockEnd(BlockEnd),
+    BlockEnd(SectionOffsetLine),
 
+    //
     // Type and variable definitions
-    /// Variable/type definition (tag 82).
+    //
+
+    /// Variable/type definition.
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset | Type  | Description        |
+    /// |--------|-------|--------------------|
+    /// | 0      | `u8`  | Magic: 0x52        |
+    /// | 1      | `Def` | A [Def] structure. |
     #[brw(magic(82u8))]
     Def(Def),
 
-    /// Extended definition with tag (tag 84).
+    /// Extended definition with tag.
+    ///
+    /// # Structure on Disk
+    ///
+    /// | Offset | Type   | Description         |
+    /// |--------|--------|---------------------|
+    /// | 0      | `u8`   | Magic: 0x54         |
+    /// | 1      | `Def2` | A [Def2] structure. |
     #[brw(magic(84u8))]
     Def2(Def2),
 }
@@ -1527,8 +2428,9 @@ impl display::DisplayWithOptions for Section {
                     display::CodeFormat::None => (),
                 }
                 Ok(())
-            }
-            Self::SectionSwitch(switch) => write!(f, "6 : Switch to section {:x}", switch.id),
+            },
+            Self::RunAtOffset(section_id, offset) => write!(f, "4 : Run at offset {offset:x} in {section_id:x}"),
+            Self::SectionSwitch(section_id) => write!(f, "6 : Switch to section {section_id:x}"),
             Self::BSS(size) => {
                 let uninit = if is_en_gb() {
                     "Uninitialised"
@@ -1578,11 +2480,54 @@ impl display::DisplayWithOptions for Section {
                 symbol.name(),
                 symbol.sym_type,
             ),
+            Self::ByteSizeRegister(register) => write!(
+                f,
+                "22 : Set byte size register to reg offset {register}",
+            ),
+            Self::WordSizeRegister(register) => write!(
+                f,
+                "24 : Set word size register to reg offset {register}",
+            ),
+            Self::LongSizeRegister(register) => write!(
+                f,
+                "26 : Set long size register to reg offset {register}",
+            ),
             Self::Filename(filename) => write!(
                 f,
                 "28 : Define file number {:x} as \"{}\"",
                 filename.number,
                 filename.name()
+            ),
+            Self::SetToFile(file, line) => write!(
+                f,
+                "30 : Set to {file:x}, line {line}",
+            ),
+            Self::SetToLine(line) => write!(
+                f,
+                "32 : Set to line {line}",
+            ),
+            Self::IncrementLineNumber => write!(
+                f,
+                "34 : Increment line number",
+            ),
+            Self::IncrementLineNumberByte(num) => write!(
+                f,
+                "36 : Increment line number by {num}",
+            ),
+            Self::IncrementLineNumberWord(num) => write!(
+                f,
+                "38 : Increment line number by {num}",
+            ),
+            Self::VeryLocalSymbol(symbol) => write!(
+                f,
+                "40 : Very local symbol '{}' at offset {:x} in section {:x}",
+                symbol.name(),
+                symbol.offset,
+                symbol.section,
+            ),
+            Self::Set3ByteRegister(register) => write!(
+                f,
+                "42 : Set 3-byte size register to reg offset {register}",
             ),
             Self::SetMXInfo(set_mx_info) => write!(
                 f,
@@ -1603,6 +2548,10 @@ impl display::DisplayWithOptions for Section {
                 f,
                 "52 : Inc SLD linenum by byte {byte} at offset {offset:x}"
             ),
+            Self::IncSLDLineNumWord(offset, word) => write!(
+                f,
+                "54 : Inc SLD linenum by word {word} at offset {offset:x}"
+            ),
             Self::SetSLDLineNum(line) => write!(
                 f,
                 "56 : Set SLD linenum to {} at offset {:x}",
@@ -1614,6 +2563,13 @@ impl display::DisplayWithOptions for Section {
                 line.linenum, line.offset, line.file
             ),
             Self::EndSLDInfo(offset) => write!(f, "60 : End SLD info at offset {offset:x}"),
+
+            Self::RepeatByte(count) => write!(f, "62 : Repeat byte {count} times"),
+            Self::RepeatWord(count) => write!(f, "64 : Repeat word {count} times"),
+            Self::RepeatLong(count) => write!(f, "66 : Repeat long {count} times"),
+            Self::ProcedureCall(call) => write!(f, "68 : <<<<Unimplemented>>>> {:?}", call),
+            Self::ProcedureDefinition(definition) => write!(f, "68 : <<<<Unimplemented>>>> {:?}", definition),
+            Self::Repeat3Byte(count) => write!(f, "70 : Repeat 3-byte {count} times"),
             Self::FunctionStart(start) => write!(
                 f,
                 "74 : Function start :\n\
@@ -1699,7 +2655,6 @@ impl display::DisplayWithOptions for Section {
                 def.tag(),
                 def.name()
             ),
-            _ => write!(f, "{self:?}"),
         }
     }
 }
@@ -1834,7 +2789,7 @@ mod test {
         let Section::CPU(cpu) = lnk.sections.first().expect("obj[0].obj.sections[0]") else {
             panic!("expected a section");
         };
-        assert_eq!(*cpu, cputype::MIPS_R300GTE);
+        assert_eq!(*cpu, cputype::MIPS_R3000);
         /*
                 assert_eq!(section.section, 61444);
                 assert_eq!(section.group, 0);
@@ -2106,7 +3061,7 @@ mod test {
         let Section::CPU(cpu) = lnk.sections.first().expect("obj[0].obj.sections[0]") else {
             panic!("expected a section");
         };
-        assert_eq!(*cpu, cputype::MIPS_R300GTE);
+        assert_eq!(*cpu, cputype::MIPS_R3000);
         /*
         assert_eq!(section.section, 1);
         assert_eq!(section.group, 0);

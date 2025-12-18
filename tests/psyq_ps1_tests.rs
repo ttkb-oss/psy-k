@@ -247,7 +247,7 @@ pub fn test_exports(module: &Module, lib_name: &str) {
 
     let mut found_exports = HashSet::new();
 
-    for section in &module.object().sections {
+    for section in module.object().sections() {
         let symbol = match section {
             Section::XREF(xref) => Some(xref.symbol_name()),
             Section::XDEF(xdef) => Some(xdef.symbol_name()),

@@ -1,6 +1,8 @@
 `psy-k`
 ========
 
+[![codecov](https://codecov.io/github/ttkb-oss/psy-k/graph/badge.svg?token=G837GZY5VW)](https://codecov.io/github/ttkb-oss/psy-k)
+
 `psy-k` is a pure-safe library and utility for parsing PSY-Q LIB & OBJ files.
 
 As a utility, `psyk` will print the contents of LIB or OBJ files. `psyk` can split `LIB` files into `OBJ`s or combine
