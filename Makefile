@@ -4,11 +4,38 @@ RUSTFLAGS := -C instrument-coverage
 TEST_FLAGS := LLVM_PROFILE_FILE=$(PRIVATE)/profile/cargo-test-%p-%m.profraw
 ENV_FLAGS := $(TEST_FLAGS)
 
-ifeq ($(shell which -s llvm-profdata-20 && echo 1 || echo 0), 1)
-    LLVM_PROFDATA := llvm-profdata-20
+# Detect LLVM version
+LLVM_VERSION := $(shell \
+	if command -v llvm-profdata-20 >/dev/null 2>&1; then echo "20"; \
+	elif command -v llvm-profdata-19 >/dev/null 2>&1; then echo "19"; \
+	elif command -v llvm-profdata-18 >/dev/null 2>&1; then echo "18"; \
+	elif command -v llvm-profdata >/dev/null 2>&1; then echo ""; \
+	else echo "none"; fi)
+
+ifeq ($(LLVM_VERSION),none)
+    $(error LLVM tools not found. Install with: rustup component add llvm-tools-preview)
+endif
+
+ifneq ($(LLVM_VERSION),)
+    LLVM_PROFDATA := llvm-profdata-$(LLVM_VERSION)
+    LLVM_COV := llvm-cov-$(LLVM_VERSION)
 else
     LLVM_PROFDATA := llvm-profdata
+    LLVM_COV := llvm-cov
 endif
+
+# Coverage flags
+RUSTFLAGS_COV := -C instrument-coverage \
+                 -C link-dead-code \
+                 -C opt-level=0 \
+                 -C debuginfo=2
+
+# Profile output location
+PROFRAW_DIR := $(PRIVATE)/coverage/profraw
+PROFDATA_FILE := $(PRIVATE)/coverage/merged.profdata
+
+# Source root (for accurate path mapping)
+SOURCE_ROOT := $(shell pwd)
 
 .PHONY: all
 all:
@@ -44,19 +71,73 @@ clean:
 	rm -rf $(PRIVATE)
 
 .PHONY: report
-report: $(PRIVATE)/profile/json5format.profdata
-	rm -rf target/coverage
-	grcov $(PRIVATE)/profile --binary-path ./target/debug/deps/ -s src \
-        -t html \
-		--branch \
-        --ignore-not-existing \
-		--ignore '../*' \
-		--ignore "/*" \
-	    -o target/coverage/html
+report: coverage-html
 
-$(PRIVATE)/profile/json5format.profdata: test
-	mkdir -p $(PRIVATE)/profile
-	$(LLVM_PROFDATA) merge -sparse $(PRIVATE)/profile/*.profraw -o $@
+# coverage
+# Install llvm-cov if not present
+.PHONY: coverage-install
+coverage-install:
+	@echo "Installing coverage tools..."
+	rustup component add llvm-tools-preview
+	cargo install cargo-llvm-cov || true
+
+# Run tests with coverage
+.PHONY: coverage
+coverage: coverage-clean test-data
+	@echo "Running tests with coverage instrumentation..."
+	@mkdir -p $(PRIVATE)/coverage
+	cargo llvm-cov --all-features --workspace --lcov --output-path $(PRIVATE)/coverage/lcov.info
+
+# Generate HTML report (human-readable)
+.PHONY: coverage-html
+coverage-html: coverage
+	@echo "Generating HTML coverage report..."
+	cargo llvm-cov --all-features --workspace --html
+	@echo "Coverage report generated at: target/llvm-cov/html/index.html"
+	@echo "Open with: open target/llvm-cov/html/index.html (macOS) or xdg-open target/llvm-cov/html/index.html (Linux)"
+
+# Generate JSON report (machine-readable)
+.PHONY: coverage-json
+coverage-json: coverage
+	@echo "Generating JSON coverage report..."
+	@mkdir -p $(PRIVATE)/coverage
+	cargo llvm-cov --all-features --workspace --json --output-path $(PRIVATE)/coverage/coverage.json
+
+# Generate text report (terminal output)
+.PHONY: coverage-text
+coverage-text: coverage
+	@echo "Generating text coverage report..."
+	cargo llvm-cov --all-features --workspace
+
+# Generate all formats
+.PHONY: coverage-all
+coverage-all: coverage-html coverage-json coverage-text
+	@echo "Coverage reports generated:"
+	@echo "  - LCOV:  $(PRIVATE)/coverage/lcov.info"
+	@echo "  - JSON:  $(PRIVATE)/coverage/coverage.json"
+	@echo "  - HTML:  target/llvm-cov/html/index.html"
+
+# Upload to codecov.io
+.PHONY: coverage-upload
+coverage-upload: coverage
+	@echo "Uploading coverage to codecov.io..."
+	@if [ -z "$$CODECOV_TOKEN" ]; then \
+		echo "Error: CODECOV_TOKEN environment variable not set"; \
+		echo "Get token from: https://codecov.io/gh/ttkb-oss/psy-k/settings"; \
+		exit 1; \
+	fi
+	curl -Os https://uploader.codecov.io/latest/linux/codecov
+	chmod +x codecov
+	./codecov -t $$CODECOV_TOKEN -f $(PRIVATE)/coverage/lcov.info
+	rm -f codecov
+
+# Clean coverage artifacts
+.PHONY: coverage-clean
+coverage-clean:
+	@echo "Cleaning coverage artifacts..."
+	rm -rf $(PRIVATE)/coverage
+	rm -rf target/llvm-cov
+	cargo llvm-cov clean --workspace || true
 
 # spell check
 .PHONY: spellcheck
