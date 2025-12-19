@@ -9,6 +9,9 @@ on:
         type: boolean
         default: true
 
+permissions:
+  contents: read
+
 env:
   CARGO_TERM_COLOR: always
 
@@ -68,13 +71,16 @@ jobs:
       run: |
         cargo package --list
         echo "Package size:"
-        du -h target/package/psyx-*.crate
+        du -h target/package/psy-k-*.crate
 
   publish:
     name: Publish to crates.io
     runs-on: ubuntu-latest
     needs: verify
     if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main'
+
+    permissions:
+      contents: write
 
     steps:
     - name: Checkout code
