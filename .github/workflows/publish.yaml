@@ -82,6 +82,9 @@ jobs:
     permissions:
       contents: write
 
+    outputs:
+      version: ${{ steps.get_version.outputs.version }}
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -89,10 +92,16 @@ jobs:
     - name: Install Rust toolchain
       uses: dtolnay/rust-toolchain@stable
 
+    - name: Get crate version
+      id: get_version
+      run: |
+        CRATE_VERSION=$(cargo metadata --no-deps --format-version 1 | jq -r '.packages[0].version')
+        echo "version=$CRATE_VERSION" >> "$GITHUB_OUTPUT"
+
     - name: Verify version not already published
       run: |
         CRATE_NAME=$(cargo metadata --no-deps --format-version 1 | jq -r '.packages[0].name')
-        CRATE_VERSION=$(cargo metadata --no-deps --format-version 1 | jq -r '.packages[0].version')
+        CRATE_VERSION=${{ steps.get_version.outputs.version }}
         echo "Crate: $CRATE_NAME v$CRATE_VERSION"
 
         # Check if version already exists on crates.io
@@ -120,7 +129,7 @@ jobs:
     - name: Create git tag
       if: inputs.dry_run == false
       run: |
-        CRATE_VERSION=$(cargo metadata --no-deps --format-version 1 | jq -r '.packages[0].version')
+        CRATE_VERSION=${{ steps.get_version.outputs.version }}
         git config user.name "GitHub Actions"
         git config user.email "actions@github.com"
         git tag -a "v$CRATE_VERSION" -m "Release v$CRATE_VERSION"

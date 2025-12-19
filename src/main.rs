@@ -4,6 +4,7 @@
 use std::env;
 use std::path::PathBuf;
 
+use anyhow::bail;
 use anyhow::Result;
 use clap::{CommandFactory, Parser, Subcommand};
 
@@ -128,6 +129,7 @@ fn main() -> Result<()> {
             None => {
                 let a = App::command().render_help();
                 eprintln!("{}", a);
+                bail!("");
             }
         },
     }

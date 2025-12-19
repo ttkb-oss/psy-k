@@ -36,12 +36,15 @@ pub fn dumpobj_main() -> Result<()> {
     let obj_path = match args.len() {
         2 => PathBuf::from(args[1].clone()),
         3 => {
-            match args[1].as_str() {
+            match args[2].as_str() {
                 "/c" => options.code_format = display::CodeFormat::Hex,
                 "/d" => options.code_format = display::CodeFormat::Disassembly,
-                _ => dumpobj_usage(),
+                _ => {
+                    eprintln!("Invalid option: {}\n", args[2]);
+                    dumpobj_usage()
+                }
             }
-            PathBuf::from(args[2].clone())
+            PathBuf::from(args[1].clone())
         }
         _ => dumpobj_usage(),
     };
@@ -59,7 +62,7 @@ fn psylib_usage() -> ! {
     eprintln!("       {} /d delete modules []", args[0]);
     eprintln!("       {} /u <library.lib> <obj1> [obj2...]", args[0]);
     eprintln!("       {} /x <library.lib>", args[0]);
-    eprintln!("       {} /l <library.lib >", args[0]);
+    eprintln!("       {} /l <library.lib>", args[0]);
     process::exit(1);
 }
 
@@ -78,7 +81,7 @@ pub fn psylib_main() -> Result<()> {
             if args.len() < 4 {
                 bail!("Usage: {} /a <library> <obj>", args[0]);
             }
-            return cli::add(&PathBuf::from(&args[2]), &PathBuf::from(&args[3]));
+            cli::add(&PathBuf::from(&args[2]), &PathBuf::from(&args[3]))
         }
         "/d" => {
             if args.len() < 4 {
@@ -87,7 +90,7 @@ pub fn psylib_main() -> Result<()> {
             let lib_path = PathBuf::from(&args[2]);
             let obj_name = args[3].clone();
 
-            return cli::delete(&lib_path, [obj_name].to_vec());
+            cli::delete(&lib_path, [obj_name].to_vec())
         }
         "/u" => {
             if args.len() < 4 {
@@ -95,28 +98,29 @@ pub fn psylib_main() -> Result<()> {
             }
             let lib_path = &PathBuf::from(&args[2]);
             let obj_paths: Vec<PathBuf> = args[3..].iter().map(PathBuf::from).collect();
-            return cli::update(lib_path, obj_paths);
+            cli::update(lib_path, obj_paths)
         }
         "/x" => {
             if args.len() < 3 {
                 bail!("Usage: {} /x <library>", args[0]);
             }
-            return cli::split(&PathBuf::from(&args[2]));
+            cli::split(&PathBuf::from(&args[2]))
         }
         "/l" => {
             if args.len() < 3 {
                 bail!("Usage: {} /l <library>", args[0]);
             }
-            return cli::info(
+            cli::info(
                 &mut std::io::stdout(),
                 &PathBuf::from(&args[2]),
                 false,
                 false,
                 false,
-            );
+            )
         }
-        _ => {}
+        _ => {
+            eprintln!("Invalid option: {}\n", args[1]);
+            psylib_usage()
+        }
     }
-
-    Ok(())
 }

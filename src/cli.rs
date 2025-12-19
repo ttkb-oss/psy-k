@@ -7,6 +7,7 @@ use std::fs::{File, FileTimes};
 use std::io::Write;
 use std::path::{Path, PathBuf};
 
+use anyhow::bail;
 use anyhow::Result;
 use clap::crate_version;
 
@@ -97,6 +98,10 @@ pub fn update(lib_path: &Path, obj_paths: Vec<PathBuf>) -> Result<()> {
 
     let mut updated_module_paths: HashMap<String, PathBuf> = HashMap::new();
     for path in obj_paths {
+        if !Path::exists(&path) {
+            bail!(format!("File not found: {}", path.display()));
+        }
+
         let module_name = String::from(path.file_stem().expect("file").to_string_lossy());
         updated_module_paths.insert(module_name, path);
     }

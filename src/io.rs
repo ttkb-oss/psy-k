@@ -7,7 +7,7 @@ use std::io::Write;
 use std::path::Path;
 
 use crate::{display, LIB, OBJ};
-use anyhow::{anyhow, bail, Result};
+use anyhow::{bail, Result};
 use binrw::io::Cursor;
 use binrw::{meta::ReadMagic, BinRead, BinWrite};
 
@@ -59,8 +59,8 @@ pub fn read(lib_or_obj_path: &Path) -> Result<Type> {
     let mut data = Cursor::new(&bytes);
 
     match magic {
-        LIB::MAGIC => Ok(Type::LIB(LIB::read(&mut data).map_err(|e| anyhow!(e))?)),
-        OBJ::MAGIC => Ok(Type::OBJ(OBJ::read(&mut data).map_err(|e| anyhow!(e))?)),
+        LIB::MAGIC => Ok(Type::LIB(LIB::read(&mut data)?)),
+        OBJ::MAGIC => Ok(Type::OBJ(OBJ::read(&mut data)?)),
         _ => bail!(format!("Unrecognized magic {:?}", &bytes[0..3])),
     }
 }
@@ -70,7 +70,7 @@ pub fn read(lib_or_obj_path: &Path) -> Result<Type> {
 pub fn read_obj(obj_path: &Path) -> Result<OBJ> {
     let bytes = read_bytes(obj_path)?;
     let mut data = Cursor::new(&bytes);
-    OBJ::read(&mut data).map_err(|e| anyhow!(e))
+    Ok(OBJ::read(&mut data)?)
 }
 
 /// Reads a Psy-Q [LIB]. If the file cannot be found or if the file
@@ -78,14 +78,14 @@ pub fn read_obj(obj_path: &Path) -> Result<OBJ> {
 pub fn read_lib(lib_path: &Path) -> Result<LIB> {
     let bytes = read_bytes(lib_path)?;
     let mut data = Cursor::new(&bytes);
-    LIB::read(&mut data).map_err(|e| anyhow!(e))
+    Ok(LIB::read(&mut data)?)
 }
 
 /// Writes a Psy-Q [OBJ]. If the file cannot be written an error will
 /// be returned.
 pub fn write_obj(obj: &OBJ, file: &mut File) -> Result<()> {
     let mut writer = Cursor::new(Vec::new());
-    obj.write(&mut writer).map_err(|e| anyhow!(e))?;
+    obj.write(&mut writer)?;
     let gen = writer.into_inner();
     file.write_all(&gen)?;
     Ok(())
@@ -95,7 +95,7 @@ pub fn write_obj(obj: &OBJ, file: &mut File) -> Result<()> {
 /// be returned.
 pub fn write_lib(lib: &LIB, file: &mut File) -> Result<()> {
     let mut writer = Cursor::new(Vec::new());
-    lib.write(&mut writer).map_err(|e| anyhow!(e))?;
+    lib.write(&mut writer)?;
     let gen = writer.into_inner();
     file.write_all(&gen)?;
     Ok(())

@@ -65,7 +65,7 @@ fn test_bad_files() {
 
     let e = io::read(Path::new("tests/data/truncated.obj")).expect_err("error");
     let msg = e.chain().next().map(|x| format!("{x}")).expect("reason");
-    assert!(msg.starts_with(" 0: Error: no variants matched at 0x4..."));
+    assert!(msg.contains("Error: no variants matched at 0x4..."));
 }
 
 #[test]
@@ -84,7 +84,7 @@ fn test_bad_obj_files() {
 
     let e = io::read_obj(Path::new("tests/data/truncated.obj")).expect_err("error");
     let msg = e.chain().next().map(|x| format!("{x}")).expect("reason");
-    assert!(msg.starts_with(" 0: Error: no variants matched at 0x4..."));
+    assert!(msg.contains("Error: no variants matched at 0x4..."));
 }
 
 #[test]
