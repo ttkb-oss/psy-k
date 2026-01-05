@@ -1,9 +1,6 @@
 // SPDX-FileCopyrightText: © 2025 TTKB, LLC
 // SPDX-License-Identifier: BSD-3-CLAUSE
 
-use std::path::Path;
-
-use psyk::io;
 use psyk::link;
 use psyk::link::Command;
 use psyk::link::Comment;
@@ -16,7 +13,7 @@ fn get_command_at(lines: &[(Option<Command>, Option<Comment>)], line: usize) -> 
 }
 
 fn read_lnk(path: &str) -> Vec<(Option<Command>, Option<Comment>)> {
-    io::read_bytes(Path::new(path))
+    std::fs::read(path)
         // poor man's ISO-8859-1 to Unicode converter
         .map(|bytes| bytes.iter().map(|&c| c as char).collect::<String>())
         .unwrap() // panic on possible file-reading errors

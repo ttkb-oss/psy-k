@@ -2,14 +2,32 @@
 // Licensed under the MIT License. See LICENSE file in the project root for details.
 
 use std::fmt::{Debug, Display, Formatter};
-use std::fs::File;
-use std::io::Write;
+use std::io::{Read, Seek, Write};
 use std::path::Path;
 
 use crate::{display, LIB, OBJ};
-use anyhow::{bail, Result};
 use binrw::io::Cursor;
 use binrw::{meta::ReadMagic, BinRead, BinWrite};
+use thiserror::Error;
+
+/// `IOError`s should be considered unstable for the time being.
+#[derive(Debug, Error)]
+pub enum IOError {
+    #[error("{0}: {1}")]
+    FileNotFound(String, String),
+
+    #[error("Bad magic: {0}")]
+    BadMagic(String),
+
+    #[error(transparent)]
+    ParseError(#[from] binrw::Error),
+
+    #[error(transparent)]
+    SerializeError(binrw::Error),
+
+    #[error(transparent)]
+    IO(#[from] std::io::Error),
+}
 
 #[derive(Debug)]
 pub enum Type {
@@ -37,66 +55,91 @@ impl display::DisplayWithOptions for Type {
     }
 }
 
-pub fn read_bytes(path: &Path) -> Result<Vec<u8>> {
-    if !Path::exists(path) {
-        bail!(format!("File not found: {}", path.display()));
+fn read_bytes<P: AsRef<Path>>(path: P) -> std::result::Result<Vec<u8>, IOError> {
+    if !Path::exists(path.as_ref()) {
+        let p = path.as_ref().display();
+        return Err(IOError::FileNotFound(
+            format!("File not found: {p}"),
+            p.to_string(),
+        ));
     }
 
-    Ok(std::fs::read(path)?)
+    Ok(std::fs::read(path.as_ref())?)
 }
 
 /// Reads a Psy-Q [LIB] or [OBJ]. If the file cannot be found or if the file
 /// does not contain valid data an error will be returned.
-pub fn read(lib_or_obj_path: &Path) -> Result<Type> {
+pub fn read<P: AsRef<Path>>(lib_or_obj_path: P) -> std::result::Result<Type, IOError> {
+    // binrw can operate on a File or BufReader directly, but
+    // performance on either of those is significantly lower
+    // than operating on a vec directly. OBJ and LIB files are
+    // typically less than 1MB and the resulting structure is
+    // completely in memory and not streamed.
     let bytes = read_bytes(lib_or_obj_path)?;
+    read_from_memory(&bytes)
+}
 
+pub fn read_from_memory(bytes: &[u8]) -> std::result::Result<Type, IOError> {
     if bytes.len() < 3 {
-        bail!("File too small to contain valid PSY-Q magic number");
+        return Err(IOError::BadMagic(
+            "File too small to contain valid PSY-Q magic number".to_string(),
+        ));
     }
 
     let mut magic: [u8; 3] = [0; 3];
-    magic.clone_from_slice(&bytes[0..3]);
-    let mut data = Cursor::new(&bytes);
-
+    magic.copy_from_slice(&bytes[0..3]);
     match magic {
-        LIB::MAGIC => Ok(Type::LIB(LIB::read(&mut data)?)),
-        OBJ::MAGIC => Ok(Type::OBJ(OBJ::read(&mut data)?)),
-        _ => bail!(format!("Unrecognized magic {:?}", &bytes[0..3])),
+        LIB::MAGIC => Ok(read_lib_from_memory(bytes).map(Type::LIB)?),
+        OBJ::MAGIC => Ok(read_obj_from_memory(bytes).map(Type::OBJ)?),
+        _ => Err(IOError::BadMagic(format!(
+            "Unrecognized magic {:?}",
+            &magic
+        ))),
     }
 }
 
 /// Reads a Psy-Q [OBJ]. If the file cannot be found or if the file
 /// does not contain valid data an error will be returned.
-pub fn read_obj(obj_path: &Path) -> Result<OBJ> {
+pub fn read_obj<P: AsRef<Path>>(obj_path: P) -> std::result::Result<OBJ, IOError> {
     let bytes = read_bytes(obj_path)?;
     let mut data = Cursor::new(&bytes);
-    Ok(OBJ::read(&mut data)?)
+    read_obj_from_reader(&mut data)
+}
+
+pub fn read_obj_from_memory(bytes: &[u8]) -> std::result::Result<OBJ, IOError> {
+    read_obj_from_reader(Cursor::new(bytes))
+}
+
+/// Reads a Psy-Q [OBJ].
+pub fn read_obj_from_reader<R: Read + Seek>(mut reader: R) -> std::result::Result<OBJ, IOError> {
+    OBJ::read(&mut reader).map_err(IOError::ParseError)
 }
 
 /// Reads a Psy-Q [LIB]. If the file cannot be found or if the file
 /// does not contain valid data an error will be returned.
-pub fn read_lib(lib_path: &Path) -> Result<LIB> {
+pub fn read_lib<P: AsRef<Path>>(lib_path: P) -> std::result::Result<LIB, IOError> {
     let bytes = read_bytes(lib_path)?;
     let mut data = Cursor::new(&bytes);
-    Ok(LIB::read(&mut data)?)
+    read_lib_from_reader(&mut data)
+}
+
+pub fn read_lib_from_memory(bytes: &[u8]) -> std::result::Result<LIB, IOError> {
+    read_lib_from_reader(Cursor::new(bytes))
+}
+
+/// Reads a Psy-Q [LIB].
+pub fn read_lib_from_reader<R: Read + Seek>(mut reader: R) -> std::result::Result<LIB, IOError> {
+    LIB::read(&mut reader).map_err(IOError::ParseError)
 }
 
 /// Writes a Psy-Q [OBJ]. If the file cannot be written an error will
 /// be returned.
-pub fn write_obj(obj: &OBJ, file: &mut File) -> Result<()> {
-    let mut writer = Cursor::new(Vec::new());
-    obj.write(&mut writer)?;
-    let gen = writer.into_inner();
-    file.write_all(&gen)?;
-    Ok(())
+pub fn write_obj<W: Write + Seek>(obj: &OBJ, writer: &mut W) -> std::result::Result<(), IOError> {
+    obj.write(writer).map_err(IOError::SerializeError)
 }
 
 /// Writes a Psy-Q [LIB]. If the file cannot be written an error will
 /// be returned.
-pub fn write_lib(lib: &LIB, file: &mut File) -> Result<()> {
-    let mut writer = Cursor::new(Vec::new());
-    lib.write(&mut writer)?;
-    let gen = writer.into_inner();
-    file.write_all(&gen)?;
-    Ok(())
+pub fn write_lib<W: Write + Seek>(lib: &LIB, writer: &mut W) -> std::result::Result<(), IOError> {
+    lib.write(writer).map_err(IOError::SerializeError)
 }

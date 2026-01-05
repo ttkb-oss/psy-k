@@ -1,0 +1,59 @@
+[package]
+name = "psy-k-bin"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "PSY-Q object & library utilities."
+keywords = ["psy-q", "dumpobj", "psylib", "obj", "psx"]
+categories = ["command-line-utilities", "development-tools", "game-development"]
+readme = "../README.md"
+rust-version.workspace = true
+
+[lib]
+name = "__psyk_bin"
+
+[[bin]]
+name = "psyk"
+path = "src/main.rs"
+
+[[bin]]
+name = "psylib"
+path = "src/psylib.rs"
+
+[[bin]]
+name = "dumpobj"
+path = "src/dumpobj.rs"
+
+[dependencies]
+anyhow = "1.0.100"
+clap = { version = "4.5.51", features = ["cargo", "derive"] }
+psy-k = { version = "0", path = ".." }
+
+[dev-dependencies]
+assert_cmd = "2.0"
+predicates = "3.1"
+tempdir = "0.3.7"
+tempfile = "3.23.0"
+
+[lints]
+workspace = true
+
+[package.metadata.deb]
+maintainer = "Jonathan Hohle <jon@ttkb.co>"
+copyright = "2025-2026, TTKB, LLC."
+license-file = ["../LICENSE.TXT", "2"]
+extended-description = """\
+Utilties for reading PS1/PSY-Q LIB & OBJ files.
+"""
+depends = "$auto"
+section = "development"
+priority = "optional"
+assets = [
+    # target/release path is special, and gets replaced by cargo-deb with the actual target dir path.
+    ["target/release/psyk", "usr/bin/", "755"],
+    ["target/release/dumpobj", "usr/bin/", "755"],
+    ["target/release/psylib", "usr/bin/", "755"],
+    { source = "../README.md", dest = "usr/share/doc/psyk/README", mode = "644"},
+]

@@ -2,10 +2,11 @@
 ========
 
 [![codecov](https://codecov.io/github/ttkb-oss/psy-k/graph/badge.svg?token=G837GZY5VW)](https://codecov.io/github/ttkb-oss/psy-k)
+[![Latest version](https://img.shields.io/crates/v/psy-k.svg)](https://crates.io/crates/psy-k)
 
 `psy-k` is a pure-safe library and utility for parsing PSY-Q LIB & OBJ files.
 
-As a utility, `psyk` will print the contents of LIB or OBJ files. `psyk` can split `LIB` files into `OBJ`s or combine
+Several utilities are included in the `psy-k-bin` crate. `psyk` will print the contents of LIB or OBJ files. `psyk` can split `LIB` files into `OBJ`s or combine
 `OBJ`s into `LIB`s; your choice, really.
 
 As a library, `psy-k` parses `LIB` and `OBJ` files for programmatic manipulation.
@@ -15,7 +16,7 @@ As a library, `psy-k` parses `LIB` and `OBJ` files for programmatic manipulation
 Commands
 --------
 
-*default*/*list* - dump a `LIB` or `OBJ` file
+**(no command)/`list` - dump a `LIB` or `OBJ` file**
 
 ```bash
 $> psyk PSX/LIB/LIBCARD.LIB
@@ -35,7 +36,20 @@ A93      26-12-95 17:43:12 _card_wait
 CARD     26-12-95 17:43:12 _card_clear
 ```
 
-*extract* - extract `OBJ`s from a a `LIB` file
+Additional options allow for deeper inspection:
+
+```
+# Show hex dump of all sections
+psyk list --code PLAYER.OBJ
+
+# Show MIPS disassembly
+psyk list --disassemble MAIN.OBJ
+
+# Recursively list all modules and their exports inside a library
+psyk list --recursive LIBSN.LIB
+```
+
+**`extract` - extract `OBJ`s from a a `LIB` file**
 
 ```bash
 $> psyk extract PSX/LIB/LIBCARD.LIB
@@ -56,13 +70,45 @@ Extracted object file A93.OBJ
 Extracted object file CARD.OBJ
 ```
 
-*create* - create a new `LIB` from one or more `OBJ`s
+**`create` - Create a new library**
 
-*add* - add another `OBJ` to an existing `LIB`
+Combines one or more object files into a new .LIB archive.
 
-*update* - update an existing `OBJ` in a `LIB`
+```bash
+psyk create NEW.LIB C1.OBJ C2.OBJ A1.OBJ
+```
 
-*delete* - delete an `OBJ` from a `LIB`
+**`add` - Appends a new object file to an existing library**
+
+Appends a new object file to an existing library.
+
+```bash
+psyk add UTILS.LIB NEW_FUNC.OBJ
+```
+
+*update* - Update objects in a library
+
+Replaces existing modules in a library with new versions from disk if the filenames match.
+
+```
+psyk update MATH.LIB VECTOR.OBJ MATRIX.OBJ
+```
+
+*delete* - Delete objects from a library
+
+Removes specific modules from a library by name.
+
+```bash
+psyk delete PROJECT.LIB OLD_FUNC DEPRECATED_STUB
+```
+
+### DOS Compatibility
+
+`psyk` can also be called as `dumpobj` or `psylib` and works just like those utilities.
+
+```bash
+psylib /x MYLIB.LIB  # Equivalent to `psyk extract MYLIB.LIB`
+```
 
 Library
 -------

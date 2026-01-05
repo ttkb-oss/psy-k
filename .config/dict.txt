@@ -47,6 +47,7 @@ BSS
 Bitwise
 Check0
 Check1
+GCC
 HITACHI_SH2
 IncSLDLineNum
 IncSLDLineNumByte

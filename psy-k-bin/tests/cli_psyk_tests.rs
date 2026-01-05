@@ -6,6 +6,11 @@ use std::process::Command;
 use assert_cmd::cargo;
 use assert_cmd::prelude::*;
 use predicates::prelude::*;
+use tempdir::TempDir;
+
+mod common;
+
+use common::psyq_path;
 
 #[inline]
 fn psyk() -> Command {
@@ -36,7 +41,7 @@ fn test_psyk_list_help() {
 fn test_psyk_list_valid_file() {
     // no command variant
     psyk()
-        .arg("tests/data/psy-q/3.5/PSX/LIB/LIBCARD.LIB")
+        .arg(psyq_path("3.5/PSX/LIB/LIBCARD.LIB"))
         .assert()
         .success()
         .stdout(predicate::str::contains(
@@ -45,7 +50,7 @@ fn test_psyk_list_valid_file() {
 
     psyk()
         .arg("list")
-        .arg("tests/data/psy-q/3.5/PSX/LIB/LIBCARD.LIB")
+        .arg(psyq_path("3.5/PSX/LIB/LIBCARD.LIB"))
         .assert()
         .success()
         .stdout(predicate::str::contains(
@@ -54,7 +59,7 @@ fn test_psyk_list_valid_file() {
 
     psyk()
         .arg("list")
-        .arg("tests/data/psy-q/3.5/PSX/LIB/MALLOC.OBJ")
+        .arg(psyq_path("3.5/PSX/LIB/MALLOC.OBJ"))
         .assert()
         .success()
         .stdout(predicate::str::contains(
@@ -67,7 +72,7 @@ fn test_psyk_list_valid_file() {
     psyk()
         .arg("list")
         .arg("--code")
-        .arg("tests/data/psy-q/3.5/PSX/LIB/MALLOC.OBJ")
+        .arg(psyq_path("3.5/PSX/LIB/MALLOC.OBJ"))
         .assert()
         .success()
         .stdout(predicate::str::contains(
@@ -85,7 +90,7 @@ fn test_psyk_list_valid_file() {
     psyk()
         .arg("list")
         .arg("--disassemble")
-        .arg("tests/data/psy-q/3.5/PSX/LIB/MALLOC.OBJ")
+        .arg(psyq_path("3.5/PSX/LIB/MALLOC.OBJ"))
         .assert()
         .success()
         .stdout(predicate::str::contains(
@@ -105,6 +110,15 @@ fn test_psyk_list_valid_file() {
 fn test_psyk_list_file_not_found() {
     psyk()
         .arg("list")
+        .arg("non_existent_file.lib")
+        .assert()
+        .failure()
+        .stderr(predicate::str::contains("Error"));
+}
+
+#[test]
+fn test_psyk_list_file_not_found_default_command() {
+    psyk()
         .arg("non_existent_file.lib")
         .assert()
         .failure()
@@ -133,7 +147,7 @@ fn test_psyk_add_file_not_found() {
     // real LIB
     psyk()
         .arg("add")
-        .arg("tests/data/psy-q/3.5/PSX/LIB/LIBCARD.LIB")
+        .arg(psyq_path("3.5/PSX/LIB/LIBCARD.LIB"))
         .arg("non_existent_file.obj")
         .assert()
         .failure()
@@ -161,7 +175,34 @@ fn test_psyk_create_file_not_found() {
 }
 
 #[test]
-fn test_psyk_deletem_issing_args() {
+fn test_psyk_create_unwriteable_path() {
+    psyk()
+        .arg("create")
+        .arg("/non/existent/test.lib")
+        .arg(psyq_path("3.5/PSX/LIB/MALLOC.OBJ"))
+        .assert()
+        .failure()
+        .stderr(predicate::str::contains("No such file or directory"));
+}
+
+#[test]
+fn test_psyk_create() {
+    let tmp_dir = TempDir::new("test_psyk_create").expect("tmpdir");
+
+    let test_malloc_lib = tmp_dir.path().join("test-malloc.lib");
+
+    psyk()
+        .arg("create")
+        .arg(test_malloc_lib)
+        .arg(psyq_path("3.5/PSX/LIB/MALLOC.OBJ"))
+        .assert()
+        .success();
+
+    tmp_dir.close().unwrap();
+}
+
+#[test]
+fn test_psyk_delete_missing_args() {
     psyk()
         .arg("delete")
         .assert()
@@ -202,7 +243,7 @@ fn test_psyk_update_file_not_found() {
     // real LIB
     psyk()
         .arg("update")
-        .arg("tests/data/psy-q/3.5/PSX/LIB/LIBCARD.LIB")
+        .arg(psyq_path("3.5/PSX/LIB/LIBCARD.LIB"))
         .arg("non_existent_file.obj")
         .assert()
         .failure()

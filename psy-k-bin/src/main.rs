@@ -8,9 +8,7 @@ use anyhow::bail;
 use anyhow::Result;
 use clap::{CommandFactory, Parser, Subcommand};
 
-mod dos;
-
-use psyk::cli::{self, get_binary_name};
+mod cli;
 
 /// Inspect, extract, and create PSY-Q LIB and OBJ files.
 #[derive(Debug, Parser)]
@@ -94,12 +92,6 @@ enum CLICommand {
 }
 
 fn main() -> Result<()> {
-    match get_binary_name().as_str() {
-        "dumpobj" => return dos::dumpobj_main(),
-        "psylib" => return dos::psylib_main(),
-        _ => (),
-    }
-
     let args = App::parse();
 
     match args.command {
@@ -117,10 +109,10 @@ fn main() -> Result<()> {
                 recursive,
             )?,
             CLICommand::Extract { lib } => cli::split(&lib)?,
-            CLICommand::Create { lib, objs } => cli::join(&lib, objs)?,
+            CLICommand::Create { lib, objs } => cli::join(&lib, &objs)?,
             CLICommand::Add { lib, obj } => cli::add(&lib, &obj)?,
-            CLICommand::Update { lib, objs } => cli::update(&lib, objs)?,
-            CLICommand::Delete { lib, obj_names } => cli::delete(&lib, obj_names)?,
+            CLICommand::Update { lib, objs } => cli::update(&lib, &objs)?,
+            CLICommand::Delete { lib, obj_names } => cli::delete(&lib, &obj_names)?,
         },
         None => match args.lib_or_obj {
             Some(lib_or_obj) => {

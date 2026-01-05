@@ -1,73 +1,64 @@
-[package]
-name = "psy-k"
-version = "0.4.1"
-edition = "2021"
+[workspace]
+members = [
+    "psy-k-bin",
+    "psy-k-test-support",
+]
+resolver = "2"
+
+[workspace.package]
+version = "0.5.0"
 authors = ["Jonathan Hohle <jon@ttkb.co>"]
 license = "BSD-3-Clause"
 repository = "https://github.com/ttkb-oss/psy-k"
-description = "A PSY-Q object & library parser & utility."
 keywords = ["psy-q", "dumpobj", "psylib", "obj", "psx"]
-categories = ["command-line-utilities", "data-structures", "development-tools", "game-development", "parser-implementations"]
+rust-version = "1.91.0"
+edition = "2021"
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
+
+[package]
+name = "psy-k"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "A PSY-Q object & library parser & utility."
+keywords.workspace = true
+categories = ["data-structures", "development-tools", "game-development", "parser-implementations"]
 exclude = [
     ".gitignore",
     "/.github",
-    "target/.private/",
+    "target/.private",
     "tests/data/psy-q",
 ]
 readme = "README.md"
-rust-version = "1.91.0"
+rust-version.workspace = true
 
 [lib]
 name = "psyk"
 
-[[bin]]
-name = "psyk"
-path = "src/main.rs"
-
-[[bin]]
-name = "psylib"
-path = "src/main.rs"
-
-[[bin]]
-name = "dumpobj"
-path = "src/main.rs"
-
 [dependencies]
-anyhow = "1.0.100"
 binrw = { version = "0.15.0"}
 chrono = "0.4"
-clap = { version = "4.5.51", features = ["cargo", "derive"] }
 rabbitizer = "1.14.3"
+thiserror = "2.0.17"
 unicode-segmentation = "1.12.0"
 winnow = "0.7.14"
 
 [dev-dependencies]
 serde_json = "1.0.145"
-tempfile = "3.23.0"
-assert_cmd = "2.0"
-predicates = "3.1"
+psy-k-test-support = { version = "0", path = "psy-k-test-support" }
+
+[build-dependencies]
 # on macOS, cargo-spellcheck requires:
 #    export DYLD_FALLBACK_LIBRARY_PATH= \
 #        "$(xcode-select --print-path)/Toolchains/XcodeDefault.xctoolchain/usr/lib/"
 #cargo-spellcheck = "0.15.5"
 
+[lints]
+workspace = true
+
 [package.metadata.spellcheck]
 config = ".config/spellcheck.toml"
-
-[package.metadata.deb]
-maintainer = "Jonathan Hohle <jon@ttkb.co>"
-copyright = "2025, TTKB, LLC."
-license-file = ["LICENSE.TXT", "2"]
-extended-description = """\
-A crate for reading PS1/PSY-Q LIB & OBJ files.
-"""
-depends = "$auto"
-section = "development"
-priority = "optional"
-assets = [
-    # target/release path is special, and gets replaced by cargo-deb with the actual target dir path.
-    ["target/release/psyk", "usr/bin/", "755"],
-    ["target/release/dumpobj", "usr/bin/", "755"],
-    ["target/release/psylib", "usr/bin/", "755"],
-    { source = "README.md", dest = "usr/share/doc/psyk/README", mode = "644"},
-]

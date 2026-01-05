@@ -1,7 +1,8 @@
-PRIVATE := target/.private
+PROJECT_ROOT := $(dir $(realpath $(firstword $(MAKEFILE_LIST))))
+PRIVATE := $(PROJECT_ROOT)/target/.private
+TEST_FLAGS := LLVM_PROFILE_FILE=$(PRIVATE)/profile/cargo-test-%p-%m.profraw
 
 RUSTFLAGS := -C instrument-coverage
-TEST_FLAGS := LLVM_PROFILE_FILE=$(PRIVATE)/profile/cargo-test-%p-%m.profraw
 ENV_FLAGS := $(TEST_FLAGS)
 
 # Detect LLVM version
@@ -30,16 +31,22 @@ RUSTFLAGS_COV := -C instrument-coverage \
                  -C opt-level=0 \
                  -C debuginfo=2
 
-# Profile output location
-PROFRAW_DIR := $(PRIVATE)/coverage/profraw
-PROFDATA_FILE := $(PRIVATE)/coverage/merged.profdata
-
-# Source root (for accurate path mapping)
-SOURCE_ROOT := $(shell pwd)
-
 .PHONY: all
 all:
-	$(ENV_FLAGS) RUSTFLAGS="$(RUSTFLAGS)" cargo build
+	$(ENV_FLAGS) RUSTFLAGS="$(RUSTFLAGS)" cargo build --workspace
+
+.PHONY: dist
+dist:
+	cargo package --workspace --allow-dirty
+
+.PHONY: dist
+dist-deb:
+	cargo deb --package psy-k-bin \
+	    --target=i686-unknown-linux-gnu
+	cargo deb --package psy-k-bin \
+	    --target=x86_64-unknown-linux-gnu
+	cargo deb --package psy-k-bin \
+	    --target=aarch64-unknown-linux-gnu
 
 .PHONY: check
 check: test spellcheck doc clippy fmt
@@ -47,11 +54,11 @@ check: test spellcheck doc clippy fmt
 .PHONY: test
 test: test-data
 	rm -rf $(PRIVATE)/profile
-	$(ENV_FLAGS) RUST_BACKTRACE=1 RUSTFLAGS="$(RUSTFLAGS)" cargo test --verbose
+	$(ENV_FLAGS) RUST_BACKTRACE=1 RUSTFLAGS="$(RUSTFLAGS)" cargo test --workspace --all-features --verbose
 
 .PHONY: test-docs
 test-docs:
-	cargo test --doc
+	cargo test --workspace --doc
 
 .PHONY: doc
 doc:
@@ -59,7 +66,7 @@ doc:
 
 .PHONY: clippy
 clippy:
-	cargo clippy --all-targets --all-features -- -D warnings
+	cargo clippy --workspace --all-targets --all-features -- -D warnings
 
 .PHONY: fmt
 fmt:
@@ -72,6 +79,10 @@ clean:
 
 .PHONY: report
 report: coverage-html
+
+.PHONY: flamegraph
+flamegraph:
+	cargo flamegraph -o target/.private/flamegraph.svg --package psy-k --test psyq_ps1_tests
 
 # coverage
 # Install llvm-cov if not present

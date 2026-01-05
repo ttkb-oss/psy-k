@@ -7,6 +7,10 @@ use assert_cmd::cargo;
 use assert_cmd::prelude::*;
 use predicates::prelude::*;
 
+mod common;
+
+use common::psyq_path;
+
 #[inline]
 fn psylib() -> Command {
     Command::new(cargo::cargo_bin!("psylib"))
@@ -28,7 +32,7 @@ fn test_psylib_help() {
 fn test_psylib_list_valid_file() {
     psylib()
         .arg("/l")
-        .arg("tests/data/psy-q/3.5/PSX/LIB/LIBCARD.LIB")
+        .arg(psyq_path("3.5/PSX/LIB/LIBCARD.LIB"))
         .assert()
         .success()
         .stdout(predicate::str::contains(
@@ -77,7 +81,7 @@ fn test_psylib_add_file_not_found() {
     // real LIB
     psylib()
         .arg("/a")
-        .arg("tests/data/psy-q/3.5/PSX/LIB/LIBCARD.LIB")
+        .arg(psyq_path("3.5/PSX/LIB/LIBCARD.LIB"))
         .arg("non_existent_file.obj")
         .assert()
         .failure()
@@ -126,7 +130,7 @@ fn test_psylib_update_file_not_found() {
     // real LIB
     psylib()
         .arg("/u")
-        .arg("tests/data/psy-q/3.5/PSX/LIB/LIBCARD.LIB")
+        .arg(psyq_path("3.5/PSX/LIB/LIBCARD.LIB"))
         .arg("non_existent_file.obj")
         .assert()
         .failure()

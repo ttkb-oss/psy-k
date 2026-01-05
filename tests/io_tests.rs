@@ -43,69 +43,104 @@ fn test_not_readable() {
 #[test]
 fn test_file_too_small() {
     let e = io::read(Path::new("/dev/null")).expect_err("error");
-    assert_eq!(
-        Some("File too small to contain valid PSY-Q magic number"),
-        e.chain().next().map(|x| format!("{x}")).as_deref()
-    );
+    match e {
+        io::IOError::BadMagic(message) => {
+            assert_eq!(
+                "File too small to contain valid PSY-Q magic number",
+                message
+            );
+        }
+        _ => panic!("unexpected type: {e:?}"),
+    }
 }
 
 #[test]
 fn test_bad_files() {
     let e = io::read(Path::new("tests/data/truncated.txt")).expect_err("error");
-    assert_eq!(
-        Some("Unrecognized magic [116, 120, 116]"),
-        e.chain().next().map(|x| format!("{x}")).as_deref()
-    );
+    match e {
+        io::IOError::BadMagic(message) => {
+            assert_eq!("Unrecognized magic [116, 120, 116]", message);
+        }
+        _ => panic!("unexpected type: {e:?}"),
+    }
 
     let e = io::read(Path::new("tests/data/truncated.lib")).expect_err("error");
-    assert_eq!(
-        Some("assertion failed: `! objs.is_empty()` at 0x0"),
-        e.chain().next().map(|x| format!("{x}")).as_deref()
-    );
+    match e {
+        io::IOError::ParseError(binrw_err) => {
+            let msg = format!("{binrw_err}");
+            assert_eq!("assertion failed: `! objs.is_empty()` at 0x0", msg);
+        }
+        _ => panic!("unexpected type: {e:?}"),
+    }
 
     let e = io::read(Path::new("tests/data/truncated.obj")).expect_err("error");
-    let msg = e.chain().next().map(|x| format!("{x}")).expect("reason");
-    assert!(msg.contains("Error: no variants matched at 0x4..."));
+    match e {
+        io::IOError::ParseError(binrw_err) => {
+            let msg = format!("{binrw_err}");
+            assert!(msg.contains("Error: no variants matched at 0x4..."));
+        }
+        _ => panic!("unexpected type: {e:?}"),
+    }
 }
 
 #[test]
 fn test_bad_obj_files() {
     let e = io::read_obj(Path::new("tests/data/truncated.txt")).expect_err("error");
-    assert_eq!(
-        Some("bad magic at 0x0: [116, 120, 116]"),
-        e.chain().next().map(|x| format!("{x}")).as_deref()
-    );
+    match e {
+        io::IOError::ParseError(binrw_err) => {
+            let msg = format!("{binrw_err}");
+            assert_eq!("bad magic at 0x0: [116, 120, 116]", msg);
+        }
+        _ => panic!("unexpected type: {e:?}"),
+    }
 
     let e = io::read_obj(Path::new("tests/data/truncated.lib")).expect_err("error");
-    assert_eq!(
-        Some("bad magic at 0x0: [76, 73, 66]"),
-        e.chain().next().map(|x| format!("{x}")).as_deref()
-    );
+    match e {
+        io::IOError::ParseError(binrw_err) => {
+            let msg = format!("{binrw_err}");
+            assert_eq!("bad magic at 0x0: [76, 73, 66]", msg);
+        }
+        _ => panic!("unexpected type: {e:?}"),
+    }
 
     let e = io::read_obj(Path::new("tests/data/truncated.obj")).expect_err("error");
-    let msg = e.chain().next().map(|x| format!("{x}")).expect("reason");
-    assert!(msg.contains("Error: no variants matched at 0x4..."));
+    match e {
+        io::IOError::ParseError(bin_err) => {
+            let msg = format!("{bin_err}");
+            assert!(msg.contains("Error: no variants matched at 0x4..."));
+        }
+        _ => panic!("incorrect error type: {e:?}"),
+    }
 }
 
 #[test]
 fn test_bad_lib_files() {
     let e = io::read_lib(Path::new("tests/data/truncated.txt")).expect_err("error");
-    assert_eq!(
-        Some("bad magic at 0x0: [116, 120, 116]"),
-        e.chain().next().map(|x| format!("{x}")).as_deref()
-    );
+    match e {
+        io::IOError::ParseError(binrw_err) => {
+            let msg = format!("{binrw_err}");
+            assert_eq!("bad magic at 0x0: [116, 120, 116]", msg);
+        }
+        _ => panic!("unexpected type: {e:?}"),
+    }
 
     let e = io::read_lib(Path::new("tests/data/truncated.lib")).expect_err("error");
-    assert_eq!(
-        Some("assertion failed: `! objs.is_empty()` at 0x0"),
-        e.chain().next().map(|x| format!("{x}")).as_deref()
-    );
+    match e {
+        io::IOError::ParseError(binrw_err) => {
+            let msg = format!("{binrw_err}");
+            assert_eq!("assertion failed: `! objs.is_empty()` at 0x0", msg);
+        }
+        _ => panic!("unexpected type: {e:?}"),
+    }
 
     let e = io::read_lib(Path::new("tests/data/truncated.obj")).expect_err("error");
-    assert_eq!(
-        Some("bad magic at 0x0: [76, 78, 75]"),
-        e.chain().next().map(|x| format!("{x}")).as_deref()
-    );
+    match e {
+        io::IOError::ParseError(binrw_err) => {
+            let msg = format!("{binrw_err}");
+            assert_eq!("bad magic at 0x0: [76, 78, 75]", msg);
+        }
+        _ => panic!("unexpected type: {e:?}"),
+    }
 }
 
 #[test]
@@ -117,15 +152,21 @@ fn test_write_errors() {
 
     let mut file = File::open("/dev/fd").expect("file");
 
-    let e = io::write_obj(&obj.clone(), &mut file).expect_err("error");
-    assert_eq!(
-        "Bad file descriptor (os error 9)",
-        e.chain().next().map(|x| format!("{x}")).as_deref().unwrap()
-    );
+    let e = io::write_obj(&obj, &mut file).expect_err("error");
+    match e {
+        io::IOError::SerializeError(binrw_err) => {
+            let msg = format!("{binrw_err}");
+            assert_eq!("Bad file descriptor (os error 9)", msg);
+        }
+        _ => panic!("unexpected type: {e:?}"),
+    }
 
-    let e = io::write_lib(&lib.clone(), &mut file).expect_err("error");
-    assert_eq!(
-        "Bad file descriptor (os error 9)",
-        e.chain().next().map(|x| format!("{x}")).as_deref().unwrap()
-    );
+    let e = io::write_lib(&lib, &mut file).expect_err("error");
+    match e {
+        io::IOError::SerializeError(binrw_err) => {
+            let msg = format!("{binrw_err}");
+            assert_eq!("Bad file descriptor (os error 9)", msg);
+        }
+        _ => panic!("unexpected type: {e:?}"),
+    }
 }

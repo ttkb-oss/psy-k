@@ -7,6 +7,10 @@ use assert_cmd::cargo;
 use assert_cmd::prelude::*;
 use predicates::prelude::*;
 
+mod common;
+
+use common::psyq_path;
+
 #[inline]
 fn dumpobj() -> Command {
     Command::new(cargo::cargo_bin!("dumpobj"))
@@ -27,7 +31,7 @@ fn test_dumpobj_help() {
 fn test_dumpobj_valid_file() {
     // Note: You should include a small sample .obj file in tests/fixtures/
     let mut cmd = dumpobj();
-    cmd.arg("tests/data/psy-q/3.5/PSX/LIB/MALLOC.OBJ");
+    cmd.arg(psyq_path("3.5/PSX/LIB/MALLOC.OBJ"));
 
     cmd.assert()
         .success()
@@ -44,7 +48,7 @@ fn test_dumpobj_valid_file() {
         ));
 
     dumpobj()
-        .arg("tests/data/psy-q/3.5/PSX/LIB/MALLOC.OBJ")
+        .arg(psyq_path("3.5/PSX/LIB/MALLOC.OBJ"))
         .arg("/c")
         .assert()
         .success()
@@ -61,7 +65,7 @@ fn test_dumpobj_valid_file() {
         ));
 
     dumpobj()
-        .arg("tests/data/psy-q/3.5/PSX/LIB/MALLOC.OBJ")
+        .arg(psyq_path("3.5/PSX/LIB/MALLOC.OBJ"))
         .arg("/d")
         .assert()
         .success()
@@ -90,7 +94,7 @@ fn test_dumpobj_file_not_found() {
 #[test]
 fn test_dumpobj_bad_option() {
     dumpobj()
-        .arg("tests/data/psy-q/3.5/PSX/LIB/MALLOC.OBJ")
+        .arg(psyq_path("3.5/PSX/LIB/MALLOC.OBJ"))
         .arg("/?")
         .assert()
         .failure()

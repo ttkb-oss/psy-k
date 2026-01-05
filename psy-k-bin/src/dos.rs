@@ -4,7 +4,6 @@
 //! A module for providing a DOS-like interface to `psyk`.
 
 use std::env;
-use std::path::PathBuf;
 use std::process;
 
 use anyhow::{bail, Result};
@@ -34,7 +33,7 @@ pub fn dumpobj_main() -> Result<()> {
     let mut options = display::Options::default();
 
     let obj_path = match args.len() {
-        2 => PathBuf::from(args[1].clone()),
+        2 => &args[1],
         3 => {
             match args[2].as_str() {
                 "/c" => options.code_format = display::CodeFormat::Hex,
@@ -44,14 +43,14 @@ pub fn dumpobj_main() -> Result<()> {
                     dumpobj_usage()
                 }
             }
-            PathBuf::from(args[1].clone())
+            &args[1]
         }
         _ => dumpobj_usage(),
     };
 
     // info
-    let obj = io::read(&obj_path)?;
-    println!("{}", display::PsyXDisplayable::wrap(&obj, options));
+    let obj = io::read(obj_path)?;
+    println!("{}", display::PsyKDisplayable::wrap(&obj, options));
     Ok(())
 }
 
@@ -81,42 +80,36 @@ pub fn psylib_main() -> Result<()> {
             if args.len() < 4 {
                 bail!("Usage: {} /a <library> <obj>", args[0]);
             }
-            cli::add(&PathBuf::from(&args[2]), &PathBuf::from(&args[3]))
+            cli::add(&args[2], &args[3])
         }
         "/d" => {
             if args.len() < 4 {
                 bail!("Usage: {} /d <output.lib> <obj1> [obj2...]", args[0]);
             }
-            let lib_path = PathBuf::from(&args[2]);
+            let lib_path = &args[2];
             let obj_name = args[3].clone();
 
-            cli::delete(&lib_path, [obj_name].to_vec())
+            cli::delete(lib_path, &[obj_name])
         }
         "/u" => {
             if args.len() < 4 {
                 bail!("Usage: {} /u <output.lib> <obj1> [obj2...]", args[0]);
             }
-            let lib_path = &PathBuf::from(&args[2]);
-            let obj_paths: Vec<PathBuf> = args[3..].iter().map(PathBuf::from).collect();
+            let lib_path = &args[2];
+            let obj_paths = &args[3..];
             cli::update(lib_path, obj_paths)
         }
         "/x" => {
             if args.len() < 3 {
                 bail!("Usage: {} /x <library>", args[0]);
             }
-            cli::split(&PathBuf::from(&args[2]))
+            cli::split(&args[2])
         }
         "/l" => {
             if args.len() < 3 {
                 bail!("Usage: {} /l <library>", args[0]);
             }
-            cli::info(
-                &mut std::io::stdout(),
-                &PathBuf::from(&args[2]),
-                false,
-                false,
-                false,
-            )
+            cli::info(&mut std::io::stdout(), &args[2], false, false, false)
         }
         _ => {
             eprintln!("Invalid option: {}\n", args[1]);

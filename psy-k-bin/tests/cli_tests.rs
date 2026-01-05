@@ -7,10 +7,12 @@ use std::path::{Path, PathBuf};
 use anyhow::Result;
 use tempfile::TempDir;
 
-use psyk::cli;
+use __psyk_bin::cli;
 use psyk::io;
 
-const PSYQ_PREFIX: &str = "tests/data/psy-q";
+mod common;
+
+use common::psyq_path;
 
 #[test]
 fn test_split_and_rejoin() -> Result<()> {
@@ -18,7 +20,7 @@ fn test_split_and_rejoin() -> Result<()> {
     let temp_path = temp_dir.path();
 
     // Copy a test LIB file to temp directory
-    let p = format!("{PSYQ_PREFIX}/3.3/PSX/LIB/LIBAPI.LIB");
+    let p = psyq_path("3.3/PSX/LIB/LIBAPI.LIB");
     let test_lib = Path::new(&p);
     let temp_lib = temp_path.join("LIBAPI.LIB");
     fs::copy(test_lib, &temp_lib)?;
@@ -51,7 +53,7 @@ fn test_split_and_rejoin() -> Result<()> {
         .map(|m| temp_path.join(format!("{}.OBJ", m.name())))
         .collect();
 
-    cli::join(&rejoined_lib, obj_files)?;
+    cli::join(&rejoined_lib, &obj_files)?;
 
     // Verify the rejoined library
     let rejoined = io::read_lib(&rejoined_lib)?;
@@ -66,7 +68,7 @@ fn test_split_and_rejoin() -> Result<()> {
 
 #[test]
 fn test_info_lib() -> Result<()> {
-    let p = format!("{PSYQ_PREFIX}/3.3/PSX/LIB/LIBSN.LIB");
+    let p = psyq_path("3.3/PSX/LIB/LIBSN.LIB");
     let mut output: Vec<u8> = Vec::new();
 
     cli::info(&mut output, Path::new(&p), false, false, false)?;
@@ -135,7 +137,7 @@ fn test_info_lib() -> Result<()> {
 
 #[test]
 fn test_info_obj() -> Result<()> {
-    let p = format!("{PSYQ_PREFIX}/3.3/PSX/LIB/2MBYTE.OBJ");
+    let p = psyq_path("3.3/PSX/LIB/2MBYTE.OBJ");
     let mut output: Vec<u8> = Vec::new();
 
     cli::info(&mut output, Path::new(&p), false, false, false)?;

@@ -245,18 +245,16 @@ pub fn test_exports(module: &Module, lib_name: &str) {
         return;
     };
 
-    let mut found_exports = HashSet::new();
-
-    for section in module.object().sections() {
-        let symbol = match section {
+    let found_exports = module
+        .object()
+        .sections()
+        .iter()
+        .filter_map(|section| match section {
             Section::XREF(xref) => Some(xref.symbol_name()),
             Section::XDEF(xdef) => Some(xdef.symbol_name()),
             _ => None,
-        };
-        if let Some(symbol) = symbol {
-            found_exports.insert(symbol.clone());
-        }
-    }
+        })
+        .collect::<HashSet<_>>();
 
     assert!(
         exports.is_subset(&found_exports),
@@ -271,8 +269,8 @@ pub fn test(path: &Path) {
         return;
     };
 
-    for entry in lib.modules() {
-        test_exports(entry, path.file_stem().unwrap().to_str().unwrap());
+    for entry in lib.into_modules() {
+        test_exports(&entry, path.file_stem().unwrap().to_str().unwrap());
     }
 }
 

@@ -11,19 +11,19 @@ use anyhow::bail;
 use anyhow::Result;
 use clap::crate_version;
 
-use super::display;
-use super::io::{read, read_lib, write_lib, write_obj};
-use super::{Module, LIB};
+use psyk::display;
+use psyk::io::{read, read_lib, write_lib, write_obj};
+use psyk::{Module, LIB};
 
 /// Prints information about an [OBJ](super::OBJ) or [LIB].
-pub fn info(
+pub fn info<P: AsRef<Path>>(
     write: &mut impl Write,
-    lib_or_obj: &Path,
+    lib_or_obj: P,
     code: bool,
     disassembly: bool,
     recursive: bool,
 ) -> Result<()> {
-    let o = read(lib_or_obj)?;
+    let o = read(&lib_or_obj)?;
     let mut options = display::Options::default();
     if disassembly {
         options.code_format = display::CodeFormat::Disassembly;
@@ -31,12 +31,12 @@ pub fn info(
         options.code_format = display::CodeFormat::Hex;
     }
     options.recursive = recursive;
-    writeln!(write, "{}", display::PsyXDisplayable::wrap(&o, options))?;
+    writeln!(write, "{}", display::PsyKDisplayable::wrap(&o, options))?;
     Ok(())
 }
 
-pub fn split(lib_path: &Path) -> Result<()> {
-    let lib = read_lib(lib_path)?;
+pub fn split<P: AsRef<Path>>(lib_path: P) -> Result<()> {
+    let lib = read_lib(&lib_path)?;
     println!("psyk version {}\n", crate_version!());
     for module in lib.modules() {
         let object_filename = format!("{}.OBJ", module.name());
@@ -51,24 +51,23 @@ pub fn split(lib_path: &Path) -> Result<()> {
     Ok(())
 }
 
-pub fn delete(lib_path: &Path, obj_names: Vec<String>) -> Result<()> {
-    let lib = read_lib(lib_path)?;
+pub fn delete<P: AsRef<Path>>(lib_path: P, obj_names: &[String]) -> Result<()> {
+    let lib = read_lib(&lib_path)?;
 
-    let module_names: HashSet<String> = HashSet::from_iter(obj_names);
+    let module_names: HashSet<&String> = HashSet::from_iter(obj_names);
 
     let new_modules: Vec<Module> = lib
-        .modules()
-        .iter()
+        .into_modules()
+        .into_iter()
         .filter(|m| !module_names.contains(&m.name()))
-        .cloned()
         .collect::<Vec<Module>>();
     let lib = LIB::new(new_modules);
 
-    let mut file = File::create(lib_path)?;
-    write_lib(&lib, &mut file)
+    let mut file = File::create(&lib_path)?;
+    Ok(write_lib(&lib, &mut file)?)
 }
 
-pub fn join(lib_path: &Path, obj_paths: Vec<PathBuf>) -> Result<()> {
+pub fn join<P: AsRef<Path>, O: AsRef<Path>>(lib_path: P, obj_paths: &[O]) -> Result<()> {
     let modules = obj_paths
         .iter()
         .map(|path| Module::new_from_path(path).expect("module"))
@@ -77,11 +76,11 @@ pub fn join(lib_path: &Path, obj_paths: Vec<PathBuf>) -> Result<()> {
     let lib = LIB::new(modules);
 
     let mut file = File::create(lib_path)?;
-    write_lib(&lib, &mut file)
+    Ok(write_lib(&lib, &mut file)?)
 }
 
-pub fn add(lib_path: &Path, obj_path: &Path) -> Result<()> {
-    let lib = read_lib(lib_path)?;
+pub fn add<P: AsRef<Path>, O: AsRef<Path>>(lib_path: P, obj_path: O) -> Result<()> {
+    let lib = read_lib(&lib_path)?;
 
     let module = Module::new_from_path(obj_path)?;
     let mut modules: Vec<Module> = lib.modules().clone();
@@ -90,25 +89,26 @@ pub fn add(lib_path: &Path, obj_path: &Path) -> Result<()> {
     let lib = LIB::new(modules);
 
     let mut file = File::create(lib_path)?;
-    write_lib(&lib, &mut file)
+    Ok(write_lib(&lib, &mut file)?)
 }
 
-pub fn update(lib_path: &Path, obj_paths: Vec<PathBuf>) -> Result<()> {
-    let lib = read_lib(lib_path)?;
+pub fn update<P: AsRef<Path>, O: AsRef<Path>>(lib_path: P, obj_paths: &[O]) -> Result<()> {
+    let lib = read_lib(&lib_path)?;
 
     let mut updated_module_paths: HashMap<String, PathBuf> = HashMap::new();
     for path in obj_paths {
-        if !Path::exists(&path) {
-            bail!(format!("File not found: {}", path.display()));
+        let p = path.as_ref();
+        if !Path::exists(p) {
+            bail!(format!("File not found: {}", p.display()));
         }
 
-        let module_name = String::from(path.file_stem().expect("file").to_string_lossy());
-        updated_module_paths.insert(module_name, path);
+        let module_name = String::from(p.file_stem().expect("file").to_string_lossy());
+        updated_module_paths.insert(module_name, p.to_path_buf());
     }
 
     let new_modules = lib
-        .modules()
-        .iter()
+        .into_modules()
+        .into_iter()
         .map({
             |m| {
                 if let Some(module_path) = updated_module_paths.get(&m.name()) {
@@ -126,31 +126,5 @@ pub fn update(lib_path: &Path, obj_paths: Vec<PathBuf>) -> Result<()> {
     let lib = LIB::new(new_modules);
 
     let mut file = File::create(lib_path)?;
-    write_lib(&lib, &mut file)
-}
-
-fn stem_or_psyk(path: Option<String>) -> String {
-    path.and_then(|path| {
-        Path::new(&path)
-            .file_stem()
-            .and_then(|s| s.to_str())
-            .map(|s| s.to_lowercase())
-    })
-    .unwrap_or_else(|| "psyk".to_string())
-}
-
-/// Get the binary name from the executable path
-pub fn get_binary_name() -> String {
-    stem_or_psyk(env::args().next())
-}
-
-#[cfg(test)]
-mod test {
-    use super::*;
-
-    #[test]
-    fn test_bin_name() {
-        assert_eq!("psyk", stem_or_psyk(None));
-        assert_eq!("foo", stem_or_psyk(Some("/bin/foo".into())));
-    }
+    Ok(write_lib(&lib, &mut file)?)
 }

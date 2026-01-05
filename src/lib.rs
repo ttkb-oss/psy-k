@@ -23,12 +23,11 @@
 //! ```no_run
 //! use std::path::Path;
 //! use psyk::io;
-//! use anyhow::Result;
 //!
-//! fn main() -> Result<()> {
+//! fn main() -> Result<(), io::IOError> {
 //!     let lib = io::read_lib(Path::new("LIBAPI.LIB"))?;
 //!
-//!     for module in lib.modules() {
+//!     for module in lib.into_modules() {
 //!         println!("Module: {}", module.name());
 //!         println!("Created: {}", module.created());
 //!         println!("Exports: {:?}", module.exports());
@@ -43,9 +42,8 @@
 //! ```no_run
 //! use std::path::Path;
 //! use psyk::io;
-//! use anyhow::Result;
 //!
-//! fn main() -> Result<()> {
+//! fn main() -> Result<(), io::IOError> {
 //!     let lib_or_obj = io::read(Path::new("SOME.OBJ"))?;
 //!     println!("{}", lib_or_obj);
 //!     Ok(())
@@ -53,12 +51,12 @@
 //! ```
 
 use core::cmp;
+use std::collections::HashMap;
 use std::fmt;
 use std::fs;
 use std::path::Path;
 use std::time::{Duration, SystemTime, UNIX_EPOCH};
 
-use anyhow::Result;
 use binrw::binrw;
 use binrw::helpers::{until, until_eof};
 use chrono::{
@@ -69,7 +67,6 @@ use unicode_segmentation::UnicodeSegmentation;
 
 use crate::display::DisplayWithOptions;
 
-pub mod cli;
 pub mod display;
 pub mod io;
 pub mod link;
@@ -83,8 +80,7 @@ pub mod link;
 /// ```
 /// use std::path::Path;
 /// use psyk::io;
-/// # use anyhow::Result;
-/// # fn main() -> Result<()> {
+/// # fn main() -> Result<(), io::IOError> {
 /// let lib = io::read_lib(Path::new("SOME.LIB"));
 /// # Ok(())
 /// # }
@@ -120,6 +116,12 @@ impl LIB {
     /// creation time, and exported symbols.
     pub fn modules(&self) -> &Vec<Module> {
         &self.objs
+    }
+
+    /// Consumes the LIB and returns the owned modules (New implementation)
+    /// This avoids cloning the entire module list.
+    pub fn into_modules(self) -> Vec<Module> {
+        self.objs
     }
 }
 
@@ -378,15 +380,21 @@ fn string_to_module_name(name: &str) -> [u8; 8] {
 /// Unicode file names and will produce appropriate model names
 /// with only the bytes that represent full code points.
 #[inline]
-fn path_to_module_name(path: &Path) -> [u8; 8] {
-    let Some(prefix) = path.file_prefix() else {
-        panic!("Module paths must contain a file name: {:?}", path);
+fn path_to_module_name<P: AsRef<Path>>(path: P) -> [u8; 8] {
+    let Some(prefix) = path.as_ref().file_prefix() else {
+        panic!(
+            "Module paths must contain a file name: {}",
+            path.as_ref().display()
+        );
     };
     let binding = prefix.to_ascii_uppercase();
 
     if !prefix.is_ascii() {
         let Some(prefix_str) = binding.to_str() else {
-            panic!("Module path is not valid unicode: {:?}", path);
+            panic!(
+                "Module path is not valid unicode: {}",
+                path.as_ref().display()
+            );
         };
         return string_to_module_name(prefix_str);
     }
@@ -417,8 +425,8 @@ impl ModuleMetadata {
         }
     }
 
-    pub fn new_from_path(path: &Path, obj: &OBJ) -> Result<Self> {
-        let name = path_to_module_name(path);
+    pub fn new_from_path<P: AsRef<Path>>(path: P, obj: &OBJ) -> std::io::Result<Self> {
+        let name = path_to_module_name(&path);
 
         let file_metadata = fs::metadata(path)?;
         let created = if let Ok(creation_time) = file_metadata.created() {
@@ -435,7 +443,7 @@ impl ModuleMetadata {
         let size = file_metadata.len() as u32;
 
         Ok(Self::new(
-            String::from_utf8(name.to_vec())?,
+            String::from_utf8(name.to_vec()).map_err(std::io::Error::other)?,
             created,
             size,
             exports,
@@ -549,9 +557,9 @@ impl Module {
     /// Creates a new [Module] from the file at `path`.
     ///
     /// `path` must point to a valid [OBJ] file.
-    pub fn new_from_path(path: &Path) -> Result<Self> {
-        let obj = io::read_obj(path)?;
-        let metadata = ModuleMetadata::new_from_path(path, &obj)?;
+    pub fn new_from_path<P: AsRef<Path>>(path: P) -> std::io::Result<Self> {
+        let obj = io::read_obj(&path).map_err(std::io::Error::other)?;
+        let metadata = ModuleMetadata::new_from_path(&path, &obj)?;
         Ok(Self { metadata, obj })
     }
 
@@ -696,9 +704,8 @@ impl OpaqueModule {
 /// ```no_run
 /// use std::path::Path;
 /// use psyk::io;
-/// use anyhow::Result;
 ///
-/// fn main() -> Result<()> {
+/// fn main() -> Result<(), io::IOError> {
 ///     let obj = io::read_obj(Path::new("MODULE.OBJ"))?;
 ///
 ///     println!("OBJ version: {}", obj.version());
@@ -764,10 +771,32 @@ impl fmt::Display for OBJ {
 
 impl display::DisplayWithOptions for OBJ {
     fn fmt_with_options(&self, f: &mut fmt::Formatter, options: &display::Options) -> fmt::Result {
+        let mut context = SectionContext::default();
+
         options.write_indent(f)?;
         writeln!(f, "Header : LNK version {}", self.version)?;
         for section in &self.sections {
-            section.fmt_with_options(f, options)?;
+            match section {
+                Section::LNKHeader(header) => {
+                    // eprintln!("adding section type {} for {:x}", header.type_name(), header.section);
+                    context
+                        .section_types
+                        .insert(header.section, header.type_name());
+                }
+                Section::SectionSwitch(section_id) => {
+                    context.current_section = *section_id;
+                    println!("switching to section: {}", context.current_section);
+                }
+                Section::Filename(file) => {
+                    context.current_filename = file.name();
+                }
+                Section::CPU(cpu_type) => {
+                    context.cpu_type = *cpu_type;
+                }
+                _ => {}
+            };
+
+            section.fmt_with_context(f, options, &context)?;
             writeln!(f)?;
         }
         Ok(())
@@ -2005,6 +2034,30 @@ pub mod cputype {
     pub const HITACHI_SH2: u8 = 8;
 }
 
+pub mod sectiontype {
+    //! Section type identifiers.
+    //!
+    //! **n.b.!** Psy-Q uses `.rdata` instead of `.rodata` like GCC.
+
+    /// Mutable data.
+    pub const DATA: &str = ".data";
+
+    /// Read only data.
+    pub const RDATA: &str = ".rdata";
+
+    /// Mutable "small" data
+    pub const SDATA: &str = ".sdata";
+
+    /// Uninitialized, mutable data
+    pub const BSS: &str = ".bss";
+
+    /// Uninitialized, mutable "small" data
+    pub const SBSS: &str = ".sbss";
+
+    /// Executable data
+    pub const TEXT: &str = ".text";
+}
+
 fn unimplemented(s: &str) -> bool {
     eprintln!("Unimplemented: {s}");
     false
@@ -2431,8 +2484,53 @@ impl fmt::Display for Section {
     }
 }
 
+struct SectionContext {
+    cpu_type: u8,
+    current_filename: String,
+    current_section: u16,
+    section_types: HashMap<u16, String>,
+}
+
+impl SectionContext {
+    fn default() -> Self {
+        Self {
+            cpu_type: cputype::MOTOROLA_68000,
+            current_filename: "".to_string(),
+            current_section: 0,
+            section_types: HashMap::new(),
+        }
+    }
+}
+
 impl display::DisplayWithOptions for Section {
     fn fmt_with_options(&self, f: &mut fmt::Formatter, options: &display::Options) -> fmt::Result {
+        let context = SectionContext::default();
+        self.fmt_with_context(f, options, &context)
+    }
+}
+
+fn fmt_hex(f: &mut fmt::Formatter, bytes: &[u8], options: &display::Options) -> fmt::Result {
+    writeln!(f, "\n")?;
+    for (i, chunk) in bytes.chunks(16).enumerate() {
+        options.write_indent(f)?;
+        write!(f, "{:04x}:", i * 16)?;
+        for byte in chunk {
+            write!(f, " {:02x}", byte)?;
+        }
+        writeln!(f)?;
+    }
+    Ok(())
+}
+
+const UNKNOWN_SECTION: &str = "";
+
+impl Section {
+    fn fmt_with_context(
+        &self,
+        f: &mut fmt::Formatter,
+        options: &display::Options,
+        context: &SectionContext,
+    ) -> fmt::Result {
         options.write_indent(f)?;
         match self {
             Self::NOP => write!(f, "0 : End of file"),
@@ -2440,35 +2538,38 @@ impl display::DisplayWithOptions for Section {
                 write!(f, "2 : Code {} bytes", code.code.len())?;
                 match options.code_format {
                     display::CodeFormat::Disassembly => {
-                        writeln!(f, "\n")?;
-                        for instruction in code.code.chunks(4) {
-                            if instruction.len() == 4 {
-                                let ins = u32::from_le_bytes(instruction.try_into().unwrap());
-                                let asm = Instruction::new(ins, 0x80000000, InstrCategory::CPU)
-                                    .disassemble(None, 0);
-                                options.write_indent(f)?;
-                                writeln!(f, "    /* {ins:08x} */   {asm}")?;
-                            } else {
-                                write!(f, "    /* ")?;
-                                for byte in instruction {
-                                    write!(f, "{byte:02x}")?;
+                        let unknown_section = UNKNOWN_SECTION.to_string();
+                        let section_type = context
+                            .section_types
+                            .get(&context.current_section)
+                            .unwrap_or(&unknown_section);
+                        if context.cpu_type == cputype::MIPS_R3000
+                            && section_type.as_str() == sectiontype::TEXT
+                        {
+                            writeln!(f, "\n")?;
+                            for instruction in code.code.chunks(4) {
+                                if instruction.len() == 4 {
+                                    let ins = u32::from_le_bytes(instruction.try_into().unwrap());
+                                    let asm = Instruction::new(ins, 0x80000000, InstrCategory::CPU)
+                                        .disassemble(None, 0);
+                                    options.write_indent(f)?;
+                                    writeln!(f, "    /* {ins:08x} */   {asm}")?;
+                                } else {
+                                    write!(f, "    /* ")?;
+                                    for byte in instruction {
+                                        write!(f, "{byte:02x}")?;
+                                    }
+                                    writeln!(f, " */ ; invalid")?;
                                 }
-                                writeln!(f, " */ ; invalid")?;
                             }
+                        } else {
+                            fmt_hex(f, &code.code, options)?;
                         }
                     }
                     display::CodeFormat::Hex => {
-                        writeln!(f, "\n")?;
-                        for (i, chunk) in code.code.chunks(16).enumerate() {
-                            options.write_indent(f)?;
-                            write!(f, "{:04x}:", i * 16)?;
-                            for byte in chunk {
-                                write!(f, " {:02x}", byte)?;
-                            }
-                            writeln!(f)?;
-                        }
+                        fmt_hex(f, &code.code, options)?;
                     }
-                    display::CodeFormat::None => (),
+                    display::CodeFormat::None => {}
                 }
                 Ok(())
             }
@@ -2689,7 +2790,6 @@ impl display::DisplayWithOptions for Section {
 
 #[cfg(test)]
 mod test {
-    use std::ffi::OsStr;
     use std::time::UNIX_EPOCH;
 
     use super::*;
@@ -2770,13 +2870,8 @@ mod test {
     #[should_panic]
     fn test_path_to_module_name_invalid_unicode() {
         // b"\u{C0}invalid.obj"
-        let s: &OsStr;
-        unsafe {
-            s = OsStr::from_encoded_bytes_unchecked(&[
-                0xC0, 0x69, 0x6E, 0x76, 0x61, 0x6C, 0x69, 0x64, 0x2e, 0x6f, 0x62, 0x6a,
-            ]);
-        }
-        path_to_module_name(Path::new(s));
+        let s = __psyk_test_support::unsafe_path_name();
+        path_to_module_name(Path::new(&s));
     }
 
     #[test]

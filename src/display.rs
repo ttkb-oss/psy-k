@@ -28,9 +28,11 @@ pub struct Options {
 
 impl Options {
     pub fn indent(&self) -> Self {
-        let mut o = self.clone();
-        o.indent_level += 1;
-        o
+        Self {
+            code_format: self.code_format.clone(),
+            recursive: self.recursive,
+            indent_level: self.indent_level + 1,
+        }
     }
 
     pub fn write_indent(&self, f: &mut Formatter) -> Result {
@@ -45,21 +47,21 @@ pub trait DisplayWithOptions: Display {
     }
 }
 
-pub struct PsyXDisplayable<'a, P: DisplayWithOptions> {
+pub struct PsyKDisplayable<'a, P: DisplayWithOptions> {
     p: &'a P,
     options: Options,
 }
 
-impl<'a, P> PsyXDisplayable<'a, P>
+impl<'a, P> PsyKDisplayable<'a, P>
 where
     P: DisplayWithOptions,
 {
-    pub fn wrap(p: &'a P, options: Options) -> PsyXDisplayable<'a, P> {
+    pub fn wrap(p: &'a P, options: Options) -> PsyKDisplayable<'a, P> {
         Self { p, options }
     }
 }
 
-impl<P> Display for PsyXDisplayable<'_, P>
+impl<P> Display for PsyKDisplayable<'_, P>
 where
     P: DisplayWithOptions,
 {

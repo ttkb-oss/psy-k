@@ -1,0 +1,12 @@
+[package]
+name = "psy-k-test-support"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "PSY-Q test support."
+rust-version.workspace = true
+
+[lib]
+name = "__psyk_test_support"
