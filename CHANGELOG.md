@@ -1,6 +1,11 @@
 Change Log
 ==========
 
+0.5.1 - January 11, 2025
+------------------------
+
+* Removes debug output when listing an OBJ with additional code listing.
+
 0.5.0 - January 5, 2025
 -----------------------
 

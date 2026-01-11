@@ -86,7 +86,7 @@ Appends a new object file to an existing library.
 psyk add UTILS.LIB NEW_FUNC.OBJ
 ```
 
-*update* - Update objects in a library
+**update** - Update objects in a library
 
 Replaces existing modules in a library with new versions from disk if the filenames match.
 
@@ -94,7 +94,7 @@ Replaces existing modules in a library with new versions from disk if the filena
 psyk update MATH.LIB VECTOR.OBJ MATRIX.OBJ
 ```
 
-*delete* - Delete objects from a library
+**delete** - Delete objects from a library
 
 Removes specific modules from a library by name.
 
@@ -104,7 +104,8 @@ psyk delete PROJECT.LIB OLD_FUNC DEPRECATED_STUB
 
 ### DOS Compatibility
 
-`psyk` can also be called as `dumpobj` or `psylib` and works just like those utilities.
+`psyk` can also provides `dumpobj` or `psylib` utilities that are drop in replacements for the original DOS Psy-Q
+versions. This is primarily useful if you have a toolchain that uses those utilities and want to migrate to a Psy-K.
 
 ```bash
 psylib /x MYLIB.LIB  # Equivalent to `psyk extract MYLIB.LIB`

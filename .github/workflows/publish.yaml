@@ -113,13 +113,13 @@ jobs:
       if: inputs.dry_run == true
       run: |
         echo "=== DRY RUN MODE ==="
-        cargo publish --dry-run
+        cargo publish --workspace --dry-run
         echo "Dry run completed successfully!"
         echo "To publish for real, run this workflow again with 'Perform a dry run' unchecked"
 
     - name: Publish to crates.io
       if: inputs.dry_run == false
-      run: cargo publish --token ${{ secrets.CARGO_REGISTRY_TOKEN }}
+      run: cargo publish --workspace --token ${{ secrets.CARGO_REGISTRY_TOKEN }}
       env:
         CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
 

@@ -785,7 +785,6 @@ impl display::DisplayWithOptions for OBJ {
                 }
                 Section::SectionSwitch(section_id) => {
                     context.current_section = *section_id;
-                    println!("switching to section: {}", context.current_section);
                 }
                 Section::Filename(file) => {
                     context.current_filename = file.name();

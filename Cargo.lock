@@ -507,7 +507,7 @@ dependencies = [
 
 [[package]]
 name = "psy-k"
-version = "0.5.0"
+version = "0.5.1"
 dependencies = [
  "binrw",
  "chrono",
@@ -521,7 +521,7 @@ dependencies = [
 
 [[package]]
 name = "psy-k-bin"
-version = "0.5.0"
+version = "0.5.1"
 dependencies = [
  "anyhow",
  "assert_cmd",
@@ -534,7 +534,7 @@ dependencies = [
 
 [[package]]
 name = "psy-k-test-support"
-version = "0.5.0"
+version = "0.5.1"
 
 [[package]]
 name = "quote"
